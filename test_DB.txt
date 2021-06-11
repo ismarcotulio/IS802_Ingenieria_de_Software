@@ -1,0 +1,6 @@
+USE DS;
+
+CREATE TABLE PRUEBA(
+id int primary key,
+name Varchar(10) not null
+);

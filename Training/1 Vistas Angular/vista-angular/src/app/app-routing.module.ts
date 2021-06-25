@@ -3,11 +3,13 @@ import { VistaMarco1Component } from './vista-marco1/vista-marco1.component';
 import { Luis1Component } from './luis1/luis1.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BrandoComponent } from './brando/brando.component';
 
 const routes: Routes = [
   { path: "marco1", component: VistaMarco1Component},
   { path: "marco2", component: VistaMarco2Component},
   { path: "luis", component: Luis1Component},
+  { path: "brando", component: BrandoComponent},
   { path: "", redirectTo: "marco1", pathMatch: "full" }
 ];
 

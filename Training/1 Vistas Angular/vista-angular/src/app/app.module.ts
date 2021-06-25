@@ -18,7 +18,7 @@ import { BrandoHijoComponent } from './brando-hijo/brando-hijo.component';
     VistaMarco2Component,
     HijoMarco1Component,
     Luis1Component,
-    HijoLuisComponent
+    HijoLuisComponent,
     BrandoComponent,
     BrandoHijoComponent
   ],

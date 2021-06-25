@@ -27,7 +27,7 @@ import { HijoDayrielaComponent } from './hijo-dayriela/hijo-dayriela.component';
     BrandoComponent,
     BrandoHijoComponent,
     Tr2VistaDanielComponent,
-    Tr2HijoDanielComponent
+    Tr2HijoDanielComponent,
     VistaDayrielaComponent,
     HijoDayrielaComponent
   ],

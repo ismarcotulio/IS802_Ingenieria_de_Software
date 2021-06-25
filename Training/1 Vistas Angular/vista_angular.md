@@ -6,6 +6,16 @@
 - Luego por cada vista se creara un modelo **(interfaz)** y a partir de el se generaran algunos datos **(metadatos)**.
 - Haciendo uso de los datos se generaran multiples componentes de forma dinamica. **(Directivas Estructurales)**.
 
+
+
+Instalar typescript
+----
+----
+````
+npm install -g typescript
+````
+
+
 Version de node
 ----
 ----
@@ -19,7 +29,12 @@ Version de NPM
 Version de Angular CLI
 ----
 ----
-12.0.5
+**12.0.5**
+
+Version typescript
+----
+----
+**4.3.4**
 
 Creacion de Proyecto en angular
 ----
@@ -28,3 +43,16 @@ Creacion de Proyecto en angular
 $ ng new vista-angular --routing
 ```
 
+Instalar proyecto angular previamente creado
+----
+----
+````
+npm install
+````
+
+Correr servidor angular
+----
+----
+````
+ng serve
+````

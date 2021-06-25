@@ -10,6 +10,8 @@ import { Luis1Component } from './luis1/luis1.component';
 import { HijoLuisComponent } from './hijo-luis/hijo-luis.component';
 import { BrandoComponent } from './brando/brando.component';
 import { BrandoHijoComponent } from './brando-hijo/brando-hijo.component';
+import { VistaDayrielaComponent } from './vista-dayriela/vista-dayriela.component';
+import { HijoDayrielaComponent } from './hijo-dayriela/hijo-dayriela.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { BrandoHijoComponent } from './brando-hijo/brando-hijo.component';
     Luis1Component,
     HijoLuisComponent,
     BrandoComponent,
-    BrandoHijoComponent
+    BrandoHijoComponent,
+    VistaDayrielaComponent,
+    HijoDayrielaComponent
   ],
   imports: [
     BrowserModule,

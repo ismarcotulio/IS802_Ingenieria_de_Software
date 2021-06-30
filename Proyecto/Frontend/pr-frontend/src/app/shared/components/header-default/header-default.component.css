@@ -1,0 +1,114 @@
+#header{
+  position: relative;
+  width: 100%;
+  height: 15%;
+  background: #1473E6;
+  margin:0;
+}
+
+#logoSection{
+  position: relative;
+  float: left;
+  width: 20%;
+  height: 100%;
+
+}
+
+#logoBtnContainer{
+  position: relative;
+  width: 80%;
+  height: 70%;
+  left: 10%;
+  top: 15%;
+
+  color: white;
+  font-size: 1em;
+}
+
+#logoBtnContainer:hover{
+  cursor: pointer;
+}
+
+#logoContainer{
+  position: relative;
+  float: left;
+  width: 35%;
+  height: 100%;
+
+  font-size: 1.5em;
+
+}
+
+#logoTitleContainer{
+  position: relative;
+  float: left;
+  width: 65%;
+  height: 100%;
+
+  font-size:2.2em;
+}
+
+#logo{
+
+  font-size: 4em;
+}
+
+#logoTitle{
+  position: relative;
+  width: 100%;
+  height:50%;
+  top: 25%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#inputsSection{
+  position: relative;
+  float: left;
+  width: 70%;
+  height: 100%;
+
+}
+
+#userSection{
+  position: relative;
+  float: left;
+  width: 10%;
+  height: 100%;
+
+}
+
+#userContainer{
+  position: relative;
+  width: 80%;
+  height: 70%;
+  left: 10%;
+  top: 10%;
+
+  color: white;
+  font-size: 0.8em;
+  margin:0;
+}
+
+#userBtnContainer{
+  position: absolute;
+  width: 40%;
+  height: 50%;
+  left: 30%;
+  top: 20%;
+
+}
+
+#userBtnContainer:hover{
+  cursor: pointer;
+}
+
+#userTitleContainer{
+  position: absolute;
+  width: 100%;
+  height: 25%;
+  bottom:0;
+
+  text-align: center;
+  font-size: 1em;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

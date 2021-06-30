@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderDefaultComponent } from './components/header-default/header-default.component';
 import { FooterDefaultComponent } from './components/footer-default/footer-default.component';
 
+import { MaterialModule } from '../material/material.module';
+
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { FooterDefaultComponent } from './components/footer-default/footer-defau
     FooterDefaultComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   exports: [
     HeaderDefaultComponent,

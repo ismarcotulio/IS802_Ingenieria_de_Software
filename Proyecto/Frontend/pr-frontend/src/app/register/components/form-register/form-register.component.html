@@ -1,35 +1,42 @@
-<div id="form-register">
+<form id="form-register" [formGroup]="registerForm">
   <div id="section-title">
-    <div class="title"><b>Registrate!</b></div>
+    <div class="title"><b>Registrate</b></div>
     <div class="subtitle">Es rápido y fácil</div>
   </div>
   <div id="section-body">
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Nombre</div></div>
-      <div class="section-input-text"><input type="text" class="input-text"></div>
+      <div class="section-input-text"><input type="text" class="input-text" formControlName="firstName"></div>
     </div>
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Apellido</div></div>
-      <div class="section-input-text"><input type="text" class="input-text"></div>
+      <div class="section-input-text"><input type="text" class="input-text" formControlName="lastName"></div>
     </div>
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Direccion</div></div>
-      <div class="section-input-text"><input type="text" class="input-text"></div>
+      <div class="section-input-text"><input type="text" class="input-text" formControlName="address"></div>
     </div>
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Telefono</div></div>
-      <div class="section-input-text"><input type="text" class="input-text"></div>
+      <div class="section-input-text"><input type="text" class="input-text" formControlName="phone"></div>
     </div>
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Correo</div></div>
-      <div class="section-input-text"><input type="text" class="input-text"></div>
+      <div class="section-input-text"><input type="text" class="input-text" formControlName="email"></div>
     </div>
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Contraseña</div></div>
-      <div class="section-input-text"><input type="text" class="input-text"></div>
+      <div class="section-input-text"><input type="text" class="input-text" formControlName="password"></div>
     </div>
   </div>
   <div id="section-submit">
-    <button class="btnSubmit"><b>Registrarme</b></button>
+    <div class="section-error">
+      <div class="alert alert-danger" *ngIf="registerForm.getError('invalid')">
+        <div>
+          Name is required.
+        </div>
+      </div>
+    </div>
+    <button class="btnSubmit" (click)="registerUser()"><b>Registrarme</b></button>
   </div>
-</div>
+</form>

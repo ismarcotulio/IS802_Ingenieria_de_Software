@@ -101,11 +101,21 @@
 
 }
 
+.section-error{
+  position: relative;
+  width: 80%;
+  height: 35%;
+  top: 10%;
+  left: 10%;
+  background: gray;
+  padding: 5px;
+}
+
 .btnSubmit{
   position: relative;
   width: 30%;
   height: 40%;
-  top: 30%;
+  top: 20%;
   left: 35%;
   background: #00A400;
   border-radius: 10px;
@@ -114,3 +124,5 @@
   color: white;
   font-family: "Roboto";
 }
+
+

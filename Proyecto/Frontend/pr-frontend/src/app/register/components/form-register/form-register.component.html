@@ -1,4 +1,4 @@
-<form id="form-register" [formGroup]="registerForm">
+<form id="form-register" [formGroup]="registerForm" (ngSubmit)="this.registerUser()">
   <div id="section-title">
     <div class="title"><b>Registrate</b></div>
     <div class="subtitle">Es rápido y fácil</div>
@@ -31,12 +31,17 @@
   </div>
   <div id="section-submit">
     <div class="section-error">
-      <div class="alert alert-danger" *ngIf="registerForm.getError('invalid')">
-        <div>
-          Name is required.
-        </div>
-      </div>
+
+      <div *ngIf="this.registerForm.get('firstName')?.getError('required') == true">Debes ingresar tu nombre</div>
+      <div *ngIf="this.registerForm.get('lastName')?.getError('required') == true">Debes ingresar tu apellido</div>
+      <div *ngIf="this.registerForm.get('address')?.getError('required') == true">Debes ingresar tu direccion</div>
+      <div *ngIf="this.registerForm.get('phone')?.getError('required') == true">Debes ingresar tu numero de telefono</div>
+      <div *ngIf="this.registerForm.get('email')?.getError('required') == true">Debes ingresar un correo electronico</div>
+      <div *ngIf="this.registerForm.get('email')?.getError('email') == true">Debes ingresar un correo electronico valido (Ejemplo: correo@correo.com)</div>
+      <div *ngIf="this.registerForm.get('password')?.getError('required') == true">Debes ingresar una Contraseña</div>
+      <div *ngIf="this.registerForm.get('password')?.value.length < 8">la Contraseña debe tener al menos 8</div>
+      <div *ngIf="this.registerForm.get('password')?.status == 'INVALID'">La Contraseña debe tener al menos 1 digito, 1 letra mayuscula, 1 letra minuscula y 1 caracter especial</div>
     </div>
-    <button class="btnSubmit" (click)="registerUser()"><b>Registrarme</b></button>
+    <button class="btnSubmit" type="submit" *ngIf="this.registerForm.status == 'VALID';disabled" #btnRegister><b>Registrarme</b></button>
   </div>
 </form>

@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const jwt = require('jsonwebtoken');
 const conexion = require('./database');
 
 const app = express();
@@ -12,6 +12,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/server',(req,res)=>{
     res.send('Bienvenido..')
+});
+
+//api retorna token, al ingresar.
+app.post("/login", (req , res) => {
+    const user = {
+        email: req.body.email,
+        password : req.body.password
+}
+
+//jwt.sign({user}, 'secretkey', {expiresIn: '40s'}, (err, token) => {
+    jwt.sign({user}, 'secretkey', (err, token) => {
+        res.json({
+            token
+        });
+    });
 });
 
 

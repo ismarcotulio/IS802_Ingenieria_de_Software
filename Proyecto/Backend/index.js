@@ -47,7 +47,6 @@ app.post('/autenticar', (req, res) => {
 const rutasProtegidas = express.Router(); 
 rutasProtegidas.use((req, res, next) => {
     const token = req.headers['authorization'];
-   
     if (token) {
         const tokenArray = token.split(" ")
       jwt.verify(tokenArray[1], app.get('llave'), (err, decoded) => {      

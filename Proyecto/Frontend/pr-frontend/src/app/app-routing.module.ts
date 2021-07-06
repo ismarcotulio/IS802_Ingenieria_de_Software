@@ -13,6 +13,10 @@ const routes: Routes = [
          loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
+        path: "sesion",
+        loadChildren: () => import('./sesion/sesion.module').then(m => m.SesionModule)
+      },
+      {
         path: "",
         redirectTo: "home",
         pathMatch: "full"

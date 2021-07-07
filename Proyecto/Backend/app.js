@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const conexion = require('./database');
+const cors = require('cors');
 
 const app = express();
 
@@ -9,10 +10,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(cors());
 
 app.get('/server',(req,res)=>{
     res.send('Bienvenido..')
 });
+
 
 //api retorna token, al ingresar.
 app.post("/login", (req , res) => {
@@ -20,6 +23,7 @@ app.post("/login", (req , res) => {
         email: req.body.email,
         password : req.body.password
 }
+
 
 //jwt.sign({user}, 'secretkey', {expiresIn: '40s'}, (err, token) => {
     jwt.sign({user}, 'secretkey', (err, token) => {
@@ -30,7 +34,10 @@ app.post("/login", (req , res) => {
 });
 
 
-conexion.query('CALL extraer( "Dayriela", @email );', (error,results, fields)=>{
+
+//Pruebas Querys.
+
+/* conexion.query('CALL extraer( "Dayriela", @email );', (error,results, fields)=>{
     if(error) throw error;
 
     conexion.query('SELECT @email; ', (error,results, fields)=>{
@@ -38,8 +45,14 @@ conexion.query('CALL extraer( "Dayriela", @email );', (error,results, fields)=>{
         console.log(results);
 
     });
-});
+}); */
 
+conexion.query('select * from user;', (error,results, fields)=>{
+    if(error) throw error;
+
+    console.log(results);
+    
+});
 
 app.get('/salir', (req,res)=>{
     conexion.end(); //=============

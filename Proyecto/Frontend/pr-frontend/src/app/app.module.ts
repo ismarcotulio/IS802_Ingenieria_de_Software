@@ -12,11 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { TokenInterceptorService } from './core/services/authorization/token-interceptor.service';
+import { LayoutUserComponent } from './layouts/layout-user/layout-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutDefaultComponent
+    LayoutDefaultComponent,
+    LayoutUserComponent
   ],
   imports: [
     BrowserModule,

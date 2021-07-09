@@ -6,13 +6,15 @@ import { HeaderDefaultComponent } from './components/header-default/header-defau
 import { FooterDefaultComponent } from './components/footer-default/footer-default.component';
 
 import { MaterialModule } from '../material/material.module';
+import { HeaderUserComponent } from './components/header-user/header-user.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderDefaultComponent,
-    FooterDefaultComponent
+    FooterDefaultComponent,
+    HeaderUserComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { MaterialModule } from '../material/material.module';
   ],
   exports: [
     HeaderDefaultComponent,
-    FooterDefaultComponent
+    FooterDefaultComponent,
+    HeaderUserComponent
   ]
 })
 export class SharedModule { }

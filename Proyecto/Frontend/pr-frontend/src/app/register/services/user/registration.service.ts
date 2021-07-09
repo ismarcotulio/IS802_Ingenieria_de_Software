@@ -11,7 +11,7 @@ export class RegistrationService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'http://localhost:3000/register';
+  url = 'http://localhost:3000/signUp';
 
   userRegister( form: FormGroup ){
     let rawValues = form.getRawValue();

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutDefaultComponent } from './layouts/layout-default/layout-default.component';
+import { LayoutUserComponent } from './layouts/layout-user/layout-user.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,22 @@ const routes: Routes = [
       {
         path: "register",
         loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
-     },
+      },
+      {
+        path: "",
+        redirectTo: "home",
+        pathMatch: "full"
+      }
+    ]
+  },
+  {
+    path: "user",
+    component: LayoutUserComponent,
+    children: [
+      {
+         path: "home",
+         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+      },
       {
         path: "",
         redirectTo: "home",

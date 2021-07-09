@@ -1,4 +1,4 @@
 export interface Token{
-  message: string;
+  id: string;
   token: string;
 }

@@ -159,21 +159,23 @@ app.get('/login', rutasProtegidas, (req, res) => {
 
 //================================
 
-
 app.post("/verify", verifyToken, (req , res) => {
   jwt.verify(req.token, app.get('llave'), (error, authData) => {
       if(error){
-          res.sendStatus(403);
+        res.json({
+          result:false
+        });
+
       }else{
           res.json({
-              result:true
-              // res.redirect('');
+            result:true
           });
       }
+
   });
 });
 
-// Authorization: Bearer <token>
+//Authorization: Bearer <token>
 
 function verifyToken(req, res, next){
    const bearerHeader =  req.headers['authorization'];
@@ -182,7 +184,11 @@ function verifyToken(req, res, next){
         const bearerToken = bearerHeader.split(" ")[1];
         req.token  = bearerToken;
         next();
+
    }else{
-       res.sendStatus(403);
+      res.send({
+        result:false
+      });
+
    }
 }

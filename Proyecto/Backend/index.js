@@ -5,6 +5,7 @@ const express = require('express'),
       cors = require('cors'),
       conexion = require('./dataBase.js'),
       moment = require('moment'),
+      base64url = require('base64url'),
       date = new Date()
 	  
 const config = {
@@ -121,31 +122,48 @@ app.post('/signUp', async (req, res) => {
 
 // Middleware para verificacion de tokens
 const rutasProtegidas = express.Router(); 
-rutasProtegidas.use((req, res, next) => {
+rutasProtegidas.use(async(req, res, next) => {
+
+  let searchToken = function(userId,token){
+    return new Promise((resolve, reject)=>{
+      conexion.query(`CALL extractInformation(${userId}) ;`, (error,results, fields)=>{
+        if(error){
+          reject(error)
+        }else{
+          if(results[0][0].Code_Token==token){
+            resolve("Token aceptado")
+          }else{
+            res.json({mensaje:"Token invalido, esto se debe a que el usuario ha cerrado sesion"})
+            throw new Error("Token invalido")
+          }  
+        }
+      })
+    })
+  }
+  
     const token = req.headers['authorization'];
     if (token) {
-        const tokenArray = token.split(" ")
+      const tokenArray = token.split(" ")
       jwt.verify(tokenArray[1], app.get('llave'), (err, decoded) => {      
         if (err) {
           return res.json({ mensaje: 'Token inválida' });    
-        } else {
-          conexion.query(`SELECT FROM token WHERE ;`, (error,results, fields)=>{
-            
-          })
-          req.decoded = decoded;    
-          next();
         }
       });
+      let rawPayload = tokenArray[1].split('.')[1]
+      let payload = JSON.parse(base64url.decode(rawPayload))
+      const answer = await searchToken(payload.Id_usuario,tokenArray[1]);
+         
+      next();
     } else {
       res.send({ 
           mensaje: 'Token no proveida' 
       });
     }
- });
+});
 
 
  // login de usuario
-app.get('/login', rutasProtegidas, (req, res) => {
+app.get('/login', rutasProtegidas, async (req, res) => {
 	const datos = [
 		{ id: 1, nombre: "Asfo" },
 		{ id: 2, nombre: "Denisse" },

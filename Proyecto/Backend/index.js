@@ -133,8 +133,7 @@ rutasProtegidas.use(async(req, res, next) => {
           if(results[0][0].Code_Token==token){
             resolve("Token aceptado")
           }else{
-            res.json({mensaje:"Token invalido, esto se debe a que el usuario ha cerrado sesion"})
-            throw new Error("Token invalido")
+            reject("Token no concuerda con el usuario")
           }  
         }
       })
@@ -144,14 +143,25 @@ rutasProtegidas.use(async(req, res, next) => {
     const token = req.headers['authorization'];
     if (token) {
       const tokenArray = token.split(" ")
-      jwt.verify(tokenArray[1], app.get('llave'), (err, decoded) => {      
-        if (err) {
-          return res.json({ mensaje: 'Token inválida' });    
-        }
-      });
+      try{
+        jwt.verify(tokenArray[1], app.get('llave'), (err, decoded) => {      
+            if (err) {
+              throw err   
+            }
+          })
+      }catch(error){
+        res.json({mensaje: "Token invalido, inicie sesion de nuevo"})
+        return;
+      }
+      
       let rawPayload = tokenArray[1].split('.')[1]
       let payload = JSON.parse(base64url.decode(rawPayload))
-      const answer = await searchToken(payload.Id_usuario,tokenArray[1]);
+      try{
+        const answer = await searchToken(payload.Id_usuario,tokenArray[1]);
+      }catch(error){
+        res.json({mensaje: error})
+        return;
+      }
          
       next();
     } else {

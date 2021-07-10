@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-form-sesion',
@@ -7,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormSesionComponent implements OnInit {
 
-  constructor() { }
+  sesionForm = this.fb.group({
+
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(`^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$`)]]
+  });
+
+  constructor( private fb: FormBuilder) { }
+
+  sesionUser(){
+    alert("Hola mundo");
+  }
 
   ngOnInit(): void {
   }

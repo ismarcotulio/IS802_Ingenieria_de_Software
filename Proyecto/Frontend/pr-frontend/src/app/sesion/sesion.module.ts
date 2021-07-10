@@ -5,6 +5,7 @@ import { SesionRoutingModule } from './sesion-routing.module';
 import { ViewSesionComponent } from './view-sesion/view-sesion.component';
 import { FormSesionComponent } from './components/form-sesion/form-sesion.component';
 
+import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { FormSesionComponent } from './components/form-sesion/form-sesion.compon
   ],
   imports: [
     CommonModule,
-    SesionRoutingModule
+    SesionRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class SesionModule { }

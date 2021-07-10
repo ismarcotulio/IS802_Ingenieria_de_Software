@@ -5,6 +5,7 @@ const express = require('express'),
       cors = require('cors'),
       conexion = require('./dataBase.js'),
       moment = require('moment'),
+      base64url = require('base64url'),
       date = new Date()
 	  
 const config = {
@@ -53,7 +54,6 @@ app.post('/signUp', async (req, res) => {
       })
     })
   }
-
 
   let getLastTokenIdQuery = function(){
     return new Promise((resolve, reject)=>{
@@ -120,75 +120,65 @@ app.post('/signUp', async (req, res) => {
   
 })
 
-//============================
-
 // Middleware para verificacion de tokens
-const rutasProtegidas = express.Router();
-rutasProtegidas.use((req, res, next) => {
+const rutasProtegidas = express.Router(); 
+rutasProtegidas.use(async(req, res, next) => {
+
+  let searchToken = function(userId,token){
+    return new Promise((resolve, reject)=>{
+      conexion.query(`CALL extractInformation(${userId}) ;`, (error,results, fields)=>{
+        if(error){
+          reject(error)
+        }else{
+          if(results[0][0].Code_Token==token){
+            resolve("Token aceptado")
+          }else{
+            reject("Token no concuerda con el usuario")
+          }  
+        }
+      })
+    })
+  }
+  
     const token = req.headers['authorization'];
     if (token) {
-      const tokenArray = token.split(" ")   // ASHSH <TOKEN>
-      jwt.verify(tokenArray[1], app.get('llave'), (err, decoded) => {      
-        if (err) {
-          return res.json({ mensaje: 'Token inválida' });    
-        } else {
-          conexion.query(`SELECT FROM token WHERE ;`, (error,results, fields)=>{
-            
+      const tokenArray = token.split(" ")
+      try{
+        jwt.verify(tokenArray[1], app.get('llave'), (err, decoded) => {      
+            if (err) {
+              throw err   
+            }
           })
-          req.decoded = decoded;    
-          next();
-        }
-      });
+      }catch(error){
+        res.json({mensaje: "Token invalido, inicie sesion de nuevo"})
+        return;
+      }
+      
+      let rawPayload = tokenArray[1].split('.')[1]
+      let payload = JSON.parse(base64url.decode(rawPayload))
+      try{
+        const answer = await searchToken(payload.Id_usuario,tokenArray[1]);
+      }catch(error){
+        res.json({mensaje: error})
+        return;
+      }
+         
+      next();
     } else {
       res.send({ 
           mensaje: 'Token no proveida' 
       });
     }
- });
+});
 
 
-// login de usuario
-app.get('/login', rutasProtegidas, (req, res) => {
+ // login de usuario
+app.get('/login', rutasProtegidas, async (req, res) => {
 	const datos = [
 		{ id: 1, nombre: "Asfo" },
 		{ id: 2, nombre: "Denisse" },
 		{ id: 3, nombre: "Carlos" }
-	];	
+	];
+	
 	res.json(datos);
 });
-
-//================================
-
-app.post("/verify", verifyToken, (req , res) => {
-  jwt.verify(req.token, app.get('llave'), (error, authData) => {
-      if(error){
-        res.json({
-          result:false
-        });
-
-      }else{
-          res.json({
-            result:true
-          });
-      }
-
-  });
-});
-
-//Authorization: Bearer <token>
-
-function verifyToken(req, res, next){
-   const bearerHeader =  req.headers['authorization'];
-
-   if(typeof bearerHeader !== 'undefined'){
-        const bearerToken = bearerHeader.split(" ")[1];
-        req.token  = bearerToken;
-        next();
-
-   }else{
-      res.send({
-        result:false
-      });
-
-   }
-}

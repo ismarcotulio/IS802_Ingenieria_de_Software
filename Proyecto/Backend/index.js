@@ -54,6 +54,7 @@ app.post('/signUp', async (req, res) => {
     })
   }
 
+
   let getLastTokenIdQuery = function(){
     return new Promise((resolve, reject)=>{
       conexion.query(`SELECT * FROM token ORDER BY Id DESC LIMIT 1;`, (error,results, fields)=>{
@@ -119,12 +120,14 @@ app.post('/signUp', async (req, res) => {
   
 })
 
+//============================
+
 // Middleware para verificacion de tokens
-const rutasProtegidas = express.Router(); 
+const rutasProtegidas = express.Router();
 rutasProtegidas.use((req, res, next) => {
     const token = req.headers['authorization'];
     if (token) {
-        const tokenArray = token.split(" ")
+      const tokenArray = token.split(" ")   // ASHSH <TOKEN>
       jwt.verify(tokenArray[1], app.get('llave'), (err, decoded) => {      
         if (err) {
           return res.json({ mensaje: 'Token inválida' });    
@@ -144,13 +147,42 @@ rutasProtegidas.use((req, res, next) => {
  });
 
 
- // login de usuario
+// login de usuario
 app.get('/login', rutasProtegidas, (req, res) => {
 	const datos = [
 		{ id: 1, nombre: "Asfo" },
 		{ id: 2, nombre: "Denisse" },
 		{ id: 3, nombre: "Carlos" }
-	];
-	
+	];	
 	res.json(datos);
 });
+
+//================================
+
+
+app.post("/verify", verifyToken, (req , res) => {
+  jwt.verify(req.token, app.get('llave'), (error, authData) => {
+      if(error){
+          res.sendStatus(403);
+      }else{
+          res.json({
+              result:true
+              // res.redirect('');
+          });
+      }
+  });
+});
+
+// Authorization: Bearer <token>
+
+function verifyToken(req, res, next){
+   const bearerHeader =  req.headers['authorization'];
+
+   if(typeof bearerHeader !== 'undefined'){
+        const bearerToken = bearerHeader.split(" ")[1];
+        req.token  = bearerToken;
+        next();
+   }else{
+       res.sendStatus(403);
+   }
+}

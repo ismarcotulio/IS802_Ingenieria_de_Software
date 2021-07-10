@@ -1,3 +1,4 @@
+import { UserGuardGuard } from './core/guards/user-guard.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   {
     path: "user",
     component: LayoutUserComponent,
+    canActivate: [ UserGuardGuard ],
     children: [
       {
          path: "home",

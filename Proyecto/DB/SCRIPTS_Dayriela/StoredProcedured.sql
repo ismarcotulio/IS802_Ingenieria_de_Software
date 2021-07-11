@@ -15,22 +15,49 @@ CREATE PROCEDURE extraer( IN firstName VARCHAR(30), OUT Email_Param VARCHAR(30) 
 DELIMITER ;
 
 USE ecommerce;
- CALL extraer( "Dayriela", @email );
+ CALL extraer( "Katerin", @email );
  SELECT @email;
+ 
+
+Use Ecommerce;
+//EXTRAE LOS DATOS POR MEDIO DEL NOMBRE DEL USUARIO
+
+DELIMITER //
+   CREATE PROCEDURE ExtraerUser (IN name VARCHAR(30), OUT Id_Param INT)
+      BEGIN
+         SELECT Firts_Name, Last_Name , Email , Address , Token
+    FROM USER INNER JOIN TOKEN ON USER.Id = TOKEN.Id 
+      WHERE
+   Firts_Name = name ;
+	END//
+DELIMITER ;
+
+USE Ecommerce;
+CALL ExtraerUser("Katerin", @Id);
+
+DELIMITER //
+     
+    
+
 
 
  
 
- //Extrae datos de la tabla usuario junto con los campos del token
+ //Extrae datos especificos de la tabla usuario 
+ 
+ use ecommerce;
   DELIMITER // 
-     CREATE PROCEDURE extractInformation(IN done BOOLEAN)
+     CREATE PROCEDURE extractInformation(IN userId INT)
   BEGIN
-	 SELECT *FROM USER INNER JOIN TOKEN ON USER.Id = TOKEN.Id ;
+	 SELECT USER.Firts_Name, USER.Last_Name, USER.Email, USER.Address,
+     TOKEN.Code_Token FROM USER INNER JOIN TOKEN ON USER.TOKEN = TOKEN.Id 
+     WHERE
+     USER.Id = userId;
  END//
-    
-DELIMITER ;
+ 
+ DELIMITER ;
+ Call extractInformation(1);
 
-CALL extractInformation(true);
 
 //EXTRAE DATOS ESPECIFICOS ID_USER, ID_TOKEN, CODE_TOKEN
 DELIMITER //

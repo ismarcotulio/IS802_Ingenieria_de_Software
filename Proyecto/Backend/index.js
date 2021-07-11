@@ -27,7 +27,7 @@ app.listen(3000,()=>{
 });
 
 // post de registro
-app.post('/signUp', async (req, res) => {
+app.post('/signup', async (req, res) => {
   
   let newUser = {
     Id: 0,
@@ -172,8 +172,8 @@ rutasProtegidas.use(async(req, res, next) => {
 });
 
 
- // login de usuario
-app.get('/login', rutasProtegidas, async (req, res) => {
+ // get datos
+app.get('/getdatos', rutasProtegidas, async (req, res) => {
 	const datos = [
 		{ id: 1, nombre: "Asfo" },
 		{ id: 2, nombre: "Denisse" },

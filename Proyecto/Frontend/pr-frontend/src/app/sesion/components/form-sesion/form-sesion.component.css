@@ -139,6 +139,14 @@
   font-family: "Roboto";
 }
 
+ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #DB3901; /* red */
+}
+
 
 .alert div {
   background-color: #fed3d3;

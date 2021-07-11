@@ -19,7 +19,7 @@ export class FormSesionComponent implements OnInit {
   constructor( private fb: FormBuilder) { }
 
   sesionUser(){
-    alert("Hola mundo");
+    alert("Bienvenido");
   }
 
   ngOnInit(): void {

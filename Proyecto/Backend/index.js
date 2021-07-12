@@ -182,3 +182,4 @@ app.get('/getdatos', rutasProtegidas, async (req, res) => {
 	
 	res.json(datos);
 });
+

@@ -7,6 +7,8 @@ import { FooterDefaultComponent } from './components/footer-default/footer-defau
 
 import { MaterialModule } from '../material/material.module';
 import { HeaderUserComponent } from './components/header-user/header-user.component';
+import { ContractDialogComponent } from './components/contract-dialog/contract-dialog.component';
+import { LoginAlertDialogComponent } from './components/login-alert-dialog/login-alert-dialog.component';
 
 
 
@@ -14,7 +16,9 @@ import { HeaderUserComponent } from './components/header-user/header-user.compon
   declarations: [
     HeaderDefaultComponent,
     FooterDefaultComponent,
-    HeaderUserComponent
+    HeaderUserComponent,
+    ContractDialogComponent,
+    LoginAlertDialogComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +28,9 @@ import { HeaderUserComponent } from './components/header-user/header-user.compon
   exports: [
     HeaderDefaultComponent,
     FooterDefaultComponent,
-    HeaderUserComponent
+    HeaderUserComponent,
+    ContractDialogComponent,
+    LoginAlertDialogComponent
   ]
 })
 export class SharedModule { }

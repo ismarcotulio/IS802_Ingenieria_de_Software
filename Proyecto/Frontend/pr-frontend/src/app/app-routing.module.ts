@@ -23,6 +23,10 @@ const routes: Routes = [
         loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
       },
       {
+        path: "sesion",
+        loadChildren: () => import('./sesion/sesion.module').then(m => m.SesionModule)
+      },
+      {
         path: "",
         redirectTo: "home",
         pathMatch: "full"

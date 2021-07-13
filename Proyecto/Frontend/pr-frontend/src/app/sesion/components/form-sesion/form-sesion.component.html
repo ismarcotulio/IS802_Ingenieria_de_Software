@@ -1,0 +1,30 @@
+<form id="form-sesion" [formGroup]="sesionForm" (ngSubmit)="this.sesionUser()">
+  <div id="section-title">
+    <div class="title"><b>Inicio de sesión</b></div>
+
+  </div>
+  <div id="section-body">
+    <div class="section-input">
+      <div class="section-input-title"><div class="input-title">Correo</div></div>
+      <div class="section-input-text"><input type="text" class="input-text" formControlName="email"></div>
+    </div>
+    <div class="section-input">
+      <div class="section-input-title"><div class="input-title">Contraseña</div></div>
+      <div class="section-input-text"><input type="password" class="input-text" formControlName="password"></div>
+    </div>
+  </div>
+
+  <div id="section-submit">
+    <div class="section-error">
+
+      <div *ngIf="this.sesionForm.get('email')?.getError('required') == true">Debes ingresar un correo electrónico</div>
+      <div *ngIf="this.sesionForm.get('email')?.getError('email') == true">Debes ingresar un correo electrónico valido (Ejemplo: correo@correo.com)</div>
+      <div *ngIf="this.sesionForm.get('password')?.getError('required') == true">Debes ingresar una Contraseña</div>
+      <div *ngIf="this.sesionForm.get('password')?.value.length < 8">la Contraseña debe tener al menos 8</div>
+      <div *ngIf="this.sesionForm.get('password')?.status == 'INVALID'">La Contraseña debe tener al menos 1 digito, 1 letra mayuscula, 1 letra minuscula y 1 caracter especial</div>
+    </div>
+    <button class="btnSubmit" type="submit" *ngIf="this.sesionForm.status == 'VALID';disabled" #btnRegister><b>Iniciar sesión</b></button>
+
+  </div>
+
+</form>

@@ -67,9 +67,9 @@ class Database{
         })
       }
 
-      insertUser(Id, Firts_Name, Last_Name, Email, Address,lastToken){
+      insertUser(Id, Firts_Name, Last_Name, Email, Address,lastToken,password){
         return new Promise((resolve, reject)=>{
-          this.conexion.query(`CALL insertUser(?,?,?,?,?,?)`,[Id, Firts_Name, Last_Name, Email, Address, lastToken], (error,results, fields)=>{
+          this.conexion.query(`CALL insertUser(?,?,?,?,?,?,?)`,[Id, Firts_Name, Last_Name, Email, Address, lastToken,password], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{

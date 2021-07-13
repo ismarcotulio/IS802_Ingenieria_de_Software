@@ -18,6 +18,7 @@ class AuthController{
                 Email: "",
                 Address: "",
                 Token: 0,
+                Password: ""
             }
     
             var date = new Date()
@@ -35,6 +36,7 @@ class AuthController{
             newUser.Last_Name = req.body.last_Name
             newUser.Email = req.body.email
             newUser.Address = req.body.address
+            newUser.Password = req.body.password
 
             await this.database.getLastUserIdQuery().then(function(results){
                 newUser.Id = results   
@@ -46,7 +48,7 @@ class AuthController{
 
             await this.database.insertToken(lastToken, token, todayDate)
     
-            await this.database.insertUser(newUser.Id, newUser.Firts_Name, newUser.Last_Name, newUser.Email, newUser.Address,lastToken)
+            await this.database.insertUser(newUser.Id, newUser.Firts_Name, newUser.Last_Name, newUser.Email, newUser.Address,lastToken,newUser.Password)
             return res.json({id: newUser.Id, token:token})
             
         })();

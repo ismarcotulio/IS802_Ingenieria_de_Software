@@ -45,12 +45,12 @@
   width: 65%;
   height: 100%;
 
-  font-size:1.5em;
+  font-size:2.2em;
 }
 
 #logo{
 
-  font-size: 2.5em;
+  font-size: 4em;
 }
 
 #logoTitle{
@@ -59,7 +59,6 @@
   height:50%;
   top: 25%;
   font-family: 'Federo';
-  text-align: right;
 }
 
 #inputsSection{

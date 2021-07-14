@@ -11,7 +11,7 @@ class Database{
         this.conexion = this.mysql.createConnection({ 
             host: 'localhost',
             user: 'root',
-            password: 'jafethfer10',
+            password: 'password',
             database: 'ecommerce'
         })
         return this.conexion

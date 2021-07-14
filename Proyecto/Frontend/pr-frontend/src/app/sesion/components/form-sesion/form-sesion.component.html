@@ -1,4 +1,4 @@
-<form id="form-sesion" [formGroup]="sesionForm" (ngSubmit)="this.sesionUser()">
+<form id="form-sesion" [formGroup]="sesionForm" (ngSubmit)="this.authenticateUser()">
   <div id="section-title">
     <div class="title"><b>Inicio de sesión</b></div>
 
@@ -23,8 +23,11 @@
       <div *ngIf="this.sesionForm.get('password')?.value.length < 8">la Contraseña debe tener al menos 8</div>
       <div *ngIf="this.sesionForm.get('password')?.status == 'INVALID'">La Contraseña debe tener al menos 1 digito, 1 letra mayuscula, 1 letra minuscula y 1 caracter especial</div>
     </div>
+    
     <button class="btnSubmit" type="submit" *ngIf="this.sesionForm.status == 'VALID';disabled" #btnRegister><b>Iniciar sesión</b></button>
-
+    <div id="section-register-link">
+      <a id="register-link" routerLink="/register">Aun no tienes cuenta? Haz clic aqui!</a>
+    </div>
   </div>
 
 </form>

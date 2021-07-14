@@ -1,0 +1,204 @@
+#form-register{
+  position: relative;
+  width: 50%;
+  height: 90%;
+  top: 5%;
+  left: 25%;
+  background: white;
+}
+
+#section-title{
+  position: relative;
+  width:100%;
+  height: 15%;
+  background: white;
+}
+
+.title{
+  position: relative;
+  width: 80%;
+  height: 65%;
+  left: 10%;
+
+  font-size: 2.2em;
+  font-family: "Sofia";
+}
+
+.subtitle{
+  position: relative;
+  width: 80%;
+  height: 35%;
+  left: 10%;
+  font-size: 0.8em;
+  font-family: "Roboto";
+}
+
+
+#section-body{
+  position: relative;
+  width:100%;
+  height: 70%;
+  background: white;
+}
+
+.section-input{
+  position: relative;
+  width: 100%;
+  height: 14.285714285714285714285714285714%;
+  background: white;
+}
+
+.section-input-title{
+  position: relative;
+  width: 100%;
+  height: 50%;
+
+}
+
+.input-title{
+  position: relative;
+  width: 80%;
+  height: 70%;
+  left: 10%;
+  top: 15%;
+
+  font-family: "Roboto";
+  color: black;
+  font-size: 1em;
+}
+
+.section-input-text{
+  position: relative;
+  width: 100%;
+  height: 50%;
+
+}
+
+.input-text{
+  position: relative;
+  width: 80%;
+  height: 90%;
+  left: 10%;
+  top: 5%;
+  background: #EBEDEF;
+  border: none;
+  border-radius: 2px 2px 2px 2px;
+  padding:3px;
+  font-size: 0.85em;
+  color: Black;
+  font-family: "Roboto";
+}
+.section-input-checkbox{
+  position: relative;
+  float: left;
+  height: 100%;
+  width: 5%;
+  margin-left:10%;
+  
+}
+
+.input-checkbox{
+  position: relative;
+  
+  width:100%;
+  height: 90%;
+  top: 5%;
+  background: #EBEDEF;
+  border: none;
+  border-radius: 2px 2px 2px 2px;
+  padding:3px;
+  font-size: 0.85em;
+  color: Black;
+  font-family: "Roboto";
+}
+
+.section-input-button-contract{
+  position: relative;
+  float: left;
+  width: 30%;
+  height: 100%;
+  margin-left: 1%;
+  
+}
+
+.button-contract{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #1473E6;
+  border-radius: 10px;
+  border: none;
+  font-size: 1em;
+  color: white;
+  font-family: "Roboto";
+}
+
+.input-text:focus{
+  outline: none;
+  border-color: #1473E6;
+  box-shadow: 0 0 5px #1473E6;
+}
+
+#section-submit{
+  position: relative;
+  width:100%;
+  height: 15%;
+  background: white;
+}
+
+.section-error{
+  position: relative;
+  width: 80%;
+  height: 35%;
+  top: 10%;
+  left: 10%;
+  padding: 5px;
+  color: #DB3901;
+  overflow: hidden;
+}
+
+.btnSubmit{
+  position: relative;
+  width: 30%;
+  height: 40%;
+  top: 20%;
+  left: 35%;
+  background: #00A400;
+  border-radius: 10px;
+  border: none;
+  font-size: 1em;
+  color: white;
+  font-family: "Roboto";
+}
+
+ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #DB3901; /* red */
+}
+
+
+.alert div {
+  background-color: #fed3d3;
+  color: #DB3901;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+select {
+  width: 100%;
+  padding: .5rem;
+}
+
+

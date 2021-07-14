@@ -1,7 +1,7 @@
 
 <div id="header">
   <div id="logoSection">
-    <div id="logoBtnContainer" routerLink="/">
+    <div id="logoBtnContainer" routerLink="/user">
       <div id="logoContainer">
         <mat-icon id="logo" aria-hidden="false" aria-label="Example home icon">storefront</mat-icon>
       </div>
@@ -18,10 +18,10 @@
   <div id="userSection">
     <div id="userContainer">
       <div id="userBtnContainer">
-          <mat-icon id="logo" routerLink="sesion" aria-hidden="false" aria-label="Example home icon" class="">account_circle</mat-icon>
+          <mat-icon id="logo" aria-hidden="false" aria-label="Example home icon" class="" (click)="this.logout()">logout</mat-icon>
       </div>
       <div id="userTitleContainer">
-         Hola! Identificate
+         Salir
       </div>
 
     </div>

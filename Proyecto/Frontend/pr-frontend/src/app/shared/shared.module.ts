@@ -1,24 +1,36 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {RouterModule} from "@angular/router";
+
 import { HeaderDefaultComponent } from './components/header-default/header-default.component';
 import { FooterDefaultComponent } from './components/footer-default/footer-default.component';
 
 import { MaterialModule } from '../material/material.module';
+import { HeaderUserComponent } from './components/header-user/header-user.component';
+import { ContractDialogComponent } from './components/contract-dialog/contract-dialog.component';
+import { LoginAlertDialogComponent } from './components/login-alert-dialog/login-alert-dialog.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderDefaultComponent,
-    FooterDefaultComponent
+    FooterDefaultComponent,
+    HeaderUserComponent,
+    ContractDialogComponent,
+    LoginAlertDialogComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MaterialModule
   ],
   exports: [
     HeaderDefaultComponent,
-    FooterDefaultComponent
+    FooterDefaultComponent,
+    HeaderUserComponent,
+    ContractDialogComponent,
+    LoginAlertDialogComponent
   ]
 })
 export class SharedModule { }

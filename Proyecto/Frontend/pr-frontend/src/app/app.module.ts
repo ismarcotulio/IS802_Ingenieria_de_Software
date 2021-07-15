@@ -9,11 +9,16 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { TokenInterceptorService } from './core/services/authorization/token-interceptor.service';
+import { LayoutUserComponent } from './layouts/layout-user/layout-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutDefaultComponent
+    LayoutDefaultComponent,
+    LayoutUserComponent
   ],
   imports: [
     BrowserModule,
@@ -21,9 +26,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     BrowserAnimationsModule,
     MaterialModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

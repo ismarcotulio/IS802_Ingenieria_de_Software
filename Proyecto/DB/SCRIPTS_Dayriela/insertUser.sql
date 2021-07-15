@@ -1,5 +1,5 @@
 USE Ecommerce;
-DROP PROCEDURE insertUser IF EXISTS;
+DROP PROCEDURE IF EXISTS insertUser ;
 
 DELIMITER //
 
@@ -19,26 +19,3 @@ BEGIN
 END//
 
 DELIMITER ;
-
-USE Ecommerce;
-CALL insertUser( 7, "Isabel", "Munguia", "IsabelM@email.com", "BD-09", 2 );
-SELECT *FROM User;
-
-DELIMITER //
-CREATE PROCEDURE insertToken(
-    IN Id_Parameter INT,
-    IN Code_Token_Parameter VARCHAR(200),
-    IN Creation_Date_Parameter DATETIME
-)
-BEGIN 
-
-    INSERT INTO Token(Id, Code_Token, Creation_Date) VALUES
-    (Id_Parameter,Code_Token_Parameter,Creation_Date_Parameter);
-    
-END //
-
-DELIMITER ;
-
-CALL insertToken(08,"BD-03","2021-05-04 08:55:05");
-SELECT *FROM Token;
-

@@ -64,3 +64,17 @@
     margin-top: auto;
     padding: 5px 5px;
 }
+
+.contTarjet{
+    width: 15%;
+     /* height: 15%; */
+     /* height: 292px; */
+     /* background: gray; */
+    padding: 10px;
+    border-radius: 5px;
+    border: black  1px solid;
+    margin-left: 20px;
+    position: relative;
+    top: 2rem;
+    
+}

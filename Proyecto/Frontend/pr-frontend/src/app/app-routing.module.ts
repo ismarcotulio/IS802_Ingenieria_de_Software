@@ -8,7 +8,12 @@ import { LayoutUserComponent } from './layouts/layout-user/layout-user.component
 
 import { UserGuardGuard } from './core/guards/user-guard.guard';
 
+import { CardProductComponent } from './shared/components/card-product/card-product.component';
+
 const routes: Routes = [
+  {
+    path:'luis', component:CardProductComponent
+  },
   {
     path: "",
     component: LayoutDefaultComponent,

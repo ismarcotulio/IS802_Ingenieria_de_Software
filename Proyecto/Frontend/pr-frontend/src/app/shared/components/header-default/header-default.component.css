@@ -4,6 +4,7 @@
   height: 15%;
   background: #1473E6;
   margin:0;
+  padding:0;
 }
 
 #logoSection{
@@ -59,7 +60,7 @@
   height:50%;
   top: 25%;
   font-family: 'Federo';
-  
+
 }
 
 #inputsSection{

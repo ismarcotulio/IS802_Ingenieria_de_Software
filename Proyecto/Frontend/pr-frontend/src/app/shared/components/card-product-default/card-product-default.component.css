@@ -1,6 +1,6 @@
 *{
-    box-sizing: border-box;  
-    background-color: white; 
+    box-sizing: border-box;
+    background-color: white;
 }
 
 .imgProducto{
@@ -57,14 +57,15 @@
 
 .contTarjet{
     width: 18.75%;
-    
+
     padding: 10px;
     border-radius: 5px;
     /* border: black  1px solid; */
     position: relative;
     top: 1rem;
     float: left;
-    margin-left: 5%;  
+    margin-left: 5%;
+    margin-top: 2.5%;
 }
 
 

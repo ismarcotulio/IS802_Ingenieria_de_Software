@@ -10,6 +10,7 @@ import { HeaderUserComponent } from './components/header-user/header-user.compon
 import { ContractDialogComponent } from './components/contract-dialog/contract-dialog.component';
 import { LoginAlertDialogComponent } from './components/login-alert-dialog/login-alert-dialog.component';
 import { CardProductComponent } from './components/card-product/card-product.component';
+import { CardProductDefaultComponent } from './components/card-product-default/card-product-default.component';
 
 
 
@@ -20,7 +21,8 @@ import { CardProductComponent } from './components/card-product/card-product.com
     HeaderUserComponent,
     ContractDialogComponent,
     LoginAlertDialogComponent,
-    CardProductComponent
+    CardProductComponent,
+    CardProductDefaultComponent
   ],
   imports: [
     CommonModule,

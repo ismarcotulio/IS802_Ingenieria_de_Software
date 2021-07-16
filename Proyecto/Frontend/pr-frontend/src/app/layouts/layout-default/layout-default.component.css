@@ -3,11 +3,16 @@
   width: 100vw;
   height: 100vh;
   background: #E5E5E5;
+  margin: 0;
+  padding: 0;
 }
 
 #view-container{
   position: relative;
   width: 100%;
+  min-height: 85%;
   height: 85%;
   background: whitesmoke;
+  margin: 0;
+  padding: 0;
 }

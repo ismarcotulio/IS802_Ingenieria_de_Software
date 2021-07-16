@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 
-import { Database } from './dataBase.mjs';
+import { Database } from './database.mjs';
 import { ProductController } from './controllers/productController.mjs'
 import { AuthController } from './controllers/authController.mjs';
 import { TokenController } from './controllers/tokenController.mjs';
@@ -13,8 +13,9 @@ import { TokenController } from './controllers/tokenController.mjs';
 const database = new Database(mysql)
 database.getStatus()
 
+
 //Instancias de controladores
-const productController = new ProductController();
+const productController = new ProductController(database);
 const authController = new AuthController(database);
 const tokenController = new TokenController();
 
@@ -44,8 +45,48 @@ app.post("/verify", tokenController.middleVerifyToken, (req , res) => {
     
 });
 
-app.get('/test', function (req, res){
-    res.send( productController.getProducts() )
+app.get('/categoria/tecnologia', function (req, res){
+    res.send(productController.getProducts())
+})
+
+app.get('/categoria/arte-artesania', function (req, res){
+    
+})
+
+app.get('/categoria/hogar', function (req, res){
+    
+})
+
+app.get('/categoria/industrial', function (req, res){
+    
+})
+
+app.get('/categoria/automotriz', function (req, res){
+    
+})
+
+app.get('/categoria/salud-belleza', function (req, res){
+    
+})
+
+app.get('/categoria/viajes-equipaje', function (req, res){
+    
+})
+
+app.get('/categoria/alimentos', function (req, res){
+    
+})
+
+app.get('/categoria/jugueteria', function (req, res){
+    
+})
+
+app.get('/categoria/mascotas', function (req, res){
+    
+})
+
+app.get('/categoria/deporte', function (req, res){
+    
 })
 
 app.listen(3000,()=>{

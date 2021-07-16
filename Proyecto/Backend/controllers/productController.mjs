@@ -1,9 +1,11 @@
 
 class ProductController{
 
-    constructor (){}
+    constructor (database){
+        this.database = database;
+    }
 
-    getProducts(){
+    getProducts(req,res,key){
         return 'baleadas, queso y pizza';
     }
 };

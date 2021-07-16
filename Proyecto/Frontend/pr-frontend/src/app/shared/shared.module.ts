@@ -9,6 +9,8 @@ import { MaterialModule } from '../material/material.module';
 import { HeaderUserComponent } from './components/header-user/header-user.component';
 import { ContractDialogComponent } from './components/contract-dialog/contract-dialog.component';
 import { LoginAlertDialogComponent } from './components/login-alert-dialog/login-alert-dialog.component';
+import { CardProductComponent } from './components/card-product/card-product.component';
+import { CardProductDefaultComponent } from './components/card-product-default/card-product-default.component';
 
 
 
@@ -18,7 +20,9 @@ import { LoginAlertDialogComponent } from './components/login-alert-dialog/login
     FooterDefaultComponent,
     HeaderUserComponent,
     ContractDialogComponent,
-    LoginAlertDialogComponent
+    LoginAlertDialogComponent,
+    CardProductComponent,
+    CardProductDefaultComponent
   ],
   imports: [
     CommonModule,

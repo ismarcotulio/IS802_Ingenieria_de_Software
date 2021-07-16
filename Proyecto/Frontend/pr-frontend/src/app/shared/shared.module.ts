@@ -11,6 +11,7 @@ import { HeaderUserComponent } from './components/header-user/header-user.compon
 import { ContractDialogComponent } from './components/contract-dialog/contract-dialog.component';
 import { LoginAlertDialogComponent } from './components/login-alert-dialog/login-alert-dialog.component';
 import { ProductShelfComponent } from './components/product-shelf/product-shelf.component';
+import { CardCategoryComponent } from './components/card-category/card-category.component';
 
 
 
@@ -22,7 +23,8 @@ import { ProductShelfComponent } from './components/product-shelf/product-shelf.
     HeaderUserComponent,
     ContractDialogComponent,
     LoginAlertDialogComponent,
-    ProductShelfComponent
+    ProductShelfComponent,
+    CardCategoryComponent
   ],
   imports: [
     CommonModule,

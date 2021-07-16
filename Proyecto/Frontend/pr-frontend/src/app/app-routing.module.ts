@@ -8,7 +8,9 @@ import { LayoutUserComponent } from './layouts/layout-user/layout-user.component
 
 import { UserGuardGuard } from './core/guards/user-guard.guard';
 
+import { CardCategoryComponent } from './shared/components/card-category/card-category.component';
 const routes: Routes = [
+  {path:'card', component:CardCategoryComponent},
   {
     path: "",
     component: LayoutDefaultComponent,

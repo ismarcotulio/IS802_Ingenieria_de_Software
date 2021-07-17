@@ -44,6 +44,10 @@ app.post("/verify", tokenController.middleVerifyToken, (req , res) => {
     
 });
 
+app.post("/insertProduct", async (req , res) => {
+    productController.insertProduct( req, res, app.get("llave"))
+});
+
 app.get('/test', function (req, res){
     res.send( productController.getProducts() )
 })

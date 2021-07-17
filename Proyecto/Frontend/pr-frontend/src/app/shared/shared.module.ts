@@ -16,6 +16,7 @@ import { CardCategoryComponent } from './components/card-category/card-category.
 import { CardProductComponent } from './components/card-product/card-product.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductShelfDefaultComponent } from './components/product-shelf-default/product-shelf-default.component';
+import { PublishProductComponent } from './components/publish-product/publish-product.component';
 
 
 
@@ -32,7 +33,8 @@ import { ProductShelfDefaultComponent } from './components/product-shelf-default
     CardProductDefaultComponent,
     CardProductComponent,
     CarouselComponent,
-    ProductShelfDefaultComponent
+    ProductShelfDefaultComponent,
+    PublishProductComponent
   ],
   imports: [
     CommonModule,

@@ -1,11 +1,11 @@
-<!-- 
+<!--
 <div class="imgProducto">
     <img src="assets/imgs/img_cel.jpg" alt="">
 </div>
 <div class="contDatos">
     <div class="contRow">
         <p class="nombreProducto">Nombre Producto</p>
-        <i class="fas fa-heart"></i> 
+        <i class="fas fa-heart"></i>
         <i class="far fa-heart"></i>
     </div>
     <p class="descripcionProducto">Computadora relativament nueva core i5 con enfriamiento liquido</p>
@@ -15,16 +15,16 @@
 
 <div class="contTarjet">
     <div class="imgProducto">
-        <img src="assets/imgs/img_cel.jpg" alt="">
+        <img src="{{ Img }}" alt="">
     </div>
     <div class="contDatos">
         <div class="contRow">
-            <p class="nombreProducto">Nombre Producto</p>
+            <p class="nombreProducto">{{ Name }}</p>
             <i class="far fa-heart"></i>
             <!-- <i class="fas fa-heart" ></i> -->
         </div>
-        <p class="descripcionProducto">Computadora relativament nueva core i5 con enfriamiento liquido</p>
-        <p class="precioProducto">L.100</p>
+        <p class="descripcionProducto">{{ Description }}</p>
+        <p class="precioProducto">L.{{ Price }}</p>
     </div>
     <button class="buttom">Contactar Vendedor</button> <!-- agg routerLink -->
 </div>

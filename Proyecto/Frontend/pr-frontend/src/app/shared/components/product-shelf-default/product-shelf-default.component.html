@@ -1,5 +1,5 @@
 <div id="shelf">
-  <app-card-product *ngFor="let product of products"
+  <app-card-product-default *ngFor="let product of products"
     [Id]="this.product.Id"
     [Name]="this.product.Name"
     [Description]="this.product.Description"
@@ -7,5 +7,5 @@
     [State]="this.product.State"
     [Seller]="this.product.Seller"
     [Img]="this.product.Img"
-  ></app-card-product>
+  ></app-card-product-default>
 </div>

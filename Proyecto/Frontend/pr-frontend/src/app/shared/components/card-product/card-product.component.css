@@ -10,7 +10,6 @@
 
 .imgProducto img{
     width: 85%;
-    /* border-radius: 5px; */
 }
 
 .contDatos{
@@ -60,7 +59,7 @@
     background-color: red;
     border-style: none;
     border-radius: 5px;
-    color: white;   
+    color: white;
     text-transform: uppercase;
     font-size: 0.7rem;
     font-weight: bold;
@@ -78,9 +77,9 @@
     /* border: black  1px solid; */
     margin-left: 5%;
     position: relative;
-    top: 1rem;
+    margin-top: 2.5%;
     /* margin-right: 0.6rem; */
-    
+    float: left;
 }
 
 .descripcionProducto{

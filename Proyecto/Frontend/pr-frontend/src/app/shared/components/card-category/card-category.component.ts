@@ -12,7 +12,5 @@ export class CardCategoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ver(){
-    console.log('click');
-  }
+  
 }

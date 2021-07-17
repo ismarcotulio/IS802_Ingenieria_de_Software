@@ -12,6 +12,7 @@ import { HeaderUserComponent } from './components/header-user/header-user.compon
 import { ContractDialogComponent } from './components/contract-dialog/contract-dialog.component';
 import { LoginAlertDialogComponent } from './components/login-alert-dialog/login-alert-dialog.component';
 import { ProductShelfComponent } from './components/product-shelf/product-shelf.component';
+import { CardCategoryComponent } from './components/card-category/card-category.component';
 import { CardProductComponent } from './components/card-product/card-product.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductShelfDefaultComponent } from './components/product-shelf-default/product-shelf-default.component';
@@ -27,6 +28,7 @@ import { ProductShelfDefaultComponent } from './components/product-shelf-default
     ContractDialogComponent,
     LoginAlertDialogComponent,
     ProductShelfComponent,
+    CardCategoryComponent,
     CardProductDefaultComponent,
     CardProductComponent,
     CarouselComponent,

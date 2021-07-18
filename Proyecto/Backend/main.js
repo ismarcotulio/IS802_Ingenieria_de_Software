@@ -50,7 +50,7 @@ app.get('/categoria/tecnologia', function (req, res){
 })
 
 app.get('/categoria/arte-artesania', function (req, res){
-    
+    res.json({'producto': "Computadora"})
 })
 
 app.get('/categoria/hogar', function (req, res){

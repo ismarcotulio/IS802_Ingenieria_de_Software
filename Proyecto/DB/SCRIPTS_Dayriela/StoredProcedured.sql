@@ -56,7 +56,7 @@ DELIMITER //
  END//
  
  DELIMITER ;
- Call extractInformation(1);
+ Call extractInformation(5);
 
 
 //EXTRAE DATOS ESPECIFICOS ID_USER, ID_TOKEN, CODE_TOKEN

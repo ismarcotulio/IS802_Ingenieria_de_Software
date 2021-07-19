@@ -1,5 +1,4 @@
 USE Ecommerce;
-DROP PROCEDURE insertUser IF EXISTS;
 
 DELIMITER //
 
@@ -11,9 +10,10 @@ CREATE PROCEDURE insertUser(
     IN Address_parameter VARCHAR(150),
     IN Token_parameter INT,
     IN Password_parameter VARCHAR(30)
+	
 )
 BEGIN
-	INSERT INTO USER( Id, Firts_Name, Last_Name, Email, Address, Token, Password ) VALUES 
+	INSERT INTO USER( Id, Firts_Name, Last_Name, Email, Address, Token,Password ) VALUES 
 		( id_parameter, First_Name_parameter, Last_Name_parameter, Email_parameter, Address_parameter, Token_parameter, Password_parameter )
 	;
 END//
@@ -21,7 +21,7 @@ END//
 DELIMITER ;
 
 USE Ecommerce;
-CALL insertUser( 7, "Isabel", "Munguia", "IsabelM@email.com", "BD-09", 2 );
+CALL insertUser( 6, "Eliud", "Rodriguez", "EliudR@email.com", "Col.Sosa", 3 ,"Oerr_556");
 SELECT *FROM User;
 
 DELIMITER //
@@ -39,6 +39,16 @@ END //
 
 DELIMITER ;
 
-CALL insertToken(08,"BD-03","2021-05-04 08:55:05");
+CALL insertToken(6,"BD-03","2021-05-04 08:55:05");
 SELECT *FROM Token;
+
+
+DELIMITER //
+CREATE PROCEDURE DataCollectionProduct(IN done BOOLEAN)
+  BEGIN
+  SELECT *FROM PRODUCT;
+  END//
+    DELIMITER ;
+
+CALL DataCollectionProduct(true);
 

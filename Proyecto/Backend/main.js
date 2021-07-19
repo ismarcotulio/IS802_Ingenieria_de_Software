@@ -52,6 +52,7 @@ app.get('/test', function (req, res){
     res.send( productController.getProducts() )
 })
 
+
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 
 })

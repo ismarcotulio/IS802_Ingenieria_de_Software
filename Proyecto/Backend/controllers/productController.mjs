@@ -4,7 +4,7 @@ import moment from 'moment'
 class ProductController{
     
     constructor (){
-        this.database = database
+       
     }
 
     insertProduct(req, res, key){

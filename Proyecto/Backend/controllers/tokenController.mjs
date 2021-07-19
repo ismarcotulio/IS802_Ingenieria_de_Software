@@ -5,18 +5,12 @@ class TokenController{
     contructor(){}
 
     verifyToken(req, res, key){
-      jwt.verify(req.token, key, (error, authData) => {
+      return jwt.verify(req.token, key, (error, authData) => {
         if(error){
-          return res.json({
-            result:false
-          });
-  
+          return false
         }else{
-            return res.json({
-              result:true
-            });
+          return true
         }
-  
       });
     }
 

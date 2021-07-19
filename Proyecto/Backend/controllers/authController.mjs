@@ -61,7 +61,7 @@ class AuthController{
                 let payload = {
                     Id_usuario: results,
                     iat: new Date().getTime()/1000
-                  }
+                }
                 let token = jwt.sign(payload,key)
                 return res.json({Id_usuario: results,token: token})
             })

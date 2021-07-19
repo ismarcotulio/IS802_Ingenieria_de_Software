@@ -7,7 +7,6 @@ class CategoriaRouter{
     
     constructor(database,key){
         this.database = database
-        this.key = key
 
         Router.use(tokenController.middleVerifyToken,function(req,res,next){
             if(tokenController.verifyToken(req, res, key)){

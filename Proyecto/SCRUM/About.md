@@ -71,5 +71,7 @@ Eh leido este documento y estoy de acuerdo
 Marco Tulio Ruiz Quiroz - 20171006559
 <br>
 Luis Alejandro Samuel Banegas - 20161002983
+<br>
+Brando Jaffeth Fernandez Serrano - 20163030123
 
 

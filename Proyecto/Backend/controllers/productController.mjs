@@ -12,15 +12,17 @@ class ProductController{
         (async () => {
 
             var newProduct = {
-                Id_Product: 0,
+                Id: 0,
                 Name: "",
-                Description: "",
+                Type: "",
                 Price: "",
-                State: "",
-                Department: "",
+                Cost: "",
+                Description: "",
                 Id_Seller: "",
+                Id_Category: "",
                 Token: 0,
-                Id_Category: ""
+                Id_User: "",
+                Image: ""
             }
     
             var date = new Date()
@@ -34,15 +36,15 @@ class ProductController{
             var lastToken
             var todayDate = moment().format('YYYY-MM-DD HH:mm:ss')      
     
-            newProduct.Id_Product = req.body.Id_Product
+            newProduct.Id = req.body.Id
             newProduct.Name = req.body.Name
+            newProduct.Type = req.body.Type
+            newProduct.Cost = req.body.Cost
             newProduct.Description = req.body.Description
-            newProduct.Price = req.body.Price
-            newProduct.State = req.body.State
-            newProduct.Department = req.body.Department
-            newProduct.Id_Seller = req.body.Id_Seller
             newProduct.Id_Category = req.body.Id_Category
-
+            newProduct.Id_User = req.body.Id_User
+            newProduct.Image = req.body.Image
+            
             await this.database.getLastUserIdQuery().then(function(results){
                 newUser.Id = results   
             })
@@ -54,9 +56,8 @@ class ProductController{
             await this.database.insertToken(lastToken, token, todayDate)
     
             await this.database.insertProduct(newProduct.Id, newProduct.Name, 
-                newProduct.Description, newProduct.Price, 
-                newProduct.State,newProduct.Department, newProduct.Id_Seller, 
-                newProduct.Id_Category, lastToken,newUser.Password)
+                newProduct.Type, newProduct.Cost, newProduct.Description , newProduct.Id_Category, 
+                newProduct.Id_User, newProduct.Image)
             return res.json({id: newUser.Id, token:token})
             
         })();

@@ -7,8 +7,10 @@ import { LayoutDefaultComponent } from './layouts/layout-default/layout-default.
 import { LayoutUserComponent } from './layouts/layout-user/layout-user.component';
 
 import { UserGuardGuard } from './core/guards/user-guard.guard';
+import { PostAdComponent } from './post-ad/post-ad.component';
 
 const routes: Routes = [
+  {path:"public", component: PostAdComponent},
   {
     path: "",
     component: LayoutDefaultComponent,

@@ -1,0 +1,22 @@
+<div class="contFormPublish">
+
+    <div class="dataProduct">
+
+    
+    </div>
+    <div class="dataUser">
+        <h4>Informacion de contacto</h4>
+        <p class="textContact">Cualquier persona interesada en su anuncio se contactara con usted mediante las siguientes redes:</p>
+        
+        <form [formGroup]="formulario">
+            <input formControlName="instagram" class="input" type="text" placeholder="Instagram">
+            <input formControlName="whatsapp" class="input" type="text" placeholder="Whatsapp">
+            <input formControlName="twitter" class="input" type="text" placeholder="Twitter">
+            <button type="submit" (click) = "send()"> Guardar</button>
+        </form>
+
+    </div>
+    
+
+
+</div>

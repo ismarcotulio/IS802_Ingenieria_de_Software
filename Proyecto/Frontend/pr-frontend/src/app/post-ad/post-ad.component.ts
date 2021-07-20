@@ -13,10 +13,16 @@ import { FormGroup } from '@angular/forms';
 export class PostAdComponent implements OnInit {
   formulario = new FormGroup({
 
-    email: new FormControl(''),
+    instagram: new FormControl(''),
+    whatsapp: new FormControl(''),
+    twitter: new FormControl(''),
     password: new FormControl('')
 
 
+  });
+
+  formPost = new FormGroup({
+    
   });
 
   constructor() { }
@@ -27,4 +33,5 @@ export class PostAdComponent implements OnInit {
   send(){
     console.log('aaaa..');
   }
+
 }

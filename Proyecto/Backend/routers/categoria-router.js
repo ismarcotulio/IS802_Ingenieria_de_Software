@@ -16,6 +16,7 @@ class CategoriaRouter{
             }
         })
 
+        Router.get('/all',this.getAll)
         Router.get('/tecnologia',this.getTecnologia)
         Router.get('/arte-artesania',this.getArteArtesania)
         Router.get('/hogar',this.getHogar)
@@ -28,6 +29,13 @@ class CategoriaRouter{
         Router.get('/mascotas',this.getMascotas)
         Router.get('/deportes',this.getDeporte)
 
+    }
+    
+    getAll = (req,res) =>{
+        this.database.getAllProducts()
+        .then(results=>{
+            res.json({results})
+        })
     }
 
     getTecnologia = (req,res)=>{

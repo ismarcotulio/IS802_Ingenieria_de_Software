@@ -94,6 +94,30 @@ class Database{
           })
         })
       }
+
+      getAllProducts(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL DataCollectionProduct(?)`,[true], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      getProducts(categoria){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL DataCollectionProdut(?)`,[true], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
 }
 
 export { Database }

@@ -3,7 +3,6 @@ import mysql from "mysql2";
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-
 import { Database } from './dataBase.mjs';
 import { ProductController } from './controllers/productController.mjs'
 import { AuthController } from './controllers/authController.mjs';
@@ -14,7 +13,7 @@ const database = new Database(mysql)
 database.getStatus()
 
 //Instancias de controladores
-const productController = new ProductController();
+const productController = new ProductController(database);
 const authController = new AuthController(database);
 const tokenController = new TokenController();
 
@@ -51,7 +50,6 @@ app.post("/insertProduct", async (req , res) => {
 app.get('/test', function (req, res){
     res.send( productController.getProducts() )
 })
-
 
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 

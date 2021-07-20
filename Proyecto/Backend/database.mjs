@@ -107,13 +107,25 @@ class Database{
         })
       }
 
-      getProducts(categoria){
+      getCategoriaProducts(categoria){
         return new Promise((resolve, reject)=>{
-          this.conexion.query(`CALL DataCollectionProdut(?)`,[true], (error,results, fields)=>{
+          this.conexion.query(`CALL DataCollectionProdut(?)`,[categoria], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
-              resolve(results)
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      getDepartamentoProducts(departamento){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL getDepartamentoProducts(?)`,[departamento], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
             }
           })
         })

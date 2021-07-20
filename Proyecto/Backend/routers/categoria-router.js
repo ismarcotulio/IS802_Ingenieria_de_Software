@@ -34,7 +34,7 @@ class CategoriaRouter{
     getAll = (req,res) =>{
         this.database.getAllProducts()
         .then(results=>{
-            res.json({results})
+            res.send(results)
         })
     }
 

@@ -10,6 +10,7 @@ import { AuthController } from './controllers/authController.mjs';
 import { TokenController } from './controllers/tokenController.mjs';
 
 import {Router,CategoriaRouter} from './routers/categoria-router.js';
+import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
 
 //Configuracion express
 const config = {
@@ -32,12 +33,14 @@ const tokenController = new TokenController();
 
 //Instancia de routers
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
+const departamentoRouter = new DepartamentoRouter(database,app.get('llave'))
 
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/categoria', Router)
+app.use('/departamento',Router2)
 
 
 //Rutas

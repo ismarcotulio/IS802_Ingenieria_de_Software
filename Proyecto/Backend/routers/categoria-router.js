@@ -39,47 +39,80 @@ class CategoriaRouter{
     }
 
     getTecnologia = (req,res)=>{
-        res.json({mensaje: 'Tecnologia works!'})
+        this.database.getCategoriaProducts(1)
+        .then(results=>{
+            res.send(results)
+        })
     }
     
     getArteArtesania = (req,res)=>{
-        res.json({mensaje: "Artes y Artesania works!"})
+        this.database.getCategoriaProducts(2)
+        .then(results=>{
+            res.send(results)
+        })
     }
     
     getHogar = (req,res) =>{
-        res.json({mensaje:"Hogar Works!"})
+        this.database.getCategoriaProducts(3)
+        .then(results=>{
+            res.send(results)
+        })
     }
     
     getIndustrial = (req,res)=>{
-        res.json({mensaje: 'Industrial works!'})
+        this.database.getCategoriaProducts(4)
+        .then(results=>{
+            res.send(results)
+        })
     }
 
     getAutomotriz = (req,res)=>{
-        res.json({mensaje: 'Automotriz works!'})
+        this.database.getCategoriaProducts(5)
+        .then(results=>{
+            res.send(results)
+        })
     }
     
     getSaludBelleza = (req,res)=>{
-        res.json({mensaje: 'Salud y Belleza works!'})
+        this.database.getCategoriaProducts(6)
+        .then(results=>{
+            res.send(results)
+        })
     }
 
     getViajesEquipaje = (req,res)=>{
-        res.json({mensaje: 'Viajes y equipaje works!'})
+        this.database.getCategoriaProducts(7)
+        .then(results=>{
+            res.send(results)
+        })
     }
     
     getAlimentos = (req,res) =>{
-        res.json({mensaje: 'Alimentos works!'})
+        this.database.getCategoriaProducts(8)
+        .then(results=>{
+            res.send(results)
+        })
     }
     
     getJugueteria = (req,res)=>{
-        res.json({mensaje: 'Jugueteria works!'})
+        this.database.getCategoriaProducts(9)
+        .then(results=>{
+            res.send(results)
+        })
     }
     
     getMascotas = (req,res)=>{
-        res.json({mensaje: 'Mascotas works!'})
+        this.database.getCategoriaProducts(10)
+        .then(results=>{
+            res.send(results)
+        })
     }
     
     getDeporte = (req,res) =>{
-        res.json({mensaje: 'Deportes works!'})
+        this.database.getCategoriaProducts(11)
+        .then(results=>{
+            res.send(results)
+        })
     }
     
 }

@@ -109,7 +109,7 @@ class Database{
 
       getCategoriaProducts(categoria){
         return new Promise((resolve, reject)=>{
-          this.conexion.query(`CALL DataCollectionProdut(?)`,[categoria], (error,results, fields)=>{
+          this.conexion.query(`CALL filterCategory(?)`,[categoria], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
@@ -121,7 +121,7 @@ class Database{
 
       getDepartamentoProducts(departamento){
         return new Promise((resolve, reject)=>{
-          this.conexion.query(`CALL getDepartamentoProducts(?)`,[departamento], (error,results, fields)=>{
+          this.conexion.query(`CALL filterDepartment(?)`,[departamento], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{

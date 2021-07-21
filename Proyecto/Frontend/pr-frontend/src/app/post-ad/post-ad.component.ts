@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 
 import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -13,22 +14,26 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class PostAdComponent implements OnInit {
   public previsualizacion: any = '';
+  urls:any;
+  public archivoCap:any;
 
-  formulario = new FormGroup({
+  apiKey:string = '75943c91956dc2c5547f00e2352336c1';
 
-    instagram: new FormControl(''),
-    whatsapp: new FormControl(''),
-    twitter: new FormControl(''),
-    password: new FormControl('')
+  // formulario = new FormGroup({
 
-
-  });
+  //   instagram: new FormControl(''),
+  //   whatsapp: new FormControl(''),
+  //   twitter: new FormControl(''),
+  //   password: new FormControl('')
+  // });
 
   formPost = new FormGroup({
-    
+    state: new FormControl('', ),
+    description: new FormControl(''),
+    name: new FormControl('',Validators.maxLength(25))
   });
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -41,26 +46,51 @@ export class PostAdComponent implements OnInit {
 
     const archivoCapturado = event.target.files[0]
     console.log(archivoCapturado);
-
+    this.archivoCap = archivoCapturado;
     const unsafeImg = window.URL.createObjectURL(archivoCapturado);
     const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
     this.previsualizacion = image;
     
-    console.log(this.previsualizacion);
+    // console.log(this.previsualizacion);
     
+
   
+    const fb = new FormData();
+    let headers = new Headers({'authorization':'Client-ID clientid'})
+    // fb.append
+    
+    fb.append('image',archivoCapturado);
+
+    this.httpClient.post('/api',fb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
+      this.urls = resp;
+      console.log(resp);
+    });
   }
 
+  
   guardar(){
     var fecha:Date = new Date();
     
     console.log(fecha);
 
+    this.urls['data']
+    console.log(this.urls['data'].url);
+    
+    
+
   }
+  
 
   borrarImg(){
     this.previsualizacion = '';
   }
 
+  optionDepartament(event:any){
+    console.log(event.target.value);
+  }
 
+  optioncategory(event: any){
+    console.log(event.target.value);
+    
+  }
 }

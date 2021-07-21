@@ -5,52 +5,58 @@
             <h4 class="textBox">Datos del Anuncio:</h4>
 
             <form [formGroup]="formPost">
-                <input class = "inputPost" type="text" placeholder="Nombre">
+                <input class = "inputPost" type="text" formControlName="name" placeholder="Nombre" required>
 
-                <p><textarea name="descripcion"    placeholder="Ingresa la descripcion de tu anuncio Aqui!!"></textarea></p>
+                <p><textarea name="descripcion"  formControlName="description"  placeholder="Ingresa la descripcion de tu anuncio Aqui!!"></textarea></p>
                 
+
                 <p class="textState">Seleccione el estado:</p>
                 <div class="optionRadio">
-                <input type="radio"  name="state" value="nuevo" checked>
+                <input type="radio"  formControlName="state" value="nuevo" checked>
                 <label for="nuevo">Nuevo</label>
                 </div>
                 <div class="optionRadio">
-                <input type="radio"  name="state" value="semiNuevo">
+                <input type="radio" formControlName="state" value="semiNuevo">
                 <label for="semiNuevo">Semi-Nuevo</label>
                 </div>
                 <div class="boxRadio optionRadio">
-                <input type="radio"  name="state" value="usado">
+                <input type="radio" formControlName="state" value="usado">
                 <label for="usado">Usado</label>
                 </div>
 
-                <input class = "inputPost price" type="number" placeholder="Precio">
 
-                <select class = "inputPost select" id="">
-                    <option>Seleccione la categoria del anuncio</option>
-                    <option value="1">Deportes</option>
-                    <option value="2">Hogar</option>
-                    <option value="3">Jugueteria</option>
+                <input class = "inputPost price" type="number" placeholder="Precio" min="0" max="99999999" step="100" required>
+
+                <select class = "inputPost select" (change) = "optioncategory($event)" required>
+                    <option selected>Seleccione la categoria del anuncio</option>
+                    <option value="Deportes">Deportes</option>
+                    <option value="Hogar">Hogar</option>
+                    <option value="Jugueteria">Jugueteria</option>
+                    <option value="Tecnologia">Tecnologia</option>
+                    <option value="Automotriz">Automotriz</option>
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Mascotas">Mascotas</option>
                 </select>
-                <select class = "inputPost select">
-                    <option>Seleccione departamento anuncio</option>
-                    <option value="1">Francisco morazan</option>
-                    <option value="2">Comayagua</option>
-                    <option value="3">Atlantida</option>
-                    <option value="4">Choluteca</option>
-                    <option value="5">Lempira</option>
-                    <option value="6">Colon</option>
-                    <option value="7">Copan</option>
-                    <option value="8">Cortes</option>
-                    <option value="9">El Paraiso</option>
-                    <option value="10">Olancho</option>
-                    <option value="11">Gracias a Dios</option>
-                    <option value="12">Intibuca</option>
-                    <option value="13">Islas de la Bahia</option>
-                    <option value="14">La Paz</option>
-                    <option value="15">Santa Barbara</option>
-                    <option value="16">Ocotepeque</option>
-                    <option value="17">Valle</option>
-                    <option value="18">Yoro</option>
+                <select class = "inputPost select" (change) = "optionDepartament($event)" required>
+                    <option selected>Seleccione departamento anuncio</option>
+                    <option value="Francisco morazan">Francisco morazan</option>
+                    <option value="Comayagua">Comayagua</option>
+                    <option value="Atlantida">Atlantida</option>
+                    <option value="Choluteca">Choluteca</option>
+                    <option value="Lempira">Lempira</option>
+                    <option value="Colon">Colon</option>
+                    <option value="Copan">Copan</option>
+                    <option value="Cortes">Cortes</option>
+                    <option value="El Paraiso">El Paraiso</option>
+                    <option value="Olancho">Olancho</option>
+                    <option value="Gracias a Dios">Gracias a Dios</option>
+                    <option value="Intibuca">Intibuca</option>
+                    <option value="Islas de la Bahia">Islas de la Bahia</option>
+                    <option value="La Paz">La Paz</option>
+                    <option value="Santa Barbara">Santa Barbara</option>
+                    <option value="Ocotepeque">Ocotepeque</option>
+                    <option value="Valle">Valle</option>
+                    <option value="Yoro">Yoro</option>
                 </select>
                 
                 <div class="btnSubmit">

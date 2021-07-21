@@ -17,20 +17,10 @@ class AuthController{
                 Last_Name: "",
                 Email: "",
                 Address: "",
-                Token: 0,
                 Password: ""
             }
     
-            var date = new Date()
-    
-            let payload = {
-                Id_usuario: newUser.Id,
-                iat: date.getTime()/1000
-            }
-            var token = jwt.sign(payload, key)
-            
-            var lastToken
-            var todayDate = moment().format('YYYY-MM-DD HH:mm:ss')      
+            var date = new Date()    
     
             newUser.Firts_Name = req.body.first_Name
             newUser.Last_Name = req.body.last_Name
@@ -42,15 +32,14 @@ class AuthController{
                 newUser.Id = results   
             })
 
-            await this.database.getLastTokenIdQuery().then(function(results){
-                lastToken = results   
-            })
-
-            await this.database.insertToken(lastToken, token, todayDate)
+            let payload = {
+                Id_usuario: newUser.Id,
+                iat: date.getTime()/1000
+            }
+            var token = jwt.sign(payload, key)
     
-            await this.database.insertUser(newUser.Id, newUser.Firts_Name, newUser.Last_Name, newUser.Email, newUser.Address,lastToken,newUser.Password)
+            await this.database.insertUser(newUser.Id, newUser.Firts_Name, newUser.Last_Name, newUser.Email, newUser.Address,newUser.Password)
             return res.json({id: newUser.Id, token:token})
-            
         })();
         
     }

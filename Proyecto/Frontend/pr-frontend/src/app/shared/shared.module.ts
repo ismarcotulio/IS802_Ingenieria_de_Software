@@ -48,7 +48,8 @@ import { ProductShelfDefaultComponent } from './components/product-shelf-default
     LoginAlertDialogComponent,
     ProductShelfComponent,
     CarouselComponent,
-    ProductShelfDefaultComponent
+    ProductShelfDefaultComponent,
+    CardCategoryComponent
   ]
 })
 export class SharedModule { }

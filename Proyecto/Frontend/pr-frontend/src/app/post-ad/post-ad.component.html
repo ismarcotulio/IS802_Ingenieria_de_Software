@@ -2,26 +2,81 @@
 
     <div class="dataProduct">
         <div class="box">
-            <h4>Datos del Anuncio:</h4>
+            <h4 class="textBox">Datos del Anuncio:</h4>
 
             <form [formGroup]="formPost">
                 <input class = "inputPost" type="text" placeholder="Nombre">
-                <input class = "inputPost" type="text" placeholder="Descripcion">
-                <input class = "inputPost" type="text" placeholder="Estado">
-                <input class = "inputPost" type="text" placeholder="Precio">
-                <input class = "inputPost" type="text" placeholder="Categoria">
-                <button>Guardar</button>
+
+                <p><textarea name="descripcion"    placeholder="Ingresa la descripcion de tu anuncio Aqui!!"></textarea></p>
+                
+                <p class="textState">Seleccione el estado:</p>
+                <div class="optionRadio">
+                <input type="radio"  name="state" value="nuevo" checked>
+                <label for="nuevo">Nuevo</label>
+                </div>
+                <div class="optionRadio">
+                <input type="radio"  name="state" value="semiNuevo">
+                <label for="semiNuevo">Semi-Nuevo</label>
+                </div>
+                <div class="boxRadio optionRadio">
+                <input type="radio"  name="state" value="usado">
+                <label for="usado">Usado</label>
+                </div>
+
+                <input class = "inputPost price" type="number" placeholder="Precio">
+
+                <select class = "inputPost select" id="">
+                    <option>Seleccione la categoria del anuncio</option>
+                    <option value="1">Deportes</option>
+                    <option value="2">Hogar</option>
+                    <option value="3">Jugueteria</option>
+                </select>
+                <select class = "inputPost select">
+                    <option>Seleccione departamento anuncio</option>
+                    <option value="1">Francisco morazan</option>
+                    <option value="2">Comayagua</option>
+                    <option value="3">Atlantida</option>
+                    <option value="4">Choluteca</option>
+                    <option value="5">Lempira</option>
+                    <option value="6">Colon</option>
+                    <option value="7">Copan</option>
+                    <option value="8">Cortes</option>
+                    <option value="9">El Paraiso</option>
+                    <option value="10">Olancho</option>
+                    <option value="11">Gracias a Dios</option>
+                    <option value="12">Intibuca</option>
+                    <option value="13">Islas de la Bahia</option>
+                    <option value="14">La Paz</option>
+                    <option value="15">Santa Barbara</option>
+                    <option value="16">Ocotepeque</option>
+                    <option value="17">Valle</option>
+                    <option value="18">Yoro</option>
+                </select>
+                
+                <div class="btnSubmit">
+                    <button class = "btnBox" type="submit" (click) = "guardar()">Publicar anuncio</button>
+                </div>
+
             </form>
-            <!-- <input type="text"> -->
+
         </div>
         <div class="boxImg">
-            <input type="file" placeholder="Categoria">
+
+            <h4>Subir Imagen:</h4>
+            <input class="inputImg" (change)="capturarFile($event)" type="file" placeholder="Subir Imagen">
             <!-- <input type="image" placeholder="Categoria"> -->
+            <button class="deleteImg" (click) = "borrarImg()">Borrar Imagen</button>
+            <div class="boxImgView" >
+                <img *ngIf="previsualizacion != ''" [src]="previsualizacion" class="imgBoxx" alt="">
+            </div>
             
         </div>
     
     </div>
-    <div class="dataUser">
+
+
+
+    <!-- <div class="dataUser">
         <h4>Informacion de contacto</h4>
         <p class="textContact">Cualquier persona interesada en su anuncio se contactara con usted mediante los siguientes medios:</p>
         
@@ -35,7 +90,7 @@
             </div>
         </form>
 
-    </div>
+    </div> -->
     
 
 

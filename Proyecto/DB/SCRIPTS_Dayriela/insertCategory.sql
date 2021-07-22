@@ -17,7 +17,4 @@ END//
 
 USE Ecommerce;
 CALL insertCategory(10, "Alimentos", "Desde comida Vegana hasta todo tipo de carnes", 12 );
-
-SELECT *FROM CATEGORY;
-
 DELIMITER ;

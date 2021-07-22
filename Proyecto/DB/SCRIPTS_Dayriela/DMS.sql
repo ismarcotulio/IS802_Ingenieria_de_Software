@@ -57,3 +57,14 @@ INSERT INTO CATEGORY(Id, Name , Description , Department) VALUES
 (9,"Ropa y Accesorios","Lo ultimo en moda y accesorios",7)
 ;
 
+
+INSERT INTO STATE(Id, Name) VALUES
+(1,"Nuevo"),
+(2,"Usado"),
+(3,"Usado como nuevo"),
+(4,"Usado-Buen estado"),
+(5,"Usado-Aceptable")
+;
+
+
+

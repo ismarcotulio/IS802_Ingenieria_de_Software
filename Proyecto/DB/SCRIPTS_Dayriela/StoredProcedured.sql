@@ -18,6 +18,8 @@ USE ecommerce;
  CALL extraer( "Katerin", @email );
  SELECT @email;
  
+ DELIMITER //
+ 
 
 Use Ecommerce;
 //EXTRAE LOS DATOS POR MEDIO DEL NOMBRE DEL USUARIO
@@ -57,7 +59,7 @@ DELIMITER //
  
  DELIMITER ;
  Call extractInformation(5);
-
+ 
 
 //EXTRAE DATOS ESPECIFICOS ID_USER, ID_TOKEN, CODE_TOKEN
 DELIMITER //

@@ -7,9 +7,13 @@ class TokenController{
     verifyToken(req, res, key){
       return jwt.verify(req.token, key, (error, authData) => {
         if(error){
-          return false
+          return res.json({
+            result:false
+          });
         }else{
-          return true
+          return res.json({
+            result:true
+          });
         }
       });
     }

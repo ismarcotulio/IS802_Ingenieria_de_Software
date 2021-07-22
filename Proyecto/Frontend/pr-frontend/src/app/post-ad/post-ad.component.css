@@ -1,0 +1,181 @@
+.contFormPublish{
+    width: auto;
+    height: 85vh;
+    padding: 2rem;
+}
+
+.dataProduct{
+    position: relative;
+    width: auto;
+    height: 100%;
+    background-color: white;
+    border-radius: 5px;
+    float: left;
+    padding: 1rem;
+    left: auto;
+    right: auto;
+
+}
+
+.dataUser{
+    position: relative;
+    width: 25%;
+    height: 100%;
+    background-color: white;
+    float: left;
+    margin-left: 1rem;
+    border-radius: 5px;
+    padding: 1rem;
+    
+}
+
+.input{
+    width: 100%;
+    margin-bottom: 0.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    border: 0;
+    background-color: #E5E5E5;
+}
+
+
+.boxButtom{
+    width: 100%;
+    height: auto;
+    text-align: right;
+}
+
+.buttom{
+    width: 50%;
+    padding: 0.4em;
+    border-radius: 5px;
+    border-style: none;
+   
+}
+
+.box{
+    position: relative;
+    width: 55%;
+    height: 100%;
+    background-color: #E5E5E5;
+    border-radius: 5px;
+    float: left;
+    padding: 1rem;
+}
+
+.boxImg{
+    position: relative;
+    width: 40%;
+    height: 100%;
+    margin-left: 0.8rem;
+    background-color: #E5E5E5;
+    float: left;
+    border-radius: 5px;
+    padding: 1rem;
+    font-size: 0.8rem;
+
+}
+
+.inputPost{
+    width: 90%;
+    margin-bottom: 1rem;
+    border: 0;
+}
+
+.textBox{
+    margin-bottom: 0.9rem;
+}
+
+.select{
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.textState{
+    margin-bottom: 2px;
+}
+
+.boxRadio{
+    margin-bottom: 5px;
+}
+
+.btnBox{
+    width: 30%;
+    border: 0;
+    background-color:rgb(255, 165, 30);
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.optionRadio{
+    float: left;
+    margin-right: 1rem;
+}
+
+textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 90%;
+}
+
+.inputPost{
+    border: black 1px solid;
+}
+
+.inputImg{
+    margin-top: 0.8rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btnSubmit{
+    position: relative;
+    width: auto;
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.btnBox{
+    position: relative;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.textBox{
+    margin-bottom: 1.8rem;
+}
+.price{
+    margin-top: 0.5rem;
+}
+
+.boxImgView{
+    width: 70%;
+    height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    background-image: url('/assets/imgs/uploadImg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    
+}
+
+.imgBoxx{
+    width: 100%;
+    height: 100%;
+}
+
+.deleteImg{
+    margin: 0;
+    margin-left: 1rem;
+    padding: 3px;
+    border: 0;
+    border: black 1px solid;
+}
+
+.box{
+    margin-left: 19px;
+}

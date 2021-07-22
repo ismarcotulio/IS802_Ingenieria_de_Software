@@ -39,12 +39,12 @@ const routes: Routes = [
     canActivate: [ UserGuardGuard ],
     children: [
       {
-         path: "home",
+         path: "",
          loadChildren: () => import('./user/user.module').then(m => m.UserModule)
-      },
+      },    
       {
         path: "",
-        redirectTo: "home",
+        redirectTo: "",
         pathMatch: "full"
       }
     ]

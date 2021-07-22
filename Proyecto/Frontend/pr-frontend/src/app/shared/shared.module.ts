@@ -32,7 +32,7 @@ import { ProductShelfDefaultComponent } from './components/product-shelf-default
     CardProductDefaultComponent,
     CardProductComponent,
     CarouselComponent,
-    ProductShelfDefaultComponent
+    ProductShelfDefaultComponent,
   ],
   imports: [
     CommonModule,

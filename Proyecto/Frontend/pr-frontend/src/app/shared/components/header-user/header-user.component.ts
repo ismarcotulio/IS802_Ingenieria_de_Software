@@ -17,4 +17,8 @@ export class HeaderUserComponent implements OnInit {
     localStorage.removeItem("token");
     this.router.navigate(['/']);
   }
+
+  postAd(){
+    this.router.navigate(['/user/postAd']);
+  }
 }

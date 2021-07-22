@@ -194,3 +194,16 @@
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.optionsSection{
+  width: 100%;
+  margin: 0;
+}
+
+.optionsSection p{
+  position: relative;
+  color: aliceblue;
+  margin-left: auto;
+  cursor: pointer;
+  margin-left: 65%;
+}
+

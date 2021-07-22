@@ -1,0 +1,103 @@
+<div class="contFormPublish">
+
+    <div class="dataProduct">
+        <div class="box">
+            <h4 class="textBox">Datos del Anuncio:</h4>
+
+            <form [formGroup]="formPost">
+                <input class = "inputPost" type="text" formControlName="name" placeholder="Nombre" required>
+
+                <p><textarea name="descripcion"  formControlName="description"  placeholder="Ingresa la descripcion de tu anuncio Aqui!!"></textarea></p>
+                
+
+                <p class="textState">Seleccione el estado:</p>
+                <div class="optionRadio">
+                <input type="radio"  formControlName="state" value="nuevo" checked>
+                <label for="nuevo">Nuevo</label>
+                </div>
+                <div class="optionRadio">
+                <input type="radio" formControlName="state" value="semiNuevo">
+                <label for="semiNuevo">Semi-Nuevo</label>
+                </div>
+                <div class="boxRadio optionRadio">
+                <input type="radio" formControlName="state" value="usado">
+                <label for="usado">Usado</label>
+                </div>
+
+
+                <input class = "inputPost price" type="number" placeholder="Precio" min="0" max="99999999" step="100" required>
+
+                <select class = "inputPost select" (change) = "optioncategory($event)" required>
+                    <option selected>Seleccione la categoria del anuncio</option>
+                    <option value="Deportes">Deportes</option>
+                    <option value="Hogar">Hogar</option>
+                    <option value="Jugueteria">Jugueteria</option>
+                    <option value="Tecnologia">Tecnologia</option>
+                    <option value="Automotriz">Automotriz</option>
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Mascotas">Mascotas</option>
+                </select>
+                <select class = "inputPost select" (change) = "optionDepartament($event)" required>
+                    <option selected>Seleccione departamento anuncio</option>
+                    <option value="Francisco morazan">Francisco morazan</option>
+                    <option value="Comayagua">Comayagua</option>
+                    <option value="Atlantida">Atlantida</option>
+                    <option value="Choluteca">Choluteca</option>
+                    <option value="Lempira">Lempira</option>
+                    <option value="Colon">Colon</option>
+                    <option value="Copan">Copan</option>
+                    <option value="Cortes">Cortes</option>
+                    <option value="El Paraiso">El Paraiso</option>
+                    <option value="Olancho">Olancho</option>
+                    <option value="Gracias a Dios">Gracias a Dios</option>
+                    <option value="Intibuca">Intibuca</option>
+                    <option value="Islas de la Bahia">Islas de la Bahia</option>
+                    <option value="La Paz">La Paz</option>
+                    <option value="Santa Barbara">Santa Barbara</option>
+                    <option value="Ocotepeque">Ocotepeque</option>
+                    <option value="Valle">Valle</option>
+                    <option value="Yoro">Yoro</option>
+                </select>
+                
+                <div class="btnSubmit">
+                    <button class = "btnBox" type="submit" (click) = "guardar()">Publicar anuncio</button>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="boxImg">
+
+            <h4>Subir Imagen:</h4>
+            <input class="inputImg" (change)="capturarFile($event)" type="file" placeholder="Subir Imagen">
+            <!-- <input type="image" placeholder="Categoria"> -->
+            <button class="deleteImg" (click) = "borrarImg()">Borrar Imagen</button>
+            <div class="boxImgView" >
+                <img *ngIf="previsualizacion != ''" [src]="previsualizacion" class="imgBoxx" alt="">
+            </div>
+            
+        </div>
+    
+    </div>
+
+
+
+    <!-- <div class="dataUser">
+        <h4>Informacion de contacto</h4>
+        <p class="textContact">Cualquier persona interesada en su anuncio se contactara con usted mediante los siguientes medios:</p>
+        
+        <form [formGroup]="formulario">
+            <input formControlName="instagram" class="input" type="text" placeholder="Instagram">
+            <input formControlName="whatsapp" class="input" type="text" placeholder="Whatsapp">
+            <input formControlName="twitter" class="input" type="text" placeholder="Twitter">
+            <div class="boxButtom">
+                <button class="buttom" type="submit" (click) = "send()"> Guardar</button>
+
+            </div>
+        </form>
+
+    </div> -->
+    
+
+
+</div>

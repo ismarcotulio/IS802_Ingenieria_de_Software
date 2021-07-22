@@ -12,7 +12,7 @@ class AuthController{
         (async () => {
 
             var newUser = {
-                Id: 0,
+                Id: 1,
                 Firts_Name: "",
                 Last_Name: "",
                 Email: "",

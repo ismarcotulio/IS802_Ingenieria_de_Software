@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: "user",
     component: LayoutUserComponent,
-    // canActivate: [ UserGuardGuard ],
+    canActivate: [ UserGuardGuard ],
     children: [
       {
          path: "",

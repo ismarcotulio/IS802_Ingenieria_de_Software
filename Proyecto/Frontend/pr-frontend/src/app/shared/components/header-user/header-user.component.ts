@@ -19,6 +19,6 @@ export class HeaderUserComponent implements OnInit {
   }
 
   postAd(){
-    this.router.navigate(['/user/home/postAd']);
+    this.router.navigate(['/user/postAd']);
   }
 }

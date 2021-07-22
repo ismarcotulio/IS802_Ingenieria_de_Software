@@ -8,14 +8,6 @@ class DepartamentoRouter{
     constructor(database,key){
         this.database = database
 
-        Router2.use(tokenController.middleVerifyToken,function(req,res,next){
-            if(tokenController.verifyToken(req, res, key)){
-                next()
-            }else{
-                res.json({mensaje: 'Token invalido'})
-            }
-        })
-
         Router2.get('/FranciscoMorazan',this.getFranciscoMorazan)
         Router2.get('/comayagua',this.getComayagua)
         Router2.get('/islas-de-la-bahia',this.getIslasBahia)

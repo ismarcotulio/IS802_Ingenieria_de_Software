@@ -8,14 +8,6 @@ class CategoriaRouter{
     constructor(database,key){
         this.database = database
 
-        Router.use(tokenController.middleVerifyToken,function(req,res,next){
-            if(tokenController.verifyToken(req, res, key)){
-                next()
-            }else{
-                res.json({mensaje: 'Token invalido'})
-            }
-        })
-
         Router.get('/all',this.getAll)
         Router.get('/tecnologia',this.getTecnologia)
         Router.get('/arte-artesania',this.getArteArtesania)

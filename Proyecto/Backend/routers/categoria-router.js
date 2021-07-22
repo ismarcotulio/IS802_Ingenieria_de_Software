@@ -20,7 +20,7 @@ class CategoriaRouter{
         Router.get('/tecnologia',this.getTecnologia)
         Router.get('/arte-artesania',this.getArteArtesania)
         Router.get('/hogar',this.getHogar)
-        Router.get('/industrail',this.getIndustrial)
+        Router.get('/industrial',this.getIndustrial)
         Router.get('/automotriz',this.getAutomotriz)
         Router.get('/salud-belleza',this.getSaludBelleza)
         Router.get('/viajes-equipaje',this.getViajesEquipaje)

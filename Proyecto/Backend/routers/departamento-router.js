@@ -17,7 +17,7 @@ class DepartamentoRouter{
         })
 
         Router2.get('/FranciscoMorazan',this.getFranciscoMorazan)
-        Router2.get('/Comayagua',this.getComayagua)
+        Router2.get('/comayagua',this.getComayagua)
         Router2.get('/islas-de-la-bahia',this.getIslasBahia)
         Router2.get('/santa-barbara',this.getSantaBarbara)
         Router2.get('/colon',this.getColon)

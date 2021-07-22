@@ -51,6 +51,10 @@ app.post('/signUp', async (req, res) => {
     authController.signUp(req, res, app.get("llave"))
 })
 
+app.post('/verify',tokenController.middleVerifyToken, function(req,res){
+    tokenController.verifyToken(req,res,app.get('llave'))
+})
+
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 
 })

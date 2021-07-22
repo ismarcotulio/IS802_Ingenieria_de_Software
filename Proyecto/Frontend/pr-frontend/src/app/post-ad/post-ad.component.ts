@@ -15,7 +15,8 @@ import { HttpClient } from '@angular/common/http';
 export class PostAdComponent implements OnInit {
   public previsualizacion: any = '';
   urls:any;
-  public archivoCap:any;
+  // public archivoCap:any;
+  fb = new FormData();
 
   apiKey:string = '75943c91956dc2c5547f00e2352336c1';
 
@@ -45,38 +46,40 @@ export class PostAdComponent implements OnInit {
   capturarFile(event:any){
 
     const archivoCapturado = event.target.files[0]
-    console.log(archivoCapturado);
-    this.archivoCap = archivoCapturado;
+    // console.log(archivoCapturado);
+
+    // this.archivoCap = archivoCapturado;
+    
     const unsafeImg = window.URL.createObjectURL(archivoCapturado);
     const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
     this.previsualizacion = image;
     
-    // console.log(this.previsualizacion);
-    
-
+    this.fb.append('image',archivoCapturado);
   
-    const fb = new FormData();
-    let headers = new Headers({'authorization':'Client-ID clientid'})
+    // let headers = new Headers({'authorization':'Client-ID clientid'})
     // fb.append
     
-    fb.append('image',archivoCapturado);
-
-    this.httpClient.post('/api',fb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
-      this.urls = resp;
-      console.log(resp);
-    });
   }
-
+  
   
   guardar(){
-    var fecha:Date = new Date();
-    
-    console.log(fecha);
 
-    this.urls['data']
-    console.log(this.urls['data'].url);
+    var fecha:Date = new Date();
+    console.log(fecha);
     
+    this.httpClient.post('/api',this.fb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
+      this.urls = resp;
+      // console.log(resp['data']);
+    });
     
+    // console.log(typeOf(this.urls));
+    
+    // const datos = JSON.parse(this.urls.data);
+    
+    const aa = this.urls['data'].url;
+    console.log(aa);
+    
+    alert('Anuncio Publicado.');
 
   }
   

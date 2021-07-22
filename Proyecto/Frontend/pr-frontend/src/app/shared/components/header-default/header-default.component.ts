@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderDefaultComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) {
+   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  searchProduct(key: string): void {
+    this.router.navigateByUrl('register', {skipLocationChange: true})
+  .then(()=>this.router.navigate(['home'], {state: {data: {key}}}));
+
   }
 
 }

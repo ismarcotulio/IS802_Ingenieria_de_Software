@@ -1,5 +1,4 @@
-import { ProductService } from './../../../core/services/product/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/core/models/product/product-model';
 
 @Component({
@@ -8,11 +7,11 @@ import { Product } from 'src/app/core/models/product/product-model';
   styleUrls: ['./product-shelf-default.component.css']
 })
 export class ProductShelfDefaultComponent implements OnInit {
-  products: Product[] = [];
-  constructor(private productService:ProductService) { }
+  @Input() products: Product[] = [];
+  constructor() { }
 
-  ngOnInit(): void {
-    this.products = this.productService.getAllProducts();
-  }
+  ngOnInit(): void {}
+
+
 
 }

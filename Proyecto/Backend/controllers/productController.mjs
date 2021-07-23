@@ -41,19 +41,21 @@ class ProductController{
             newProduct.Date_Product = req.body.Date_Product
             newProduct.State = req.body.State
             newProduct.Department = req.body.Department
-    
+           
+            /*
             await this.database.getLastProductIdQuery().then(function(results){
               newProduct.Id=results  
             })
-
+            
             await this.database.insertProduct(newProduct.Id, newProduct.Name, 
                 newProduct.Type, newProduct.Cost, newProduct.Description , newProduct.Id_Category, 
                 newProduct.Id_Users, newProduct.Image, newProduct.Date_Product, newProduct.State,
                 newProduct.Department)
-                
-            return res.json({status:true})
+            */
+           
+            return res.json({status:true,dato:newProduct})
             
-
+            
             
         })();
         

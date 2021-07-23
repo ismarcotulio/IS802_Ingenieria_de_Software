@@ -9,19 +9,20 @@ CREATE PROCEDURE insertUser(
     IN Email_parameter VARCHAR(40),
     IN Address_parameter VARCHAR(150),
     IN Token_parameter INT,
-    IN Password_parameter VARCHAR(30)
+    IN Password_parameter VARCHAR(30),
+    IN Check_Email_parameter BOOLEAN
 	
 )
 BEGIN
-	INSERT INTO USER( Id, Firts_Name, Last_Name, Email, Address, Token,Password ) VALUES 
-		( id_parameter, First_Name_parameter, Last_Name_parameter, Email_parameter, Address_parameter, Token_parameter, Password_parameter )
+	INSERT INTO USER( Id, Firts_Name, Last_Name, Email, Address, Token,Password, Check_Email ) VALUES 
+		( id_parameter, First_Name_parameter, Last_Name_parameter, Email_parameter, Address_parameter, Token_parameter, Password_parameter,Check_Email_parameter )
 	;
 END//
 
 DELIMITER ;
 
 USE Ecommerce;
-CALL insertUser( 6, "Eliud", "Rodriguez", "EliudR@email.com", "Col.Sosa", 3 ,"Oerr_556");
+CALL insertUser( 6, "Eliud", "Rodriguez", "EliudR@email.com", "Col.Sosa", 3 ,"Oerr_556", false);
 SELECT *FROM User;
 
 DELIMITER //

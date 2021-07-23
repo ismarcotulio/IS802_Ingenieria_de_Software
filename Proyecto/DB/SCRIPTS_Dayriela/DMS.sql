@@ -8,12 +8,12 @@ INSERT INTO TOKEN( Id, Code_Token, Creation_Date ) VALUES
     (5, "IS-05", "2021-04-02 00:35:00")
 ;
 USE Ecommerce;
-INSERT INTO USER( Id, Firts_Name, Last_Name, Email, Address, Token , Password ) VALUES 
-	(1, "Manuel", "Perez", "ManuelP@email.com", "Col.Kennedy", 1, "Mmp_567"),
-    (2, "Pedro", "Martinez", "PedroM@email.com", "Col. San Miguel", 2,  "Pmm_123"),
-    (3, "Sara", "Izaguirre", "SaraI@email.com", "Barrio Guamilito", 3, "Sim_234"),
-    (4, "Katerin", "Matute", "KaterinM@email.com", "Col. Cerro Grande", 4, "Kfm_569"),
-    (5, "Dayriela", "Montes", "Dayrielam@email.com", "Col.Carrizal", 5, "Dmm_357")
+INSERT INTO USER( Id, Firts_Name, Last_Name, Email, Address, Token , Password, Check_email ) VALUES 
+	(1, "Manuel", "Perez", "ManuelP@email.com", "Col.Kennedy", 1, "Mmp_567",false),
+    (2, "Pedro", "Martinez", "PedroM@email.com", "Col. San Miguel", 2,  "Pmm_123",false),
+    (3, "Sara", "Izaguirre", "SaraI@email.com", "Barrio Guamilito", 3, "Sim_234",false),
+    (4, "Katerin", "Matute", "KaterinM@email.com", "Col. Cerro Grande", 4, "Kfm_569",false),
+    (5, "Dayriela", "Montes", "Dayrielam@email.com", "Col.Carrizal", 5, "Dmm_357",false)
 ;
 INSERT INTO USER_TYPE(Id_User_type,Name, Description)VALUES
 (1,"Administrador","Administrador de la pagina"),

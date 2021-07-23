@@ -6,7 +6,7 @@ DELIMITER //
 CREATE PROCEDURE insertProduct( 
 	IN id_parameter INT,
     IN Name_parameter VARCHAR(30),
-    IN Type_parameter VARCHAR(30),
+    IN Brand_parameter VARCHAR(30),
     IN Costparameter INT,
     IN Description_parameter VARCHAR(150),
     IN Id_Category_parameter INT,
@@ -16,17 +16,20 @@ CREATE PROCEDURE insertProduct(
     IN State_parameter INT
 )
 BEGIN
-	INSERT INTO PRODUCT( Id, Name, Type, Cost, Description, Id_Category, Id_Users, Image, Date_Product,State) VALUES 
-		( id_parameter, Name_parameter, Type_parameter, Costparameter, Description_parameter, Id_Category_parameter, Id_Users_parameter , Image_parameter ,Date_Product_parameter,State_parameter)
+	INSERT INTO PRODUCT( Id, Name, Brand, Cost, Description, Id_Category, Id_Users, Image, Date_Product,State) VALUES 
+		( id_parameter, Name_parameter, Brand_parameter, Costparameter, Description_parameter, Id_Category_parameter, Id_Users_parameter , Image_parameter ,Date_Product_parameter,State_parameter)
 	;
 END//
 
 DELIMITER ;
 
 USE Ecommerce;
-CALL insertProduct(1, "Televisor", "LCD", 5800 , "Pantalla plana y delgada", 1 , 2 ,"IMAGE10", "2021-02-01", 1 );
+CALL insertProduct(3, "Cepillo Dental", "Colgate", 78 , "Cuidado superior para toda la boca", 5 , 2 ,"IMAGE110", "2021-05-04", 1 );
+CALL insertProduct(1, "Cepillo Secador", "Revlon", 2300 , "Suavisa el cabello y controla el frizz", 5 , 1 ,"IMAGE110", "2021-05-07", 1 );
+CALL insertProduct(2, "Televisor", "Samsung", 5800 , "LCD, Pantalla plana y delgada", 1 , 6 ,"IMAGE01", "2021-07-05", 3 );
+CALL insertProduct(4, "Estereo", "Sony", 11800 , "Mejor calidad de Audio", 1 , 4 ,"IMAGE013", "2021-04-05", 1 );
 
-SELECT PRODUCT.Name, PRODUCT.Type, PRODUCT.Cost , PRODUCT.Description FROM PRODUCT WHERE Id_Category=5;
+SELECT PRODUCT.Name, PRODUCT.Brand, PRODUCT.Cost , PRODUCT.Description FROM PRODUCT WHERE Id_Category=1;
 SELECT *FROM PRODUCT;
 
 

@@ -79,9 +79,9 @@ class Database{
         })
       }
 
-      insertProduct( Id, Name, Type, Cost, Description, Id_Category, Id_Users, Image){
+      insertProduct( Id, Name, Type, Cost, Description, Id_Category, Id_Users, Image, Date_Product, State, Department){
         return new Promise((resolve, reject)=>{      
-          this.conexion.query(`CALL insertProduct(?,?,?,?,?,?,?,?)`,[ Id, Name, Type, Cost, Description, Id_Category, Id_Users, Image], (error,results, fields)=>{
+          this.conexion.query(`CALL insertProduct(?,?,?,?,?,?,?,?,?,?,?)`,[ Id, Name, Type, Cost, Description, Id_Category, Id_Users, Image, Date_Product, State, Department], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{

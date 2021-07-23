@@ -28,7 +28,7 @@ class AuthController{
             var lastToken
             var todayDate = moment().format('YYYY-MM-DD HH:mm:ss')      
     
-            newUser.Firts_Name = req.body.first_Name
+            newUser.Firts_Name = req.body.firts_Name
             newUser.Last_Name = req.body.last_Name
             newUser.Email = req.body.email
             newUser.Address = req.body.address

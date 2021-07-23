@@ -16,12 +16,14 @@ class ProductController{
                 Id: 0,
                 Name: "",
                 Type: "",
-                Price: "",
                 Cost: "",
                 Description: "",
                 Id_Category: "",
                 Id_Users: "",
-                Image: ""
+                Image: "",
+                Date_Product: "",
+                State: "",
+                Department: ""
             }
             var token = req.headers.authorization.split(" ")[1]
 
@@ -36,6 +38,9 @@ class ProductController{
             newProduct.Description = req.body.Description
             newProduct.Id_Category = req.body.Id_Category
             newProduct.Image = req.body.Image
+            newProduct.Date_Product = req.body.Date_Product
+            newProduct.State = req.body.State
+            newProduct.Department = req.body.Department
     
             await this.database.getLastProductIdQuery().then(function(results){
               newProduct.Id=results  
@@ -43,7 +48,8 @@ class ProductController{
 
             await this.database.insertProduct(newProduct.Id, newProduct.Name, 
                 newProduct.Type, newProduct.Cost, newProduct.Description , newProduct.Id_Category, 
-                newProduct.Id_Users, newProduct.Image)
+                newProduct.Id_Users, newProduct.Image, newProduct.Date_Product, newProduct.State,
+                newProduct.Department)
                 
             return res.json({status:true})
             

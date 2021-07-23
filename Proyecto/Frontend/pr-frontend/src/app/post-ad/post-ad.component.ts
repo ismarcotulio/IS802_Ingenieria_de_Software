@@ -15,23 +15,24 @@ import { HttpClient } from '@angular/common/http';
 export class PostAdComponent implements OnInit {
   public previsualizacion: any = '';
   urls:any;
-  // public archivoCap:any;
+  fechaPublicacion:string = '';
   fb = new FormData();
-
   apiKey:string = '75943c91956dc2c5547f00e2352336c1';
 
-  // formulario = new FormGroup({
-
-  //   instagram: new FormControl(''),
-  //   whatsapp: new FormControl(''),
-  //   twitter: new FormControl(''),
-  //   password: new FormControl('')
-  // });
+  /* formulario = new FormGroup({
+    instagram: new FormControl(''),
+    whatsapp: new FormControl(''),
+    twitter: new FormControl(''),
+    password: new FormControl('')
+  }); */
 
   formPost = new FormGroup({
-    state: new FormControl('', ),
-    description: new FormControl(''),
-    name: new FormControl('',Validators.maxLength(25))
+    state: new FormControl('',[Validators.required]),
+    Description: new FormControl('',[Validators.required]),
+    Name: new FormControl('',Validators.maxLength(25)),
+    Depart: new FormControl('0',[Validators.required]),
+    Id_Category: new FormControl('0',[Validators.required]),
+    Cost: new FormControl('', Validators.maxLength(8))
   });
 
   constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient) { }
@@ -65,35 +66,40 @@ export class PostAdComponent implements OnInit {
   guardar(){
 
     var fecha:Date = new Date();
-    console.log(fecha);
+    //capturando la fecha de la publicacion
+    this.fechaPublicacion = fecha.toLocaleDateString();
+
+    console.log(this.formPost.value);
+    console.log(this.fechaPublicacion);
+
     
-    this.httpClient.post('/api',this.fb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
-      this.urls = resp;
-      // console.log(resp['data']);
-    });
+
+    // this.httpClient.post('/api',this.fb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
+    //   this.urls = resp;
+    //   // console.log(resp['data']);
+    // });
     
     // console.log(typeOf(this.urls));
     
     // const datos = JSON.parse(this.urls.data);
     
-    const aa = this.urls['data'].url;
-    console.log(aa);
+    // const aa = this.urls['data'].url;
+    // console.log(aa);
     
-    alert('Anuncio Publicado.');
+    // alert('Anuncio Publicado.');
 
   }
   
+  get category(){
+    return this.formPost.get('Id_Category')?.value;
+  }
 
+  get departament(){
+    return this.formPost.get('Depart')?.value;
+  }
   borrarImg(){
     this.previsualizacion = '';
   }
 
-  optionDepartament(event:any){
-    console.log(event.target.value);
-  }
-
-  optioncategory(event: any){
-    console.log(event.target.value);
-    
-  }
+  
 }

@@ -4,63 +4,73 @@
         <div class="box">
             <h4 class="textBox">Datos del Anuncio:</h4>
 
-            <form [formGroup]="formPost">
-                <input class = "inputPost" type="text" formControlName="name" placeholder="Nombre" required>
+            <form [formGroup]="formPost" (ngSubmit)= "guardar()">
+                <input class = "inputPost" type="text" formControlName="Name" placeholder="Nombre anuncio" required>
 
-                <p><textarea name="descripcion"  formControlName="description"  placeholder="Ingresa la descripcion de tu anuncio Aqui!!"></textarea></p>
+                <p><textarea name="descripcion"  formControlName="Description"  placeholder="Ingresa la descripcion de tu anuncio"></textarea></p>
                 
-
                 <p class="textState">Seleccione el estado:</p>
                 <div class="optionRadio">
-                <input type="radio"  formControlName="state" value="nuevo" checked>
+                <input type="radio"  formControlName="state" value="1" checked>
                 <label for="nuevo">Nuevo</label>
+                </div>
+                <div class="boxRadio optionRadio">
+                <input type="radio" formControlName="state" value="2">
+                <label for="usado">Usado</label>
+                </div>
+                <div class="boxRadio optionRadio">
+                <input type="radio" formControlName="state" value="3">
+                <label for="usado">Usado como nuevo</label>
+                </div>
+                <div class="boxRadio optionRadio">
+                <input type="radio" formControlName="state" value="4">
+                <label for="usado">Usado-Buen estado</label>
                 </div>
                 <div class="optionRadio">
                 <input type="radio" formControlName="state" value="semiNuevo">
-                <label for="semiNuevo">Semi-Nuevo</label>
-                </div>
-                <div class="boxRadio optionRadio">
-                <input type="radio" formControlName="state" value="usado">
-                <label for="usado">Usado</label>
+                <label for="semiNuevo">Usado-Aceptable</label>
                 </div>
 
 
-                <input class = "inputPost price" type="number" placeholder="Precio" min="0" max="99999999" step="100" required>
+                <input class = "inputPost price" formControlName="Cost"  type="number" placeholder="Precio" min="0" max="99999999" step="100" required>
 
-                <select class = "inputPost select" (change) = "optioncategory($event)" required>
-                    <option selected>Seleccione la categoria del anuncio</option>
-                    <option value="Deportes">Deportes</option>
-                    <option value="Hogar">Hogar</option>
-                    <option value="Jugueteria">Jugueteria</option>
-                    <option value="Tecnologia">Tecnologia</option>
-                    <option value="Automotriz">Automotriz</option>
-                    <option value="Alimentos">Alimentos</option>
-                    <option value="Mascotas">Mascotas</option>
+                <select class = "inputPost select" formControlName="Id_Category" required>
+                    <option selected value="0">Seleccione la categoria del anuncio</option>
+                    <option value="1">Tecnologia</option>
+                    <option value="2">Arte y Artesania</option>
+                    <option value="3">Hogar</option>
+                    <option value="4">Automotriz</option>
+                    <option value="5">Salud y belleza</option>
+                    <option value="6">Deporte</option>
+                    <option value="7">Juguetes</option>
+                    <option value="8">Mascotas</option>
+                    <option value="9">Ropa y Accesorios</option>
                 </select>
-                <select class = "inputPost select" (change) = "optionDepartament($event)" required>
-                    <option selected>Seleccione departamento anuncio</option>
-                    <option value="Francisco morazan">Francisco morazan</option>
-                    <option value="Comayagua">Comayagua</option>
-                    <option value="Atlantida">Atlantida</option>
-                    <option value="Choluteca">Choluteca</option>
-                    <option value="Lempira">Lempira</option>
-                    <option value="Colon">Colon</option>
-                    <option value="Copan">Copan</option>
-                    <option value="Cortes">Cortes</option>
-                    <option value="El Paraiso">El Paraiso</option>
-                    <option value="Olancho">Olancho</option>
-                    <option value="Gracias a Dios">Gracias a Dios</option>
-                    <option value="Intibuca">Intibuca</option>
-                    <option value="Islas de la Bahia">Islas de la Bahia</option>
-                    <option value="La Paz">La Paz</option>
-                    <option value="Santa Barbara">Santa Barbara</option>
-                    <option value="Ocotepeque">Ocotepeque</option>
-                    <option value="Valle">Valle</option>
-                    <option value="Yoro">Yoro</option>
+                <select class = "inputPost select" formControlName="Depart" required>
+                    <option selected value="0">Seleccione departamento anuncio</option>
+                    <option value="1">Francisco morazan</option>
+                    <option value="2">Comayagua</option>
+                    <option value="3">Islas de la Bahia</option>
+                    <option value="4">Santa Barbara</option>
+                    <option value="5">Colon</option>
+                    <option value="6">Olancho</option>
+                    <option value="7">Yoro</option>
+                    <option value="8">Gracias a Dios</option>
+                    <option value="9">Cortes</option>
+                    <option value="10">El Paraiso</option>
+                    <option value="11">Copan</option>
+                    <option value="12">Ocotepeque</option>
+                    <option value="13">Lempira</option>
+                    <option value="14">Intibuca</option>
+                    <option value="15">La Paz</option>
+                    <option value="16">Valle</option>
+                    <option value="17">Atlantida</option>
+                    <option value="18">Choluteca</option>
                 </select>
                 
+                
                 <div class="btnSubmit">
-                    <button class = "btnBox" type="submit" (click) = "guardar()">Publicar anuncio</button>
+                    <button class = "btnBox" type="submit" *ngIf="this.formPost.valid && (category != 0 && departament != 0)">Publicar anuncio</button>
                 </div>
 
             </form>
@@ -70,14 +80,12 @@
 
             <h4>Subir Imagen:</h4>
             <input class="inputImg" (change)="capturarFile($event)" type="file" placeholder="Subir Imagen">
-            <!-- <input type="image" placeholder="Categoria"> -->
             <button class="deleteImg" (click) = "borrarImg()">Borrar Imagen</button>
             <div class="boxImgView" >
                 <img *ngIf="previsualizacion != ''" [src]="previsualizacion" class="imgBoxx" alt="">
             </div>
             
         </div>
-    
     </div>
 
 

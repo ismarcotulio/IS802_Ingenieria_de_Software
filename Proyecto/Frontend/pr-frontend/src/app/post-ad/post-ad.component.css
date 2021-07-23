@@ -100,16 +100,18 @@
 }
 
 .btnBox{
-    width: 30%;
+    width: 35%;
     border: 0;
-    background-color:rgb(255, 165, 30);
+    background-color: #1473e6;
     border-radius: 5px;
-    padding: 3px;
+    padding: 6px 0;
+    color: white;
 }
 
 .optionRadio{
     float: left;
     margin-right: 1rem;
+    font-size: 14px;
 }
 
 textarea {

@@ -23,16 +23,12 @@ class AuthController{
     
             var date = new Date()
     
-            let payload = {
-                Id_usuario: newUser.Id,
-                iat: date.getTime()/1000
-            }
-            var token = jwt.sign(payload, key)
+            
             
             var lastToken
             var todayDate = moment().format('YYYY-MM-DD HH:mm:ss')      
     
-            newUser.Firts_Name = req.body.first_Name
+            newUser.Firts_Name = req.body.firts_Name
             newUser.Last_Name = req.body.last_Name
             newUser.Email = req.body.email
             newUser.Address = req.body.address
@@ -45,6 +41,13 @@ class AuthController{
             await this.database.getLastTokenIdQuery().then(function(results){
                 lastToken = results   
             })
+
+            let payload = {
+                Id_usuario: newUser.Id,
+                iat: date.getTime()/1000
+            }
+            
+            var token = jwt.sign(payload, key)
 
             await this.database.insertToken(lastToken, token, todayDate)
     
@@ -71,10 +74,6 @@ class AuthController{
         })();
     }
     
-
-
-    
-
 }
 
 export { AuthController }

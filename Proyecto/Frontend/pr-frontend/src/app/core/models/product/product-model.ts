@@ -1,11 +1,11 @@
 export interface Product{
   Id: number;
   Name: string;
+  Type: string;
+  Cost: number;
   Description: string;
-  Price: number;
-  State: number;
-  Img: string;
-  Department: number;
-  Seller: number;
-  Category: number;
+  Id_Category_FK: number;
+  Id_User_FK: number;
+  ID_Department_FK: number;
+  Image: string;
 }

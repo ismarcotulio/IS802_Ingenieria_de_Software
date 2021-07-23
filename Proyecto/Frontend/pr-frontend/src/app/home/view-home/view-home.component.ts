@@ -23,7 +23,12 @@ export class ViewHomeComponent implements OnInit {
       this.products =this.productSearchService.getProductsByKeyword()
 
     }else{
-      this.products = this.productService.getAllProducts();
+      this.productService.getProducts("all").subscribe(
+        data => {
+          this.products = data
+          console.log(data)
+        }
+      )
     }
     this.categories = CATEGORIES;
   }

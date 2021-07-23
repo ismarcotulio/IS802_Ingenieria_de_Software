@@ -12,16 +12,14 @@
     </div>
   </div>
 
-  <div class="optionsSection" >
-    <p (click)="postAd()">Publicar anuncio</p>
-  </div>
-
   <div id="inputsSection">
-    <div id="inputSection1"></div>
+    <div id="inputSection1">
+      <button id="post-btn" (click)="this.postAd()">publicar producto</button>
+    </div>
     <div id="inputSection2">
       <div id="searchBarContainer">
-        <input type="text" id="searchBar">
-        <button id="searchBtn"><mat-icon id="searchBtnIcon" aria-hidden="false" aria-label="Example home icon" class="">search</mat-icon></button>
+        <input type="text" id="searchBar" #bar>
+        <button id="searchBtn" (click)="this.searchProduct(bar.value)"><mat-icon id="searchBtnIcon" aria-hidden="false" aria-label="Example home icon" class="">search</mat-icon></button>
       </div>
     </div>
     <div id="inputSection3"></div>

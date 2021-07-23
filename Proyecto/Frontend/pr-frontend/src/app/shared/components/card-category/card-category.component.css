@@ -6,17 +6,27 @@
 .contCard{
     width: 30%;
     height: 40%;
-    background-image: url("/assets/imgs/3.jpg");
     background-repeat: no-repeat, no-repeat;
     background-position: center center;
     background-size: cover;
     background-color: black;
     margin-left: 2.5%;
-    margin-top: 10px;
+    margin-top: 3%;
     border-radius: 1rem;
     float: left;
 }
 
+#Tecnologia{
+  background-image: url("/assets/imgs/1.1.jpg");
+}
+
+#Deporte{
+  background-image: url("/assets/imgs/3.jpg");
+}
+
+#Hogar{
+  background-image: url("/assets/imgs/2.jpg");
+}
 
 .contSombra{
     width: 100%;

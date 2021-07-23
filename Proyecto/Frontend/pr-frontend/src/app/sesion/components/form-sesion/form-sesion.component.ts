@@ -26,7 +26,7 @@ export class FormSesionComponent implements OnInit {
         localStorage.setItem("token", data.token);
         console.log(data)
         alert("Bienvenido!");
-        this.router.navigate(['user/home']);
+        this.router.navigate(['user']);
       }
     )
   }

@@ -1,15 +1,19 @@
+
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PRODUCTS } from '../../models/product/product-mock-backend';
+import { Product } from './../../models/product/product-model';
+//import { PRODUCTS } from '../../models/product/product-mock-backend';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  url = "http://localhost:3000/categoria/"
 
-  getAllProducts(){
-    return PRODUCTS;
+  getProducts(type:string){
+    return this.http.get<Product[]>(`${this.url}${type}`)
   }
 
 

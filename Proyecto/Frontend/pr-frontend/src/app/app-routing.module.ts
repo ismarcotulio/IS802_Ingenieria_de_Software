@@ -27,6 +27,10 @@ const routes: Routes = [
         loadChildren: () => import('./sesion/sesion.module').then(m => m.SesionModule)
       },
       {
+        path: "category",
+        loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+      },
+      {
         path: "",
         redirectTo: "home",
         pathMatch: "full"
@@ -41,7 +45,11 @@ const routes: Routes = [
       {
          path: "",
          loadChildren: () => import('./user/user.module').then(m => m.UserModule)
-      },    
+      },
+      {
+        path: "category",
+        loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+      },
       {
         path: "",
         redirectTo: "",

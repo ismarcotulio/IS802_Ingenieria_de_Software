@@ -1,2 +1,4 @@
 <app-carousel></app-carousel>
-<app-product-shelf></app-product-shelf>
+<app-card-category *ngFor="let category of categories" [category]="category"></app-card-category>
+<app-product-shelf [products]="this.products" ></app-product-shelf>
+

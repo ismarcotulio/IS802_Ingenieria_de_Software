@@ -2,10 +2,9 @@
   <app-card-product-default *ngFor="let product of products"
     [Id]="this.product.Id"
     [Name]="this.product.Name"
+    [Type]="this.product.Type"
+    [Cost]="this.product.Cost"
     [Description]="this.product.Description"
-    [Price]="this.product.Price"
-    [State]="this.product.State"
-    [Seller]="this.product.Seller"
-    [Img]="this.product.Img"
+    [Image]="this.product.Image"
   ></app-card-product-default>
 </div>

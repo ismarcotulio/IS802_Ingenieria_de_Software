@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/core/models/product/product-model';
+import { ProductService } from './../../core/services/product/product.service';
+
 
 @Component({
   selector: 'app-view-category',
@@ -8,14 +11,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewCategoryComponent implements OnInit {
 
-  activatedRoute = ""
+  products: Product[] = [];
+  isUser = false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.activatedRoute = params['category'];
-   });
+      this.productService.getProducts(params["category"]).subscribe(
+        data => {
+          this.products = data;
+        }
+      )
+    });
+    try{
+      if(this.route.parent?.parent?.snapshot.url[0].path == "user"){
+        this.isUser = true
+      }
+    }catch(e){}
+
   }
 
 }

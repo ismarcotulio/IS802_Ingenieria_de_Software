@@ -7,7 +7,7 @@
         <mat-icon id="logoHeader" aria-hidden="false" aria-label="Example home icon">storefront</mat-icon>
       </div>
       <div id="logoTitleContainer">
-        <div id="logoTitle">LogoMarket</div>
+        <div id="logoTitle">CriptoMarket</div>
       </div>
     </div>
   </div>
@@ -22,7 +22,19 @@
         <button id="searchBtn" (click)="this.searchProduct(bar.value)"><mat-icon id="searchBtnIcon" aria-hidden="false" aria-label="Example home icon" class="">search</mat-icon></button>
       </div>
     </div>
-    <div id="inputSection3"></div>
+    <div id="inputSection3">
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user" routerLinkActive="isActive">Inicio</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/tecnologia" routerLinkActive="isActive" >Tecnologia</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory"  routerLink="/user/category/arte-artesania" routerLinkActive="isActive">Arte</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory"  routerLink="/user/category/hogar" routerLinkActive="isActive">Hogar</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/automotriz" routerLinkActive="isActive">Automotriz</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/salud-belleza" routerLinkActive="isActive">Salud</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/deportes" routerLinkActive="isActive">Deportes</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/jugueteria" routerLinkActive="isActive">Juguetes</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/mascotas" routerLinkActive="isActive">Mascotas</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/ropa" routerLinkActive="isActive">Ropa</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/alimentos" routerLinkActive="isActive">Alimentos</button></div>
+    </div>
   </div>
 
   <div id="userSection">

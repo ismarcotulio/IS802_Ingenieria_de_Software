@@ -1,0 +1,12 @@
+USE Ecommerce;
+
+DROP PROCEDURE IF EXISTS DataCollectionProduct;
+
+DELIMITER //
+
+CREATE PROCEDURE DataCollectionProduct(IN done BOOLEAN)
+  BEGIN
+  SELECT *FROM PRODUCT;
+  END//
+
+DELIMITER ;

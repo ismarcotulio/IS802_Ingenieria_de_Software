@@ -1,5 +1,7 @@
 USE Ecommerce;
 
+USE Ecommerce;
+
 DROP PROCEDURE IF EXISTS insertCategory ;
 
 DELIMITER //
@@ -17,5 +19,6 @@ END//
 
 DELIMITER ;
 
+
 USE Ecommerce;
-CALL insertCategory(10, "Alimentos", "Desde comida Vegana hasta todo tipo de carnes", 12 );
+CALL insertCategory(10, "Alimentos", "Desde comida Vegana hasta todo tipo de carnes");

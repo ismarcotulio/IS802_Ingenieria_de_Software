@@ -18,6 +18,7 @@ INSERT INTO USER_USER_TYPE(Id , Id_User_FK , Id_User_Type_FK)VALUES
 (2,1,1)
 ;
 
+
 INSERT INTO DEPARTMENT(Id, Name)VALUES
 (1,"Francisco Morazan"),
 (2,"Comayagua"),
@@ -49,8 +50,17 @@ INSERT INTO CATEGORY(Id, Name , Description) VALUES
     (8,"Mascotas","Todo tipo de mascotas"),
     (9,"Ropa y Accesorios","Lo ultimo en moda y accesorios")
 ;
-SET FOREIGN_KEY_CHECKS=0;
-INSERT INTO PRODUCT(Id, Name, Brand, Cost, Description, Id_Category_FK, Id_User_FK, Id_Department_FK, Image, Date_Product, State) VALUES 
+
+INSERT INTO STATE(Id, Name) VALUES
+(1,"Nuevo"),
+(2,"Usado"),
+(3,"Usado como nuevo"),
+(4,"Usado-Buen estado"),
+(5,"Usado-Aceptable")
+;
+
+
+INSERT INTO PRODUCT(Id, Name, Brand, Cost, Description, Id_Category_FK, Id_User_FK, Id_Department_FK, Image, Date_Product, Id_State_FK) VALUES 
     (1, "Camisa Deportiva", "Nike", 800, "Prenda para vestir de alta calidad", 9, 1, 1, "https://i.ibb.co/sKrKGmq/Camisa-Nike.jpg","2021-05-02", 1),
     (2, "Calcetines Negros", "Nike" ,250, "Prenda para vestir de alta calidad", 9, 1, 1, "https://i.ibb.co/LvHggWZ/Calcetines-Nike-Negros.jpg","2021-03-01", 1),
     (3, "Calcetines Blancos", "Nike", 250, "Prenda de vestir de alta calidad", 9, 1, 1, "https://i.ibb.co/6NrLwYT/Calcetines-Nike.jpg","2021-03-07", 2),
@@ -70,16 +80,5 @@ INSERT INTO PRODUCT(Id, Name, Brand, Cost, Description, Id_Category_FK, Id_User_
     (17, "Moto pulsar 125ns", "Pulsar", 25000, "Satisfacion garantizada", 4, 1, 1, "https://i.ibb.co/pKLTqqr/Pulsar125ns.jpg","2021-01-07", 1),
     (18, "TV 52 Pulgadas", "Sony", 25687, "4k alta definicion", 1, 1, 1, "https://i.ibb.co/WPw0N2b/TV-52-pulgadas.jpg","2021-07-05", 2)
 ;
-
-
-
-INSERT INTO STATE(Id, Name) VALUES
-(1,"Nuevo"),
-(2,"Usado"),
-(3,"Usado como nuevo"),
-(4,"Usado-Buen estado"),
-(5,"Usado-Aceptable")
-;
-
 
 

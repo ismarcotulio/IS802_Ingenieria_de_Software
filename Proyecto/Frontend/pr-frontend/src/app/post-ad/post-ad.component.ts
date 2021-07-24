@@ -4,7 +4,7 @@ import { FormGroup, Validators } from '@angular/forms';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-
+import { PostAdService } from './service/post-ad.service';
 
 @Component({
   selector: 'app-post-ad',
@@ -28,14 +28,15 @@ export class PostAdComponent implements OnInit {
 
   formPost = new FormGroup({
     state: new FormControl('',[Validators.required]),
-    Description: new FormControl('',[Validators.required]),
-    Name: new FormControl('',Validators.maxLength(25)),
+    Brand: new FormControl('',[Validators.required, Validators.maxLength(30)]),
+    Description: new FormControl('',[Validators.required, Validators.maxLength(50)]),
+    Name: new FormControl('',Validators.maxLength(30)),
     Depart: new FormControl('0',[Validators.required]),
     Id_Category: new FormControl('0',[Validators.required]),
     Cost: new FormControl('', Validators.maxLength(8))
   });
 
-  constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient) { }
+  constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient, private servicePost:PostAdService) { }
 
   ngOnInit(): void {
   }
@@ -49,45 +50,37 @@ export class PostAdComponent implements OnInit {
     const archivoCapturado = event.target.files[0]
     // console.log(archivoCapturado);
 
-    // this.archivoCap = archivoCapturado;
-    
     const unsafeImg = window.URL.createObjectURL(archivoCapturado);
     const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
     this.previsualizacion = image;
     
     this.fb.append('image',archivoCapturado);
-  
-    // let headers = new Headers({'authorization':'Client-ID clientid'})
-    // fb.append
     
   }
   
   
   guardar(){
-
+    
     var fecha:Date = new Date();
     //capturando la fecha de la publicacion
     this.fechaPublicacion = fecha.toLocaleDateString();
+    
+    // console.log(this.formPost.value);  
+    
+    this.httpClient.post('/api',this.fb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
+      this.urls = resp;
+      const url = this.urls['data'].url;
+      // console.log(aa); //imprime la url de la imagen
+      
+      
+      this.servicePost.guardPostAd(this.formPost,url,this.fechaPublicacion).subscribe(res =>{
+        console.log(res);
+      });
 
-    console.log(this.formPost.value);
-    console.log(this.fechaPublicacion);
-
+      alert('Anuncio Publicado.');
+      
+    });
     
-
-    // this.httpClient.post('/api',this.fb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
-    //   this.urls = resp;
-    //   // console.log(resp['data']);
-    // });
-    
-    // console.log(typeOf(this.urls));
-    
-    // const datos = JSON.parse(this.urls.data);
-    
-    // const aa = this.urls['data'].url;
-    // console.log(aa);
-    
-    // alert('Anuncio Publicado.');
-
   }
   
   get category(){

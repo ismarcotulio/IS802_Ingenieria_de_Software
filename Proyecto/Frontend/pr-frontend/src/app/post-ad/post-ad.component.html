@@ -6,7 +6,9 @@
 
             <form [formGroup]="formPost" (ngSubmit)= "guardar()">
                 <input class = "inputPost" type="text" formControlName="Name" placeholder="Nombre anuncio" required>
-
+                
+                <input class = "inputPost" type="text" formControlName="Brand" placeholder="Marca" required>
+                
                 <p><textarea name="descripcion"  formControlName="Description"  placeholder="Ingresa la descripcion de tu anuncio"></textarea></p>
                 
                 <p class="textState">Seleccione el estado:</p>

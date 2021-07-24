@@ -29,7 +29,7 @@ export class FormRegisterComponent implements OnInit {
       data => {
         localStorage.setItem("token", data.token);
         alert("usuario registrado");
-        this.router.navigate(['user/home']);
+        this.router.navigate(['user']);
       }
     )
   }

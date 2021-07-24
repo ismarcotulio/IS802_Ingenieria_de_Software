@@ -1,0 +1,14 @@
+<div id="section-nav-filter">
+  <div id="section-order-filter">
+
+  </div>
+</div>
+
+<div id="section-side-filter">
+
+</div>
+
+<div id="section-body-filter">
+  <app-product-shelf-default  *ngIf="!this.isUser"  [products]="this.products"></app-product-shelf-default>
+  <app-product-shelf *ngIf="this.isUser"  [products]="this.products"></app-product-shelf>
+</div>

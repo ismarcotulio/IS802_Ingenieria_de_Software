@@ -11,13 +11,10 @@ export class CardProductDefaultComponent implements OnInit {
 
   @Input() Id = 0;
   @Input() Name = "";
+  @Input() Type = "";
+  @Input() Cost = 0;
   @Input() Description = "";
-  @Input() Price = 0;
-  @Input() State = 0;
-  @Input() Department = 0;
-  @Input() Seller = 0;
-  @Input() Category = 0;
-  @Input() Img = "";
+  @Input() Image = "";
 
   ngOnInit(): void {
   }

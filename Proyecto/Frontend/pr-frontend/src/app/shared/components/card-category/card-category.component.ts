@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card-category.component.css']
 })
 export class CardCategoryComponent implements OnInit {
-  @Input() category: Category = {Id:0, Name:""}
+  @Input() category: Category = {Id:0, Name:"", Image:""}
   constructor() { }
 
   ngOnInit(): void {

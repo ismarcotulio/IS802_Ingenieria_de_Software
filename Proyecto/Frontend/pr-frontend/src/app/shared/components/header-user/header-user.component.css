@@ -77,6 +77,19 @@
   position: relative;
   width: 100%;
   height: 25%;
+
+}
+
+#post-btn{
+  position: absolute;
+  width: 15%;
+  height: 90%;
+  top: 5%;
+  left: 65%;
+  background: transparent;
+  color: white;
+  text-align:center;
+  border: none;
 }
 
 #inputSection2{
@@ -138,9 +151,38 @@
 }
 
 #inputSection3{
+  box-sizing: border-box;
   position: relative;
   width: 100%;
   height: 30%;
+  padding-left: 2.5%;
+}
+
+.categoryBtnContainer{
+  position: relative;
+  float: left;
+  height: 100%;
+  padding-left: 2.5%;
+}
+
+.btnCategory{
+  position: relative;
+  width: 100%;
+  height: 90%;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1vw;
+}
+
+.btnCategory:hover{
+  box-sizing: border-box;
+  border-bottom: solid white 5px;
+}
+
+.isActive{
+  box-sizing: border-box;
+  border-bottom: solid white 5px;
 }
 
 #userSection{

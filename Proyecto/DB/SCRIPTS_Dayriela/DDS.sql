@@ -10,8 +10,8 @@ Firts_Name VARCHAR(30) NOT NULL,
 Last_Name VARCHAR(30) NOT NULL,
 Email VARCHAR(40) NOT NULL,
 Address VARCHAR(150) NOT NULL,
-Password VARCHAR(30),
-Check_Email BOOLEAN
+Password VARCHAR(30) NOT NULL,
+Check_Email BOOLEAN DEFAULT false NOT NULL
 );
 
 

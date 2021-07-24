@@ -26,9 +26,5 @@ END//
 DELIMITER ;
 
 
-USE Ecommerce;
-CALL insertProduct(19, "Cepillo Dental", "Colgate", 78 , "Cuidado superior para toda la boca", 5 , 2 ,"", "2021-05-04", 1, 15 );
-
-
 
 

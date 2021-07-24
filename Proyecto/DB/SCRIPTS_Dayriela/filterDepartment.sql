@@ -13,7 +13,6 @@ CREATE PROCEDURE filterDepartment(IN departamento_ID INT)
 	END//
 
 DELIMITER ;
-DROP PROCEDURE filterDepartment;
 
 CALL filterDepartment(1);
 

@@ -1,11 +1,16 @@
 import { MatDialog } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { RegistrationService } from './../../services/user/registration.service';
+import { MailService } from './../../../core/services/mail/mail.service';
 import { TermsDialogComponent } from '../terms-dialog/terms-dialog.component';
+import { EmailVerifyDialogComponent } from './../email-verify-dialog/email-verify-dialog.component';
+
+import { emailMaker } from '../../functions/emailMaker';
+
 
 @Component({
   selector: 'app-form-register',
@@ -14,6 +19,8 @@ import { TermsDialogComponent } from '../terms-dialog/terms-dialog.component';
 })
 export class FormRegisterComponent implements OnInit {
 
+  submitStatus = false
+
   checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
     let pass = group.get('password')?.value;
     let confirmPass = group.get('passwordConfirm')?.value
@@ -21,7 +28,7 @@ export class FormRegisterComponent implements OnInit {
   }
 
   registerForm = this.fb.group({
-    first_Name: ['', Validators.required],
+    firts_Name: ['', Validators.required],
     last_Name: ['', Validators.required],
     address: ['', Validators.required],
     phone: ['', Validators.required],
@@ -35,25 +42,46 @@ export class FormRegisterComponent implements OnInit {
     private fb: FormBuilder,
     private registration: RegistrationService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private mailService: MailService
   ) { }
+
 
 
   registerUser(){
     this.registration.userRegister( this.registerForm ).subscribe(
       data => {
-        localStorage.setItem("token", data.token);
-        alert("usuario registrado");
-        this.router.navigate(['user']);
+
+        this.mailService.sendEmail(
+          "criptomarkethn@gmail.com",
+          this.registerForm.get('email')?.value,
+          "Confirmacion de cuenta",
+          emailMaker(`${this.registerForm.get('email')?.value}`)
+        ).subscribe(
+          res => {
+            console.log(res)
+            if(res.status == true){
+              this.openEmailVerifyDialog()
+            }
+          }
+        )
       }
     )
   }
 
-  openDialog() {
+  openTermsDialog() {
     const dialogRef = this.dialog.open(TermsDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openEmailVerifyDialog() {
+    const dialogRef = this.dialog.open(EmailVerifyDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.router.navigate(["/sesion"])
     });
   }
 

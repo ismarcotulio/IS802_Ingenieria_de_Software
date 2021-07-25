@@ -1,4 +1,4 @@
-<form id="form-register" [formGroup]="registerForm" (ngSubmit)="this.registerUser()">
+<form id="form-register" [formGroup]="registerForm" >
   <div id="section-title">
     <div class="title"><b>Registrate</b></div>
     <div class="subtitle">Es rápido y fácil</div>
@@ -6,7 +6,7 @@
   <div id="section-body">
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Nombre</div></div>
-      <div class="section-input-text"><input type="text" class="input-text" formControlName="first_Name"></div>
+      <div class="section-input-text"><input type="text" class="input-text" formControlName="firts_Name"></div>
     </div>
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Apellido</div></div>
@@ -39,7 +39,7 @@
           <input type="checkbox" class="input-checkbox" formControlName="terms">
         </div>
         <div class="section-input-button-contract">
-          <button class="button-contract" type="button" (click)="openDialog()">Mostrar terminos y condiciones</button>
+          <button class="button-contract" type="button" (click)="openTermsDialog()">Mostrar terminos y condiciones</button>
         </div>
       </div>
     </div>
@@ -59,6 +59,6 @@
       <div *ngIf="this.registerForm.hasError('notSame')">Confirmacion de contraseña invalida</div>
       <div *ngIf="this.registerForm.get('terms')?.getError('required') == true">Debes Aceptar los terminos y condiciones</div>
     </div>
-    <button class="btnSubmit" type="submit" *ngIf="this.registerForm.status == 'VALID';disabled" #btnRegister><b>Registrarme</b></button>
+    <button class="btnSubmit" type="submit"  #btn  (click)="this.registerUser(); btn.style.display = 'none'" *ngIf="this.registerForm.status == 'VALID';disabled" ><b>Registrarme</b></button>
   </div>
 </form>

@@ -177,7 +177,7 @@
 .ng-invalid:not(form) {
   border-left: 5px solid #ff5663; /* red */
 }
-.ng-valid  {
+.ng-valid:not(form)  {
   border-left: 5px solid #42A948; /* green */
 }
 

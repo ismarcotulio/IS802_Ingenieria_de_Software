@@ -10,13 +10,15 @@ import { RegisterRoutingModule } from './register-routing.module';
 import { ViewRegisterComponent } from './view-register/view-register.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
 import { TermsDialogComponent } from './components/terms-dialog/terms-dialog.component';
+import { EmailVerifyDialogComponent } from './components/email-verify-dialog/email-verify-dialog.component';
 
 
 @NgModule({
   declarations: [
     ViewRegisterComponent,
     FormRegisterComponent,
-    TermsDialogComponent
+    TermsDialogComponent,
+    EmailVerifyDialogComponent
   ],
   imports: [
     CommonModule,

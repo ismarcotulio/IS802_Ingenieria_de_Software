@@ -170,6 +170,39 @@ class Database{
           })
         })
       }
+
+      getStatusAccount(email){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `SELECT Check_Email FROM USER WHERE Email = ?`,
+            [email], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+                if(results[0] != undefined){
+                  console.log(results[0]["Check_Email"])    
+                  resolve(results[0].Check_Email)
+                }else{
+                  resolve("cuenta no existe")
+                }  
+            }
+          })
+        })
+      }
+
+      confirmEmail(email){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            ` UPDATE USER SET Check_Email=true WHERE Email = ?`,
+            [email], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+                resolve(true)
+            }
+          })
+        })
+      }
 }
 
 export { Database }

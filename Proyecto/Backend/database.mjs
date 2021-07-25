@@ -71,9 +71,9 @@ class Database{
         })
       }
 
-      insertProduct( Id, Name, Type, Cost, Description, Id_Category, Id_Users, Image, Date_Product, State, Department){
+      insertProduct( Id, Name, Brand, Cost, Description, Id_Category, Id_User, Image, Date_Product, State, Department){
         return new Promise((resolve, reject)=>{      
-          this.conexion.query(`CALL insertProduct(?,?,?,?,?,?,?,?,?,?,?)`,[ Id, Name, Type, Cost, Description, Id_Category, Id_Users, Image, Date_Product, State, Department], (error,results, fields)=>{
+          this.conexion.query(`CALL insertProduct(?,?,?,?,?,?,?,?,?,?,?)`,[ Id, Name, Brand, Cost, Description, Id_Category, Id_User, Image, Date_Product, State, Department], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
@@ -99,7 +99,7 @@ class Database{
         })
       }
 
-      getAllProducts(){
+     getAllProducts(){
         return new Promise((resolve, reject)=>{
           this.conexion.query(`CALL DataCollectionProduct(?)`,[true], (error,results, fields)=>{
             if(error){
@@ -108,9 +108,8 @@ class Database{
               resolve(results[0])
             }
           }
-        })
-      })
-     }
+        )})
+      }
 
       getLastProductIdQuery(callback){
         return new Promise((resolve, reject)=>{

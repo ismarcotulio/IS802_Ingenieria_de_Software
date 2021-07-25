@@ -164,6 +164,13 @@ app.post("/insertProduct", async (req , res) => {
     productController.insertProduct( req, res, app.get("llave"))
 });
 
+app.post('/productKeyword', async (req,res)=>{
+    database.filterByKeyword(req.body.keyword)
+    .then(results=>{
+        res.send(results)
+    })
+})
+
 
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 

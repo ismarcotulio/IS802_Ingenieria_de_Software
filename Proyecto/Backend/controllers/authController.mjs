@@ -19,10 +19,10 @@ class AuthController{
                 Address: "",
                 Password: ""
             }
-    
+
             var date = new Date()    
     
-            newUser.Firts_Name = req.body.first_Name
+            newUser.Firts_Name = req.body.firts_Name
             newUser.Last_Name = req.body.last_Name
             newUser.Email = req.body.email
             newUser.Address = req.body.address
@@ -32,10 +32,13 @@ class AuthController{
                 newUser.Id = results   
             })
 
+
+
             let payload = {
                 Id_usuario: newUser.Id,
                 iat: date.getTime()/1000
             }
+
             var token = jwt.sign(payload, key)
     
             await this.database.insertUser(newUser.Id, newUser.Firts_Name, newUser.Last_Name, newUser.Email, newUser.Address,newUser.Password)
@@ -60,10 +63,6 @@ class AuthController{
         })();
     }
     
-
-
-    
-
 }
 
 export { AuthController }

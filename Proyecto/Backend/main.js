@@ -5,6 +5,7 @@ import cors from 'cors';
 
 
 import { Database } from './database.mjs';
+
 import { ProductController } from './controllers/productController.mjs'
 import { AuthController } from './controllers/authController.mjs';
 import { TokenController } from './controllers/tokenController.mjs';
@@ -157,7 +158,12 @@ app.get('/categoria-departamento', (req,res)=>{
 
 app.post('/verify',tokenController.middleVerifyToken, function(req,res){
     tokenController.verifyToken(req,res,app.get('llave'))
-})
+});
+
+app.post("/insertProduct", async (req , res) => {
+    productController.insertProduct( req, res, app.get("llave"))
+});
+
 
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 

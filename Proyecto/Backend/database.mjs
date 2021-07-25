@@ -11,7 +11,7 @@ class Database{
         this.conexion = this.mysql.createConnection({ 
             host: 'localhost',
             user: 'root',
-            password: 'password',
+            password: 'jafethfer10',
             database: 'ecommerce'
         })
         return this.conexion
@@ -34,20 +34,12 @@ class Database{
             if(error){
               reject(error)
             }else{
-              resolve(results[0].Id+1)
-            }
-            
-          })
-        })
-      }
-
-      getLastTokenIdQuery(){
-        return new Promise((resolve, reject)=>{
-          this.conexion.query(`SELECT * FROM token ORDER BY Id DESC LIMIT 1;`, (error,results, fields)=>{
-            if(error){
-              reject(error)
-            }else{
-              resolve(results[0].Id+1)
+              if(results[0]!=undefined){
+                resolve(results[0].Id+1)
+              }else{
+                resolve(0)
+              }
+              
             }
             
           })
@@ -67,9 +59,9 @@ class Database{
         })
       }
 
-      insertUser(Id, Firts_Name, Last_Name, Email, Address,lastToken,password){
+      insertUser(Id, Firts_Name, Last_Name, Email, Address,password){
         return new Promise((resolve, reject)=>{
-          this.conexion.query(`CALL insertUser(?,?,?,?,?,?,?)`,[Id, Firts_Name, Last_Name, Email, Address, lastToken,password], (error,results, fields)=>{
+          this.conexion.query(`CALL insertUser(?,?,?,?,?,?)`,[Id, Firts_Name, Last_Name, Email, Address, password], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
@@ -107,6 +99,19 @@ class Database{
         })
       }
 
+      getAllProducts(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL DataCollectionProduct(?)`,[true], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          }
+        })
+      })
+     }
+
       getLastProductIdQuery(callback){
         return new Promise((resolve, reject)=>{
           this.conexion.query('SELECT * FROM PRODUCT ORDER BY Id DESC LIMIT 1;', (error,results, fields)=>{
@@ -115,11 +120,45 @@ class Database{
             }else{
               resolve(results[0].Id+1)
             }
-            
           })
         })
       }
 
+      getCategoriaProducts(categoria){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL filterCategory(?)`,[categoria], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      getDepartamentoProducts(departamento){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL filterDepartment(?)`,[departamento], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      getMultipleFilters(categoria,departamento){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL getMultipleFilters(?,?)`,[categoria,departamento], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
 }
 
 export { Database }

@@ -10,7 +10,7 @@ class ProductController{
     insertProduct(req, res, key){
         //Envoltura asincrona IIR
         (async () => {
-
+          
             var newProduct = {
 
                 Id: 0,

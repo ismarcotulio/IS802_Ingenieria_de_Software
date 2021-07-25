@@ -2,9 +2,10 @@ import express from 'express';
 import mysql from "mysql2";
 import bodyParser from 'body-parser';
 import cors from 'cors';
-
+import nodemailer from "nodemailer";
 
 import { Database } from './database.mjs';
+import { Mailer } from './mailer.mjs';
 
 import { ProductController } from './controllers/productController.mjs'
 import { AuthController } from './controllers/authController.mjs';
@@ -12,6 +13,8 @@ import { TokenController } from './controllers/tokenController.mjs';
 
 import {Router,CategoriaRouter} from './routers/categoria-router.js';
 import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
+import { EmailController } from './controllers/emailController.mjs';
+
 
 //Configuracion express
 const config = {
@@ -26,11 +29,14 @@ app.set('llave', config.llave);
 const database = new Database(mysql)
 database.getStatus()
 
+//Instancia de servidor para el envio de correos
+const mailer = new Mailer(nodemailer)
 
 //Instancias de controladores
 const productController = new ProductController(database);
 const authController = new AuthController(database);
 const tokenController = new TokenController();
+const emailController = new EmailController(mailer, database);
 
 //Instancia de routers
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
@@ -169,6 +175,14 @@ app.post('/productKeyword', async (req,res)=>{
     .then(results=>{
         res.send(results)
     })
+})
+
+app.post("/sendEmail", async (req , res) => {
+    emailController.sendEmail( req, res)
+});
+
+app.get('/confirmEmail', (req,res)=>{
+    emailController.confirmEmail( req, res)
 })
 
 

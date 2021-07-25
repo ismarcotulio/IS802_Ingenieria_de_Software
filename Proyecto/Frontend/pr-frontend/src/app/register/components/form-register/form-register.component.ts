@@ -27,7 +27,7 @@ export class FormRegisterComponent implements OnInit {
     phone: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(`^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$`)]],
-    passwordConfirm: [''],
+    passwordConfirm: ['', Validators.required],
     terms: ['', [Validators.required, Validators.requiredTrue]]
   },{validators: this.checkPasswords});
 

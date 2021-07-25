@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { RegistrationService } from './../../services/user/registration.service';
 import { TermsDialogComponent } from '../terms-dialog/terms-dialog.component';
 
@@ -13,6 +13,13 @@ import { TermsDialogComponent } from '../terms-dialog/terms-dialog.component';
   styleUrls: ['./form-register.component.css']
 })
 export class FormRegisterComponent implements OnInit {
+
+  checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
+    let pass = group.get('password')?.value;
+    let confirmPass = group.get('passwordConfirm')?.value
+    return pass === confirmPass ? null : { notSame: true }
+  }
+
   registerForm = this.fb.group({
     first_Name: ['', Validators.required],
     last_Name: ['', Validators.required],
@@ -20,8 +27,9 @@ export class FormRegisterComponent implements OnInit {
     phone: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(`^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$`)]],
+    passwordConfirm: [''],
     terms: ['', [Validators.required, Validators.requiredTrue]]
-  });
+  },{validators: this.checkPasswords});
 
   constructor(
     private fb: FormBuilder,
@@ -48,6 +56,8 @@ export class FormRegisterComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+
 
   ngOnInit(): void {
   }

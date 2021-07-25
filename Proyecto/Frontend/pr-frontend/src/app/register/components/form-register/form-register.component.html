@@ -26,7 +26,11 @@
     </div>
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Contraseña</div></div>
-      <div class="section-input-text"><input type="text" class="input-text" formControlName="password"></div>
+      <div class="section-input-text"><input type="password" class="input-text" formControlName="password"></div>
+    </div>
+    <div class="section-input">
+      <div class="section-input-title"><div class="input-title">Confirme contraseña</div></div>
+      <div class="section-input-text"><input type="password" class="input-text" formControlName="passwordConfirm"></div>
     </div>
     <div class="section-input">
       <div class="section-input-title"><div class="input-title">Aceptar terminos y condiciones</div></div>
@@ -43,8 +47,8 @@
   <div id="section-submit">
     <div class="section-error">
 
-      <div *ngIf="this.registerForm.get('firstName')?.getError('required') == true">Debes ingresar tu nombre</div>
-      <div *ngIf="this.registerForm.get('lastName')?.getError('required') == true">Debes ingresar tu apellido</div>
+      <div *ngIf="this.registerForm.get('first_Name')?.getError('required') == true">Debes ingresar tu nombre</div>
+      <div *ngIf="this.registerForm.get('last_Name')?.getError('required') == true">Debes ingresar tu apellido</div>
       <div *ngIf="this.registerForm.get('address')?.getError('required') == true">Debes ingresar tu direccion</div>
       <div *ngIf="this.registerForm.get('phone')?.getError('required') == true">Debes ingresar tu numero de telefono</div>
       <div *ngIf="this.registerForm.get('email')?.getError('required') == true">Debes ingresar un correo electronico</div>
@@ -52,6 +56,7 @@
       <div *ngIf="this.registerForm.get('password')?.getError('required') == true">Debes ingresar una Contraseña</div>
       <div *ngIf="this.registerForm.get('password')?.value.length < 8">la Contraseña debe tener al menos 8</div>
       <div *ngIf="this.registerForm.get('password')?.status == 'INVALID'">La Contraseña debe tener al menos 1 digito, 1 letra mayuscula, 1 letra minuscula y 1 caracter especial</div>
+      <div *ngIf="this.registerForm.hasError('notSame')">Confirmacion de contraseña invalida</div>
       <div *ngIf="this.registerForm.get('terms')?.getError('required') == true">Debes Aceptar los terminos y condiciones</div>
     </div>
     <button class="btnSubmit" type="submit" *ngIf="this.registerForm.status == 'VALID';disabled" #btnRegister><b>Registrarme</b></button>

@@ -1,10 +1,11 @@
-
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { RegistrationService } from './../../services/user/registration.service';
+import { TermsDialogComponent } from '../terms-dialog/terms-dialog.component';
 
 @Component({
   selector: 'app-form-register',
@@ -18,10 +19,16 @@ export class FormRegisterComponent implements OnInit {
     address: ['', Validators.required],
     phone: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(`^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$`)]]
+    password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(`^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$`)]],
+    terms: ['', [Validators.required, Validators.requiredTrue]]
   });
 
-  constructor( private fb: FormBuilder, private registration: RegistrationService, private router: Router ) { }
+  constructor(
+    private fb: FormBuilder,
+    private registration: RegistrationService,
+    private router: Router,
+    private dialog: MatDialog
+  ) { }
 
 
   registerUser(){
@@ -32,6 +39,14 @@ export class FormRegisterComponent implements OnInit {
         this.router.navigate(['user']);
       }
     )
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(TermsDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   ngOnInit(): void {

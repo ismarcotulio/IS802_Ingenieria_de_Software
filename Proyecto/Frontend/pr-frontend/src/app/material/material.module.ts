@@ -10,6 +10,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -26,7 +27,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatFormFieldModule,
     FormsModule,
     MatProgressSpinnerModule,
-    
+    MatDialogModule
+
   ],
   exports: [
     MatToolbarModule,
@@ -38,7 +40,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatFormFieldModule,
     FormsModule,
     MatProgressSpinnerModule,
-    
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

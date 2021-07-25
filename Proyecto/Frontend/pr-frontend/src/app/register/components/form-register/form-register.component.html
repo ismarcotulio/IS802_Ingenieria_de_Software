@@ -32,10 +32,10 @@
       <div class="section-input-title"><div class="input-title">Aceptar terminos y condiciones</div></div>
       <div class="section-input-text">
         <div class="section-input-checkbox">
-          <input type="checkbox" class="input-checkbox" >
+          <input type="checkbox" class="input-checkbox" formControlName="terms">
         </div>
         <div class="section-input-button-contract">
-          <button class="button-contract" type="button" >Mostrar terminos y condiciones</button>
+          <button class="button-contract" type="button" (click)="openDialog()">Mostrar terminos y condiciones</button>
         </div>
       </div>
     </div>
@@ -52,6 +52,7 @@
       <div *ngIf="this.registerForm.get('password')?.getError('required') == true">Debes ingresar una Contraseña</div>
       <div *ngIf="this.registerForm.get('password')?.value.length < 8">la Contraseña debe tener al menos 8</div>
       <div *ngIf="this.registerForm.get('password')?.status == 'INVALID'">La Contraseña debe tener al menos 1 digito, 1 letra mayuscula, 1 letra minuscula y 1 caracter especial</div>
+      <div *ngIf="this.registerForm.get('terms')?.getError('required') == true">Debes Aceptar los terminos y condiciones</div>
     </div>
     <button class="btnSubmit" type="submit" *ngIf="this.registerForm.status == 'VALID';disabled" #btnRegister><b>Registrarme</b></button>
   </div>

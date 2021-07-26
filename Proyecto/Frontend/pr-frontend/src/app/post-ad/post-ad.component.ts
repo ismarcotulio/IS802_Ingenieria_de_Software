@@ -64,8 +64,10 @@ export class PostAdComponent implements OnInit {
     var fecha:Date = new Date();
     //capturando la fecha de la publicacion
     this.fechaPublicacion = fecha.toLocaleDateString();
-    
-    // console.log(this.formPost.value);  
+
+    var dateNow = this.fechaPublicacion.split('/');
+
+    this.fechaPublicacion = `${dateNow[2]}-${dateNow[1]}-${dateNow[0]}`;
     
     this.httpClient.post('/api',this.fb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
       this.urls = resp;
@@ -90,6 +92,7 @@ export class PostAdComponent implements OnInit {
   get departament(){
     return this.formPost.get('Depart')?.value;
   }
+
   borrarImg(){
     this.previsualizacion = '';
   }

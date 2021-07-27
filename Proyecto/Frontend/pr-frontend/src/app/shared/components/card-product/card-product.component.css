@@ -4,17 +4,23 @@
 }
 
 .imgProducto{
+    position: relative;
     width: 100%;
+    height: 57%;
+    /* background-color: red; */
     text-align: center;
 }
 
 .imgProducto img{
+    /* position: absolute; */
     width: 85%;
+    height: 100%;
+    /* height: 200px; */
 }
 
 .contDatos{
     width: 100%;
-    height: 31%;
+    height: 30%;
 }
 
 .contRow{
@@ -53,9 +59,10 @@
 }
 
 .buttom{
-    width: 95%;
+    width: 90%;
+    margin-left: 2%;
     /* text-align: center */
-    height: 15%;
+    /* height: 15%; */
     background-color: red;
     border-style: none;
     border-radius: 5px;
@@ -63,16 +70,20 @@
     text-transform: uppercase;
     font-size: 0.7rem;
     font-weight: bold;
-    margin-top: auto;
-    padding: 5px 5px;
+    /* margin-top: auto; */
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1rem;
+    padding: 0.8rem 0;
 }
 
 .contTarjet{
     width: 18.75%;
      /* height: 15%; */
+     height: 310px;
      /* height: 292px; */
      /* background: gray; */
-    padding: 10px;
+    padding: 0.5rem;
     border-radius: 5px;
     /* border: black  1px solid; */
     margin-left: 5%;

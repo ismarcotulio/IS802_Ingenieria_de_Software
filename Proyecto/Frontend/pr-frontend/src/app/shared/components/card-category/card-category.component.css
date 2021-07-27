@@ -4,14 +4,14 @@
 }
 
 .contCard{
-    width: 30%;
-    height: 40%;
+    width: 27%;
+    height: 55%;
     background-repeat: no-repeat, no-repeat;
     background-position: center center;
     background-size: cover;
     background-color: black;
-    margin-left: 2.5%;
-    margin-top: 3%;
+    margin-left: 4.5%;
+    margin-top: 1%;
     border-radius: 1rem;
     float: left;
 }

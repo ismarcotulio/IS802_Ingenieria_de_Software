@@ -20,13 +20,17 @@ export class ViewHomeComponent implements OnInit {
 
   ngOnInit(): void {
     if(history.state.data){
-      this.products =this.productSearchService.getProductsByKeyword()
+      this.productSearchService.getProductsByKeyword(history.state.data.key).subscribe(
+        data => {
+          console.log(data)
+          this.products = data
+        }
+      )
 
     }else{
       this.productService.getProducts("all").subscribe(
         data => {
           this.products = data
-          console.log(data)
         }
       )
     }

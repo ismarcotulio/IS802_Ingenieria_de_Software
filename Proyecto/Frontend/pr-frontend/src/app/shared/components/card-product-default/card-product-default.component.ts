@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-product-default',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardProductDefaultComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   @Input() Id = 0;
   @Input() Name = "";
@@ -18,6 +19,10 @@ export class CardProductDefaultComponent implements OnInit {
   @Input() Date = "";
 
   ngOnInit(): void {
+  }
+
+  productDetail(){
+    this.router.navigate([`/product/${this.Id}`])
   }
 
 }

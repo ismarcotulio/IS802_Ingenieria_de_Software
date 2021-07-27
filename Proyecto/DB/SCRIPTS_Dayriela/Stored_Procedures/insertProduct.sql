@@ -11,7 +11,7 @@ CREATE PROCEDURE insertProduct(
     IN Description_parameter VARCHAR(150),
     IN Id_Category_FK_parameter INT,
     IN Id_User_FK_parameter INT(30),
-    IN Image_parameter VARCHAR(30),
+    IN Image_parameter VARCHAR(100),
     IN Date_Product_parameter DATE,
     IN Id_State_FK_parameter INT,
     IN Id_Department_FK_parameter INT

@@ -16,7 +16,7 @@ export class HeaderDefaultComponent implements OnInit {
 
   searchProduct(key: string): void {
     this.router.navigateByUrl('register', {skipLocationChange: true})
-  .then(()=>this.router.navigate(['home'], {state: {data: {key}}}));
+  .then(()=>this.router.navigate(['category'], {state: {data: {key}}}));
 
   }
 

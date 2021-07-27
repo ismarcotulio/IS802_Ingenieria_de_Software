@@ -24,7 +24,7 @@ export class HeaderUserComponent implements OnInit {
 
   searchProduct(key: string): void {
     this.router.navigateByUrl('user/postAd', {skipLocationChange: true})
-  .then(()=>this.router.navigate(['user'], {state: {data: {key}}}));
+  .then(()=>this.router.navigate(['user/category'], {state: {data: {key}}}));
 
   }
 }

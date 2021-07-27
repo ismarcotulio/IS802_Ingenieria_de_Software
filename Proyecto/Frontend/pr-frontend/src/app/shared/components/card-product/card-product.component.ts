@@ -15,7 +15,7 @@ export class CardProductComponent implements OnInit {
   @Input() Cost = 0;
   @Input() Description = "";
   @Input() Image = "";
-
+  @Input() Date = "";
 
   ngOnInit(): void {
   }

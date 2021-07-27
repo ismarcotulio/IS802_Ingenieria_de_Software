@@ -28,4 +28,15 @@
   height: 90%;
 }
 
+.optionFilter{
+  position: absolute;
+  right: 0;
+  margin-right: 4rem;
+  margin-top: 2px;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  /* border: none; */
+  /* margin-right: auto; */
+}
+
 

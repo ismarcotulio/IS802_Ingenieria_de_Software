@@ -203,6 +203,29 @@ class Database{
           })
         })
       }
+
+      getProduct(id){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            ` SELECT PRODUCT.Id AS Id, PRODUCT.Name AS Name, PRODUCT.Brand AS Brand,
+            PRODUCT.Cost AS Cost, PRODUCT.Description AS Description, PRODUCT.Id_Category_FK AS Id_Category,
+            PRODUCT.Image AS Image, PRODUCT.Date_Product AS Date_Product,
+            PRODUCT.Id_State_FK AS Id_State, PRODUCT.Id_Department_FK AS Id_Department,
+            USER.Id AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name,
+            USER.Email AS Email, USER.Address AS Address
+  
+              FROM PRODUCT
+              JOIN USER ON PRODUCT.Id_User_FK = USER.Id  
+              WHERE PRODUCT.Id = ?`,
+            [id], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+                resolve(results[0])
+            }
+          })
+        })
+      }
 }
 
 export { Database }

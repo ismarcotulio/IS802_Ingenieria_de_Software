@@ -185,6 +185,12 @@ app.get('/confirmEmail', (req,res)=>{
     emailController.confirmEmail( req, res)
 })
 
+app.get("/getProduct/:id", async (req , res) => {
+    database.getProduct(req.params.id)
+    .then(results =>{
+        res.send(results)
+    })
+});
 
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 

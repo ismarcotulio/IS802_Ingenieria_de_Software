@@ -44,7 +44,7 @@
     margin-bottom: 3px;
     font-weight: bold;
     margin-right: 12%;
-    margin-top: 3px;
+    margin-top: 5px;
 }
 
 .descripcionProducto{
@@ -59,8 +59,8 @@
 }
 
 .buttom{
-    width: 90%;
-    margin-left: 2%;
+    width: 93.5%;
+    /* margin-left: 2%; */
     /* text-align: center */
     /* height: 15%; */
     background-color: red;
@@ -73,14 +73,15 @@
     /* margin-top: auto; */
     position: absolute;
     bottom: 0;
-    margin-bottom: 1rem;
+    margin: 0;
+    margin-bottom: 0.3rem;
     padding: 0.8rem 0;
 }
 
 .contTarjet{
     width: 18.75%;
      /* height: 15%; */
-     height: 310px;
+     height: 320px;
      /* height: 292px; */
      /* background: gray; */
     padding: 0.5rem;
@@ -98,9 +99,17 @@
 }
 
 .precioProducto{
-    margin-top: 3px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 3rem;
+    /* margin-top: 3px; */
 }
 
 .nombreProducto{
     margin-top: 4px;
+}
+
+.fecha{
+    margin: 0;
+    font-size: 12px;
 }

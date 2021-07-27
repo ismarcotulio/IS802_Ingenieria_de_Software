@@ -35,4 +35,35 @@ export class ViewCategoryComponent implements OnInit {
 
   }
 
+  optionSelect(event:any){
+    if(event.target.value == 1){
+
+      var bf = this.products.sort( (a,b) => {
+          
+          return new Date(b.Date_Product).getTime() - new Date(a.Date_Product).getTime(); 
+      });
+      
+    }else if(event.target.value == 0){
+      console.log('return');
+      this.route.params.subscribe(params => {
+        this.productService.getProducts(params["category"]).subscribe(
+          data => {
+            this.products = data;
+          }
+        )
+      });
+    }else if(event.target.value == 2){
+      var bf = this.products.sort( (a,b) => {
+          
+        return b.Cost - a.Cost; 
+      });
+    }else if(event.target.value == 3){
+      var bf = this.products.sort( (a,b) => {
+          
+        return a.Cost - b.Cost; 
+      });
+    }
+
+  }
+
 }

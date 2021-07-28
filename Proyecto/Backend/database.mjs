@@ -34,20 +34,12 @@ class Database{
             if(error){
               reject(error)
             }else{
-              resolve(results[0].Id+1)
-            }
-            
-          })
-        })
-      }
-
-      getLastTokenIdQuery(){
-        return new Promise((resolve, reject)=>{
-          this.conexion.query(`SELECT * FROM token ORDER BY Id DESC LIMIT 1;`, (error,results, fields)=>{
-            if(error){
-              reject(error)
-            }else{
-              resolve(results[0].Id+1)
+              if(results[0]!=undefined){
+                resolve(results[0].Id+1)
+              }else{
+                resolve(0)
+              }
+              
             }
             
           })
@@ -67,9 +59,21 @@ class Database{
         })
       }
 
-      insertUser(Id, Firts_Name, Last_Name, Email, Address,lastToken,password){
+      insertUser(Id, Firts_Name, Last_Name, Email, Address,password){
         return new Promise((resolve, reject)=>{
-          this.conexion.query(`CALL insertUser(?,?,?,?,?,?,?)`,[Id, Firts_Name, Last_Name, Email, Address, lastToken,password], (error,results, fields)=>{
+          this.conexion.query(`CALL insertUser(?,?,?,?,?,?)`,[Id, Firts_Name, Last_Name, Email, Address, password], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+
+      insertProduct( Id, Name, Brand, Cost, Description, Id_Category, Id_User, Image, Date_Product, State, Department){
+        return new Promise((resolve, reject)=>{      
+          this.conexion.query(`CALL insertProduct(?,?,?,?,?,?,?,?,?,?,?)`,[ Id, Name, Brand, Cost, Description, Id_Category, Id_User, Image, Date_Product, State, Department], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
@@ -90,6 +94,134 @@ class Database{
               }else{
                 reject("False")
               }
+            }
+          })
+        })
+      }
+
+     getAllProducts(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL DataCollectionProduct(?)`,[true], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          }
+        )})
+      }
+
+      getLastProductIdQuery(callback){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query('SELECT * FROM PRODUCT ORDER BY Id DESC LIMIT 1;', (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0].Id+1)
+            }
+          })
+        })
+      }
+
+      getCategoriaProducts(categoria){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL filterCategory(?)`,[categoria], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      getDepartamentoProducts(departamento){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL filterDepartment(?)`,[departamento], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      getMultipleFilters(categoria,departamento){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL getMultipleFilters(?,?)`,[categoria,departamento], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      filterByKeyword(keyword){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(`CALL ProductByKeyword(?)`,[keyword], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      getStatusAccount(email){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `SELECT Check_Email FROM USER WHERE Email = ?`,
+            [email], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+                if(results[0] != undefined){
+                  console.log(results[0]["Check_Email"])    
+                  resolve(results[0].Check_Email)
+                }else{
+                  resolve("cuenta no existe")
+                }  
+            }
+          })
+        })
+      }
+
+      confirmEmail(email){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            ` UPDATE USER SET Check_Email=true WHERE Email = ?`,
+            [email], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+                resolve(true)
+            }
+          })
+        })
+      }
+
+      getProduct(id){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            ` SELECT PRODUCT.Id AS Id, PRODUCT.Name AS Name, PRODUCT.Brand AS Brand,
+            PRODUCT.Cost AS Cost, PRODUCT.Description AS Description, PRODUCT.Id_Category_FK AS Id_Category,
+            PRODUCT.Image AS Image, PRODUCT.Date_Product AS Date_Product,
+            PRODUCT.Id_State_FK AS Id_State, PRODUCT.Id_Department_FK AS Id_Department,
+            USER.Id AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name,
+            USER.Email AS Email, USER.Address AS Address
+  
+              FROM PRODUCT
+              JOIN USER ON PRODUCT.Id_User_FK = USER.Id  
+              WHERE PRODUCT.Id = ?`,
+            [id], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+                resolve(results[0])
             }
           })
         })

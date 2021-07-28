@@ -1,1 +1,4 @@
-<p>view-user works!</p>
+<app-carousel></app-carousel>
+<app-card-category *ngFor="let category of categories" [category]="category"></app-card-category>
+<app-product-shelf [products]="this.products" ></app-product-shelf>
+

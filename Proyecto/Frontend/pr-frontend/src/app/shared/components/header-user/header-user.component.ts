@@ -17,4 +17,14 @@ export class HeaderUserComponent implements OnInit {
     localStorage.removeItem("token");
     this.router.navigate(['/']);
   }
+
+  postAd(){
+    this.router.navigate(['/user/postAd']);
+  }
+
+  searchProduct(key: string): void {
+    this.router.navigateByUrl('user/postAd', {skipLocationChange: true})
+  .then(()=>this.router.navigate(['user/category'], {state: {data: {key}}}));
+
+  }
 }

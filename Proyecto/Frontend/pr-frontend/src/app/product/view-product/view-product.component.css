@@ -1,0 +1,239 @@
+#section-product-detail{
+  position: relative;
+  width: 100%;
+  height: 90%;
+}
+
+#section-image{
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  width: 35%;
+  height: 90%;
+  top: 5%;
+  border-right: solid dimgray 1px;
+}
+
+#image{
+  position: relative;
+  width: 80%;
+  height: 100%;
+  left: 10%;
+}
+
+#section-details{
+  position: relative;
+  float: left;
+  width: 65%;
+  height: 100%;
+
+}
+
+#section-description{
+  position: relative;
+  float: left;
+  width: 90%;
+  height: 45%;
+  margin-top: 3%;
+  left: 5%;
+}
+
+#section-product-title{
+  position: relative;
+  width: 100%;
+  height: 30%;
+}
+
+#title{
+  display: flex;
+  float: left;
+  position: relative;
+  font-size: 3vw;
+  width: 80%;
+  height: 100%;
+  align-items: center;
+  color: black;
+}
+
+#wish{
+  display: flex;
+  float: left;
+  position: relative;
+  font-size: 3vw;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  color: crimson;
+  text-align: center;
+}
+
+#favIcon{
+  display: flex;
+  float: left;
+  position: relative;
+  font-size: 4vw;
+  height: 100%;
+  width:100%;
+  align-items: center;
+  color: crimson;
+  text-align: center;
+  justify-content: center;
+}
+
+#favIcon:hover{
+  cursor: pointer;
+}
+
+#section-product-description{
+  position: relative;
+  width: 100%;
+  height: 40%;
+}
+
+#description{
+  display: flex;
+  position: relative;
+  font-size: 1vw;
+  width: 100%;
+  height: 100%;
+}
+
+#section-product-cost{
+  position: relative;
+  width: 100%;
+  height: 30%;
+}
+
+#cost{
+  display: flex;
+  position: relative;
+  font-size: 1.5vw;
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+
+#section-seller{
+  position: relative;
+  float: left;
+  width: 90%;
+  height: 45%;
+  left: 5%;
+  border-top: solid dimgray 1px;
+  bottom: 0;
+}
+
+#section-seller-title{
+  position: relative;
+  width: 100%;
+  height: 25%;
+}
+
+#sellerTitle{
+  display: flex;
+  float: left;
+  position: relative;
+  font-size: 1vw;
+  width: 80%;
+  height: 100%;
+  align-items: center;
+  color: black;
+}
+
+#section-seller-detail{
+  position: relative;
+  width: 100%;
+  height: 50%;
+}
+
+#section-seller-logo{
+  display: flex;
+  position: relative;
+  float: left;
+  width: 15%;
+  height: 100%;
+  text-align: left;
+}
+
+#sellerIcon{
+  display: flex;
+  float: left;
+  position: relative;
+  font-size: 8vw;
+  height: 100%;
+  width:100%;
+  align-items: center;
+  color: black;
+  left:0;
+}
+
+#section-seller-info{
+  position: relative;
+  float: left;
+  width: 85%;
+  height: 100%;
+}
+
+#section-name{
+  position: relative;
+  width: 100%;
+  height: 50%;
+}
+
+#sellerName{
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  color: black;
+  font-size: 3vw;
+}
+
+#section-calification{
+  position: relative;
+  width: 100%;
+  height: 50%;
+}
+
+.starIcon{
+  display: flex;
+  float: left;
+  position: relative;
+  height: 100%;
+  width: 6%;
+  align-items: center;
+  color: black;
+  font-size: 3vw;
+}
+
+#section-seller-contact{
+  position: relative;
+  width: 100%;
+  height: 25%;
+}
+
+#address{
+  display: flex;
+  float: left;
+  position: relative;
+  font-size: 1vw;
+  width: 80%;
+  height: 100%;
+  align-items: center;
+  color: black;
+}
+
+#section-product-comments{
+  position: relative;
+  width: 100%;
+  height: 10%;
+}
+
+#section-comment{
+  position: relative;
+  width: 95%;
+  height: 100%;
+  left: 2.5%;
+  border-top: solid dimgray 1px;
+}

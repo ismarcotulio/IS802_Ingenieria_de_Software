@@ -1,0 +1,78 @@
+#section-nav-filter{
+  position: relative;
+  width: 100%;
+  height: 10%;
+}
+
+#section-order-filter{
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 80%;
+  top:20%;
+  border-bottom: solid dimgray 1px;
+  border-top: solid dimgray 1px;
+}
+
+#section-filter-title{
+  position: relative;
+  width: 15%;
+  height: 90%;
+  top: 5%;
+}
+
+#title{
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-items:center;
+  justify-content: center;
+  font-size: 1.3vw;
+}
+
+#section-side-filter{
+  position: relative;
+  float: left;
+  width: 15%;
+  height: 90%;
+  margin-top: 2.5%;
+}
+
+#department-radio-label{
+  display: flex;
+  position:relative;
+  align-items: center;
+  width: 100%;
+  height: 8%;
+  font-size: 1.1vw;
+  margin-left: 20%;
+}
+
+.department-radio-button{
+  position: relative;
+  width: 100%;
+  height:5%;
+  font-size: 1vw;
+  margin-left: 25%;
+}
+
+#section-body-filter{
+  position: relative;
+  float: left;
+  width: 85%;
+  height: 90%;
+}
+
+.optionFilter{
+  position: absolute;
+  right: 0;
+  margin-right: 4rem;
+  margin-top: 2px;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  /* border: none; */
+  /* margin-right: auto; */
+}
+
+

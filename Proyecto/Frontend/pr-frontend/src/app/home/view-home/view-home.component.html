@@ -1,1 +1,7 @@
-<app-carousel></app-carousel>
+
+  <app-carousel></app-carousel>
+  <app-card-category *ngFor="let category of categories" [category]="category"></app-card-category>
+  <app-product-shelf-default [products]="this.products" ></app-product-shelf-default>
+
+
+

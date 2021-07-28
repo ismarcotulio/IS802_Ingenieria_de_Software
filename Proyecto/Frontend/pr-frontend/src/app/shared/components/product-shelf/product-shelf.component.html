@@ -1,0 +1,11 @@
+<div id="shelf">
+  <app-card-product *ngFor="let product of products"
+  [Id]="this.product.Id"
+  [Name]="this.product.Name"
+  [Type]="this.product.Type"
+  [Cost]="this.product.Cost"
+  [Description]="this.product.Description"
+  [Image]="this.product.Image"
+  [Date]="this.product.Date_Product"
+  ></app-card-product>
+</div>

@@ -1,0 +1,8 @@
+{
+    "/api":{
+        "target": "https://api.imgbb.com/1/upload",
+        "secure": true,
+        "logLevel": "debug",
+        "changeOrigin":true
+    }
+}

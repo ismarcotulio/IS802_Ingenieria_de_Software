@@ -11,14 +11,18 @@ import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 import { TokenInterceptorService } from './core/services/authorization/token-interceptor.service';
 import { LayoutUserComponent } from './layouts/layout-user/layout-user.component';
+import { PostAdComponent } from './post-ad/post-ad.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutDefaultComponent,
-    LayoutUserComponent
+    LayoutUserComponent,
+    PostAdComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { LayoutUserComponent } from './layouts/layout-user/layout-user.component
     BrowserAnimationsModule,
     MaterialModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

@@ -1,3 +1,5 @@
+import { CardProductDefaultComponent } from './components/card-product-default/card-product-default.component';
+import { CoreModule } from './../core/core.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from "@angular/router";
@@ -9,6 +11,12 @@ import { MaterialModule } from '../material/material.module';
 import { HeaderUserComponent } from './components/header-user/header-user.component';
 import { ContractDialogComponent } from './components/contract-dialog/contract-dialog.component';
 import { LoginAlertDialogComponent } from './components/login-alert-dialog/login-alert-dialog.component';
+import { ProductShelfComponent } from './components/product-shelf/product-shelf.component';
+import { CardCategoryComponent } from './components/card-category/card-category.component';
+import { CardProductComponent } from './components/card-product/card-product.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ProductShelfDefaultComponent } from './components/product-shelf-default/product-shelf-default.component';
+
 
 
 
@@ -18,19 +26,30 @@ import { LoginAlertDialogComponent } from './components/login-alert-dialog/login
     FooterDefaultComponent,
     HeaderUserComponent,
     ContractDialogComponent,
-    LoginAlertDialogComponent
+    LoginAlertDialogComponent,
+    ProductShelfComponent,
+    CardCategoryComponent,
+    CardProductDefaultComponent,
+    CardProductComponent,
+    CarouselComponent,
+    ProductShelfDefaultComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    CoreModule
   ],
   exports: [
     HeaderDefaultComponent,
     FooterDefaultComponent,
     HeaderUserComponent,
     ContractDialogComponent,
-    LoginAlertDialogComponent
+    LoginAlertDialogComponent,
+    ProductShelfComponent,
+    CarouselComponent,
+    ProductShelfDefaultComponent,
+    CardCategoryComponent
   ]
 })
 export class SharedModule { }

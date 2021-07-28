@@ -27,6 +27,14 @@ const routes: Routes = [
         loadChildren: () => import('./sesion/sesion.module').then(m => m.SesionModule)
       },
       {
+        path: "category",
+        loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+      },
+      {
+        path: "product",
+        loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+      },
+      {
         path: "",
         redirectTo: "home",
         pathMatch: "full"
@@ -39,12 +47,20 @@ const routes: Routes = [
     canActivate: [ UserGuardGuard ],
     children: [
       {
-         path: "home",
+         path: "",
          loadChildren: () => import('./user/user.module').then(m => m.UserModule)
       },
       {
+        path: "category",
+        loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+      },
+      {
+        path: "product",
+        loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+      },
+      {
         path: "",
-        redirectTo: "home",
+        redirectTo: "",
         pathMatch: "full"
       }
     ]

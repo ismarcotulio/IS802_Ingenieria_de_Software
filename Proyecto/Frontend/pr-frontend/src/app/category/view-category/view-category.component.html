@@ -1,0 +1,32 @@
+<div id="section-nav-filter">
+  <div id="section-order-filter">
+
+  <select class="optionFilter" (change) = 'optionSelect($event)'>
+    <option value="0" selected>Ordenar por</option>
+    <option value="1">Fecha</option>
+    <option value="2">Mayor precio</option>
+    <option value="3">Menor precio</option>
+  </select>
+
+    <div id="section-filter-title">
+      <div id="title">Filtrar productos</div>
+    </div>
+  </div>
+</div>
+
+<div id="section-side-filter">
+  <label id="department-radio-label">Por departamento:</label>
+  <mat-radio-group (change)="getProductsByDepartmentAndCategory(this.selectedDepartment)"
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="selectedDepartment">
+    <mat-radio-button class="department-radio-button" *ngFor="let department of departments" [value]="department.Url">
+      {{department.Url}}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<div id="section-body-filter">
+  <app-product-shelf-default  *ngIf="!this.isUser"  [products]="this.products"></app-product-shelf-default>
+  <app-product-shelf *ngIf="this.isUser"  [products]="this.products"></app-product-shelf>
+</div>

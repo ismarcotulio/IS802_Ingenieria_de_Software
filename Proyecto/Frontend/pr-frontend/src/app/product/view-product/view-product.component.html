@@ -1,0 +1,54 @@
+<div id="section-product-detail">
+  <div id="section-image">
+    <img  id="image" src="{{ this.product.Image }}" alt="">
+  </div>
+  <div id="section-details">
+    <div id="section-description">
+      <div id="section-product-title">
+        <div id="title">{{ this.product.Name }}</div>
+        <div id="wish">
+          <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon">favorite_border</mat-icon>
+        </div>
+      </div>
+      <div id="section-product-description">
+        <div id="description">{{ this.product.Description }}</div>
+      </div>
+      <div id="section-product-cost">
+        <div id="cost">L.{{ this.product.Cost }}</div>
+      </div>
+    </div>
+    <div id="section-seller">
+      <div id="section-seller-title">
+        <div id="sellerTitle">Vendedor:</div>
+      </div>
+      <div id="section-seller-detail">
+        <div id="section-seller-logo">
+          <mat-icon id="sellerIcon" aria-hidden="false" aria-label="Example home icon">account_circler</mat-icon>
+        </div>
+        <div id="section-seller-info">
+          <div id="section-name">
+            <div id="sellerName" *ngIf="this.isUser" >{{ this.product.Firts_Name }} {{ this.product.Last_Name }}</div>
+            <div id="sellerName" *ngIf="!this.isUser" >Nombre del vendedor</div>
+
+          </div>
+          <div id="section-calification">
+            <mat-icon class="starIcon" aria-hidden="false" aria-label="Example home icon">star</mat-icon>
+            <mat-icon class="starIcon" aria-hidden="false" aria-label="Example home icon">star</mat-icon>
+            <mat-icon class="starIcon" aria-hidden="false" aria-label="Example home icon">star</mat-icon>
+            <mat-icon class="starIcon" aria-hidden="false" aria-label="Example home icon">star_border</mat-icon>
+            <mat-icon class="starIcon" aria-hidden="false" aria-label="Example home icon">star_border</mat-icon>
+          </div>
+        </div>
+      </div>
+      <div id="section-seller-contact">
+        <div *ngIf="this.isUser"  id="address">Contacto: {{ this.product.Email }}</div>
+        <div *ngIf="!this.isUser"  id="address">Inicie sesion para ver los datos del vendedor</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="section-product-comments">
+  <div id="section-comment">
+
+  </div>
+</div>

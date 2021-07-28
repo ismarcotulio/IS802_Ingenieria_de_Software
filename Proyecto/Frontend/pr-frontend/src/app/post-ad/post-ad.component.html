@@ -1,0 +1,115 @@
+<div class="contFormPublish">
+
+    <div class="dataProduct">
+        <div class="box">
+            <h4 class="textBox">Datos del Anuncio:</h4>
+
+            <form [formGroup]="formPost" (ngSubmit)= "guardar()">
+                <input class = "inputPost" type="text" formControlName="Name" placeholder="Nombre anuncio" required>
+                
+                <input class = "inputPost" type="text" formControlName="Brand" placeholder="Marca" required>
+                
+                <p><textarea name="descripcion"  formControlName="Description"  placeholder="Ingresa la descripcion de tu anuncio"></textarea></p>
+                
+                <p class="textState">Seleccione el estado:</p>
+                <div class="optionRadio">
+                <input type="radio"  formControlName="state" value="1" checked>
+                <label for="nuevo">Nuevo</label>
+                </div>
+                <div class="boxRadio optionRadio">
+                <input type="radio" formControlName="state" value="2">
+                <label for="usado">Usado</label>
+                </div>
+                <div class="boxRadio optionRadio">
+                <input type="radio" formControlName="state" value="3">
+                <label for="usado">Usado como nuevo</label>
+                </div>
+                <div class="boxRadio optionRadio">
+                <input type="radio" formControlName="state" value="4">
+                <label for="usado">Usado-Buen estado</label>
+                </div>
+                <div class="optionRadio">
+                <input type="radio" formControlName="state" value="semiNuevo">
+                <label for="semiNuevo">Usado-Aceptable</label>
+                </div>
+
+
+                <input class = "inputPost price" formControlName="Cost"  type="number" placeholder="Precio" min="0" max="99999999" step="100" required>
+
+                <select class = "inputPost select" formControlName="Id_Category" required>
+                    <option selected value="0">Seleccione la categoria del anuncio</option>
+                    <option value="1">Tecnologia</option>
+                    <option value="2">Arte y Artesania</option>
+                    <option value="3">Hogar</option>
+                    <option value="4">Automotriz</option>
+                    <option value="5">Salud y belleza</option>
+                    <option value="6">Deporte</option>
+                    <option value="7">Juguetes</option>
+                    <option value="8">Mascotas</option>
+                    <option value="9">Ropa y Accesorios</option>
+                    <!-- <option value="10">Alimentos</option> -->
+                    <!-- <option value="11">Industria</option> -->
+                </select>
+                <select class = "inputPost select" formControlName="Depart" required>
+                    <option selected value="0">Seleccione departamento anuncio</option>
+                    <option value="1">Francisco morazan</option>
+                    <option value="2">Comayagua</option>
+                    <option value="3">Islas de la Bahia</option>
+                    <option value="4">Santa Barbara</option>
+                    <option value="5">Colon</option>
+                    <option value="6">Olancho</option>
+                    <option value="7">Yoro</option>
+                    <option value="8">Gracias a Dios</option>
+                    <option value="9">Cortes</option>
+                    <option value="10">El Paraiso</option>
+                    <option value="11">Copan</option>
+                    <option value="12">Ocotepeque</option>
+                    <option value="13">Lempira</option>
+                    <option value="14">Intibuca</option>
+                    <option value="15">La Paz</option>
+                    <option value="16">Valle</option>
+                    <option value="17">Atlantida</option>
+                    <option value="18">Choluteca</option>
+                </select>
+                
+                
+                <div class="btnSubmit">
+                    <button class = "btnBox" type="submit" *ngIf="this.formPost.valid && (category != 0 && departament != 0)">Publicar anuncio</button>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="boxImg">
+
+            <h4>Subir Imagen:</h4>
+            <input class="inputImg" (change)="capturarFile($event)" type="file" placeholder="Subir Imagen">
+            <button class="deleteImg" (click) = "borrarImg()">Borrar Imagen</button>
+            <div class="boxImgView" >
+                <img *ngIf="previsualizacion != ''" [src]="previsualizacion" class="imgBoxx" alt="">
+            </div>
+            
+        </div>
+    </div>
+
+
+
+    <!-- <div class="dataUser">
+        <h4>Informacion de contacto</h4>
+        <p class="textContact">Cualquier persona interesada en su anuncio se contactara con usted mediante los siguientes medios:</p>
+        
+        <form [formGroup]="formulario">
+            <input formControlName="instagram" class="input" type="text" placeholder="Instagram">
+            <input formControlName="whatsapp" class="input" type="text" placeholder="Whatsapp">
+            <input formControlName="twitter" class="input" type="text" placeholder="Twitter">
+            <div class="boxButtom">
+                <button class="buttom" type="submit" (click) = "send()"> Guardar</button>
+
+            </div>
+        </form>
+
+    </div> -->
+    
+
+
+</div>

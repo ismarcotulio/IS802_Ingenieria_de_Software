@@ -61,7 +61,8 @@ app.post('/signUp', async (req, res) => {
 app.get('/categoria-departamento', (req,res)=>{
     let categoria = 0
     let departamento = 0
-    switch (req.departamento){
+    console.log(req.query.departamento)
+    switch (req.query.departamento){
         case 'FranciscoMorazan':    
             departamento = 1
             break;
@@ -119,7 +120,7 @@ app.get('/categoria-departamento', (req,res)=>{
         default:
             res.send('Categoria invalida')
     }
-    switch(req.categoria){
+    switch(req.query.categoria){
         case 'tecnologia':
             categoria = 1
             break;
@@ -129,29 +130,23 @@ app.get('/categoria-departamento', (req,res)=>{
         case 'hogar':
             categoria = 3
             break;
-        case 'industrial':
+        case 'automotriz':
             categoria = 4
             break;
-        case 'automotriz':
+        case 'salud-belleza':
             categoria = 5
             break;
-        case 'salud-belleza':
+        case 'deportes':
             categoria = 6
             break;
-        case 'viajes-equipaje':
+        case 'jugueteria':
             categoria = 7
             break;
-        case 'alimentos':
+        case 'mascotas':
             categoria = 8
             break;
-        case 'jugueteria':
+        case 'ropa':
             categoria = 9
-            break;
-        case 'mascotas':
-            categoria = 10
-            break;
-        case 'deportes':
-            categoria = 11
             break;
         default:
             res.send('Categoria invalida')

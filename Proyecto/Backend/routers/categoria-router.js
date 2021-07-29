@@ -12,15 +12,12 @@ class CategoriaRouter{
         Router.get('/tecnologia',this.getTecnologia)
         Router.get('/arte-artesania',this.getArteArtesania)
         Router.get('/hogar',this.getHogar)
-        Router.get('/industrial',this.getIndustrial)
         Router.get('/automotriz',this.getAutomotriz)
         Router.get('/salud-belleza',this.getSaludBelleza)
-        Router.get('/viajes-equipaje',this.getViajesEquipaje)
-        Router.get('/alimentos',this.getAlimentos)
+        Router.get('/deportes',this.getDeporte)
         Router.get('/jugueteria',this.getJugueteria)
         Router.get('/mascotas',this.getMascotas)
-        Router.get('/deportes',this.getDeporte)
-
+        Router.get('/ropa',this.getViajesEquipaje)
     }
     
     getAll = (req,res) =>{
@@ -51,57 +48,47 @@ class CategoriaRouter{
         })
     }
     
-    getIndustrial = (req,res)=>{
-        this.database.getCategoriaProducts(4)
-        .then(results=>{
-            res.send(results)
-        })
-    }
 
     getAutomotriz = (req,res)=>{
-        this.database.getCategoriaProducts(5)
+        this.database.getCategoriaProducts(4)
         .then(results=>{
             res.send(results)
         })
     }
     
     getSaludBelleza = (req,res)=>{
-        this.database.getCategoriaProducts(6)
+        this.database.getCategoriaProducts(5)
         .then(results=>{
             res.send(results)
         })
     }
 
-    getViajesEquipaje = (req,res)=>{
-        this.database.getCategoriaProducts(7)
-        .then(results=>{
-            res.send(results)
-        })
-    }
     
-    getAlimentos = (req,res) =>{
-        this.database.getCategoriaProducts(8)
+    getDeporte = (req,res) =>{
+        this.database.getCategoriaProducts(6)
         .then(results=>{
             res.send(results)
         })
     }
     
     getJugueteria = (req,res)=>{
-        this.database.getCategoriaProducts(9)
+        this.database.getCategoriaProducts(7)
         .then(results=>{
             res.send(results)
         })
     }
     
     getMascotas = (req,res)=>{
-        this.database.getCategoriaProducts(10)
+        this.database.getCategoriaProducts(8)
         .then(results=>{
             res.send(results)
         })
     }
     
-    getDeporte = (req,res) =>{
-        this.database.getCategoriaProducts(11)
+    
+
+    getViajesEquipaje = (req,res)=>{
+        this.database.getCategoriaProducts(9)
         .then(results=>{
             res.send(results)
         })

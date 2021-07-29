@@ -11,7 +11,7 @@ class Database{
         this.conexion = this.mysql.createConnection({ 
             host: 'localhost',
             user: 'root',
-            password: 'password',
+            password: 'jafethfer10',
             database: 'ecommerce'
         })
         return this.conexion
@@ -226,6 +226,34 @@ class Database{
           })
         })
       }
+
+      getProductComment(productId){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `getProductComment(?)`,
+            [productId], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+                resolve(results[0])
+            }
+          })
+        })
+      }
+
+    getVendedorComment(sellerId){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `getSellerComment(?)`,
+          [sellerId], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+              resolve(results[0])
+          }
+        })
+      })
+    }
 }
 
 export { Database }

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/core/models/product/product-model';
 import { ProductService } from './../../core/services/product/product.service';
+import { DEPARTMENTS } from './../../core/models/department/department-mock-backend';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { ProductService } from './../../core/services/product/product.service';
 export class ViewCategoryComponent implements OnInit {
 
   products: Product[] = [];
+  departments = DEPARTMENTS;
+  selectedDepartment = "";
   isUser = false;
 
   constructor(
@@ -51,10 +54,10 @@ export class ViewCategoryComponent implements OnInit {
     if(event.target.value == 1){
 
       var bf = this.products.sort( (a,b) => {
-          
-          return new Date(b.Date_Product).getTime() - new Date(a.Date_Product).getTime(); 
+
+          return new Date(b.Date_Product).getTime() - new Date(a.Date_Product).getTime();
       });
-      
+
     }else if(event.target.value == 0){
       console.log('return');
       this.route.params.subscribe(params => {
@@ -66,16 +69,25 @@ export class ViewCategoryComponent implements OnInit {
       });
     }else if(event.target.value == 2){
       var bf = this.products.sort( (a,b) => {
-          
-        return b.Cost - a.Cost; 
+
+        return b.Cost - a.Cost;
       });
     }else if(event.target.value == 3){
       var bf = this.products.sort( (a,b) => {
-          
-        return a.Cost - b.Cost; 
+
+        return a.Cost - b.Cost;
       });
     }
 
+  }
+
+  getProductsByDepartmentAndCategory(url: string){
+    this.route.params.subscribe(params => {
+      this.productService.getProductsByDepartmentAndCategory(url, params["category"]).subscribe(
+      data=>{
+        this.products = data
+      })
+    })
   }
 
 }

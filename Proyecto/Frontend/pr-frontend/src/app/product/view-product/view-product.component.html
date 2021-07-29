@@ -27,7 +27,9 @@
         </div>
         <div id="section-seller-info">
           <div id="section-name">
-            <div id="sellerName">{{ this.product.Firts_Name }} {{ this.product.Last_Name }}</div>
+            <div id="sellerName" *ngIf="this.isUser" >{{ this.product.Firts_Name }} {{ this.product.Last_Name }}</div>
+            <div id="sellerName" *ngIf="!this.isUser" >Nombre del vendedor</div>
+
           </div>
           <div id="section-calification">
             <mat-icon class="starIcon" aria-hidden="false" aria-label="Example home icon">star</mat-icon>
@@ -39,7 +41,8 @@
         </div>
       </div>
       <div id="section-seller-contact">
-        <div id="address">Contacto: {{ this.product.Email }}</div>
+        <div *ngIf="this.isUser"  id="address">Contacto: {{ this.product.Email }}</div>
+        <div *ngIf="!this.isUser"  id="address">Inicie sesion para ver los datos del vendedor</div>
       </div>
     </div>
   </div>

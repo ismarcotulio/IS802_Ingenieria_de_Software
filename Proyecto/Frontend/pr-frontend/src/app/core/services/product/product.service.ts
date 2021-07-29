@@ -14,6 +14,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
   url = "http://localhost:3000/categoria/"
   url2 = "http://localhost:3000/getProduct/"
+  url3 = "http://localhost:3000/categoria-departamento"
 
   getProducts(type:string){
     return this.http.get<Product[]>(`${this.url}${type}`)
@@ -21,6 +22,10 @@ export class ProductService {
 
   getProduct(id:string){
     return this.http.get<UserProduct>(`${this.url2}${id}`)
+  }
+
+  getProductsByDepartmentAndCategory(url: string, category:string){
+    return this.http.get<Product[]>(`${this.url3}?departamento=${url}&categoria=${category}`)
   }
 
 

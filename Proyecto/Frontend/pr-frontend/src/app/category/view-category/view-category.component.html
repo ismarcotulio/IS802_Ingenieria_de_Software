@@ -8,10 +8,22 @@
     <option value="3">Menor precio</option>
   </select>
 
+    <div id="section-filter-title">
+      <div id="title">Filtrar productos</div>
+    </div>
   </div>
 </div>
 
 <div id="section-side-filter">
+  <label id="department-radio-label">Por departamento:</label>
+  <mat-radio-group (change)="getProductsByDepartmentAndCategory(this.selectedDepartment)"
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="selectedDepartment">
+    <mat-radio-button class="department-radio-button" *ngFor="let department of departments" [value]="department.Url">
+      {{department.Url}}
+    </mat-radio-button>
+  </mat-radio-group>
 </div>
 
 <div id="section-body-filter">

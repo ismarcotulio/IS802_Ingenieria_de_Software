@@ -1,3 +1,4 @@
+import { MaterialModule } from './../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     CategoryRoutingModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ]
 })
 export class CategoryModule { }

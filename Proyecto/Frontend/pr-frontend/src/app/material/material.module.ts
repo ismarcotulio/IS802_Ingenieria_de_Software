@@ -11,7 +11,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -27,7 +28,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatFormFieldModule,
     FormsModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    MatRadioModule
 
   ],
   exports: [
@@ -40,7 +43,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatFormFieldModule,
     FormsModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }

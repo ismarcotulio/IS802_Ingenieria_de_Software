@@ -60,7 +60,7 @@
 
 .contTarjet{
     width: 18.75%;
-    height: 300px;
+    height: 370px;
     padding: 10px;
     border-radius: 5px;
     /* border: black  1px solid; */
@@ -69,6 +69,10 @@
     float: left;
     margin-left: 5%;
     margin-top: 2.5%;
+}
+
+.contTarjet:hover{
+  cursor: pointer;
 }
 
 

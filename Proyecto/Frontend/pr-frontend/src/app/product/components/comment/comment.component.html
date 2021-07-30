@@ -1,0 +1,21 @@
+<div id="comment-container">
+  <div id="image-section">
+
+      <mat-icon id="userIcon" aria-hidden="false" aria-label="Example home icon">account_circler</mat-icon>
+
+  </div>
+  <div id="content-section">
+    <div id="title-section">
+      <div id="title"><b>{{ commentToSeller.Name_User }}</b></div>
+    </div>
+    <div  id="qualification-section">
+      <mat-icon class="starIcon" aria-hidden="false" aria-label="Example home icon" *ngFor="let star of this.stars">star</mat-icon>
+      <mat-icon class="starIcon" aria-hidden="false" aria-label="Example home icon" *ngFor="let star_border of this.stars_border">star_border</mat-icon>
+    </div>
+    <div id="comment-section">
+      <div id="comment">
+        {{ commentToSeller.Comment }}
+      </div>
+    </div>
+  </div>
+</div>

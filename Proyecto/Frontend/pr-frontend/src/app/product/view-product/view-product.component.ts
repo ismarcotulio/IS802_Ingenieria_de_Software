@@ -10,8 +10,10 @@ import { ProductService } from './../../core/services/product/product.service';
   styleUrls: ['./view-product.component.css']
 })
 export class ViewProductComponent implements OnInit {
-
+  addComment = 'none';
+  imgUser = '';
   isUser = false;
+  myComment = '';
 
   product: UserProduct = { Id: 7,
   Name: "Maletin",
@@ -50,4 +52,18 @@ export class ViewProductComponent implements OnInit {
     }catch(e){}
   }
 
+  addNewComment(){
+    if(this.addComment == 'none'){
+      this.addComment ='block'
+    }else{
+      this.addComment ='none'
+    }
+    
+  }
+
+  newComment(){
+    
+    console.log(this.myComment);
+    this.myComment = '';
+  }
 }

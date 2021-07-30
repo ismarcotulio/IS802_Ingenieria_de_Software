@@ -50,5 +50,35 @@
 <div id="section-product-comments">
   <div id="section-comment">
 
+    <h4 class="textComment">Comentarios</h4>
+    <button type="button" class="buttonAddComment" (click)="addNewComment()" > <i class="fas fa-plus"></i> Agregar comentario</button>
+    
+    <!-- <p>Nuevo Comentario: </p> -->
+    <div [ngStyle]="{'display':addComment}" class="addNewComment">
+      
+      <div class="contUserImgProfile">
+        <img [src]="imgUser" alt="Imagen perfil">
+      </div>
+
+      <textarea class="textAreaComment" name="descripcion" rows="3"  [(ngModel)]="myComment" placeholder="Escribir comentario"></textarea>
+      <button class="btnNewComment" type="button" (click) = "newComment()">Comentar</button>
+    </div>
+    
+    <!-- estructura comment -->
+    <div class="sectionComments">
+      <div class="contUserImgProfile">
+        <img [src]="imgUser" alt="Imagen perfil">
+      </div>
+
+      <p class="nameUser"></p>
+      <p class="dateComment"><b>Fecha comentario:</b> </p>
+
+      <div class="contComment">
+        <p class="commentUser"></p>
+      </div>
+
+    </div>
+
   </div>
+
 </div>

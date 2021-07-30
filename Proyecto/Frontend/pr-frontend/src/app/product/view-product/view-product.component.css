@@ -227,13 +227,116 @@
 #section-product-comments{
   position: relative;
   width: 100%;
-  height: 10%;
+  /* height: 10%; */
+  height: auto;
 }
 
 #section-comment{
   position: relative;
   width: 95%;
-  height: 100%;
+  /* height: 100%; */
+  height: auto;
   left: 2.5%;
   border-top: solid dimgray 1px;
+  padding: 0.6rem;
+}
+
+.textComment{
+  /* position: absolute; */
+  float: left;
+  width: 12%;
+  /* margin-right: 10px; */
+}
+
+.buttonAddComment{
+  width: 18%;
+  padding: 0.4em 0;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: #1473E6;
+  margin-left: 70%;
+  margin-bottom: 1rem;
+}
+
+.buttonAddComment:hover{
+  border-color: #82D5FA;
+}
+
+.buttonAddComment i{
+  margin-right: 3px;
+  font-size: 20px;
+}
+
+.sectionComments{
+  /* background-color: red; */
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 1em;
+  border-bottom: solid dimgray 1px;
+  
+}
+
+.contUserImgProfile{
+  position: relative;
+  width: 90px;
+  height: 140px;
+  border-radius: 50%;
+  margin-right: 0.7rem;
+  float: left;
+}
+
+.contUserImgProfile img{
+  position: absolute;
+  border-radius: 50%;
+  width: 100%;
+  height: 65%;
+  margin-top: 0.5rem;
+}
+
+.nameUser{
+  float: left;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.dateComment{
+  /* margin-left: 93%; */
+  margin-left: 81%;
+  left:inherit;
+}
+
+.contComment{
+  width: 100%;
+}
+
+.addNewComment{
+  width: auto;
+  height: 200px;
+  border-bottom: dimgray 1px solid;
+  padding: 2rem;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* background-color: red; */
+}
+
+
+.textAreaComment {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 80%;
+  border-radius: 10px;
+  margin-top: 1rem;
+  padding: 0.4rem;
+}
+
+.btnNewComment{
+  width: 10%;
+  margin-left: 70%;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3em 0;
+  background-color: #1473E6;
+  color: white;
 }

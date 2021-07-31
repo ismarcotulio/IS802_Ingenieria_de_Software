@@ -8,6 +8,9 @@ import { CommentsDialogComponent } from './components/comments-dialog/comments-d
 import { CommentComponent } from './components/comment/comment.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
 
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
   imports: [
     CommonModule,
     ProductRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductModule { }

@@ -6,7 +6,7 @@
   </div>
 </h1>
 <mat-dialog-content class="mat-typography" id="dialog-content">
-  <app-add-comment *ngIf="this.addComment"></app-add-comment>
+  <app-add-comment [Id_Seller]="this.data.Id_Seller" *ngIf="this.addComment"></app-add-comment>
   <app-comment *ngFor="let comment of this.commentsToSeller" [commentToSeller]="this.comment"></app-comment>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

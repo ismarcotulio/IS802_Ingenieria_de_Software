@@ -54,7 +54,11 @@ export class ViewProductComponent implements OnInit {
   }
 
   openCommentsDialog() {
-    const dialogRef = this.dialog.open(CommentsDialogComponent);
+    const dialogRef = this.dialog.open(CommentsDialogComponent, {
+      data: {
+        Id_Seller: this.product.Id_User
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

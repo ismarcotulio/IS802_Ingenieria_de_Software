@@ -16,6 +16,7 @@ import { CardCategoryComponent } from './components/card-category/card-category.
 import { CardProductComponent } from './components/card-product/card-product.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductShelfDefaultComponent } from './components/product-shelf-default/product-shelf-default.component';
+import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
 
 
 
@@ -33,6 +34,7 @@ import { ProductShelfDefaultComponent } from './components/product-shelf-default
     CardProductComponent,
     CarouselComponent,
     ProductShelfDefaultComponent,
+    HeaderAdminComponent,
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { ProductShelfDefaultComponent } from './components/product-shelf-default
     ProductShelfComponent,
     CarouselComponent,
     ProductShelfDefaultComponent,
-    CardCategoryComponent
+    CardCategoryComponent,
+    HeaderAdminComponent
   ]
 })
 export class SharedModule { }

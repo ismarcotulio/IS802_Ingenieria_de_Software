@@ -1,0 +1,30 @@
+<div id="allContainer">
+  <app-header-admin></app-header-admin>
+
+  <div id="view-container">
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav #drawer class="sidenav"
+          [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+          [mode]="(isHandset$ | async) ? 'over' : 'side'"
+          [opened]="(isHandset$ | async) === false">
+        <mat-toolbar>Admin Menu</mat-toolbar>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/admin">Estadisticas</a>
+          <a mat-list-item href="#">Anuncios</a>
+          <a mat-list-item href="#">Categorias</a>
+          <a mat-list-item href="#">Denuncias</a>
+          <a mat-list-item href="#">Configuraciones</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+
+        <!-- Add Content Here -->
+        <div id="container">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+
+
+</div>

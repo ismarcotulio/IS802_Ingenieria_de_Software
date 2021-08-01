@@ -1,3 +1,4 @@
+import { LayoutAdminComponent } from './layouts/layout-admin/layout-admin.component';
 import { DefaultGuard } from './core/guards/default.guard';
 
 import { NgModule } from '@angular/core';
@@ -57,6 +58,21 @@ const routes: Routes = [
       {
         path: "product",
         loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+      },
+      {
+        path: "",
+        redirectTo: "",
+        pathMatch: "full"
+      }
+    ]
+  },
+  {
+    path: "admin",
+    component: LayoutAdminComponent,
+    children: [
+      {
+         path: "",
+         loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
       },
       {
         path: "",

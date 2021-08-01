@@ -13,6 +13,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -30,7 +35,12 @@ import {MatRadioModule} from '@angular/material/radio';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatGridListModule,
+    MatMenuModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule
 
   ],
   exports: [
@@ -45,7 +55,12 @@ import {MatRadioModule} from '@angular/material/radio';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatGridListModule,
+    MatMenuModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

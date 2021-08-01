@@ -2,6 +2,8 @@ import { UserProduct } from './../../core/models/product/user-product-model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../core/services/product/product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CommentsDialogComponent } from './../components/comments-dialog/comments-dialog.component';
 
 
 @Component({
@@ -31,7 +33,8 @@ export class ViewProductComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +51,18 @@ export class ViewProductComponent implements OnInit {
         this.isUser = true
       }
     }catch(e){}
+  }
+
+  openCommentsDialog() {
+    const dialogRef = this.dialog.open(CommentsDialogComponent, {
+      data: {
+        Id_Seller: this.product.Id_User
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

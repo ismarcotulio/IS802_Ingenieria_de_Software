@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>
+  Opiniones y comentarios
+  <div id="add-btn-section">
+    <div id="add-title">Comentar</div>
+    <mat-icon id="addIcon" aria-hidden="false" aria-label="Example home icon" (click)="this.openAddComment()">add_comment</mat-icon>
+  </div>
+</h1>
+<mat-dialog-content class="mat-typography" id="dialog-content">
+  <app-add-comment [Id_Seller]="this.data.Id_Seller" *ngIf="this.addComment"></app-add-comment>
+  <app-comment *ngFor="let comment of this.commentsToSeller" [commentToSeller]="this.comment"></app-comment>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Listo</button>
+</mat-dialog-actions>

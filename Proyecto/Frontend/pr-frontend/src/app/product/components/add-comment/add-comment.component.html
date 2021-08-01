@@ -1,0 +1,30 @@
+<form id="add-comment-container" [formGroup]="commentForm">
+  <div id="section-content">
+    <div id="section-image">
+      <mat-icon id="userIcon" aria-hidden="false" aria-label="Example home icon">account_circler</mat-icon>
+    </div>
+    <div id="section-input">
+      <textarea placeholder="Ingrese un comentario" id="input" formControlName="Comment"></textarea>
+    </div>
+    <div #stars id="section-star">
+      <mat-icon  #star1 class="starIcon" aria-hidden="false" aria-label="Example home icon" data-number="1" (click)="selecStar(stars,star1)">star_border</mat-icon>
+      <mat-icon #star2 class="starIcon" aria-hidden="false" aria-label="Example home icon" data-number="2" (click)="selecStar(stars, star2)">star_border</mat-icon>
+      <mat-icon #star3 class="starIcon" aria-hidden="false" aria-label="Example home icon" data-number="3" (click)="selecStar(stars, star3)">star_border</mat-icon>
+      <mat-icon #star4 class="starIcon" aria-hidden="false" aria-label="Example home icon" data-number="4" (click)="selecStar(stars, star4)">star_border</mat-icon>
+      <mat-icon #star5 class="starIcon" aria-hidden="false" aria-label="Example home icon" data-number="5" (click)="selecStar(stars, star5)">star_border</mat-icon>
+    </div>
+  </div>
+  <div id="section-action">
+    <div id="section-error" *ngIf="this.commentForm.status != 'VALID'">
+      <div class="error" *ngIf="this.commentForm.get('Comment')?.getError('required') == true">
+        Escriba un comentario.
+      </div>
+      <div class="error" *ngIf="this.commentForm.get('Qualification')?.getError('required') == true">
+        Seleccione una calificacion para el vendedor.
+      </div>
+    </div>
+    <div id="section-btn">
+      <button mat-button id="btn" type="submit"  #btn  (click)="this.sendComment(btn)" *ngIf="this.commentForm.status == 'VALID';disabled">Enviar</button>
+    </div>
+  </div>
+</form>

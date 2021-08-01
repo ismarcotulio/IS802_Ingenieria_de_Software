@@ -52,18 +52,20 @@ export class ViewProductComponent implements OnInit {
     }catch(e){}
   }
 
-  addNewComment(){
+  viewAddNewComment(){
     if(this.addComment == 'none'){
-      this.addComment ='block'
+      this.addComment ='block' 
     }else{
       this.addComment ='none'
     }
-    
   }
 
-  newComment(){
-    
-    console.log(this.myComment);
+  addNewComment(){
+    // console.log(this.myComment);
+    this.productService.setNewCommentProduct({comment:this.myComment,typeComment:'product',productId:this.product.Id}).subscribe(res => {
+      
+    });
+
     this.myComment = '';
   }
 }

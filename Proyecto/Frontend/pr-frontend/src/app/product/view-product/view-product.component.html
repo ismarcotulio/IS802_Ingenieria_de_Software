@@ -51,7 +51,7 @@
   <div id="section-comment">
 
     <h4 class="textComment">Comentarios</h4>
-    <button type="button" class="buttonAddComment" (click)="addNewComment()" > <i class="fas fa-plus"></i> Agregar comentario</button>
+    <button type="button" class="buttonAddComment" (click)="viewAddNewComment()" > <i class="fas fa-plus"></i> Agregar comentario</button>
     
     <!-- <p>Nuevo Comentario: </p> -->
     <div [ngStyle]="{'display':addComment}" class="addNewComment">
@@ -61,7 +61,7 @@
       </div>
 
       <textarea class="textAreaComment" name="descripcion" rows="3"  [(ngModel)]="myComment" placeholder="Escribir comentario"></textarea>
-      <button class="btnNewComment" type="button" (click) = "newComment()">Comentar</button>
+      <button class="btnNewComment" type="button" (click) = "addNewComment()">Comentar</button>
     </div>
     
     <!-- estructura comment -->

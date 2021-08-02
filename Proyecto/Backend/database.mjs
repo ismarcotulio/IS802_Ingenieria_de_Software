@@ -254,6 +254,32 @@ class Database{
         })
       })
     }
+
+    putComment(typeComment,reqbody,date,userId){
+      return new Promise((resolve, reject)=>{
+        if(typeComment==0){
+          this.conexion.query(
+            `CALL InsertComment_Product(?,?,?,?)`,
+            [reqbody.productId,reqbody.comment,date,userId], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(true)
+            }
+          })
+        }else{
+          this.conexion.query(
+            `CALL InsertComment_Seller(?,?,?,?,?)`,
+            [userId,reqbody.sellerId,reqbody.comment,date,reqbody.calificacion], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(true)
+            }
+          })
+        }
+      })
+    }
 }
 
 export { Database }

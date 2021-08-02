@@ -235,7 +235,7 @@ class Database{
             if(error){
               reject(error)
             }else{
-                resolve(results[0])
+              resolve(results[0])
             }
           })
         })
@@ -249,7 +249,7 @@ class Database{
           if(error){
             reject(error)
           }else{
-              resolve(results[0])
+            resolve(results[0])
           }
         })
       })
@@ -262,7 +262,7 @@ class Database{
             `CALL InsertComment_Product(?,?,?,?)`,
             [reqbody.productId,reqbody.comment,date,userId], (error,results, fields)=>{
             if(error){
-              reject(error)
+              reject(false)
             }else{
               resolve(true)
             }
@@ -272,7 +272,7 @@ class Database{
             `CALL InsertComment_Seller(?,?,?,?,?)`,
             [userId,reqbody.sellerId,reqbody.comment,date,reqbody.calificacion], (error,results, fields)=>{
             if(error){
-              reject(error)
+              reject(false)
             }else{
               resolve(true)
             }

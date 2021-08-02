@@ -22,7 +22,7 @@ class CommentRouter{
     }
 
     getVendedorComment = (req,res)=>{
-        this.database.getSellerComment(req.body.productId)
+        this.database.getVendedorComment(req.body.sellerId)
         .then(results=>{
             res.send(results)
         })

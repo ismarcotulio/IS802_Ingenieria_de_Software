@@ -230,7 +230,7 @@ class Database{
       getProductComment(productId){
         return new Promise((resolve, reject)=>{
           this.conexion.query(
-            `getProductComment(?)`,
+            `get_Product_Comment(?)`,
             [productId], (error,results, fields)=>{
             if(error){
               reject(error)
@@ -244,7 +244,7 @@ class Database{
     getVendedorComment(sellerId){
       return new Promise((resolve, reject)=>{
         this.conexion.query(
-          `getSellerComment(?)`,
+          `get_Seller_Comment(?)`,
           [sellerId], (error,results, fields)=>{
           if(error){
             reject(error)

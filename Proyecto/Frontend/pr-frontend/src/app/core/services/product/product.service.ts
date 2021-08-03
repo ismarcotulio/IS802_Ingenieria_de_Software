@@ -35,7 +35,9 @@ export class ProductService {
   }
 
   getCommentsProduct(productId:number){
-    return this.http.get(this.url5);
+    // console.log(productId);
+    
+    return this.http.post<any>(this.url5,{productId});
   }
 
 

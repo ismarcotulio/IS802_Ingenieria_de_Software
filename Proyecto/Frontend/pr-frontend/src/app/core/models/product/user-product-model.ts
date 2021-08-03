@@ -15,3 +15,11 @@ export interface UserProduct{
   Email: string;
   Address: string;
 }
+
+export interface commentProduct{
+  Comment: string,
+  Date_Comment: string,
+  Firts_Name: string,
+  Last_Name: string
+
+}

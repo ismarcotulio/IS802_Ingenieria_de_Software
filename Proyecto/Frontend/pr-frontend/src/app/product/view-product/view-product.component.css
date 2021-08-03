@@ -279,8 +279,10 @@
 
 .contUserImgProfile{
   position: relative;
-  width: 90px;
-  height: 140px;
+  width: 5.3%;
+  height: 90px;
+  /* height: auto; */
+  /* height: 20%; */
   border-radius: 50%;
   margin-right: 0.7rem;
   float: left;
@@ -333,10 +335,15 @@
 
 .btnNewComment{
   width: 10%;
-  margin-left: 70%;
+  margin-left: 76%;
   border: none;
   border-radius: 5px;
   padding: 0.3em 0;
   background-color: #1473E6;
   color: white;
+}
+
+.commentsWarning{
+  margin-left: 15%;
+  color: #979494;
 }

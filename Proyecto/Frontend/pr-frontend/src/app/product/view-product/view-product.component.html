@@ -65,19 +65,21 @@
     </div>
     
     <!-- estructura comment -->
-    <div class="sectionComments">
+    <div class="sectionComments" *ngFor="let coment of commentsProducto">
       <div class="contUserImgProfile">
         <img [src]="imgUser" alt="Imagen perfil">
       </div>
 
-      <p class="nameUser"></p>
-      <p class="dateComment"><b>Fecha comentario:</b> </p>
+      <p class="nameUser">{{coment.Firts_Name}}  {{coment.Last_Name}}</p>
+      <p class="dateComment"><b>Fecha comentario:</b> {{coment.Date_Comment}}</p>
 
       <div class="contComment">
-        <p class="commentUser"></p>
+        <p class="commentUser">{{coment.Comment}}</p>
       </div>
 
     </div>
+
+    <p class="commentsWarning" *ngIf="commentsProducto.length <1">**Comentarios no disponibles en el anuncio**</p>
 
   </div>
 

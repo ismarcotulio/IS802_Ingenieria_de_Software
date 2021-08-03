@@ -55,5 +55,37 @@
 <div id="section-product-comments">
   <div id="section-comment">
 
+    <h4 class="textComment">Comentarios</h4>
+    <button type="button" class="buttonAddComment" (click)="viewAddNewComment()" > <i class="fas fa-plus"></i> Agregar comentario</button>
+    
+    <!-- <p>Nuevo Comentario: </p> -->
+    <div [ngStyle]="{'display':addComment}" class="addNewComment">
+      
+      <div class="contUserImgProfile">
+        <img [src]="imgUser" alt="Imagen perfil">
+      </div>
+
+      <textarea class="textAreaComment" name="descripcion" rows="3"  [(ngModel)]="myComment" placeholder="Escribir comentario"></textarea>
+      <button class="btnNewComment" type="button" (click) = "addNewComment()">Comentar</button>
+    </div>
+    
+    <!-- estructura comment -->
+    <div class="sectionComments" *ngFor="let coment of commentsProducto">
+      <div class="contUserImgProfile">
+        <img [src]="imgUser" alt="Imagen perfil">
+      </div>
+
+      <p class="nameUser">{{coment.Firts_Name}}  {{coment.Last_Name}}</p>
+      <p class="dateComment"><b>Fecha comentario:</b> {{coment.Date_Comment}}</p>
+
+      <div class="contComment">
+        <p class="commentUser">{{coment.Comment}}</p>
+      </div>
+
+    </div>
+
+    <p class="commentsWarning" *ngIf="commentsProducto.length <1">**Comentarios no disponibles en el anuncio**</p>
+
   </div>
+
 </div>

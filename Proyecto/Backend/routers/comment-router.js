@@ -9,8 +9,8 @@ class CommentRouter{
     constructor(database,key){
         this.database = database
 
-        Router3.get('/product',this.getProductComment)
-        Router3.get('/vendedor',this.getVendedorComment)
+        Router3.post('/product',this.getProductComment)
+        Router3.post('/vendedor',this.getVendedorComment)
         Router3.post('/newComment',this.putComment)
     }
     

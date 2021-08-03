@@ -1,7 +1,8 @@
 #section-product-detail{
   position: relative;
-  width: 100%;
-  height: 90%;
+  width: 90%;
+  height: 85%;
+  left: 5%;
 }
 
 #section-image{
@@ -48,18 +49,18 @@
   display: flex;
   float: left;
   position: relative;
-  font-size: 3vw;
+  font-size: 2.5vw;
   width: 80%;
   height: 100%;
   align-items: center;
-  color: black;
+  color: dimgray;
 }
 
 #wish{
   display: flex;
   float: left;
   position: relative;
-  font-size: 3vw;
+  font-size: 2vw;
   width: 20%;
   height: 100%;
   align-items: center;
@@ -71,7 +72,7 @@
   display: flex;
   float: left;
   position: relative;
-  font-size: 4vw;
+  font-size: 3vw;
   height: 100%;
   width:100%;
   align-items: center;
@@ -123,6 +124,43 @@
   bottom: 0;
 }
 
+#comment-section{
+  position: absolute;
+  width: 100%;
+  height: 30%;
+}
+
+#comment{
+  display: flex;
+  float: right;
+  position: relative;
+  font-size: 2vw;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  color: #1473E6;
+  text-align: center;
+}
+
+#comIcon{
+  display: flex;
+  float: left;
+  position: relative;
+  font-size: 3vw;
+  height: 100%;
+  width:100%;
+  align-items: center;
+  color: #1473E6;
+  text-align: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+#comIcon:hover{
+  cursor: pointer;
+  font-size: 3.5vw;
+}
+
 #section-seller-title{
   position: relative;
   width: 100%;
@@ -163,7 +201,7 @@
   height: 100%;
   width:100%;
   align-items: center;
-  color: black;
+  color: lightsteelblue;
   left:0;
 }
 
@@ -186,8 +224,8 @@
   height: 100%;
   width: 100%;
   align-items: center;
-  color: black;
-  font-size: 3vw;
+  color: dimgray;
+  font-size: 2.5vw;
 }
 
 #section-calification{
@@ -203,8 +241,8 @@
   height: 100%;
   width: 6%;
   align-items: center;
-  color: black;
-  font-size: 3vw;
+  font-size: 2.5vw;
+  color: goldenrod;
 }
 
 #section-seller-contact{
@@ -233,10 +271,9 @@
 
 #section-comment{
   position: relative;
-  width: 95%;
-  /* height: 100%; */
-  height: auto;
-  left: 2.5%;
+  width: 85%;
+  height: 100%;
+  left: 7.5%;
   border-top: solid dimgray 1px;
   padding: 0.6rem;
 }

@@ -4,16 +4,27 @@ import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule } from './product-routing.module';
 import { ViewProductComponent } from './view-product/view-product.component';
+import { CommentsDialogComponent } from './components/comments-dialog/comments-dialog.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
+
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    ViewProductComponent
+    ViewProductComponent,
+    CommentsDialogComponent,
+    CommentComponent,
+    AddCommentComponent
   ],
   imports: [
     CommonModule,
     ProductRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductModule { }

@@ -5,7 +5,7 @@
   <div id="section-details">
     <div id="section-description">
       <div id="section-product-title">
-        <div id="title">{{ this.product.Name }}</div>
+        <div id="title"><b>{{ this.product.Name }}</b></div>
         <div id="wish">
           <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon">favorite_border</mat-icon>
         </div>
@@ -18,6 +18,11 @@
       </div>
     </div>
     <div id="section-seller">
+      <div id="comment-section">
+        <div id="comment">
+          <mat-icon id="comIcon" aria-hidden="false" aria-label="Example home icon" (click)="openCommentsDialog()">comment</mat-icon>
+        </div>
+      </div>
       <div id="section-seller-title">
         <div id="sellerTitle">Vendedor:</div>
       </div>
@@ -27,7 +32,7 @@
         </div>
         <div id="section-seller-info">
           <div id="section-name">
-            <div id="sellerName" *ngIf="this.isUser" >{{ this.product.Firts_Name }} {{ this.product.Last_Name }}</div>
+            <div id="sellerName" *ngIf="this.isUser" ><b>{{ this.product.Firts_Name }} {{ this.product.Last_Name }}</b></div>
             <div id="sellerName" *ngIf="!this.isUser" >Nombre del vendedor</div>
 
           </div>

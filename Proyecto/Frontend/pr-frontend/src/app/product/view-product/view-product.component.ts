@@ -2,6 +2,8 @@ import { UserProduct, commentProduct } from './../../core/models/product/user-pr
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../core/services/product/product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CommentsDialogComponent } from './../components/comments-dialog/comments-dialog.component';
 
 
 @Component({
@@ -34,19 +36,21 @@ export class ViewProductComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
-    ) { }
-    
-    ngOnInit(): void {
-      this.route.params.subscribe(params => {
-        this.productService.getProduct(params["product"]).subscribe(
-          data => {
-            this.product = data;
-            
-            this.productService.getCommentsProduct(this.product.Id).subscribe(comments =>{
+
+    private productService: ProductService,
+    private dialog: MatDialog,
+  ) { }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.productService.getProduct(params["product"]).subscribe(
+        data => {
+          this.product = data;
+          
+          this.productService.getCommentsProduct(this.product.Id).subscribe(comments =>{
               this.commentsProducto = comments;
               this.clearDateComments();
-            });
+          });
         }
         )
       });
@@ -85,6 +89,7 @@ export class ViewProductComponent implements OnInit {
     this.myComment = '';
   }
 
+
   clearDateComments(){
     let cont = 0;
     this.commentsProducto.forEach(comment => {
@@ -97,4 +102,17 @@ export class ViewProductComponent implements OnInit {
       
     });
   }
+
+  openCommentsDialog() {
+    const dialogRef = this.dialog.open(CommentsDialogComponent, {
+      data: {
+        Id_Seller: this.product.Id_User
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }

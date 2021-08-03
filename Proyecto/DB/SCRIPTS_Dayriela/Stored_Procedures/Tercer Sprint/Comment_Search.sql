@@ -25,4 +25,4 @@ BEGIN
 
 END //
 DELIMITER ;
-CALL CommentSearch_Product(2);
+CALL CommentSearch_Product(3);

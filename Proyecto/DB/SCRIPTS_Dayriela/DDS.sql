@@ -94,17 +94,20 @@ Name_Complaint_Type VARCHAR(40)
 
 CREATE TABLE COMPLAINTS(
 Id_Complaints INT PRIMARY KEY AUTO_INCREMENT ,
-Id_Whistleblower INT , 
-Id_Denounced INT,
+Id_Whistleblower INT , FOREIGN KEY (Id_Whistleblower) REFERENCES USER(Id),
+Id_Denounced INT,FOREIGN KEY (Id_Denounced) REFERENCES USER(Id),
 Id_ComplaintType INT, FOREIGN KEY (Id_ComplaintType) REFERENCES  COMPLAINT_TYPE (Id_Complaint_Type),
-Optional_Comment BOOLEAN DEFAULT FALSE 
+Optional_Comment VARCHAR(45)
 );
 
-CREATE TABLE WISH_LIST(
+
+CREATE TABLE WISH_LIST_USER(
 Id INT PRIMARY KEY AUTO_INCREMENT,
 Id_Product_FK INT , FOREIGN KEY (Id_Product_Fk) REFERENCES PRODUCT(Id),
 Id_User_FK INT , FOREIGN KEY (Id_User_FK) REFERENCES USER (Id)
 );
+
+
 
 
 

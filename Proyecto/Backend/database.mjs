@@ -83,6 +83,18 @@ class Database{
         })
       }
 
+      insertComplaint( Id_Denuncia, Id_Denunciante, Id_Denunciado, Id_TipoDenuncia, Comentario_Opcional){
+        return new Promise((resolve, reject)=>{      
+          this.conexion.query(`CALL insertComplaint(?,?,?,?,?)`,[  Id_Denuncia, Id_Denunciante, Id_Denunciado, Id_TipoDenuncia, Comentario_Opcional], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+
       authUser(email,password){
         return new Promise((resolve, reject)=>{
           this.conexion.query(`CALL authUser(?,?)`,[email,password], (error,results, fields)=>{
@@ -118,6 +130,18 @@ class Database{
               reject(error)
             }else{
               resolve(results[0].Id+1)
+            }
+          })
+        })
+      }
+
+      getLastComplaintIdQuery(callback){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query('SELECT * FROM DENUNCIAS ORDER BY Id_Denuncia DESC LIMIT 1;', (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0].Id_Denuncia+1)
             }
           })
         })
@@ -211,7 +235,7 @@ class Database{
             PRODUCT.Cost AS Cost, PRODUCT.Description AS Description, PRODUCT.Id_Category_FK AS Id_Category,
             PRODUCT.Image AS Image, PRODUCT.Date_Product AS Date_Product,
             PRODUCT.Id_State_FK AS Id_State, PRODUCT.Id_Department_FK AS Id_Department,
-            USER.Id AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name,
+            USER.Id_User AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name,
             USER.Email AS Email, USER.Address AS Address
   
               FROM PRODUCT
@@ -226,6 +250,29 @@ class Database{
           })
         })
       }
+
+      getComplaint(Id_Denuncia){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            ` SELECT DENUNCIAS.Id_Denuncia AS Id_Denuncia, DENUNCIAS.Id_Denunciante AS Id_Denunciante, 
+            DENUNCIAS.Id_Denunciado AS Id_Denunciado, DENUNCIAS.Id_TipoDenuncia AS Id_TipoDenuncia, 
+            DENUNCIAS.Comentario_Opcional AS Comentario_Opcional,
+            USER.Id AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name, 
+            USER.Email AS Email, USER.Address AS Address
+  
+              FROM DENUNCIAS
+              JOIN USER ON DENUNCIAS.Id_User_FK = USER.Id 
+              WHERE DENUNCIAS.Id_Denuncia = ?`,
+            [Id_Denuncia], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+                resolve(results[0])
+            }
+          })
+        })
+      }
+
 }
 
 export { Database }

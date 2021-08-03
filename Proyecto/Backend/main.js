@@ -8,13 +8,14 @@ import { Database } from './database.mjs';
 import { Mailer } from './mailer.mjs';
 
 import { ProductController } from './controllers/productController.mjs'
+
 import { AuthController } from './controllers/authController.mjs';
 import { TokenController } from './controllers/tokenController.mjs';
 
 import {Router,CategoriaRouter} from './routers/categoria-router.js';
 import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
 import { EmailController } from './controllers/emailController.mjs';
-
+import { ComplaintController } from './controllers/complaintController.mjs'
 
 //Configuracion express
 const config = {
@@ -37,6 +38,7 @@ const productController = new ProductController(database);
 const authController = new AuthController(database);
 const tokenController = new TokenController();
 const emailController = new EmailController(mailer, database);
+const complaintController = new ComplaintController(database);
 
 //Instancia de routers
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
@@ -165,6 +167,10 @@ app.post("/insertProduct", async (req , res) => {
     productController.insertProduct( req, res, app.get("llave"))
 });
 
+app.post("/insertComplaint", async (req , res) => {
+    complaintController.insertComplaint( req, res, app.get("llave"))
+});
+
 app.post('/productKeyword', async (req,res)=>{
     database.filterByKeyword(req.body.keyword)
     .then(results=>{
@@ -187,6 +193,15 @@ app.get("/getProduct/:id", async (req , res) => {
     })
 });
 
+app.get("/getComplaint/:id_Denuncia", async (req , res) => {
+    database.getComplaint(req.params.id)
+    .then(results =>{
+        res.send(results)
+    })
+});
+
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 
 })
+
+

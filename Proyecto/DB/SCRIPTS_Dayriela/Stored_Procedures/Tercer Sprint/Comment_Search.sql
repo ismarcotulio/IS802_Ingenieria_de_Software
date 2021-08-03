@@ -1,0 +1,28 @@
+DELIMITER $$
+DROP PROCEDURE IF EXISTS  CommentSearch_Seller;
+
+CREATE PROCEDURE CommentSearch_Seller(IN Seller_ID INT)
+BEGIN
+	SELECT USER.Firts_Name, COMMENT.Date_Comment, COMMENT.Comment , SELLER_COMMENT.Qualification FROM SELLER_COMMENT 
+    INNER JOIN USER ON USER.Id = SELLER_COMMENT.Id_Seller_FK 
+    INNER JOIN COMMENT ON SELLER_COMMENT.Id_Comment_FK = COMMENT.Id_Comment 
+    WHERE SELLER_COMMENT.Id_Seller_FK = Seller_ID;
+END$$
+
+DELIMITER $$
+CALL CommentSearch_Seller(5);
+
+
+USE Ecommerce;
+DELIMITER //
+DROP PROCEDURE IF EXISTS  CommentSearch_Product;
+CREATE PROCEDURE CommentSearch_Product(IN Product_Id INT)
+BEGIN
+	 SELECT USER.Firts_Name, COMMENT.Comment, COMMENT.Date_Comment   FROM COMMENT 
+    INNER JOIN USER ON USER.Id =COMMENT.Id_User_FK  
+    INNER JOIN PRODUCT_COMMENT ON COMMENT.Id_Comment =PRODUCT_COMMENT.Id_Comment_FK 
+    WHERE PRODUCT_COMMENT.Id_Product_FK = Product_Id ;
+
+END //
+DELIMITER ;
+CALL CommentSearch_Product(2);

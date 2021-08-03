@@ -18,6 +18,10 @@ INSERT INTO USER_USER_TYPE(Id , Id_User_FK , Id_User_Type_FK)VALUES
 (2,1,1)
 ;
 
+INSERT INTO COMMENT(Id_Comment, Comment ,Date_Comment , Id_User_FK ) VALUES
+(1, "Excelente atencion" , "2021-05-02" , 3 ),
+(2, "Malisima atencion" , "2021-07-02" , 1 )
+;
 
 INSERT INTO DEPARTMENT(Id, Name)VALUES
 (1,"Francisco Morazan"),

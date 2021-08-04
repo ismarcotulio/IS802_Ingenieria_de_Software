@@ -29,7 +29,7 @@ class AuthController{
             newUser.Password = req.body.password
 
             await this.database.getLastUserIdQuery().then(function(results){
-                newUser.Id = results   
+                newUser.Id = results 
             })
 
 
@@ -69,13 +69,12 @@ class AuthController{
                     return res.json({status: false, message: statusAccount})
                 }else{
                     await this.database.authUser(req.body.email,req.body.password).then(function(results){
-                        console.log(results)
                         let payload = {
-                            Id_usuario: results,
+                            Id_usuario: results.Id,
                             iat: new Date().getTime()/1000
                         }
                         let token = jwt.sign(payload,key)
-                        return res.json({Id_usuario: results,token: token, status: true, message: "Correcto inicio de sesion"})
+                        return res.json({Id_usuario: results.Id,token: token, status: true, role: results.Name, message: "Correcto inicio de sesion"})
                     })
                     .catch((error)=>{
                         return res.json({mensaje: statusAccount})

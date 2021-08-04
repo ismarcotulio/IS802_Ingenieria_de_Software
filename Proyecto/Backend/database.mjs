@@ -90,7 +90,7 @@ class Database{
               reject(error)
             }else{
               if(results[0][0]!=undefined){
-                resolve(results[0][0].Id)
+                resolve(results[0][0])
               }else{
                 reject("False")
               }
@@ -180,7 +180,6 @@ class Database{
               reject(error)
             }else{
                 if(results[0] != undefined){
-                  console.log(results[0]["Check_Email"])    
                   resolve(results[0].Check_Email)
                 }else{
                   resolve("cuenta no existe")

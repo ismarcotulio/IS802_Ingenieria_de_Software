@@ -257,9 +257,10 @@
   position: relative;
   font-size: 1vw;
   width: 80%;
-  height: 100%;
+  /* height: 100%; */
   align-items: center;
   color: black;
+  margin-top: 3px;
 }
 
 #section-product-comments{
@@ -282,6 +283,8 @@
   /* position: absolute; */
   float: left;
   width: 12%;
+  color: dimgray;
+  font-weight: bold;
   /* margin-right: 10px; */
 }
 
@@ -341,7 +344,7 @@
 
 .dateComment{
   /* margin-left: 93%; */
-  margin-left: 81%;
+  margin-left: 77%;
   left:inherit;
 }
 
@@ -384,3 +387,90 @@
   margin-left: 15%;
   color: #979494;
 }
+
+#reportSeller{
+  width: 80%;
+  margin-bottom: 10px;
+  font-size: 1vw;
+  
+}
+
+#reportSeller a{
+  color: red;
+  cursor: pointer;
+  text-decoration: underline red;
+}
+
+
+.containerModal{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.modalb{
+  width: 25%;
+  height: auto;
+  margin-left: 35%;
+  margin-top: 10%;
+  border-radius: 0.7rem;
+  background-color: white;
+  position: relative;
+  z-index: 200;
+  /* z-index: 1000 !important; */
+}
+
+.headerModal{
+  position: relative;
+  width: 100%;
+  padding: 0 1rem;
+  background-color: #e5e5e5;
+  color: black;
+}
+
+.textModal{
+  border-bottom: rgba(0, 0, 0, 0.3) 1px solid;
+  margin: 0;
+  padding: 0.6em 0;
+}
+
+.bodyModal{
+  padding: 0.7rem 2rem;
+}
+
+.textAreaReport {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 85%;
+  border-radius: 3px;
+  margin-top: 1rem;
+  padding: 0.4rem;
+}
+
+.selectReport{
+  width: 85%;
+}
+
+
+.btnReport{
+  margin-right: 5px;
+  padding: 2px 1em;
+  border: none;
+  background-color: orangered;
+  color: white;
+  border-radius: 5px;
+}
+
+.btnExitReport{
+  padding: 2px 2em;
+  border: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+

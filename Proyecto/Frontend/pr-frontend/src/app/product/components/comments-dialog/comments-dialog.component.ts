@@ -19,7 +19,12 @@ export class CommentsDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.commentsToSeller = this.commentToSellerService.getCommentsToSeller()
+    this.commentToSellerService.getCommentsToSeller(this.data.Id_Seller).subscribe(
+      data => {
+        console.log(data)
+        this.commentsToSeller = data
+      }
+    )
   }
 
   openAddComment(){

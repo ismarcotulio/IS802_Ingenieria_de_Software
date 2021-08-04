@@ -42,7 +42,7 @@ export class ViewProductComponent implements OnInit {
     private route: ActivatedRoute,
 
     private productService: ProductService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class ViewProductComponent implements OnInit {
       this.productService.getProduct(params["product"]).subscribe(
         data => {
           this.product = data;
-          
+
           this.productService.getCommentsProduct(this.product.Id).subscribe(comments =>{
               this.commentsProducto = comments;
               this.clearDateComments();
@@ -58,20 +58,20 @@ export class ViewProductComponent implements OnInit {
         }
         )
       });
-      
+
       try{
         if(this.route.parent?.parent?.snapshot.url[0].path == "user"){
           this.isUser = true
         }
       }catch(e){}
-      
-      
+
+
 
   }
 
   viewAddNewComment(){
     if(this.addComment == 'none'){
-      this.addComment ='block' 
+      this.addComment ='block'
     }else{
       this.addComment ='none'
     }
@@ -103,7 +103,7 @@ export class ViewProductComponent implements OnInit {
       let newDate = `${clearDay}/${clearDate[1]}/${clearDate[0]}`;
       this.commentsProducto[cont].Date_Comment = newDate;
       cont= cont+ 1;
-      
+
     });
   }
 

@@ -4,7 +4,7 @@
       <mat-icon id="userIcon" aria-hidden="false" aria-label="Example home icon">account_circler</mat-icon>
     </div>
     <div id="section-input">
-      <textarea placeholder="Ingrese un comentario" id="input" formControlName="Comment"></textarea>
+      <textarea placeholder="Ingrese un comentario" id="input" formControlName="comment"></textarea>
     </div>
     <div #stars id="section-star">
       <mat-icon  #star1 class="starIcon" aria-hidden="false" aria-label="Example home icon" data-number="1" (click)="selecStar(stars,star1)">star_border</mat-icon>
@@ -16,10 +16,10 @@
   </div>
   <div id="section-action">
     <div id="section-error" *ngIf="this.commentForm.status != 'VALID'">
-      <div class="error" *ngIf="this.commentForm.get('Comment')?.getError('required') == true">
+      <div class="error" *ngIf="this.commentForm.get('comment')?.getError('required') == true">
         Escriba un comentario.
       </div>
-      <div class="error" *ngIf="this.commentForm.get('Qualification')?.getError('required') == true">
+      <div class="error" *ngIf="this.commentForm.get('calificacion')?.getError('required') == true">
         Seleccione una calificacion para el vendedor.
       </div>
     </div>

@@ -12,7 +12,7 @@ import { DEPARTMENTS } from './../../core/models/department/department-mock-back
   styleUrls: ['./view-category.component.css']
 })
 export class ViewCategoryComponent implements OnInit {
-
+  userSubscribe:boolean = true;
   products: Product[] = [];
   departments = DEPARTMENTS;
   selectedDepartment = "";
@@ -90,5 +90,9 @@ export class ViewCategoryComponent implements OnInit {
     })
   }
 
+  
+
+  
+  
 }
 

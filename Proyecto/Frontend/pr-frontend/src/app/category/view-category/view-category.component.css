@@ -67,12 +67,35 @@
 .optionFilter{
   position: absolute;
   right: 0;
-  margin-right: 4rem;
+  margin-right: 3rem;
   margin-top: 2px;
   border-radius: 2px;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  bottom: 0;
+  padding: 0.2em 0.6em;
+  margin-bottom: 5px;
   /* border: none; */
   /* margin-right: auto; */
 }
 
+.btnSubscribe{
+  position: absolute;
+  /* width: 13%; */
+  margin-left: 20%;
+  bottom: 0;
+  margin-bottom: 2px;
+  border: none;
+  padding: 0.3em 1em;
+  background-color: #fff;
+  border-radius: 4px;
+  border: rgb(219, 215, 215) 2px solid;
+}
 
+.btnSubscribe:hover{
+  background-color: rgb(206, 203, 203);
+  color: black;
+}
+
+.btnSubTrue{
+  color: rgb(170, 170, 170);
+}

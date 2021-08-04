@@ -18,7 +18,7 @@
       </div>
     </div>
     <div id="section-seller">
-      <div id="comment-section">
+      <div id="comment-section" *ngIf="this.isUser">
         <div id="comment">
           <mat-icon id="comIcon" aria-hidden="false" aria-label="Example home icon" (click)="openCommentsDialog()">comment</mat-icon>
         </div>
@@ -57,10 +57,10 @@
 
     <h4 class="textComment">Comentarios</h4>
     <button type="button" class="buttonAddComment" (click)="viewAddNewComment()" > <i class="fas fa-plus"></i> Agregar comentario</button>
-    
+
     <!-- <p>Nuevo Comentario: </p> -->
     <div [ngStyle]="{'display':addComment}" class="addNewComment">
-      
+
       <div class="contUserImgProfile">
         <img [src]="imgUser" alt="Imagen perfil">
       </div>
@@ -68,7 +68,7 @@
       <textarea class="textAreaComment" name="descripcion" rows="3"  [(ngModel)]="myComment" placeholder="Escribir comentario"></textarea>
       <button class="btnNewComment" type="button" (click) = "addNewComment()">Comentar</button>
     </div>
-    
+
     <!-- estructura comment -->
     <div class="sectionComments" *ngFor="let coment of commentsProducto">
       <div class="contUserImgProfile">

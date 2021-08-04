@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>
+<h1 mat-dialog-title >
   Opiniones y comentarios
   <div id="add-btn-section">
     <div id="add-title">Comentar</div>
@@ -8,6 +8,9 @@
 <mat-dialog-content class="mat-typography" id="dialog-content">
   <app-add-comment [Id_Seller]="this.data.Id_Seller" *ngIf="this.addComment"></app-add-comment>
   <app-comment *ngFor="let comment of this.commentsToSeller" [commentToSeller]="this.comment"></app-comment>
+  <div id="no-comment-section" *ngIf="this.commentsToSeller.length == 0">
+    <h1>Este vendedor aun no tiene comentarios</h1>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Listo</button>

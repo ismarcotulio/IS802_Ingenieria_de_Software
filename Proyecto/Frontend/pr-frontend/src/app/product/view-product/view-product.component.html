@@ -47,6 +47,7 @@
       </div>
       <div id="section-seller-contact">
         <div *ngIf="this.isUser"  id="address">Contacto: {{ this.product.Email }}</div>
+        <div *ngIf="this.isUser" id="reportSeller" ><a (click)="openModal()" > Denunciar vendedor</a></div>
         <div *ngIf="!this.isUser"  id="address">Inicie sesion para ver los datos del vendedor</div>
       </div>
     </div>
@@ -86,6 +87,38 @@
 
     <p class="commentsWarning" *ngIf="commentsProducto.length <1">**Comentarios no disponibles en el anuncio**</p>
 
+  </div>
+
+</div>
+
+<!-- modal -->
+<div class="containerModal" [ngStyle]="{'display': viewModal}" >
+
+  <div class="shadowModal containerModal" (click)= "openModal()"></div>
+  
+  <div class="modalb">
+    
+    <div class="headerModal">
+      <p class="textModal">Denunciar vendedor</p>
+    </div>
+    
+    <div class="bodyModal">
+      <p>Tipo de denuncia:</p>
+      <select class="selectReport" (change)="optionReport($event)">
+        <option value="0" selected >Seleccione el tipo de denuncia</option>
+        <option value="1">Fraude</option>
+        <option value="2">Producto o anuncio ilegal</option>
+        <option value="3">Publicidad engañosa</option>
+        <option value="4">Tergiversacion de identidad</option>
+        <option value="5">Inf. de contacto falsa</option>
+      </select>
+      
+      <textarea class="textAreaReport" rows="3"  [(ngModel)]="commentReport" placeholder="Si desea puede comentarnos, el porqué  de su denuncia."></textarea>
+          
+      <button class="btnReport" type="button" (click)= "createReport()">Realizar denuncia</button>
+      <button class="btnExitReport" type="button" (click)= "openModal()">Salir</button>
+    </div>
+    
   </div>
 
 </div>

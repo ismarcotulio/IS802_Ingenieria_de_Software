@@ -1,3 +1,4 @@
+import { Product } from './../../core/models/product/product-model';
 import { UserProduct, commentProduct } from './../../core/models/product/user-product-model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -17,6 +18,9 @@ export class ViewProductComponent implements OnInit {
   isUser = false;
   myComment = '';
   commentsProducto:commentProduct[] = [];
+  viewModal = 'none';
+  commentReport = '';
+  optionSelectReport = 0;
 
   product: UserProduct = { Id: 7,
   Name: "Maletin",
@@ -115,4 +119,33 @@ export class ViewProductComponent implements OnInit {
     });
   }
 
+  openModal(){
+    if(this.viewModal == 'none'){
+      this.viewModal = 'block';
+    }else{
+      this.viewModal = 'none';
+    }
+  }
+
+  optionReport(event:any){
+    this.optionSelectReport = event.target.value;
+  }
+ 
+  createReport(){
+    if(this.optionSelectReport == 0){
+      alert("Seleccione el tipo de denuncia, para continuar.");
+    }else{
+      let dataReport = {Id_TipoDenuncia: this.optionSelectReport,
+        Comentario_Opcional: this.commentReport,
+        Id_Denunciado: this.product.Id_User
+      }
+
+      this.productService.setNewReport(dataReport).subscribe(res =>{
+        console.log(res);
+        
+      });
+      this.viewModal = 'none';
+    }
+    
+  }
 }

@@ -13,6 +13,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatBadgeModule
 
   ],
   exports: [
@@ -45,7 +47,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatBadgeModule
   ]
 })
 export class MaterialModule { }

@@ -1,0 +1,15 @@
+USE Ecommerce;
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS VerifySuscription ;
+CREATE PROCEDURE VerifySuscription( IN IdCategory_parameter INT)
+BEGIN
+SELECT SUSCRIPTION.Id_User_FK , SUSCRIPTION.Id_Category_FK ,
+USER.Firts_Name AS Name_User , CATEGORY.Name  AS Name_Category
+FROM SUSCRIPTION INNER JOIN USER ON USER.Id = SUSCRIPTION.Id_User_FK INNER JOIN
+CATEGORY ON  CATEGORY.Id = SUSCRIPTION.Id_Category_FK  WHERE SUSCRIPTION.Id_Category_FK = IdCategory_parameter;
+ 
+ END //
+ 
+ DELIMITER ;
+ CALL VerifySuscription(2);

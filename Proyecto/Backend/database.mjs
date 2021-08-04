@@ -280,6 +280,70 @@ class Database{
         }
       })
     }
+
+    getWishList(userId){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL getWishList(?)`,
+          [userId], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            if(results[0]!=undefined){
+              resolve(results[0])
+            }else{
+              resolve(false)
+            }
+          }
+        })
+      })
+    }
+
+    removeWishList(productId,userId){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL deleteWish(?,?)`,
+          [productId,userId], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(true)
+          }
+        })
+      })
+    }
+
+    addWish(productId,userId){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL addWish(?,?)`,
+          [productId,userId], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(true)
+          }
+        })
+      })
+    }
+
+    searchWish(productId,userId){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL verifyWish(?,?)`,
+          [productId,userId], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            if(results[0]!=undefined){
+              resolve(true)
+            }else{
+              resolve(false)
+            }
+          }
+        })
+      })
+    }
 }
 
 export { Database }

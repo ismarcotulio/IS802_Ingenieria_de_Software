@@ -10,6 +10,7 @@ class WishListRouter{
         Router4.post('/add',this.addWish)
         Router4.post('/remove',this.removeWish)
         Router4.get('/getWishes',this.getWishes)
+        Router4.post('/verifyWish',)
     }
 
     addWish = (req,res)=>{
@@ -39,6 +40,16 @@ class WishListRouter{
                 var payload = bearerToken.split(".")[1];
                 var userId = JSON.parse(base64url.decode(payload)).Id_usuario
                 this.wishListController.getWishes(req,res,userId)
+            }
+    }
+
+    verifyWish = (req,res)=>{
+        var bearerHeader =  req.headers['authorization'];
+            if(typeof bearerHeader !== 'undefined'){
+                var bearerToken = bearerHeader.split(" ")[1];
+                var payload = bearerToken.split(".")[1];
+                var userId = JSON.parse(base64url.decode(payload)).Id_usuario
+                this.wishListController.verifyWish(req,res,userId)
             }
     }
 }

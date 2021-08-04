@@ -6,7 +6,7 @@ class wishListController{
 
     addWish(req,res,userId){
         (async()=>{
-            this.database.removeWishList(req.body.Id_Producto,userId)
+            this.database.addWish(req.body.Id_Producto,userId)
             .then(results=>{
                 if(results==true){
                     return res.send(true)
@@ -45,7 +45,7 @@ class wishListController{
 
     verifyWish(req,res,userId){
         (async()=>{
-            this.database.getWishList(req.body.Id_Producto,userId)
+            this.database.searchWish(req.body.Id_Producto,userId)
             .then(results=>{
                 if(results!=false){
                     return res.send(results)

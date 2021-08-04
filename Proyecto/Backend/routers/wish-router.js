@@ -1,16 +1,17 @@
-import wishListController from '../controllers/wishListController.mjs'
+import {wishListController} from '../controllers/wishListController.mjs'
 import express, { Router } from 'express'
+import base64url from 'base64url'
 const Router4 = express.Router()
 
 class WishListRouter{
 
     constructor(database){
-        this.wishListController = wishListController(database)
+        this.wishListController = new wishListController(database)
 
         Router4.post('/add',this.addWish)
         Router4.post('/remove',this.removeWish)
         Router4.get('/getWishes',this.getWishes)
-        Router4.post('/verifyWish',)
+        Router4.post('/verifyWish',this.verifyWish)
     }
 
     addWish = (req,res)=>{

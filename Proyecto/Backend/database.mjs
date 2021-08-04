@@ -335,7 +335,7 @@ class Database{
           if(error){
             reject(error)
           }else{
-            if(results[0]!=undefined){
+            if(results[0][0]!=undefined){
               resolve(true)
             }else{
               resolve(false)

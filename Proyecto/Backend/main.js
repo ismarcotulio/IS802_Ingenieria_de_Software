@@ -14,6 +14,7 @@ import { TokenController } from './controllers/tokenController.mjs';
 import {Router,CategoriaRouter} from './routers/categoria-router.js';
 import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
 import { Router3, CommentRouter } from './routers/comment-router.js';
+import { Router4, WishListRouter } from './routers/wish-router.js';
 import { EmailController } from './controllers/emailController.mjs';
 
 
@@ -43,6 +44,7 @@ const emailController = new EmailController(mailer, database);
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
 const departamentoRouter = new DepartamentoRouter(database,app.get('llave'))
 const commentRouter = new CommentRouter(database,app.get('llave'))
+const wishRouter = new WishListRouter(database)
 
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -51,6 +53,7 @@ app.use(cors());
 app.use('/categoria', Router)
 app.use('/departamento',Router2)
 app.use('/comentario',Router3)
+app.use('/wish',Router4)
 
 
 //Rutas

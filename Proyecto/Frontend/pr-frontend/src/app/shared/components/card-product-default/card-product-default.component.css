@@ -59,15 +59,15 @@
 
 
 .contTarjet{
-    width: 18.75%;
-    height: 370px;
+    width: 22%;
+    height: 385px;
     padding: 10px;
     border-radius: 5px;
     /* border: black  1px solid; */
     position: relative;
     top: 1rem;
     float: left;
-    margin-left: 5%;
+    margin-left: 2.9%;
     margin-top: 2.5%;
 }
 

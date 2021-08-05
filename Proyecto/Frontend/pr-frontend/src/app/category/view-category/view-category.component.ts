@@ -17,6 +17,7 @@ export class ViewCategoryComponent implements OnInit {
   departments = DEPARTMENTS;
   selectedDepartment = "";
   isUser = false;
+  openDialog = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -90,8 +91,27 @@ export class ViewCategoryComponent implements OnInit {
     })
   }
 
-  
+  deleteSubscription(){
+    
+    this.userSubscribe = false;
+    this.closeOpenDialog();
 
+  }
+  
+  userSubscribeCategory(){
+    this.userSubscribe = true;
+        
+  }
+  
+  closeOpenDialog(){
+    if(this.openDialog){
+      this.openDialog = false
+    }else{
+
+      this.openDialog = true;
+    }
+    
+  }
   
   
 }

@@ -1,5 +1,5 @@
 USE Ecommerce;
-
+DROP PROCEDURE IF EXISTS insertUser;
 DELIMITER //
 
 CREATE PROCEDURE insertUser( 
@@ -18,7 +18,6 @@ END//
 
 DELIMITER ;
 
-USE Ecommerce;
-CALL insertUser( 6, "Eliud", "Rodriguez", "EliudR@email.com", "Col.Sosa","Oerr_556");
+
 
 

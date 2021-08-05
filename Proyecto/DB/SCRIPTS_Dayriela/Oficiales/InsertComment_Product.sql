@@ -1,6 +1,6 @@
 USE Ecommerce;
 DROP PROCEDURE IF EXISTS InsertComment_Product;
-USE Ecommerce;
+
 DELIMITER //
 
 CREATE PROCEDURE InsertComment_Product(
@@ -18,6 +18,8 @@ BEGIN
     (nextId , Id_Product_FK_parameter );
     
     END //
+
+DELIMITER ;
 
     
    

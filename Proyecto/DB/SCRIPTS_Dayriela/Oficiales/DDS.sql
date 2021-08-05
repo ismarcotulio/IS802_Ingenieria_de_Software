@@ -92,13 +92,17 @@ Id_Complaint_Type INTEGER PRIMARY KEY,
 Name_Complaint_Type VARCHAR(40)
 );
 
+
 CREATE TABLE COMPLAINTS(
 Id_Complaints INT PRIMARY KEY AUTO_INCREMENT ,
 Id_Whistleblower INT , FOREIGN KEY (Id_Whistleblower) REFERENCES USER(Id),
 Id_Denounced INT,FOREIGN KEY (Id_Denounced) REFERENCES USER(Id),
 Id_ComplaintType INT, FOREIGN KEY (Id_ComplaintType) REFERENCES  COMPLAINT_TYPE (Id_Complaint_Type),
-Optional_Comment VARCHAR(45)
+Optional_Comment VARCHAR(45),
+Date_Complaints TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
 );
+
+
 
 
 CREATE TABLE WISH_LIST_USER(

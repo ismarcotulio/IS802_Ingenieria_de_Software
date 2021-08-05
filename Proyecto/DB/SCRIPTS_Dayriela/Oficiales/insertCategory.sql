@@ -1,4 +1,4 @@
-USE Ecommerce;
+
 
 USE Ecommerce;
 
@@ -20,5 +20,5 @@ END//
 DELIMITER ;
 
 
-USE Ecommerce;
-CALL insertCategory(10, "Alimentos", "Desde comida Vegana hasta todo tipo de carnes");
+
+

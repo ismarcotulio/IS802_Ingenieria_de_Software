@@ -109,4 +109,17 @@ INSERT INTO PRODUCT(Id, Name, Brand, Cost, Description, Id_Category_FK, Id_User_
     (42, "Hamaca dos", "Hamaca grande", 400, "Verde y azul", 2, 5, 11, "https://i.ibb.co/SwmFt85/Hamaca-2.jpg","2021-04-02", 1)
 ;
 
+INSERT INTO COMPLAINT_TYPE(Id_Complaint_Type,Name_Complaint_Type) VALUES
+(1,"Falsificaciones"),
+(2,"Imitaciones"),
+(3,"Estafas");
+
+
+
+INSERT INTO COMPLAINTS(Id_Whistleblower,Id_Denounced,Id_ComplaintType,Optional_Comment) VALUES
+(1,2,2,"Copia de una marca"),
+(3,1,3,"Articulo que excede su precio original"),
+(5,4,1,"Perfil falso")
+;
+
 

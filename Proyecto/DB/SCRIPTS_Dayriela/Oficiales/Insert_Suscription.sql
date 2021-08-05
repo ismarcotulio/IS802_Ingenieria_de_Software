@@ -1,7 +1,6 @@
 USE Ecommerce;
-DELIMITER //
-
 DROP PROCEDURE IF EXISTS InsertSuscription;
+DELIMITER //
 CREATE PROCEDURE InsertSuscription(
 IN Id_User_FK_parameter INT,
 IN Id_Category_FK_parameter INT 
@@ -14,5 +13,4 @@ BEGIN
    END //
    
    DELIMITER ;
-select *from SUSCRIPTION;
-call InsertSuscription(2,8);
+

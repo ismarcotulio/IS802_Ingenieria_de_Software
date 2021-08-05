@@ -13,4 +13,4 @@ BEGIN
     END //
     
     DELIMITER ;
-    CALL InsertComplaint_Type(2, "Imitaciones" );
+    

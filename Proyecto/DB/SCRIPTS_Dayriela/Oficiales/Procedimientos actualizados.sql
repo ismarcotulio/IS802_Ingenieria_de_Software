@@ -1,6 +1,6 @@
 use ecommerce;
 
-DELIMITER $$
+DELIMITER //
 CREATE PROCEDURE `ProductByKeyword`(IN Buscar VARCHAR(30))
 BEGIN 
   SELECT product.Id, product.Name, product.Description,
@@ -9,9 +9,13 @@ BEGIN
   user ON  product.Id_User_FK = user.Id INNER JOIN state ON
   product.Id_State_FK = state.Id
     WHERE product.Name LIKE CONCAT('%', Buscar , '%');
-END$$
+END //
 
-DELIMITER $$
+DELIMITER ;
+
+
+DELIMITER //
+
 CREATE PROCEDURE `filterDepartment`(IN departamento_ID INT)
 BEGIN
 	SELECT product.Id, product.Name, product.Description,
@@ -19,9 +23,12 @@ BEGIN
   user.Firts_Name, user.Last_Name, user.Email FROM PRODUCT INNER JOIN 
   user ON  product.Id_User_FK = user.Id INNER JOIN state ON
   product.Id_State_FK = state.Id WHERE PRODUCT.Id_Department_FK = departamento_ID;
-END$$
+END //
 
-DELIMITER $$
+DELIMITER ;
+
+
+DELIMITER //
 CREATE PROCEDURE `filterCategory`(IN categoryID INT)
 BEGIN
 	SELECT product.Id, product.Name, product.Description,
@@ -29,9 +36,12 @@ BEGIN
   user.Firts_Name, user.Last_Name, user.Email FROM PRODUCT INNER JOIN 
   user ON  product.Id_User_FK = user.Id INNER JOIN state ON
   product.Id_State_FK = state.Id WHERE PRODUCT.Id_Category_FK = categoryID;
-END$$
+END //
 
-DELIMITER $$
+DELIMITER ;
+
+
+DELIMITER //
 CREATE PROCEDURE `DataCollectionProduct`(IN done BOOLEAN)
 BEGIN
   SELECT product.Id, product.Name, product.Description,
@@ -39,7 +49,9 @@ BEGIN
   user.Firts_Name, user.Last_Name, user.Email FROM PRODUCT INNER JOIN 
   user ON  product.Id_User_FK = user.Id INNER JOIN state ON
   product.Id_State_FK = state.Id;
-END$$
+END //
+
+DELIMITER ;
 
 
 

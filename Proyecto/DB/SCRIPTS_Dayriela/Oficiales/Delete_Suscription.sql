@@ -1,4 +1,5 @@
 USE Ecommerce;
+DROP PROCEDURE IF EXISTS DeleteSuscription;
 DELIMITER //
 
 CREATE PROCEDURE DeleteSuscription(IN IdUser_parameter INT)
@@ -9,4 +10,3 @@ END //
 
 DELIMITER ;
 
-call DeleteSuscription(1);

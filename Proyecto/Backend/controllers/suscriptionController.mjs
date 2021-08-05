@@ -34,11 +34,12 @@ class SuscriptionController{
             
             await this.database.insertSuscription(
                  
+                newSuscription.Id_User_FK,
                 newSuscription.Id_Category_FK
 
             )
             
-            return res.json({status:true,suscription:newSuscription})
+            return res.json({status:true})
             
             
             

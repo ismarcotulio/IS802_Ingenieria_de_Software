@@ -89,10 +89,10 @@ class Database{
             if(error){
               reject(error)
             }else{
-              if(results[0][0]!=undefined){
-                resolve(results[0][0])
+              if(results[0]!=undefined){
+                resolve(results[0])
               }else{
-                reject("False")
+                resolve("False")
               }
             }
           })

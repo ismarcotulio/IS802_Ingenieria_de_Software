@@ -70,11 +70,21 @@ class AuthController{
                 }else{
                     await this.database.authUser(req.body.email,req.body.password).then(function(results){
                         let payload = {
-                            Id_usuario: results.Id,
+                            Id_usuario: results[0].Id,
                             iat: new Date().getTime()/1000
                         }
-                        let token = jwt.sign(payload,key)
-                        return res.json({Id_usuario: results.Id,token: token, status: true, role: results.Name, message: "Correcto inicio de sesion"})
+                        if(results.length>=2){
+                            let roles = []
+                            for(let i in results){
+                                roles.push(results[i].Name)
+                            }
+                            let token = jwt.sign(payload,key)
+                            return res.json({Id_usuario: results[0].Id,token: token, status: true, role: roles, message: "Correcto inicio de sesion"})
+                        }else{
+                            let token = jwt.sign(payload,key)
+                            return res.json({Id_usuario: results[0].Id,token: token, status: true, role: results[0].Name, message: "Correcto inicio de sesion"})
+                        }
+                        
                     })
                     .catch((error)=>{
                         return res.json({mensaje: statusAccount})

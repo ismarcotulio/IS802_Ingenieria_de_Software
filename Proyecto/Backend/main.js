@@ -16,6 +16,7 @@ import {Router,CategoriaRouter} from './routers/categoria-router.js';
 import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
 import { EmailController } from './controllers/emailController.mjs';
 import { ComplaintController } from './controllers/complaintController.mjs'
+import { SuscriptionController } from './controllers/suscriptionController.mjs'
 
 //Configuracion express
 const config = {
@@ -39,6 +40,7 @@ const authController = new AuthController(database);
 const tokenController = new TokenController();
 const emailController = new EmailController(mailer, database);
 const complaintController = new ComplaintController(database);
+const suscriptionController = new SuscriptionController(database);
 
 //Instancia de routers
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
@@ -169,6 +171,10 @@ app.post("/insertProduct", async (req , res) => {
 
 app.post("/insertComplaint", async (req , res) => {
     complaintController.insertComplaint( req, res, app.get("llave"))
+});
+
+app.post("/insertSuscription", async (req , res) => {
+    suscriptionController.insertSuscription( req, res, app.get("llave"))
 });
 
 app.post('/productKeyword', async (req,res)=>{

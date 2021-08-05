@@ -95,6 +95,18 @@ class Database{
         })
       }
 
+      insertSuscription( Id_User_FK, Id_Category_FK){
+        return new Promise((resolve, reject)=>{      
+          this.conexion.query(`CALL insertSuscription(?,?)`,[ Id_User_FK, Id_Category_FK], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+
       authUser(email,password){
         return new Promise((resolve, reject)=>{
           this.conexion.query(`CALL authUser(?,?)`,[email,password], (error,results, fields)=>{
@@ -147,13 +159,13 @@ class Database{
         })
       }
 
-      getCategoriaProducts(categoria){
+      getLastSuscriptionIdQuery(callback){
         return new Promise((resolve, reject)=>{
-          this.conexion.query(`CALL filterCategory(?)`,[categoria], (error,results, fields)=>{
+          this.conexion.query('SELECT * FROM SUSCRIPTION ORDER BY Id_Suscription DESC LIMIT 1;', (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
-              resolve(results[0])
+              resolve(results)
             }
           })
         })
@@ -228,6 +240,8 @@ class Database{
         })
       }
 
+
+
       getProduct(id){
         return new Promise((resolve, reject)=>{
           this.conexion.query(
@@ -272,6 +286,7 @@ class Database{
           })
         })
       }
+
 
 }
 

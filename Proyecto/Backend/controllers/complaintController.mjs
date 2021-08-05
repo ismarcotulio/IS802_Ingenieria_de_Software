@@ -30,7 +30,7 @@ class ComplaintController{
             newComplaint.Id_TipoDenuncia = req.body.Id_TipoDenuncia
             newComplaint.Comentario_Opcional = req.body.Comentario_Opcional
              
-            
+            /*
             await this.database.getLastComplaintIdQuery().then(function(results){
               newComplaint.Id_Denuncia=results  
             })
@@ -42,7 +42,7 @@ class ComplaintController{
                 newComplaint.Id_TipoDenuncia,
                 newComplaint.Comentario_Opcional
             )
-           
+           */
             return res.json({status:true,complaint:newComplaint})
 
         })();

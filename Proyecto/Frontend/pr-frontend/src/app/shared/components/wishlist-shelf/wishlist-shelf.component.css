@@ -67,3 +67,20 @@ th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:la
   font-size: 4vw;
   cursor: pointer;
 }
+
+#wishlist-message-container{
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 20vh;
+  background: white;
+  border: solid 1px lightgray;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7vh;
+}
+
+#wish-message{
+  color: dimgray;
+  font-size: 2vw;
+}

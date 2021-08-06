@@ -16,7 +16,6 @@ import { CardCategoryComponent } from './components/card-category/card-category.
 import { CardProductComponent } from './components/card-product/card-product.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductShelfDefaultComponent } from './components/product-shelf-default/product-shelf-default.component';
-import { CardProductWishlistComponent } from './components/card-product-wishlist/card-product-wishlist.component';
 import { WishlistShelfComponent } from './components/wishlist-shelf/wishlist-shelf.component';
 
 
@@ -33,7 +32,6 @@ import { WishlistShelfComponent } from './components/wishlist-shelf/wishlist-she
     CardProductComponent,
     CarouselComponent,
     ProductShelfDefaultComponent,
-    CardProductWishlistComponent,
     WishlistShelfComponent
   ],
   imports: [

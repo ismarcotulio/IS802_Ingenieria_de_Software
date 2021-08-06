@@ -1,3 +1,4 @@
+import { WishlistService } from './../../core/services/wishlist/wishlist.service';
 import { Product } from './../../core/models/product/product-model';
 import { UserProduct, commentProduct } from './../../core/models/product/user-product-model';
 import { Component, OnInit } from '@angular/core';
@@ -22,27 +23,14 @@ export class ViewProductComponent implements OnInit {
   commentReport = '';
   optionSelectReport = 0;
 
-  product: UserProduct = { Id: 7,
-  Name: "Maletin",
-  Brand: "Nike",
-  Cost: 1000,
-  Description: "Para salir de viaje preparado",
-  Id_Category: 9,
-  Image: "https://i.ibb.co/xHYNb2k/Maletin-Nike.jpg",
-  Date_Product: "2021-07-07T06:00:00.000Z",
-  Id_State: 1,
-  Id_Department: 1,
-  Id_User: 2,
-  Firts_Name: "Pedro",
-  Last_Name: "Martinez",
-  Email: "PedroM@email.com",
-  Address: "Col. San Miguel"}
+  product!: UserProduct;
+  wishProductState = false;
 
   constructor(
     private route: ActivatedRoute,
-
     private productService: ProductService,
-    private dialog: MatDialog
+    private wishlistService: WishlistService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +43,10 @@ export class ViewProductComponent implements OnInit {
               this.commentsProducto = comments;
               this.clearDateComments();
           });
+
+          this.wishlistService.verifyWish(this.product.Id).subscribe(
+            data => { this.wishProductState = data }
+          )
         }
         )
       });
@@ -64,6 +56,8 @@ export class ViewProductComponent implements OnInit {
           this.isUser = true
         }
       }catch(e){}
+
+
 
 
 
@@ -130,7 +124,7 @@ export class ViewProductComponent implements OnInit {
   optionReport(event:any){
     this.optionSelectReport = event.target.value;
   }
- 
+
   createReport(){
     if(this.optionSelectReport == 0){
       alert("Seleccione el tipo de denuncia, para continuar.");
@@ -142,10 +136,28 @@ export class ViewProductComponent implements OnInit {
 
       this.productService.setNewReport(dataReport).subscribe(res =>{
         console.log(res);
-        
+
       });
       this.viewModal = 'none';
     }
-    
+
+  }
+
+  addWish(){
+    this.wishlistService.addWish(this.product.Id).subscribe(
+      data => {
+        console.log(data)
+        this.wishProductState = data
+      }
+    )
+  }
+
+  removeWish(){
+    this.wishlistService.removeWish(this.product.Id).subscribe(
+      data => {
+        console.log(data)
+        this.wishProductState = !data
+      }
+    )
   }
 }

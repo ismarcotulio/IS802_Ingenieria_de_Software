@@ -18,6 +18,7 @@ class CategoriaRouter{
         Router.get('/jugueteria',this.getJugueteria)
         Router.get('/mascotas',this.getMascotas)
         Router.get('/ropa',this.getViajesEquipaje)
+        Router.post('/changeStatus',this.changeStatus)
     }
     
     getAll = (req,res) =>{
@@ -128,6 +129,13 @@ class CategoriaRouter{
             }else{
                res.send(results) 
             }
+        })
+    }
+
+    changeStatus = (req,res)=>{
+        this.database.changeCategoryStatus(req.body.category,req.body.status)
+        .then(results=>{
+            res.send(results)
         })
     }
     

@@ -360,6 +360,20 @@ class Database{
         })
       })
     }
+
+    changeCategoryStatus(categoryId,statusNum){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL Change_Category_Status(?,?)`,
+          [categoryId,statusNum], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(true)
+          }
+        })
+      })
+    }
 }
 
 export { Database }

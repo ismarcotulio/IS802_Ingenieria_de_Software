@@ -14,6 +14,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatDialogModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTableModule,
+    MatPaginatorModule
 
   ],
   exports: [
@@ -48,7 +52,9 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatDialogModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule { }

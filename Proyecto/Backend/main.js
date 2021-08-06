@@ -159,7 +159,11 @@ app.get('/categoria-departamento', (req,res)=>{
     }
     database.getMultipleFilters(categoria,departamento)
     .then(results=>{
-        res.send(results)
+        if(results==false){
+            res.send("Categoria no disponible")
+        }else{
+           res.send(results) 
+        }
     })
 })
 

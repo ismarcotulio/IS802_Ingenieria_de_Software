@@ -164,7 +164,13 @@ class Database{
             if(error){
               reject(error)
             }else{
-              resolve(results[0])
+              if(results[0].length==0){
+                resolve("No hay productos")
+              }else if(results[0][0].Status==0){
+                resolve(false)
+              }else{
+                resolve(results[0])
+              }
             }
           })
         })

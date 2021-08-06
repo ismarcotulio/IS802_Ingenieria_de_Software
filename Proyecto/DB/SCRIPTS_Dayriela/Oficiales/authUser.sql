@@ -8,3 +8,6 @@ BEGIN
     USER_TYPE ON USER_TYPE.Id_User_Type = USER_USER_TYPE.Id_User_Type_FK
     WHERE USER.Email = email AND USER.Password = password;
 END//
+
+DELIMITER ;
+

@@ -6,17 +6,16 @@ class ComplaintController{
         this.database = database
     }
 
-    insertComplaint(req, res, key){
+    insertComplaints(req, res, key){
         //Envoltura asincrona IIR
         (async () => {
           
             var newComplaint = {
 
-                Id_Denuncia: 0,
-                Id_Denunciante: 0,
-                Id_Denunciado: 0,
-                Id_TipoDenuncia: 0,
-                Comentario_Opcional: ""
+                Id_Whistleblower: 0,
+                Id_Denounced: 0,
+                Id_ComplaintType: 0,
+                Optional_Comment: ""
                 
             }
             var token = req.headers.authorization.split(" ")[1]
@@ -26,29 +25,29 @@ class ComplaintController{
                 console.log(decoded)
               });
             
-            newComplaint.Id_Denunciado = req.body.Id_Denunciado
-            newComplaint.Id_TipoDenuncia = req.body.Id_TipoDenuncia
-            newComplaint.Comentario_Opcional = req.body.Comentario_Opcional
-             
-            /*
+            newComplaint.Id_Whistleblower = newComplaint.Id_User
+            newComplaint.Id_Denounced = req.body.Id_Denounced
+            newComplaint.Id_ComplaintType = req.body.Id_ComplaintType
+            newComplaint.Optional_Comment = req.body.Optional_Comment
+            
             await this.database.getLastComplaintIdQuery().then(function(results){
-              newComplaint.Id_Denuncia=results  
+              newComplaint.Id_Complaints=results  
+              newComplaint.Date_Complaints=results
             })
             
-            await this.database.insertComplaint(
-                newComplaint.Id_Denuncia,
-                newComplaint.Id_Denunciante, 
-                newComplaint.Id_Denunciado,
-                newComplaint.Id_TipoDenuncia,
-                newComplaint.Comentario_Opcional
+            await this.database.insertComplaints(
+                
+                newComplaint.Id_Whistleblower, 
+                newComplaint.Id_Denounced,
+                newComplaint.Id_ComplaintType,
+                newComplaint.Optional_Comment
             )
-           */
-            return res.json({status:true,complaint:newComplaint})
+           
+            return res.json({status:true})
 
         })();
         
     }
-
 
 }
 

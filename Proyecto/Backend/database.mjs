@@ -83,9 +83,9 @@ class Database{
         })
       }
 
-      insertComplaint( Id_Denuncia, Id_Denunciante, Id_Denunciado, Id_TipoDenuncia, Comentario_Opcional){
+      insertComplaints( Id_Whistleblower, Id_Denounced, Id_ComplaintType, Optional_Comment){
         return new Promise((resolve, reject)=>{      
-          this.conexion.query(`CALL insertComplaint(?,?,?,?,?)`,[  Id_Denuncia, Id_Denunciante, Id_Denunciado, Id_TipoDenuncia, Comentario_Opcional], (error,results, fields)=>{
+          this.conexion.query(`CALL insertComplaints(?,?,?,?)`,[ Id_Whistleblower, Id_Denounced, Id_ComplaintType, Optional_Comment], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
@@ -149,11 +149,11 @@ class Database{
 
       getLastComplaintIdQuery(callback){
         return new Promise((resolve, reject)=>{
-          this.conexion.query('SELECT * FROM DENUNCIAS ORDER BY Id_Denuncia DESC LIMIT 1;', (error,results, fields)=>{
+          this.conexion.query('SELECT * FROM COMPLAINTS ORDER BY Id_Complaints DESC LIMIT 1;', (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
-              resolve(results[0].Id_Denuncia+1)
+              resolve(results[0].Id_Complaints+1)
             }
           })
         })
@@ -165,7 +165,7 @@ class Database{
             if(error){
               reject(error)
             }else{
-              resolve(results)
+              resolve(results[0].Id_Suscription+1)
             }
           })
         })
@@ -265,19 +265,19 @@ class Database{
         })
       }
 
-      getComplaint(Id_Denuncia){
+      getComplaint(Id_Complaints){
         return new Promise((resolve, reject)=>{
           this.conexion.query(
-            ` SELECT DENUNCIAS.Id_Denuncia AS Id_Denuncia, DENUNCIAS.Id_Denunciante AS Id_Denunciante, 
-            DENUNCIAS.Id_Denunciado AS Id_Denunciado, DENUNCIAS.Id_TipoDenuncia AS Id_TipoDenuncia, 
-            DENUNCIAS.Comentario_Opcional AS Comentario_Opcional,
+            ` SELECT COMPLAINTS.Id_Complaints AS Id_Complaints, COMPLAINTS.Id_Whistleblower AS Id_Whistleblower, 
+            COMPLAINTS.Id_Denounced AS Id_Denounced, COMPLAINTS.Id_ComplaintType AS Id_ComplaintType, 
+            COMPLAINTS.Optional_Comment AS Optional_Comment, COMPLAINTS.Date_Complaints AS Date_Complaints
             USER.Id AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name, 
             USER.Email AS Email, USER.Address AS Address
   
-              FROM DENUNCIAS
-              JOIN USER ON DENUNCIAS.Id_User_FK = USER.Id 
-              WHERE DENUNCIAS.Id_Denuncia = ?`,
-            [Id_Denuncia], (error,results, fields)=>{
+              FROM COMPLAINTS
+              JOIN USER ON COMPLAINTS.Id_User_FK = USER.Id 
+              WHERE COMPLAINTS.Id_Complaints = ?`,
+            [Id_Complaints], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{

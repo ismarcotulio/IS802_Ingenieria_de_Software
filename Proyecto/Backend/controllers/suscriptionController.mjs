@@ -12,9 +12,8 @@ class SuscriptionController{
           
             var newSuscription = {
 
-                
                 Id_User_FK: 0,
-                Id_Category_FK: 0,
+                Id_Category_FK: 0
                 
             }
             var token = req.headers.authorization.split(" ")[1]
@@ -29,7 +28,7 @@ class SuscriptionController{
             
             await this.database.getLastSuscriptionIdQuery().then(function(results){
               newSuscription.Id_Suscription=results
-                
+        
             })
             
             await this.database.insertSuscription(

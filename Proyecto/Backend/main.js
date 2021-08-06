@@ -169,8 +169,8 @@ app.post("/insertProduct", async (req , res) => {
     productController.insertProduct( req, res, app.get("llave"))
 });
 
-app.post("/insertComplaint", async (req , res) => {
-    complaintController.insertComplaint( req, res, app.get("llave"))
+app.post("/insertComplaints", async (req , res) => {
+    complaintController.insertComplaints( req, res, app.get("llave"))
 });
 
 app.post("/insertSuscription", async (req , res) => {

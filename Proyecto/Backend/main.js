@@ -199,13 +199,6 @@ app.get("/getProduct/:id", async (req , res) => {
     })
 });
 
-app.get("/getComplaint/:id_Denuncia", async (req , res) => {
-    database.getComplaint(req.params.id)
-    .then(results =>{
-        res.send(results)
-    })
-});
-
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 
 })

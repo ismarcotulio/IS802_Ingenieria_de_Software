@@ -1,0 +1,251 @@
+#header{
+  position: relative;
+  width: 100%;
+  height: 12%;
+  background: #1473E6;
+  margin:0;
+}
+
+#logoSection{
+  position: relative;
+  float: left;
+  width: 20%;
+  height: 100%;
+}
+
+#logoBtnContainer{
+  position: relative;
+  width: 80%;
+  height: 70%;
+  left: 10%;
+  top: 15%;
+  color: white;
+  font-size: 1em;
+}
+
+#logoBtnContainer:hover{
+  cursor: pointer;
+}
+
+#logoContainer{
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  float: left;
+  width: 35%;
+  height: 100%;
+  text-align: center;
+}
+
+#logoTitleContainer{
+  display: flex;
+  align-items: center;
+  position: relative;
+  float: left;
+  width: 65%;
+  height: 100%;
+  font-size:1.5vw;
+}
+
+#logoHeader{
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  font-size: 4.5vw;
+  text-align: center;
+
+}
+
+#logoTitle{
+  position: relative;
+  font-family: 'Federo';
+
+}
+
+#inputsSection{
+  position: relative;
+  float: left;
+  width: 70%;
+  height: 100%;
+}
+
+#inputSection1{
+  position: relative;
+  width: 100%;
+  height: 25%;
+
+}
+
+#post-btn{
+  position: absolute;
+  width: 15%;
+  height: 90%;
+  top: 5%;
+  left: 65%;
+  background: transparent;
+  color: white;
+  text-align:center;
+  border: none;
+}
+
+#inputSection2{
+  position: relative;
+  width: 100%;
+  height: 45%;
+}
+
+#searchBarContainer{
+  position:relative;
+  width: 82.5%;
+  height: 70%;
+  left: 5%;
+  top:15%;
+
+}
+
+#searchBar{
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  width: 95%;
+  height: 100%;
+  border: solid #82D5FA 1px;
+  background: transparent;
+  color: white;
+  padding: 1%;
+  font-family: "Arial";
+}
+
+#searchBar:focus {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+#searchBtn{
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  width:5%;
+  height: 100%;
+  background: #82D5FA;
+  border:solid #82D5FA 1px;
+  color: white;
+  text-align: center;
+}
+
+#searchBtnIcon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: white;
+  margin: auto;
+  font-size: 3vw;
+}
+
+#inputSection3{
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 30%;
+  padding-left: 2.5%;
+}
+
+.categoryBtnContainer{
+  position: relative;
+  float: left;
+  height: 100%;
+  padding-left: 2.5%;
+}
+
+.btnCategory{
+  position: relative;
+  width: 100%;
+  height: 90%;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1vw;
+}
+
+.btnCategory:hover{
+  box-sizing: border-box;
+  border-bottom: solid white 5px;
+}
+
+.isActive{
+  box-sizing: border-box;
+  border-bottom: solid white 5px;
+}
+
+#userSection{
+  position: relative;
+  float: left;
+  width: 10%;
+  height: 100%;
+}
+
+#userContainer{
+  position: relative;
+  width: 80%;
+  height: 80%;
+  top:5%;
+  left: 10%;
+  color: white;
+  font-size: 0.8em;
+  margin:0;
+}
+
+#userBtnContainer{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  text-align:center;
+  width: 50%;
+  height: 60%;
+  top:15%;
+  left: 25%;
+}
+
+#userIcon{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  font-size:3.5vw;
+}
+
+#userBtnContainer:hover{
+  cursor: pointer;
+}
+
+#userTitleContainer{
+  position: absolute;
+  width: 100%;
+  height: 25%;
+  bottom:0;
+  text-align: center;
+  font-size: 0.8vw;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.optionsSection{
+  width: 100%;
+  margin: 0;
+}
+
+.optionsSection p{
+  position: relative;
+  color: aliceblue;
+  margin-left: auto;
+  cursor: pointer;
+  margin-left: 65%;
+}
+

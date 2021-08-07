@@ -1,0 +1,34 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Denuncias</h1>
+  <mat-grid-list cols="3" rowHeight="30vh">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="1" [rowspan]="1" #grid>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.Name_Complaint_Type}}
+            <span class="date">{{card.Date_Complaints |date}}</span>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Aceptar</button>
+              <button mat-menu-item (click)="this.removeComplaint(this.card.Id_Complaints)">Rechazar</button>
+              <button mat-menu-item (click)="this.grid.rowspan=2; this.subject.style.height = '50%'">Ver detalles</button>
+              <button mat-menu-item (click)="this.grid.rowspan=1; this.subject.style.height = '100%'">Ver menos</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div class="section-subject" #subject>
+            <div class="subject">Denuncia para: <br><b>{{ card.Denounced_Firts_Name }} {{ card.Denounced_Last_Name }}</b></div>
+          </div>
+          <div class="section-detail" *ngIf="this.grid.rowspan == 2">
+            <div class="whistleblower">Denunciante: {{ card.Whistleblower_Firts_Name }} {{ card.Whistleblower_Last_Name }}</div><br>
+            <div class="comment" *ngIf="this.card.Optional_Comment != ''">Motivo: <span>{{ card.Optional_Comment }}</span></div>
+            <div class="comment" *ngIf="this.card.Optional_Comment == ''">Motivo: <span>No se proporciono mas informacion</span></div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -6,8 +6,9 @@
     <div id="section-description">
       <div id="section-product-title">
         <div id="title"><b>{{ this.product.Name }}</b></div>
-        <div id="wish">
-          <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon">favorite_border</mat-icon>
+        <div id="wish" *ngIf="this.isUser">
+          <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon" (click)="this.addWish()"  *ngIf="!this.wishProductState">favorite_border</mat-icon>
+          <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon"  (click)="this.removeWish()" *ngIf="this.wishProductState">favorite</mat-icon>
         </div>
       </div>
       <div id="section-product-description">
@@ -18,7 +19,7 @@
       </div>
     </div>
     <div id="section-seller">
-      <div id="comment-section">
+      <div id="comment-section" *ngIf="this.isUser">
         <div id="comment">
           <mat-icon id="comIcon" aria-hidden="false" aria-label="Example home icon" (click)="openCommentsDialog()">comment</mat-icon>
         </div>
@@ -47,6 +48,7 @@
       </div>
       <div id="section-seller-contact">
         <div *ngIf="this.isUser"  id="address">Contacto: {{ this.product.Email }}</div>
+        <div *ngIf="this.isUser" id="reportSeller" ><a (click)="openModal()" > Denunciar vendedor</a></div>
         <div *ngIf="!this.isUser"  id="address">Inicie sesion para ver los datos del vendedor</div>
       </div>
     </div>
@@ -55,5 +57,69 @@
 <div id="section-product-comments">
   <div id="section-comment">
 
+    <h4 class="textComment">Comentarios</h4>
+    <button type="button" class="buttonAddComment" (click)="viewAddNewComment()" > <i class="fas fa-plus"></i> Agregar comentario</button>
+
+    <!-- <p>Nuevo Comentario: </p> -->
+    <div [ngStyle]="{'display':addComment}" class="addNewComment">
+
+      <div class="contUserImgProfile">
+        <img [src]="imgUser" alt="Imagen perfil">
+      </div>
+
+      <textarea class="textAreaComment" name="descripcion" rows="3"  [(ngModel)]="myComment" placeholder="Escribir comentario"></textarea>
+      <button class="btnNewComment" type="button" (click) = "addNewComment()">Comentar</button>
+    </div>
+
+    <!-- estructura comment -->
+    <div class="sectionComments" *ngFor="let coment of commentsProducto">
+      <div class="contUserImgProfile">
+        <img [src]="imgUser" alt="Imagen perfil">
+      </div>
+
+      <p class="nameUser">{{coment.Firts_Name}}  {{coment.Last_Name}}</p>
+      <p class="dateComment"><b>Fecha comentario:</b> {{coment.Date_Comment}}</p>
+
+      <div class="contComment">
+        <p class="commentUser">{{coment.Comment}}</p>
+      </div>
+
+    </div>
+
+    <p class="commentsWarning" *ngIf="commentsProducto.length <1">**Comentarios no disponibles en el anuncio**</p>
+
   </div>
+
+</div>
+
+<!-- modal -->
+<div class="containerModal" [ngStyle]="{'display': viewModal}" >
+
+  <div class="shadowModal containerModal" (click)= "openModal()"></div>
+
+  <div class="modalb">
+
+    <div class="headerModal">
+      <p class="textModal">Denunciar vendedor</p>
+    </div>
+
+    <div class="bodyModal">
+      <p>Tipo de denuncia:</p>
+      <select class="selectReport" (change)="optionReport($event)">
+        <option value="0" selected >Seleccione el tipo de denuncia</option>
+        <option value="1">Fraude</option>
+        <option value="2">Producto o anuncio ilegal</option>
+        <option value="3">Publicidad engañosa</option>
+        <option value="4">Tergiversacion de identidad</option>
+        <option value="5">Inf. de contacto falsa</option>
+      </select>
+
+      <textarea class="textAreaReport" rows="3"  [(ngModel)]="commentReport" placeholder="Si desea puede comentarnos, el porqué  de su denuncia."></textarea>
+
+      <button class="btnReport" type="button" (click)= "createReport()">Realizar denuncia</button>
+      <button class="btnExitReport" type="button" (click)= "openModal()">Salir</button>
+    </div>
+
+  </div>
+
 </div>

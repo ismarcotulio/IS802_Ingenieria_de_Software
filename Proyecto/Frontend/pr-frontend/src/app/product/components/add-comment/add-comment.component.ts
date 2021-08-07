@@ -22,10 +22,11 @@ export class AddCommentComponent implements OnInit {
 
 
   commentForm = this.fb.group({
-    Comment: ['', Validators.required],
-    Qualification: ['',  Validators.required],
+    comment: ['', Validators.required],
+    calificacion: ['',  Validators.required],
     Date: [''],
-    Id_Seller: ['']
+    sellerId: [''],
+    typeComment: ['']
   });
 
   constructor(
@@ -39,7 +40,7 @@ export class AddCommentComponent implements OnInit {
 
   selecStar(stars: HTMLElement, star: MatIcon){
     this.qualification = star._elementRef.nativeElement.dataset.number
-    this.commentForm.controls.Qualification.setValue(this.qualification)
+    this.commentForm.controls.calificacion.setValue(this.qualification)
 
     let count = 0
     stars.childNodes.forEach(node => {
@@ -60,11 +61,17 @@ export class AddCommentComponent implements OnInit {
     let FormattedDate = this.pipe.transform(now, 'YYYY-MM-dd')
     this.commentForm.controls.Date.setValue(FormattedDate)
 
-    this.commentForm.controls.Id_Seller.setValue(this.Id_Seller)
+    this.commentForm.controls.sellerId.setValue(this.Id_Seller)
 
-    this.commentToSellerService.sendComment(this.commentForm)
+    this.commentForm.controls.typeComment.setValue("seller")
 
-    this.dialogRef.closeAll()
+    this.commentToSellerService.sendComment(this.commentForm).subscribe(
+      data => {
+        this.dialogRef.closeAll()
+      }
+    )
+
+
 
   }
 }

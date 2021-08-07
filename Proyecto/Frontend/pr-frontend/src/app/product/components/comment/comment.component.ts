@@ -9,12 +9,11 @@ import { CommentToSeller } from 'src/app/core/models/comment/comment-to-seller-m
 export class CommentComponent implements OnInit {
 
   @Input() commentToSeller: CommentToSeller = {
-    Id_Comment: 0,
     Comment: "Muy buena calidad de productos, 100% recomendado",
     Date: "2021/07/30",
-    Id_User_FK: 1,
-    Name_User: "John Travolta",
-    Qualification: 3
+    Qualification: 3,
+    First_Name: "",
+    Last_Name: ''
   }
 
   stars:any = []

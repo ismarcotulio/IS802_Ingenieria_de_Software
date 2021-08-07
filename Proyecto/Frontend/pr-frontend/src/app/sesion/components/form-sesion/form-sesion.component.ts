@@ -33,8 +33,14 @@ export class FormSesionComponent implements OnInit {
     this.authentication.userAuthenticate( this.sesionForm ).subscribe(
       data => {
         if(data.status == true){
+          console.log(data)
           localStorage.setItem("token", data.token)
-          this.router.navigate(["/user"])
+          if(data.role == "Administrador"){
+            this.router.navigate(["/admin"])
+          }else{
+            this.router.navigate(["/user"])
+          }
+
         }else{
           if(data.message == "cuenta no existe"){
             this.openAccountNotExistDialog()

@@ -1,3 +1,4 @@
+import { AdminGuardGuard } from './core/guards/admin-guard.guard';
 import { LayoutAdminComponent } from './layouts/layout-admin/layout-admin.component';
 import { DefaultGuard } from './core/guards/default.guard';
 
@@ -73,6 +74,7 @@ const routes: Routes = [
   {
     path: "admin",
     component: LayoutAdminComponent,
+    canActivate: [ AdminGuardGuard ],
     children: [
       {
          path: "",

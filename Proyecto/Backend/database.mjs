@@ -83,6 +83,30 @@ class Database{
         })
       }
 
+      insertComplaints( Id_Whistleblower, Id_Denounced, Id_ComplaintType, Optional_Comment){
+        return new Promise((resolve, reject)=>{      
+          this.conexion.query(`CALL insertComplaints(?,?,?,?)`,[ Id_Whistleblower, Id_Denounced, Id_ComplaintType, Optional_Comment], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+
+      insertSuscription( Id_User_FK, Id_Category_FK){
+        return new Promise((resolve, reject)=>{      
+          this.conexion.query(`CALL insertSuscription(?,?)`,[ Id_User_FK, Id_Category_FK], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+
       authUser(email,password){
         return new Promise((resolve, reject)=>{
           this.conexion.query(`CALL authUser(?,?)`,[email,password], (error,results, fields)=>{
@@ -123,13 +147,25 @@ class Database{
         })
       }
 
-      getCategoriaProducts(categoria){
+      getLastComplaintIdQuery(callback){
         return new Promise((resolve, reject)=>{
-          this.conexion.query(`CALL filterCategory(?)`,[categoria], (error,results, fields)=>{
+          this.conexion.query('SELECT * FROM COMPLAINTS ORDER BY Id_Complaints DESC LIMIT 1;', (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
-              resolve(results[0])
+              resolve(results[0].Id_Complaints+1)
+            }
+          })
+        })
+      }
+
+      getLastSuscriptionIdQuery(callback){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query('SELECT * FROM SUSCRIPTION ORDER BY Id_Suscription DESC LIMIT 1;', (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0].Id_Suscription+1)
             }
           })
         })
@@ -204,6 +240,8 @@ class Database{
         })
       }
 
+
+
       getProduct(id){
         return new Promise((resolve, reject)=>{
           this.conexion.query(
@@ -211,7 +249,7 @@ class Database{
             PRODUCT.Cost AS Cost, PRODUCT.Description AS Description, PRODUCT.Id_Category_FK AS Id_Category,
             PRODUCT.Image AS Image, PRODUCT.Date_Product AS Date_Product,
             PRODUCT.Id_State_FK AS Id_State, PRODUCT.Id_Department_FK AS Id_Department,
-            USER.Id AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name,
+            USER.Id_User AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name,
             USER.Email AS Email, USER.Address AS Address
   
               FROM PRODUCT
@@ -226,6 +264,30 @@ class Database{
           })
         })
       }
+
+      getComplaint(Id_Complaints){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            ` SELECT COMPLAINTS.Id_Complaints AS Id_Complaints, COMPLAINTS.Id_Whistleblower AS Id_Whistleblower, 
+            COMPLAINTS.Id_Denounced AS Id_Denounced, COMPLAINTS.Id_ComplaintType AS Id_ComplaintType, 
+            COMPLAINTS.Optional_Comment AS Optional_Comment, COMPLAINTS.Date_Complaints AS Date_Complaints
+            USER.Id AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name, 
+            USER.Email AS Email, USER.Address AS Address
+  
+              FROM COMPLAINTS
+              JOIN USER ON COMPLAINTS.Id_User_FK = USER.Id 
+              WHERE COMPLAINTS.Id_Complaints = ?`,
+            [Id_Complaints], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+                resolve(results[0])
+            }
+          })
+        })
+      }
+
+
 }
 
 export { Database }

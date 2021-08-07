@@ -1,13 +1,12 @@
-import { Injectable, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { TokenVerificationService } from './../services/authorization/token-verification.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { TokenVerificationService } from '../services/authorization/token-verification.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserGuardGuard implements CanActivate {
+export class AdminGuardGuard implements CanActivate {
 
   constructor( private tokenVerify: TokenVerificationService, private router: Router) {}
 
@@ -23,9 +22,9 @@ export class UserGuardGuard implements CanActivate {
                 console.log("No se encuentra logueado");
                 this.router.navigate(['/']);
               }
-              if(data.Role == 1){
+              if(data.Role != 1){
                 resolve(false)
-                this.router.navigate(['/admin']);
+                this.router.navigate(['/user']);
               }else{
                 resolve(data.result)
 

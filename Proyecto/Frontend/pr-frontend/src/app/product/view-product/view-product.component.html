@@ -6,8 +6,8 @@
     <div id="section-description">
       <div id="section-product-title">
         <div id="title"><b>{{ this.product.Name }}</b></div>
-        <div id="wish">
-          <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon" (click)="this.addWish()" *ngIf="!this.wishProductState">favorite_border</mat-icon>
+        <div id="wish" *ngIf="this.isUser">
+          <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon" (click)="this.addWish()"  *ngIf="!this.wishProductState">favorite_border</mat-icon>
           <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon"  (click)="this.removeWish()" *ngIf="this.wishProductState">favorite</mat-icon>
         </div>
       </div>

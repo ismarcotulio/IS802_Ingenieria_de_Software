@@ -1,10 +1,11 @@
 #form-register{
   position: relative;
-  width: 50%;
-  height: 90%;
-  top: 5%;
-  left: 25%;
+  width: 45vw;
+  height: 70vh;
+  top: 5vh;
+  left: 27.5vw;
   background: white;
+  margin-bottom: 8vh;
 }
 
 #section-title{

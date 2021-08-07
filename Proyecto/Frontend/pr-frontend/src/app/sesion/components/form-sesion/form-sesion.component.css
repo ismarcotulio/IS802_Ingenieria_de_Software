@@ -5,13 +5,14 @@
 
 #form-sesion{
   position: relative;
-  width: 40%;
-  height: 90%;
-  top: 5%;
-  left: 30%;
+  width: 35vw;
+  height: 70vh;
+  top: 5vh;
+  left: 32.5vw;
   background: white;
   border-radius: 10px;
   border: none;
+  margin-bottom: 8vh;
 }
 
 #section-title{

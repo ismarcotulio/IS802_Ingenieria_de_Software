@@ -18,6 +18,7 @@ export class ProductService {
   url4 = "http://localhost:3000/comentario/newComment"
   url5 = "http://localhost:3000/comentario/product"
   url6 = "http://localhost:3000/insertComplaint"
+
   getProducts(type:string){
     return this.http.get<Product[]>(`${this.url}${type}`)
   }
@@ -36,7 +37,7 @@ export class ProductService {
 
   getCommentsProduct(productId:number){
     // console.log(productId);
-    
+
     return this.http.post<any>(this.url5,{productId});
   }
 

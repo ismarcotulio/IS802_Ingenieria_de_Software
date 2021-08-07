@@ -23,3 +23,11 @@ export interface commentProduct{
   Last_Name: string
 
 }
+
+export interface WishProduct{
+  Id: number;
+  Description: string;
+  Cost: number;
+  Image: string;
+  Date_Product: string;
+}

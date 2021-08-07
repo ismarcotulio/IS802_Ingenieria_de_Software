@@ -7,7 +7,8 @@
       <div id="section-product-title">
         <div id="title"><b>{{ this.product.Name }}</b></div>
         <div id="wish">
-          <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon">favorite_border</mat-icon>
+          <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon" (click)="this.addWish()" *ngIf="!this.wishProductState">favorite_border</mat-icon>
+          <mat-icon id="favIcon" aria-hidden="false" aria-label="Example home icon"  (click)="this.removeWish()" *ngIf="this.wishProductState">favorite</mat-icon>
         </div>
       </div>
       <div id="section-product-description">
@@ -95,13 +96,13 @@
 <div class="containerModal" [ngStyle]="{'display': viewModal}" >
 
   <div class="shadowModal containerModal" (click)= "openModal()"></div>
-  
+
   <div class="modalb">
-    
+
     <div class="headerModal">
       <p class="textModal">Denunciar vendedor</p>
     </div>
-    
+
     <div class="bodyModal">
       <p>Tipo de denuncia:</p>
       <select class="selectReport" (change)="optionReport($event)">
@@ -112,13 +113,13 @@
         <option value="4">Tergiversacion de identidad</option>
         <option value="5">Inf. de contacto falsa</option>
       </select>
-      
+
       <textarea class="textAreaReport" rows="3"  [(ngModel)]="commentReport" placeholder="Si desea puede comentarnos, el porqué  de su denuncia."></textarea>
-          
+
       <button class="btnReport" type="button" (click)= "createReport()">Realizar denuncia</button>
       <button class="btnExitReport" type="button" (click)= "openModal()">Salir</button>
     </div>
-    
+
   </div>
 
 </div>

@@ -16,8 +16,7 @@ import { CardCategoryComponent } from './components/card-category/card-category.
 import { CardProductComponent } from './components/card-product/card-product.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductShelfDefaultComponent } from './components/product-shelf-default/product-shelf-default.component';
-
-
+import { WishlistShelfComponent } from './components/wishlist-shelf/wishlist-shelf.component';
 
 
 @NgModule({
@@ -33,6 +32,7 @@ import { ProductShelfDefaultComponent } from './components/product-shelf-default
     CardProductComponent,
     CarouselComponent,
     ProductShelfDefaultComponent,
+    WishlistShelfComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +49,8 @@ import { ProductShelfDefaultComponent } from './components/product-shelf-default
     ProductShelfComponent,
     CarouselComponent,
     ProductShelfDefaultComponent,
-    CardCategoryComponent
+    CardCategoryComponent,
+    WishlistShelfComponent
   ]
 })
 export class SharedModule { }

@@ -37,7 +37,7 @@ const mailer = new Mailer(nodemailer)
 //Instancias de controladores
 const productController = new ProductController(database);
 const authController = new AuthController(database);
-const tokenController = new TokenController();
+const tokenController = new TokenController(database);
 const emailController = new EmailController(mailer, database);
 
 //Instancia de routers

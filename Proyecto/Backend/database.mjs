@@ -408,6 +408,33 @@ class Database{
         })
       })
     }
+
+    getComplaints(){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL GetComplaints()`, [], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(results[0])
+          }
+        })
+      })
+    }
+
+    removeComplaint(complaint_Id){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL removeComplaint(?)`,
+          [complaint_Id], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(true)
+          }
+        })
+      })
+    }
 }
 
 export { Database }

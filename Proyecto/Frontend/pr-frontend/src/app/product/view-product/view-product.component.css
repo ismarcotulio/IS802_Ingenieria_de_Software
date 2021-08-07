@@ -1,7 +1,7 @@
 #section-product-detail{
   position: relative;
   width: 90%;
-  height: 85%;
+  height: 70vh;
   left: 5%;
 }
 
@@ -68,6 +68,8 @@
   text-align: center;
 }
 
+
+
 #favIcon{
   display: flex;
   float: left;
@@ -79,6 +81,10 @@
   color: crimson;
   text-align: center;
   justify-content: center;
+}
+
+#favIcon:hover{
+  font-size: 4vw;
 }
 
 #favIcon:hover{
@@ -314,7 +320,7 @@
   height: auto;
   padding: 1em;
   border-bottom: solid dimgray 1px;
-  
+
 }
 
 .contUserImgProfile{
@@ -392,7 +398,7 @@
   width: 80%;
   margin-bottom: 10px;
   font-size: 1vw;
-  
+
 }
 
 #reportSeller a{

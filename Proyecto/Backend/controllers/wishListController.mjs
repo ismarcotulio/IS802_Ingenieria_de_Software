@@ -55,6 +55,15 @@ class wishListController{
             })
         })();
     }
+
+    countWish(req,res,userId){
+        (async()=>{
+            this.database.countWish(userId)
+            .then(results=>{
+                return res.send(results)
+            })
+        })();
+    }
 }
 
 export {wishListController}

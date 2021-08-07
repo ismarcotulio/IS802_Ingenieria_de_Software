@@ -12,46 +12,67 @@ class WishListRouter{
         Router4.post('/remove',this.removeWish)
         Router4.get('/getWishes',this.getWishes)
         Router4.post('/verifyWish',this.verifyWish)
+        Router4.get('/countWish',this.countWish)
     }
 
     addWish = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
-                var bearerToken = bearerHeader.split(" ")[1];
-                var payload = bearerToken.split(".")[1];
-                var userId = JSON.parse(base64url.decode(payload)).Id_usuario
-                this.wishListController.addWish(req,res,userId)
-            }
+        if(typeof bearerHeader !== 'undefined'){
+            var bearerToken = bearerHeader.split(" ")[1];
+            var payload = bearerToken.split(".")[1];
+            var userId = JSON.parse(base64url.decode(payload)).Id_usuario
+            this.wishListController.addWish(req,res,userId)
+        }else{
+            res.send('Token invalido')
+        }
     }
 
     removeWish = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
-                var bearerToken = bearerHeader.split(" ")[1];
-                var payload = bearerToken.split(".")[1];
-                var userId = JSON.parse(base64url.decode(payload)).Id_usuario
-                this.wishListController.removeWish(req,res,userId)
-            }
+        if(typeof bearerHeader !== 'undefined'){
+            var bearerToken = bearerHeader.split(" ")[1];
+            var payload = bearerToken.split(".")[1];
+            var userId = JSON.parse(base64url.decode(payload)).Id_usuario
+            this.wishListController.removeWish(req,res,userId)
+        }else{
+            res.send('Token invalido')
+        }
     }
 
     getWishes = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
-                var bearerToken = bearerHeader.split(" ")[1];
-                var payload = bearerToken.split(".")[1];
-                var userId = JSON.parse(base64url.decode(payload)).Id_usuario
-                this.wishListController.getWishes(req,res,userId)
-            }
+        if(typeof bearerHeader !== 'undefined'){
+            var bearerToken = bearerHeader.split(" ")[1];
+            var payload = bearerToken.split(".")[1];
+            var userId = JSON.parse(base64url.decode(payload)).Id_usuario
+            this.wishListController.getWishes(req,res,userId)
+        }else{
+            res.send('Token invalido')
+        }
     }
 
     verifyWish = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
-                var bearerToken = bearerHeader.split(" ")[1];
-                var payload = bearerToken.split(".")[1];
-                var userId = JSON.parse(base64url.decode(payload)).Id_usuario
-                this.wishListController.verifyWish(req,res,userId)
-            }
+        if(typeof bearerHeader !== 'undefined'){
+            var bearerToken = bearerHeader.split(" ")[1];
+            var payload = bearerToken.split(".")[1];
+            var userId = JSON.parse(base64url.decode(payload)).Id_usuario
+            this.wishListController.verifyWish(req,res,userId)
+        }else{
+            res.send('Token invalido')
+        }
+    }
+
+    countWish = (req,res)=>{
+        var bearerHeader =  req.headers['authorization'];
+        if(typeof bearerHeader !== 'undefined'){
+            var bearerToken = bearerHeader.split(" ")[1];
+            var payload = bearerToken.split(".")[1];
+            var userId = JSON.parse(base64url.decode(payload)).Id_usuario
+            this.wishListController.countWish(req,res,userId)
+        }else{
+            res.send('Token invalido')
+        }
     }
 }
 

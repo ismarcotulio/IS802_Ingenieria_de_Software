@@ -361,6 +361,20 @@ class Database{
       })
     }
 
+    countWish(userId){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL countWish(?)`,
+          [userId], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(results[0][0])
+          }
+        })
+      })
+    }
+
     changeCategoryStatus(categoryId,statusNum){
       return new Promise((resolve, reject)=>{
         this.conexion.query(

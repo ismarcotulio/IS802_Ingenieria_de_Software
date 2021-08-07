@@ -43,7 +43,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatMenuModule,
     LayoutModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
     MatBadgeModule,
     MatTableModule,
     MatPaginatorModule
@@ -66,7 +66,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatMenuModule,
     LayoutModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
     MatBadgeModule,
     MatTableModule,
     MatPaginatorModule

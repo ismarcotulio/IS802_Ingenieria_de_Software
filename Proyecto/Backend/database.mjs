@@ -474,18 +474,6 @@ class Database{
         })
       }
   
-      getLastComplaintIdQuery(callback){
-        return new Promise((resolve, reject)=>{
-          this.conexion.query('SELECT * FROM COMPLAINTS ORDER BY Id_Complaints DESC LIMIT 1;', (error,results, fields)=>{
-            if(error){
-              reject(error)
-            }else{
-              resolve(results[0].Id_Complaints+1)
-            }
-          })
-        })
-      }
-  
       getLastSuscriptionIdQuery(callback){
         return new Promise((resolve, reject)=>{
           this.conexion.query('SELECT * FROM SUSCRIPTION ORDER BY Id_Suscription DESC LIMIT 1;', (error,results, fields)=>{

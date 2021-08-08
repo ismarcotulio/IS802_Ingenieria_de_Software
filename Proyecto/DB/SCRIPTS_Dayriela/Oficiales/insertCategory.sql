@@ -1,7 +1,4 @@
-
-
 USE Ecommerce;
-
 DROP PROCEDURE IF EXISTS insertCategory ;
 
 DELIMITER //

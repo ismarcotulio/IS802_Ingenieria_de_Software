@@ -1,5 +1,6 @@
 USE Ecommerce;
 DROP PROCEDURE IF EXISTS VerifySuscription ;
+
 DELIMITER //
 CREATE PROCEDURE VerifySuscription( IN IdCategory_parameter INT )
 BEGIN

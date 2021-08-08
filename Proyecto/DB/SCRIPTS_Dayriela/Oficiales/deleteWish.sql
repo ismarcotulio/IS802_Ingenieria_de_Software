@@ -1,5 +1,5 @@
 use ecommerce;
-
+DROP PROCEDURE IF EXISTS deleteWish;
 DELIMITER //
 CREATE PROCEDURE deleteWish(IN productId INT, IN userId INT)
 BEGIN

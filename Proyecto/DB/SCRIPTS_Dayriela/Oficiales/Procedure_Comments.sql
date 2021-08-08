@@ -1,5 +1,4 @@
 USE Ecommerce;
-
 DROP PROCEDURE IF EXISTS Get_Product_Comments;
 
 DELIMITER //

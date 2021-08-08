@@ -11,4 +11,3 @@ END //
 
 DELIMITER ;
 
-call VerifyState_User(5);

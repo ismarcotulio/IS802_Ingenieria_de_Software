@@ -60,7 +60,8 @@ class ProductController{
                 newProduct.State,
                 newProduct.Department
             )
-           
+            
+
             return res.json({status:true,product:newProduct})
             
             

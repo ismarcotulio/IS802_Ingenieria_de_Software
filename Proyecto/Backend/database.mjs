@@ -11,7 +11,7 @@ class Database{
         this.conexion = this.mysql.createConnection({ 
             host: 'localhost',
             user: 'root',
-            password: 'jafethfer10',
+            password: 'password',
             database: 'ecommerce'
         })
         return this.conexion
@@ -435,6 +435,56 @@ class Database{
         })
       })
     }
+  
+    insertComplaints( Id_Whistleblower, Id_Denounced, Id_ComplaintType, Optional_Comment){
+        return new Promise((resolve, reject)=>{      
+          this.conexion.query(`CALL insertComplaints(?,?,?,?)`,[ Id_Whistleblower, Id_Denounced, Id_ComplaintType, Optional_Comment], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+
+      insertSuscription( Id_User_FK, Id_Category_FK){
+        return new Promise((resolve, reject)=>{      
+          this.conexion.query(`CALL insertSuscription(?,?)`,[ Id_User_FK, Id_Category_FK], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+  
+      getLastComplaintIdQuery(callback){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query('SELECT * FROM COMPLAINTS ORDER BY Id_Complaints DESC LIMIT 1;', (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0].Id_Complaints+1)
+            }
+          })
+        })
+      }
+  
+      getLastSuscriptionIdQuery(callback){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query('SELECT * FROM SUSCRIPTION ORDER BY Id_Suscription DESC LIMIT 1;', (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0].Id_Suscription+1)
+            }
+          })
+        })
+      }
+  
+      
 }
 
 export { Database }

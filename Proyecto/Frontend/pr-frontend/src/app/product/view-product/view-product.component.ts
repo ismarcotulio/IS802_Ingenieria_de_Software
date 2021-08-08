@@ -129,9 +129,9 @@ export class ViewProductComponent implements OnInit {
     if(this.optionSelectReport == 0){
       alert("Seleccione el tipo de denuncia, para continuar.");
     }else{
-      let dataReport = {Id_TipoDenuncia: this.optionSelectReport,
-        Comentario_Opcional: this.commentReport,
-        Id_Denunciado: this.product.Id_User
+      let dataReport = {Id_ComplaintType: this.optionSelectReport,
+        Optional_Comment: this.commentReport,
+        Id_Denounced: this.product.Id_User
       }
 
       this.productService.setNewReport(dataReport).subscribe(res =>{

@@ -12,11 +12,12 @@ import { DEPARTMENTS } from './../../core/models/department/department-mock-back
   styleUrls: ['./view-category.component.css']
 })
 export class ViewCategoryComponent implements OnInit {
-
+  userSubscribe:boolean = true;
   products: Product[] = [];
   departments = DEPARTMENTS;
   selectedDepartment = "";
   isUser = false;
+  openDialog = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -90,5 +91,28 @@ export class ViewCategoryComponent implements OnInit {
     })
   }
 
+  deleteSubscription(){
+    
+    this.userSubscribe = false;
+    this.closeOpenDialog();
+
+  }
+  
+  userSubscribeCategory(){
+    this.userSubscribe = true;
+        
+  }
+  
+  closeOpenDialog(){
+    if(this.openDialog){
+      this.openDialog = false
+    }else{
+
+      this.openDialog = true;
+    }
+    
+  }
+  
+  
 }
 

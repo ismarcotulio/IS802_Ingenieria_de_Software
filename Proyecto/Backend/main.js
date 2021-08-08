@@ -14,6 +14,9 @@ import { TokenController } from './controllers/tokenController.mjs';
 
 import {Router,CategoriaRouter} from './routers/categoria-router.js';
 import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
+import { Router3, CommentRouter } from './routers/comment-router.js';
+import { Router4, WishListRouter } from './routers/wish-router.js';
+import { Router5, ComplaintRouter } from './routers/complaint-router.js';
 import { EmailController } from './controllers/emailController.mjs';
 import { ComplaintController } from './controllers/complaintController.mjs'
 import { SuscriptionController } from './controllers/suscriptionController.mjs'
@@ -37,7 +40,7 @@ const mailer = new Mailer(nodemailer)
 //Instancias de controladores
 const productController = new ProductController(database);
 const authController = new AuthController(database);
-const tokenController = new TokenController();
+const tokenController = new TokenController(database);
 const emailController = new EmailController(mailer, database);
 const complaintController = new ComplaintController(database);
 const suscriptionController = new SuscriptionController(database);
@@ -45,6 +48,9 @@ const suscriptionController = new SuscriptionController(database);
 //Instancia de routers
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
 const departamentoRouter = new DepartamentoRouter(database,app.get('llave'))
+const commentRouter = new CommentRouter(database,app.get('llave'))
+const wishRouter = new WishListRouter(database)
+const complaintRouter = new ComplaintRouter(database)
 
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -52,6 +58,9 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/categoria', Router)
 app.use('/departamento',Router2)
+app.use('/comentario',Router3)
+app.use('/wish',Router4)
+app.use('/complaint',Router5)
 
 
 //Rutas
@@ -157,7 +166,11 @@ app.get('/categoria-departamento', (req,res)=>{
     }
     database.getMultipleFilters(categoria,departamento)
     .then(results=>{
-        res.send(results)
+        if(results==false){
+            res.send("Categoria no disponible")
+        }else{
+           res.send(results) 
+        }
     })
 })
 

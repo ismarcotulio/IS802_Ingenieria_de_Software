@@ -22,7 +22,7 @@
         <button id="searchBtn" (click)="this.searchProduct(bar.value)"><mat-icon id="searchBtnIcon" aria-hidden="false" aria-label="Example home icon" class="">search</mat-icon></button>
       </div>
       <div id="wishListContainer">
-        <mat-icon id="wishIcon" routerLink="/user/wishlist" matBadge="0"  matBadgeColor="warn" aria-hidden="false" aria-label="Example home icon" class="" >favorite_border</mat-icon>
+        <mat-icon id="wishIcon" routerLink="/user/wishlist" matBadge="{{this.wishBadge}}"  matBadgeColor="warn" aria-hidden="false" aria-label="Example home icon" class="" >favorite_border</mat-icon>
       </div>
     </div>
     <div id="inputSection3">

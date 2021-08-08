@@ -39,6 +39,8 @@ export class WishlistShelfComponent implements AfterViewInit  {
         this.dataSource.data = data
         if(this.dataSource.data.length > 0){
           this.tableState = true
+        }else{
+          this.tableState = false
         }
       }
     )

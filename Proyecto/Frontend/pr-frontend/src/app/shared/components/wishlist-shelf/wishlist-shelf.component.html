@@ -3,7 +3,7 @@
 </div>
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+  <table mat-table [dataSource]="dataSource" *ngIf="this.tableState">
 
     <!-- Name Column -->
     <ng-container matColumnDef="Image">

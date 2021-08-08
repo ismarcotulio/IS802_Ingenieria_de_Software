@@ -11,6 +11,7 @@ export class WishlistService {
   url2 = "http://localhost:3000/wish/add"
   url3 = "http://localhost:3000/wish/remove"
   url4 = "http://localhost:3000/wish/getWishes"
+  url5 = "http://localhost:3000/wish/countWish"
 
   constructor(private http: HttpClient) { }
 
@@ -30,5 +31,13 @@ export class WishlistService {
     return this.http.get<WishProduct[]>(this.url4)
   }
 
+  countWishes(){
+    return this.http.get<CountWish>(this.url5)
+  }
 
+
+}
+
+export interface CountWish{
+  numWish: number;
 }

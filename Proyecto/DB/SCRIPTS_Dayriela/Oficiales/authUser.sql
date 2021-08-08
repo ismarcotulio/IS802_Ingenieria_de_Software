@@ -1,6 +1,6 @@
 use ecommerce;
-
-Delimiter //
+DROP PROCEDURE IF EXISTS `authUser`;
+DELIMITER //
 CREATE PROCEDURE `authUser`(IN email VARCHAR(40),IN password VARCHAR(30))
 BEGIN
 	SELECT USER.Id, USER_TYPE.Name FROM USER INNER JOIN 

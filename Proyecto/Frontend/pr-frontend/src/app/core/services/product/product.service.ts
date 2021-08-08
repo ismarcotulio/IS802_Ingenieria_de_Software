@@ -17,7 +17,7 @@ export class ProductService {
   url3 = "http://localhost:3000/categoria-departamento"
   url4 = "http://localhost:3000/comentario/newComment"
   url5 = "http://localhost:3000/comentario/product"
-  url6 = "http://localhost:3000/insertComplaint"
+  url6 = "http://localhost:3000/insertComplaints"
 
   getProducts(type:string){
     return this.http.get<Product[]>(`${this.url}${type}`)

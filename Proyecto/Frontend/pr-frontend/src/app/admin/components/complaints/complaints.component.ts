@@ -53,4 +53,14 @@ export class ComplaintsComponent implements OnInit{
     )
   }
 
+  acceptComplaint(idComplaint:number, Id_Denounced:number){
+    this.complaintService.acceptComplaint(Id_Denounced).subscribe(
+      data=>{
+        if(data == true){
+          this.removeComplaint(idComplaint)
+        }
+      }
+    )
+  }
+
 }

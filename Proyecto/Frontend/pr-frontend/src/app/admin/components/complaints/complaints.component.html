@@ -11,7 +11,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Aceptar</button>
+              <button mat-menu-item (click)="this.acceptComplaint(this.card.Id_Complaints, this.card.Id_Denounced)">Aceptar</button>
               <button mat-menu-item (click)="this.removeComplaint(this.card.Id_Complaints)">Rechazar</button>
               <button mat-menu-item (click)="this.grid.rowspan=2; this.subject.style.height = '50%'">Ver detalles</button>
               <button mat-menu-item (click)="this.grid.rowspan=1; this.subject.style.height = '100%'">Ver menos</button>

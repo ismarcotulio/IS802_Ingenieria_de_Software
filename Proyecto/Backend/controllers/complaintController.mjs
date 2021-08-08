@@ -1,4 +1,4 @@
-
+import jwt from 'jsonwebtoken'
 class ComplaintController{
 
     constructor(database){

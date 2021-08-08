@@ -18,6 +18,19 @@ class ComplaintController{
         })();
     }
 
+    acceptComplaint(req,res){
+        (async()=>{
+            this.database.acceptComplaint(req.body.Id_Denounced)
+            .then(results=>{
+                if(results==true){
+                    return res.send(true)
+                }else{
+                    return res.send(false)
+                }
+            })
+        })();
+    }
+
     getComplaints(req,res){
         (async()=>{
             this.database.getComplaints()

@@ -9,6 +9,7 @@ class ComplaintRouter{
         this.complaintController = new ComplaintController(database)
 
         Router5.post('/remove',this.removeComplaint)
+        Router5.post('/accept',this.acceptComplaint)
         Router5.get('/getcomplaints',this.getComplaints)
     }
 
@@ -23,6 +24,13 @@ class ComplaintRouter{
         var bearerHeader =  req.headers['authorization'];
             if(typeof bearerHeader !== 'undefined'){
                 this.complaintController.removeComplaint(req,res)
+            }
+    }
+
+    acceptComplaint = (req,res)=>{
+        var bearerHeader =  req.headers['authorization'];
+            if(typeof bearerHeader !== 'undefined'){
+                this.complaintController.acceptComplaint(req,res)
             }
     }
 

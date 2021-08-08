@@ -435,6 +435,20 @@ class Database{
         })
       })
     }
+
+    acceptComplaint(Id_Denounced){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL Change_User_Status(?)`,
+          [Id_Denounced], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(true)
+          }
+        })
+      })
+    }
   
     insertComplaints( Id_Whistleblower, Id_Denounced, Id_ComplaintType, Optional_Comment){
         return new Promise((resolve, reject)=>{      

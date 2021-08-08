@@ -14,10 +14,11 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { ComplaintsComponent } from './components/complaints/complaints.component';
 
 
 @NgModule({
-  declarations: [ViewAdminComponent, StatisticsComponent],
+  declarations: [ViewAdminComponent, StatisticsComponent, ComplaintsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

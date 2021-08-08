@@ -21,14 +21,7 @@ export class WishlistShelfComponent implements AfterViewInit  {
   table:any
 
   constructor(private wishlistService: WishlistService, private router:Router){
-    this.wishlistService.getWishes().subscribe(
-      data=> {
-        this.dataSource.data = data
-        if(this.dataSource.data.length > 0){
-          this.tableState = true
-        }
-      }
-    )
+    this.getWishes()
   }
 
 
@@ -40,10 +33,20 @@ export class WishlistShelfComponent implements AfterViewInit  {
     }
   }
 
+  getWishes(){
+    this.wishlistService.getWishes().subscribe(
+      data=> {
+        this.dataSource.data = data
+        if(this.dataSource.data.length > 0){
+          this.tableState = true
+        }
+      }
+    )
+  }
+
   removeWish(idProduct:number){
     this.wishlistService.removeWish(idProduct).subscribe(data=>{
-      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(["/user/wishlist"]));
+      this.getWishes()
     })
   }
 

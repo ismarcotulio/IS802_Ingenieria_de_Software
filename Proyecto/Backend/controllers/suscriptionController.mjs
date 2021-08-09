@@ -67,11 +67,11 @@ class SuscriptionController{
             // console.log(results);
             for(let i=0;i<results.length;i++){
                 if(results[i].Verify == 1){
-                    res.send({result:true})
+                    res.send(true)
                     res.end();
                 }
             }
-            res.send({result:false})
+            res.send(false)
             res.end();
         })
     }

@@ -486,11 +486,11 @@ class Database{
         })
       }
   
-      removeSuscription(categoryId,userId){
+      removeSuscription(IdCategory_parameter,IdUser_parameter){
         return new Promise((resolve, reject)=>{
           this.conexion.query(
-            `CALL deleteSuscription(?,?)`,
-            [categoryId,userId], (error,results, fields)=>{
+            `CALL DeleteSuscription(?,?)`,
+            [IdUser_parameter,IdCategory_parameter], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{

@@ -51,10 +51,12 @@ class SuscriptionController{
             this.database.removeSuscription(req.body.Id_Category_FK,userId)
             .then(results=>{
                 if(results==true){
-                    return res.send(true)
+                    return res.send({result:true})
                 }else{
-                    return res.send(false)
+                    return res.send({result:false})
                 }
+            }).catch(e =>{
+                return res.send({result:false})
             })
         })();
     }

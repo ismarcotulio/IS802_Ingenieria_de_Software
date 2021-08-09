@@ -71,6 +71,4 @@ class ComplaintController{
     }
 }
 
-
 export {ComplaintController}
-

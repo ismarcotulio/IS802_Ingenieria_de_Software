@@ -127,7 +127,7 @@ class Database{
         })
       }
 
-      getCategoriaProducts(categoria){
+       getCategoriaProducts(categoria){
         return new Promise((resolve, reject)=>{
           this.conexion.query(`CALL filterCategory(?)`,[categoria], (error,results, fields)=>{
             if(error){
@@ -256,8 +256,8 @@ class Database{
           })
         })
       }
-
-    getVendedorComment(sellerId){
+  
+       getVendedorComment(sellerId){
       return new Promise((resolve, reject)=>{
         this.conexion.query(
           `CALL Get_Seller_Comments(?)`,
@@ -486,9 +486,39 @@ class Database{
         })
       }
   
-      
+      removeSuscription(categoryId,userId){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL deleteSuscription(?,?)`,
+            [categoryId,userId], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(true)
+            }
+          })
+        })
+      }
+
+      searchSuscription(categoryId, userId){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL verifySuscription(?,?)`,
+            [categoryId, userId], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              if(results[0][0]!=undefined){
+                resolve(true)
+              }else{
+                resolve(false)
+              }
+            }
+          })
+        })
+      }
+
+        
 }
 
 export { Database }
-
-

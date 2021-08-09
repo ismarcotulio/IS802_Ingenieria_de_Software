@@ -5,7 +5,7 @@ class SuscriptionController{
     constructor (database){
         this.database = database
     }
-
+    
     insertSuscription(req, res, key){
         //Envoltura asincrona IIR
         (async () => {
@@ -44,6 +44,32 @@ class SuscriptionController{
             
         })();
         
+    }
+    
+    removeSuscription(req,res,userId){
+        (async()=>{
+            this.database.removeSuscription(req.body.Id_Category_FK,userId)
+            .then(results=>{
+                if(results==true){
+                    return res.send(true)
+                }else{
+                    return res.send(false)
+                }
+            })
+        })();
+    }
+
+    verifySuscription(req,res,userId){
+        (async()=>{
+            this.database.searchSuscription(req.body.Id_Category_FK,userId)
+            .then(results=>{
+                if(results!=false){
+                    return res.send({results:true})
+                }else{
+                    return res.send({results:false})
+                }
+            })
+        })();
     }
 
 }

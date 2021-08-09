@@ -7,9 +7,11 @@ import nodemailer from "nodemailer";
 import { Database } from './database.mjs';
 import { Mailer } from './mailer.mjs';
 
-import { ProductController } from './controllers/productController.mjs'
-
 import { AuthController } from './controllers/authController.mjs';
+import { ComplaintController } from './controllers/complaintController.mjs';
+import { EmailController } from './controllers/emailController.mjs';
+import { ProductController } from './controllers/productController.mjs';
+import { SuscriptionController } from './controllers/suscriptionController.mjs';
 import { TokenController } from './controllers/tokenController.mjs';
 
 import {Router,CategoriaRouter} from './routers/categoria-router.js';
@@ -17,9 +19,7 @@ import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
 import { Router3, CommentRouter } from './routers/comment-router.js';
 import { Router4, WishListRouter } from './routers/wish-router.js';
 import { Router5, ComplaintRouter } from './routers/complaint-router.js';
-import { EmailController } from './controllers/emailController.mjs';
-import { ComplaintController } from './controllers/complaintController.mjs'
-import { SuscriptionController } from './controllers/suscriptionController.mjs'
+import { Router6, SuscriptionRouter } from './routers/suscription-router.js';
 
 //Configuracion express
 const config = {
@@ -48,10 +48,11 @@ const suscriptionController = new SuscriptionController(database);
 //Instancia de routers
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
 const departamentoRouter = new DepartamentoRouter(database,app.get('llave'))
+const complaintRouter = new ComplaintRouter(database, app.get('llave'))
+const suscriptionRouter = new SuscriptionRouter(database)
 const commentRouter = new CommentRouter(database,app.get('llave'))
 const wishRouter = new WishListRouter(database)
 const complaintRouter = new ComplaintRouter(database)
-
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
@@ -61,7 +62,7 @@ app.use('/departamento',Router2)
 app.use('/comentario',Router3)
 app.use('/wish',Router4)
 app.use('/complaint',Router5)
-
+app.use('/suscription',Router6)
 
 //Rutas
 app.post('/login', async (req,res) =>{
@@ -215,5 +216,3 @@ app.get("/getProduct/:id", async (req , res) => {
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 
 })
-
-

@@ -153,7 +153,7 @@ class Database{
             if(error){
               reject(error)
             }else{
-              resolve(results[0].Id_Complaints+1)
+              resolve(results[0])
             }
           })
         })
@@ -240,8 +240,6 @@ class Database{
         })
       }
 
-
-
       getProduct(id){
         return new Promise((resolve, reject)=>{
           this.conexion.query(
@@ -265,23 +263,87 @@ class Database{
         })
       }
 
-      getComplaint(Id_Complaints){
+      removeSuscription(categoryId,userId){
         return new Promise((resolve, reject)=>{
           this.conexion.query(
-            ` SELECT COMPLAINTS.Id_Complaints AS Id_Complaints, COMPLAINTS.Id_Whistleblower AS Id_Whistleblower, 
-            COMPLAINTS.Id_Denounced AS Id_Denounced, COMPLAINTS.Id_ComplaintType AS Id_ComplaintType, 
-            COMPLAINTS.Optional_Comment AS Optional_Comment, COMPLAINTS.Date_Complaints AS Date_Complaints
-            USER.Id AS Id_User, USER.Firts_Name AS Firts_Name, USER.Last_Name AS Last_Name, 
-            USER.Email AS Email, USER.Address AS Address
-  
-              FROM COMPLAINTS
-              JOIN USER ON COMPLAINTS.Id_User_FK = USER.Id 
-              WHERE COMPLAINTS.Id_Complaints = ?`,
-            [Id_Complaints], (error,results, fields)=>{
+            `CALL deleteSuscription(?,?)`,
+            [categoryId,userId], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{
-                resolve(results[0])
+              resolve(true)
+            }
+          })
+        })
+      }
+
+      searchSuscription(categoryId, userId){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL verifySuscription(?,?)`,
+            [categoryId, userId], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              if(results[0][0]!=undefined){
+                resolve(true)
+              }else{
+                resolve(false)
+              }
+            }
+          })
+        })
+      }
+
+
+      removeComplaint(complaint_Id){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL removeComplaint(?)`,
+            [complaint_Id], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(true)
+            }
+          })
+        })
+      }
+
+      acceptComplaint(Id_Denounced){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL Change_User_Status(?)`,
+            [Id_Denounced], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(true)
+            }
+          })
+        })
+      }
+
+      getComplaints(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL GetComplaints()`, [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      insertComplaints( Id_Whistleblower, Id_Denounced, Id_ComplaintType, Optional_Comment){
+        return new Promise((resolve, reject)=>{      
+          this.conexion.query(`CALL insertComplaints(?,?,?,?)`,[ Id_Whistleblower, Id_Denounced, Id_ComplaintType, Optional_Comment], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
             }
           })
         })

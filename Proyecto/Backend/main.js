@@ -7,16 +7,17 @@ import nodemailer from "nodemailer";
 import { Database } from './database.mjs';
 import { Mailer } from './mailer.mjs';
 
-import { ProductController } from './controllers/productController.mjs'
-
 import { AuthController } from './controllers/authController.mjs';
+import { ComplaintController } from './controllers/complaintController.mjs';
+import { EmailController } from './controllers/emailController.mjs';
+import { ProductController } from './controllers/productController.mjs';
+import { SuscriptionController } from './controllers/suscriptionController.mjs';
 import { TokenController } from './controllers/tokenController.mjs';
 
 import {Router,CategoriaRouter} from './routers/categoria-router.js';
 import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
-import { EmailController } from './controllers/emailController.mjs';
-import { ComplaintController } from './controllers/complaintController.mjs'
-import { SuscriptionController } from './controllers/suscriptionController.mjs'
+import { Router5, ComplaintRouter } from './routers/complaint-router.js';
+import { Router6, SuscriptionRouter } from './routers/suscription-router.js';
 
 //Configuracion express
 const config = {
@@ -45,14 +46,16 @@ const suscriptionController = new SuscriptionController(database);
 //Instancia de routers
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
 const departamentoRouter = new DepartamentoRouter(database,app.get('llave'))
-
+const complaintRouter = new ComplaintRouter(database, app.get('llave'))
+const suscriptionRouter = new SuscriptionRouter(database)
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/categoria', Router)
 app.use('/departamento',Router2)
-
+app.use('/complaint',Router5)
+app.use('/suscription',Router6)
 
 //Rutas
 app.post('/login', async (req,res) =>{

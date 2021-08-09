@@ -19,7 +19,8 @@ export class ProductService {
   url5 = "http://localhost:3000/comentario/product"
   url6 = "http://localhost:3000/insertComplaints"
   url7 = "http://localhost:3000/insertSuscription"
-  // url7 = "http://localhost:3000/suscription"
+  url8 = "http://localhost:3000/suscription/verifySuscription"
+  url9 = "http://localhost:3000/suscription/removeSuscription"
 
   getProducts(type:string){
     return this.http.get<Product[]>(`${this.url}${type}`)
@@ -49,5 +50,13 @@ export class ProductService {
 
   setNewSubscription(data:any){
     return this.http.post(this.url7,data);
+  }
+
+  getStateSubscription(data:any){
+    return this.http.post(this.url8,data);
+  }
+
+  removeSubscription(data:any){
+    return this.http.post(this.url9,data);
   }
 }

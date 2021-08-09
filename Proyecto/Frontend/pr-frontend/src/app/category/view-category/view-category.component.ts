@@ -43,6 +43,7 @@ export class ViewCategoryComponent implements OnInit {
             this.products = data;
           }
         )
+        this.verificarEstadoSuscripcion();
       });
     }
     try{
@@ -112,6 +113,7 @@ export class ViewCategoryComponent implements OnInit {
     }
     
     this.productService.setNewSubscription({Id_Category_FK:optionCategory}).subscribe(result =>{
+      this.verificarEstadoSuscripcion();
       // console.log(result);
     });
 
@@ -127,6 +129,25 @@ export class ViewCategoryComponent implements OnInit {
     }
     
   }
+  
+  verificarEstadoSuscripcion(){
+    let optionCategory =1;
+    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
+    for(let i=0;i<categorys.length;i++){
+      if(this.selectedCategory == categorys[i]){
+        optionCategory = i+1;
+        break;
+      }
+    }
+    
+    this.productService.getStateSubscription({Id_Category_FK:optionCategory}).subscribe(results =>{
+      console.log(results);
+      this.userSubscribe = Boolean(results);
+      
+    });
+  }
+
+  
   
   
 }

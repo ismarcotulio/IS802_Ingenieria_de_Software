@@ -12,10 +12,11 @@ import { DEPARTMENTS } from './../../core/models/department/department-mock-back
   styleUrls: ['./view-category.component.css']
 })
 export class ViewCategoryComponent implements OnInit {
-  userSubscribe:boolean = true;
+  userSubscribe:boolean = false;
   products: Product[] = [];
   departments = DEPARTMENTS;
   selectedDepartment = "";
+  selectedCategory = "";
   isUser = false;
   openDialog = false;
 
@@ -36,6 +37,7 @@ export class ViewCategoryComponent implements OnInit {
 
     }else{
       this.route.params.subscribe(params => {
+        this.selectedCategory = params["category"];
         this.productService.getProducts(params["category"]).subscribe(
           data => {
             this.products = data;
@@ -100,7 +102,20 @@ export class ViewCategoryComponent implements OnInit {
   
   userSubscribeCategory(){
     this.userSubscribe = true;
-        
+    let optionCategory =1;
+    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","juguetes","mascotas","ropa"];
+    for(let i=0;i<categorys.length;i++){
+      if(this.selectedCategory == categorys[i]){
+        optionCategory = i+1;
+        break;
+      }
+    }
+    
+    this.productService.setNewSubscription({Id_Category_FK:optionCategory}).subscribe(result =>{
+      // console.log(result);
+    });
+
+    
   }
   
   closeOpenDialog(){

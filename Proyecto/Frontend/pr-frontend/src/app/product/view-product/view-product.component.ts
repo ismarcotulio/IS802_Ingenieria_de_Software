@@ -139,6 +139,7 @@ export class ViewProductComponent implements OnInit {
 
       });
       this.viewModal = 'none';
+      this.commentReport = '';
     }
 
   }

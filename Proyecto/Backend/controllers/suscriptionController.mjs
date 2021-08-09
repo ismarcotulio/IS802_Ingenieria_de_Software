@@ -60,16 +60,18 @@ class SuscriptionController{
     }
 
     verifySuscription(req,res,userId){
-        (async()=>{
-            this.database.searchSuscription(req.body.Id_Category_FK,userId)
-            .then(results=>{
-                if(results!=false){
-                    return res.send({results:true})
-                }else{
-                    return res.send({results:false})
+
+        this.database.searchSuscription(req.body.Id_Category_FK,userId).then(results=>{
+            // console.log(results);
+            for(let i=0;i<results.length;i++){
+                if(results[i].Verify == 1){
+                    res.send({result:true})
+                    res.end();
                 }
-            })
-        })();
+            }
+            res.send({result:false})
+            res.end();
+        })
     }
 
 }

@@ -52,7 +52,7 @@ const complaintRouter = new ComplaintRouter(database, app.get('llave'))
 const suscriptionRouter = new SuscriptionRouter(database)
 const commentRouter = new CommentRouter(database,app.get('llave'))
 const wishRouter = new WishListRouter(database)
-const complaintRouter = new ComplaintRouter(database)
+// const complaintRouter = new ComplaintRouter(database)
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());

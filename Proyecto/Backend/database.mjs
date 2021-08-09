@@ -11,7 +11,7 @@ class Database{
         this.conexion = this.mysql.createConnection({ 
             host: 'localhost',
             user: 'root',
-            password: 'password',
+            password: 'root123',
             database: 'ecommerce'
         })
         return this.conexion
@@ -503,16 +503,13 @@ class Database{
       searchSuscription(categoryId, userId){
         return new Promise((resolve, reject)=>{
           this.conexion.query(
-            `CALL verifySuscription(?,?)`,
-            [categoryId, userId], (error,results, fields)=>{
+            `SELECT IF((SUSCRIPTION.Id_User_FK= ? AND SUSCRIPTION.Id_Category_FK= ?), TRUE , FALSE) as Verify FROM SUSCRIPTION`,
+            [userId,categoryId], (error,results, fields)=>{
+              
             if(error){
               reject(error)
             }else{
-              if(results[0][0]!=undefined){
-                resolve(true)
-              }else{
-                resolve(false)
-              }
+              resolve(results)
             }
           })
         })

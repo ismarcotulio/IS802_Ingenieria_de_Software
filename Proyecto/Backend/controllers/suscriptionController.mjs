@@ -20,16 +20,16 @@ class SuscriptionController{
 
             jwt.verify(token, 'EcommerceSecretPassword2021*', function(err, decoded) {
                 newSuscription.Id_User=decoded.Id_usuario;
-                console.log(decoded)
+                // console.log(decoded)
               });
                        
             newSuscription.Id_User_FK = newSuscription.Id_User
             newSuscription.Id_Category_FK = req.body.Id_Category_FK
             
-            await this.database.getLastSuscriptionIdQuery().then(function(results){
-              newSuscription.Id_Suscription=results
+            // await this.database.getLastSuscriptionIdQuery().then(function(results){
+            //   newSuscription.Id_Suscription=results
         
-            })
+            // })
             
             await this.database.insertSuscription(
                  

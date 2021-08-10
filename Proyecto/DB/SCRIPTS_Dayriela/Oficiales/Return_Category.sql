@@ -9,9 +9,10 @@ BEGIN
  SELECT *FROM CATEGORY;
  
  ELSE 
-  SELECT CATEGORY.Id , CATEGORY.Name , CATEGORY.Description FROM CATEGORY Limit 0,6 
+  SELECT CATEGORY.Id , CATEGORY.Name , CATEGORY.Description FROM CATEGORY Limit 0, Num 
   ;
   END IF ;
 END //
 
 DELIMITER ;
+call Return_Category(1);

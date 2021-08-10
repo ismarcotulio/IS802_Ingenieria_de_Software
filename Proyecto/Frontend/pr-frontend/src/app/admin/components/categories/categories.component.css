@@ -1,0 +1,104 @@
+.containerCategories{
+    width: auto;
+    height: auto;
+    padding: 1rem;
+}
+
+.AggNewCategory{
+    width: auto;
+    height: auto;
+    /* background-color: red; */
+}
+
+.btnAddCategory{
+    width: 20%;
+    padding: 0.2rem 0;
+    margin-left: 78%;
+    border: none;
+    border: #d1d0d0 2px solid;
+    background-color: #FAFAFA;
+}
+
+.btnAddCategory svg{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.btnAddCategory:active{
+    background-color: #eeebeb ;
+}
+
+.txtAddCategory{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 2%;
+}
+.barra{
+    width: 70%;
+    height: 1px;
+    background-color: #f1eded;
+    margin-left: 15%;
+    margin-bottom: 2rem;
+}
+
+.txtNameCategory{
+    margin: 0;
+    margin-left: 2%;
+}
+.inputNameCategory{
+    width: 35%;
+    margin-left: 2%;
+    margin-bottom: 1.2rem;
+}
+
+.inputNameCategory:focus{
+    outline: none;
+}
+
+.txtImg{
+    margin: 0;
+    margin-left: 2%;
+    margin-bottom: 0.4rem;
+}
+
+.inputImg{
+    display: none;
+}
+
+.labelInput{
+    padding: 0.6rem;
+    background-color: #1473E6;
+    color: white;
+    margin-left: 6%;
+    margin-bottom: 2rem;
+}
+
+.inputNameCategory{
+    border: none;
+    border-bottom: black 1px solid;
+    padding: 0.3rem 0;
+}
+
+.containerPrevieeImg{
+    border: #d1d0d0 2px solid;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin-left: 5.5%;
+}
+
+.containerPrevieeImg img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.btnCreateCategory{
+    border: none;
+    padding: 0.2rem 1rem;
+    margin-left: 10%;
+    margin-top: 1rem;
+    background-color: orangered;
+    color: white;
+}

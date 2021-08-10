@@ -22,7 +22,7 @@ export class ViewProductComponent implements OnInit {
   viewModal = 'none';
   commentReport = '';
   optionSelectReport = 0;
-
+  costClear = "";
   product!: UserProduct;
   wishProductState = false;
 
@@ -38,7 +38,7 @@ export class ViewProductComponent implements OnInit {
       this.productService.getProduct(params["product"]).subscribe(
         data => {
           this.product = data;
-
+          this.clearCost();
           this.productService.getCommentsProduct(this.product.Id).subscribe(comments =>{
               this.commentsProducto = comments;
               this.clearDateComments();
@@ -160,5 +160,32 @@ export class ViewProductComponent implements OnInit {
         this.wishProductState = !data
       }
     )
+  }
+
+  clearCost(){
+    let costProduct = this.product.Cost;
+    let temp = costProduct.toLocaleString();
+    let num = '';
+    if(costProduct.toLocaleString().length >3){
+      let cont = 0;
+      for(let j=costProduct.toLocaleString().length-1;j>=0;j--){
+        if(cont!= 2){
+          num = temp[j] + num ;
+          cont= cont +1;
+        }else if(cont == 2){
+          num = ","+ temp[j]+num;
+          cont =0; 
+        }
+        
+      }
+    
+    num = num + '.00';
+    this.costClear = num;
+  }else{
+    num = costProduct + '.00';
+    this.costClear = num;
+    }
+
+
   }
 }

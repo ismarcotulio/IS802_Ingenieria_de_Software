@@ -26,12 +26,7 @@ class SuscriptionController{
                        
             newSuscription.Id_User_FK = newSuscription.Id_User
             newSuscription.Id_Category_FK = req.body.Id_Category_FK
-            
-            // await this.database.getLastSuscriptionIdQuery().then(function(results){
-            //   newSuscription.Id_Suscription=results
-        
-            // })
-            
+         
             await this.database.insertSuscription(
             
                 Id_Usuario,

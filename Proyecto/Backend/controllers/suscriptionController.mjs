@@ -9,15 +9,16 @@ class SuscriptionController{
     insertSuscription(req, res, key){
         //Envoltura asincrona IIR
         (async () => {
-          
+         
             var newSuscription = {
 
-                Id_User_FK: 0,
+                Id_User_FK: 1,
                 Id_Category_FK: 0
                 
             }
+            
             var token = req.headers.authorization.split(" ")[1]
-
+            
             jwt.verify(token, 'EcommerceSecretPassword2021*', function(err, decoded) {
                 newSuscription.Id_User=decoded.Id_usuario;
                 // console.log(decoded)
@@ -32,16 +33,14 @@ class SuscriptionController{
             // })
             
             await this.database.insertSuscription(
-                 
-                newSuscription.Id_User_FK,
-                newSuscription.Id_Category_FK
+            
+                Id_Usuario,
+                req.body.Id_Category_FK
 
             )
             
             return res.json({status:true})
-            
-            
-            
+                     
         })();
         
     }

@@ -10,23 +10,38 @@ class SuscriptionController{
         //Envoltura asincrona IIR
         (async () => {
           
-            var Id_Usuario = 1
+            var newSuscription = {
+
+                Id_User_FK: 0,
+                Id_Category_FK: 0
+                
+            }
             var token = req.headers.authorization.split(" ")[1]
 
-            jwt.verify(token, key, function(err, decoded) {
-                Id_Usuario = decoded.Id_usuario 
-                
-              });  
+            jwt.verify(token, 'EcommerceSecretPassword2021*', function(err, decoded) {
+                newSuscription.Id_User=decoded.Id_usuario;
+                // console.log(decoded)
+              });
                        
-            await this.database.insertSuscription(
+            newSuscription.Id_User_FK = newSuscription.Id_User
+            newSuscription.Id_Category_FK = req.body.Id_Category_FK
             
-                Id_Usuario,
-                req.body.Id_Category_FK
+            // await this.database.getLastSuscriptionIdQuery().then(function(results){
+            //   newSuscription.Id_Suscription=results
+        
+            // })
+            
+            await this.database.insertSuscription(
+                 
+                newSuscription.Id_User_FK,
+                newSuscription.Id_Category_FK
 
             )
             
             return res.json({status:true})
-                     
+            
+            
+            
         })();
         
     }
@@ -36,25 +51,29 @@ class SuscriptionController{
             this.database.removeSuscription(req.body.Id_Category_FK,userId)
             .then(results=>{
                 if(results==true){
-                    return res.send(true)
+                    return res.send({result:true})
                 }else{
-                    return res.send(false)
+                    return res.send({result:false})
                 }
+            }).catch(e =>{
+                return res.send({result:false})
             })
         })();
     }
 
     verifySuscription(req,res,userId){
-        (async()=>{
-            this.database.searchSuscription(req.body.Id_Category_FK,userId)
-            .then(results=>{
-                if(results!=false){
-                    return res.send({results:true})
-                }else{
-                    return res.send({results:false})
+
+        this.database.searchSuscription(req.body.Id_Category_FK,userId).then(results=>{
+            // console.log(results);
+            for(let i=0;i<results.length;i++){
+                if(results[i].Verify == 1){
+                    res.send(true)
+                    res.end();
                 }
-            })
-        })();
+            }
+            res.send(false)
+            res.end();
+        })
     }
 
 }

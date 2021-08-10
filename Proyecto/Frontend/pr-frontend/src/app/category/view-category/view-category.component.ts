@@ -96,15 +96,24 @@ export class ViewCategoryComponent implements OnInit {
 
   deleteSubscription(){
     
-    this.userSubscribe = false;
+    // this.userSubscribe = false;
     this.closeOpenDialog();
+
+    // console.log(this.categoriaActual());
+    
+    
+    this.productService.removeSubscription({Id_Category_FK:Number(this.categoriaActual())}).subscribe(result =>{
+      // console.log(result,"delete");
+      this.verificarEstadoSuscripcion();
+      this.ngOnInit();
+    });
 
   }
   
   userSubscribeCategory(){
-    this.userSubscribe = true;
+    // this.userSubscribe = true;
     let optionCategory =1;
-    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","juguetes","mascotas","ropa"];
+    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
     for(let i=0;i<categorys.length;i++){
       if(this.selectedCategory == categorys[i]){
         optionCategory = i+1;
@@ -141,10 +150,24 @@ export class ViewCategoryComponent implements OnInit {
     }
     
     this.productService.getStateSubscription({Id_Category_FK:optionCategory}).subscribe(results =>{
-      console.log(results);
+      // console.log(results);
       this.userSubscribe = Boolean(results);
       
     });
+  }
+
+  categoriaActual(){
+    let optionCategory =1;
+    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
+    
+    for(let i=0;i<categorys.length;i++){
+      if(this.selectedCategory == categorys[i]){
+        optionCategory = i+1;
+        break;
+      }
+    }
+
+    return optionCategory;
   }
 
   

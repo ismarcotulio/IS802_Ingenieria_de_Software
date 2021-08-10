@@ -34,7 +34,7 @@ class SuscriptionRouter{
         jwt.verify(token, "EcommerceSecretPassword2021*", function(err, decoded) {
             Id_Usuario = decoded.Id_usuario 
         }); 
-        console.log(Id_Usuario);
+        // console.log(Id_Usuario);
         this.suscriptionController.verifySuscription(req,res,Id_Usuario)
     }
 

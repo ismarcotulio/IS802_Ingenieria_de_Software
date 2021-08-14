@@ -9,6 +9,7 @@ class CategoriaRouter{
         this.database = database
 
         Router.get('/all',this.getAll)
+        Router.get('/allCategories',this.getAllCategories)
         Router.get('/tecnologia',this.getTecnologia)
         Router.get('/arte-artesania',this.getArteArtesania)
         Router.get('/hogar',this.getHogar)
@@ -18,6 +19,7 @@ class CategoriaRouter{
         Router.get('/jugueteria',this.getJugueteria)
         Router.get('/mascotas',this.getMascotas)
         Router.get('/ropa',this.getViajesEquipaje)
+        Router.post('/changeStatus',this.changeStatus)
     }
     
     getAll = (req,res) =>{
@@ -27,24 +29,44 @@ class CategoriaRouter{
         })
     }
 
+    getAllCategories = (req,res)=>{
+        this.database.getAllCategories()
+        .then(results=>{
+            res.send(results)
+        })
+    }
+
     getTecnologia = (req,res)=>{
         this.database.getCategoriaProducts(1)
         .then(results=>{
-            res.send(results)
+            if(results==false){
+                res.send("Categoria no disponible")
+            }else{
+               res.send(results) 
+            }
+            
         })
     }
     
     getArteArtesania = (req,res)=>{
         this.database.getCategoriaProducts(2)
         .then(results=>{
-            res.send(results)
+            if(results==false){
+                res.send("Categoria no disponible")
+            }else{
+               res.send(results) 
+            }
         })
     }
     
     getHogar = (req,res) =>{
         this.database.getCategoriaProducts(3)
         .then(results=>{
-            res.send(results)
+            if(results==false){
+                res.send("Categoria no disponible")
+            }else{
+               res.send(results) 
+            }
         })
     }
     
@@ -52,14 +74,22 @@ class CategoriaRouter{
     getAutomotriz = (req,res)=>{
         this.database.getCategoriaProducts(4)
         .then(results=>{
-            res.send(results)
+            if(results==false){
+                res.send("Categoria no disponible")
+            }else{
+               res.send(results) 
+            }
         })
     }
     
     getSaludBelleza = (req,res)=>{
         this.database.getCategoriaProducts(5)
         .then(results=>{
-            res.send(results)
+            if(results==false){
+                res.send("Categoria no disponible")
+            }else{
+               res.send(results) 
+            }
         })
     }
 
@@ -67,21 +97,33 @@ class CategoriaRouter{
     getDeporte = (req,res) =>{
         this.database.getCategoriaProducts(6)
         .then(results=>{
-            res.send(results)
+            if(results==false){
+                res.send("Categoria no disponible")
+            }else{
+               res.send(results) 
+            }
         })
     }
     
     getJugueteria = (req,res)=>{
         this.database.getCategoriaProducts(7)
         .then(results=>{
-            res.send(results)
+            if(results==false){
+                res.send("Categoria no disponible")
+            }else{
+               res.send(results) 
+            }
         })
     }
     
     getMascotas = (req,res)=>{
         this.database.getCategoriaProducts(8)
         .then(results=>{
-            res.send(results)
+            if(results==false){
+                res.send("Categoria no disponible")
+            }else{
+               res.send(results) 
+            }
         })
     }
     
@@ -89,6 +131,17 @@ class CategoriaRouter{
 
     getViajesEquipaje = (req,res)=>{
         this.database.getCategoriaProducts(9)
+        .then(results=>{
+            if(results==false){
+                res.send("Categoria no disponible")
+            }else{
+               res.send(results) 
+            }
+        })
+    }
+
+    changeStatus = (req,res)=>{
+        this.database.changeCategoryStatus(req.body.category,req.body.status)
         .then(results=>{
             res.send(results)
         })

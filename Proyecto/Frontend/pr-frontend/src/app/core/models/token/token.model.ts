@@ -3,4 +3,5 @@ export interface Token{
   token: string;
   message: string;
   status: boolean;
+  role: string;
 }

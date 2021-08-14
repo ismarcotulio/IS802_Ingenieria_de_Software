@@ -1,0 +1,9 @@
+#shelf{
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 80%;
+  margin: 0;
+  padding: 0;
+
+}

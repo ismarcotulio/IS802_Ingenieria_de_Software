@@ -45,7 +45,7 @@
 }
 
 .descripcionProducto{
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     margin: 0;
 }
 
@@ -59,15 +59,15 @@
 
 
 .contTarjet{
-    width: 18.75%;
-    height: 370px;
+    width: 22%;
+    height: 385px;
     padding: 10px;
     border-radius: 5px;
     /* border: black  1px solid; */
     position: relative;
     top: 1rem;
     float: left;
-    margin-left: 5%;
+    margin-left: 2.1%;
     margin-top: 2.5%;
 }
 
@@ -80,4 +80,10 @@
     position: absolute;
     bottom: 0;
     /* margin-top: 10px; */
+}
+
+.fecha{
+    font-size: 13px;
+    margin: 0;
+    margin-top: 5px;
 }

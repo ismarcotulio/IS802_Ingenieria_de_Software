@@ -1,7 +1,8 @@
 #section-product-detail{
   position: relative;
-  width: 100%;
-  height: 90%;
+  width: 90%;
+  height: 70vh;
+  left: 5%;
 }
 
 #section-image{
@@ -48,18 +49,18 @@
   display: flex;
   float: left;
   position: relative;
-  font-size: 3vw;
+  font-size: 2.5vw;
   width: 80%;
   height: 100%;
   align-items: center;
-  color: black;
+  color: dimgray;
 }
 
 #wish{
   display: flex;
   float: left;
   position: relative;
-  font-size: 3vw;
+  font-size: 2vw;
   width: 20%;
   height: 100%;
   align-items: center;
@@ -67,17 +68,23 @@
   text-align: center;
 }
 
+
+
 #favIcon{
   display: flex;
   float: left;
   position: relative;
-  font-size: 4vw;
+  font-size: 3vw;
   height: 100%;
   width:100%;
   align-items: center;
   color: crimson;
   text-align: center;
   justify-content: center;
+}
+
+#favIcon:hover{
+  font-size: 4vw;
 }
 
 #favIcon:hover{
@@ -123,6 +130,43 @@
   bottom: 0;
 }
 
+#comment-section{
+  position: absolute;
+  width: 100%;
+  height: 30%;
+}
+
+#comment{
+  display: flex;
+  float: right;
+  position: relative;
+  font-size: 2vw;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  color: #1473E6;
+  text-align: center;
+}
+
+#comIcon{
+  display: flex;
+  float: left;
+  position: relative;
+  font-size: 3vw;
+  height: 100%;
+  width:100%;
+  align-items: center;
+  color: #1473E6;
+  text-align: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+#comIcon:hover{
+  cursor: pointer;
+  font-size: 3.5vw;
+}
+
 #section-seller-title{
   position: relative;
   width: 100%;
@@ -163,7 +207,7 @@
   height: 100%;
   width:100%;
   align-items: center;
-  color: black;
+  color: lightsteelblue;
   left:0;
 }
 
@@ -186,8 +230,8 @@
   height: 100%;
   width: 100%;
   align-items: center;
-  color: black;
-  font-size: 3vw;
+  color: dimgray;
+  font-size: 2.5vw;
 }
 
 #section-calification{
@@ -203,8 +247,8 @@
   height: 100%;
   width: 6%;
   align-items: center;
-  color: black;
-  font-size: 3vw;
+  font-size: 2.5vw;
+  color: goldenrod;
 }
 
 #section-seller-contact{
@@ -219,21 +263,220 @@
   position: relative;
   font-size: 1vw;
   width: 80%;
-  height: 100%;
+  /* height: 100%; */
   align-items: center;
   color: black;
+  margin-top: 3px;
 }
 
 #section-product-comments{
   position: relative;
   width: 100%;
-  height: 10%;
+  /* height: 10%; */
+  height: auto;
 }
 
 #section-comment{
   position: relative;
-  width: 95%;
+  width: 85%;
   height: 100%;
-  left: 2.5%;
+  left: 7.5%;
   border-top: solid dimgray 1px;
+  padding: 0.6rem;
 }
+
+.textComment{
+  /* position: absolute; */
+  float: left;
+  width: 12%;
+  color: dimgray;
+  font-weight: bold;
+  /* margin-right: 10px; */
+}
+
+.buttonAddComment{
+  width: 18%;
+  padding: 0.4em 0;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: #1473E6;
+  margin-left: 70%;
+  margin-bottom: 1rem;
+}
+
+.buttonAddComment:hover{
+  border-color: #82D5FA;
+}
+
+.buttonAddComment i{
+  margin-right: 3px;
+  font-size: 20px;
+}
+
+.sectionComments{
+  /* background-color: red; */
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 1em;
+  border-bottom: solid dimgray 1px;
+
+}
+
+.contUserImgProfile{
+  position: relative;
+  width: 5.3%;
+  height: 90px;
+  /* height: auto; */
+  /* height: 20%; */
+  border-radius: 50%;
+  margin-right: 0.7rem;
+  float: left;
+}
+
+.contUserImgProfile img{
+  position: absolute;
+  border-radius: 50%;
+  width: 100%;
+  height: 65%;
+  margin-top: 0.5rem;
+}
+
+.nameUser{
+  float: left;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.dateComment{
+  /* margin-left: 93%; */
+  margin-left: 77%;
+  left:inherit;
+}
+
+.contComment{
+  width: 100%;
+}
+
+.addNewComment{
+  width: auto;
+  height: 200px;
+  border-bottom: dimgray 1px solid;
+  padding: 2rem;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* background-color: red; */
+}
+
+
+.textAreaComment {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 80%;
+  border-radius: 10px;
+  margin-top: 1rem;
+  padding: 0.4rem;
+}
+
+.btnNewComment{
+  width: 10%;
+  margin-left: 76%;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3em 0;
+  background-color: #1473E6;
+  color: white;
+}
+
+.commentsWarning{
+  margin-left: 15%;
+  color: #979494;
+}
+
+#reportSeller{
+  width: 80%;
+  margin-bottom: 10px;
+  font-size: 1vw;
+
+}
+
+#reportSeller a{
+  color: red;
+  cursor: pointer;
+  text-decoration: underline red;
+}
+
+
+.containerModal{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.modalb{
+  width: 25%;
+  height: auto;
+  margin-left: 35%;
+  margin-top: 10%;
+  border-radius: 0.7rem;
+  background-color: white;
+  position: relative;
+  z-index: 200;
+  /* z-index: 1000 !important; */
+}
+
+.headerModal{
+  position: relative;
+  width: 100%;
+  padding: 0 1rem;
+  background-color: #e5e5e5;
+  color: black;
+}
+
+.textModal{
+  border-bottom: rgba(0, 0, 0, 0.3) 1px solid;
+  margin: 0;
+  padding: 0.6em 0;
+}
+
+.bodyModal{
+  padding: 0.7rem 2rem;
+}
+
+.textAreaReport {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 85%;
+  border-radius: 3px;
+  margin-top: 1rem;
+  padding: 0.4rem;
+}
+
+.selectReport{
+  width: 85%;
+}
+
+
+.btnReport{
+  margin-right: 5px;
+  padding: 2px 1em;
+  border: none;
+  background-color: orangered;
+  color: white;
+  border-radius: 5px;
+}
+
+.btnExitReport{
+  padding: 2px 2em;
+  border: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+

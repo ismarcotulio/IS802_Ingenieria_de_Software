@@ -1,12 +1,22 @@
 #allContainer{
+  box-sizing: border-box;
   position: absolute;
   width: 100vw;
-  height: 100vh;
-  background: #E5E5E5;
+  min-height: 100vh;
 }
 
 #view-container{
+  display: inline-block;
   position: relative;
   width: 100%;
-  height: 70%;
+  min-height: 70vh;
+  padding-bottom: 2.5vh;
 }
+
+app-footer-default{
+  position:relative;
+  width: 100%;
+  height: 15vh;
+  bottom:0;
+}
+

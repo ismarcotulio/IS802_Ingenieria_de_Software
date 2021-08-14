@@ -65,18 +65,15 @@ class SuscriptionController{
 
         this.database.searchSuscription(req.body.Id_Category_FK,userId).then(results=>{
             // console.log(results);
-            let state=true;
+            var state = false
             for(let i=0;i<results.length;i++){
                 if(results[i].Verify == 1){
-                    state=false;
-                    res.send(true)
-                    // res.end();
+                    state = true
+                    break;
                 }
             }
-            if(state){
-                res.send(false)
-            }
-            // res.end();
+            res.send(state)
+            res.end();
         })
     }
 

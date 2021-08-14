@@ -3,18 +3,25 @@ import mysql from "mysql2";
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import nodemailer from "nodemailer";
+import { CronJob } from 'cron';
 
 import { Database } from './database.mjs';
 import { Mailer } from './mailer.mjs';
+import { SuscriptionAlgorithm } from './suscriptionAlgorithm.mjs';
 
-import { ProductController } from './controllers/productController.mjs'
 import { AuthController } from './controllers/authController.mjs';
+import { ComplaintController } from './controllers/complaintController.mjs';
+import { EmailController } from './controllers/emailController.mjs';
+import { ProductController } from './controllers/productController.mjs';
+import { SuscriptionController } from './controllers/suscriptionController.mjs';
 import { TokenController } from './controllers/tokenController.mjs';
 
 import {Router,CategoriaRouter} from './routers/categoria-router.js';
 import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
-import { EmailController } from './controllers/emailController.mjs';
-
+import { Router3, CommentRouter } from './routers/comment-router.js';
+import { Router4, WishListRouter } from './routers/wish-router.js';
+import { Router5, ComplaintRouter } from './routers/complaint-router.js';
+import { Router6, SuscriptionRouter } from './routers/suscription-router.js';
 
 //Configuracion express
 const config = {
@@ -35,20 +42,38 @@ const mailer = new Mailer(nodemailer)
 //Instancias de controladores
 const productController = new ProductController(database);
 const authController = new AuthController(database);
-const tokenController = new TokenController();
+const tokenController = new TokenController(database);
 const emailController = new EmailController(mailer, database);
+const complaintController = new ComplaintController(database);
+const suscriptionController = new SuscriptionController(database);
 
 //Instancia de routers
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
 const departamentoRouter = new DepartamentoRouter(database,app.get('llave'))
+const complaintRouter = new ComplaintRouter(database, app.get('llave'))
+const suscriptionRouter = new SuscriptionRouter(database)
+const commentRouter = new CommentRouter(database,app.get('llave'))
+const wishRouter = new WishListRouter(database)
+// const complaintRouter = new ComplaintRouter(database)
 
+var sendSuscriptions = new SuscriptionAlgorithm(database, mailer)
+
+
+const job = new CronJob('0 */3 * * * *', function() {
+	sendSuscriptions.start()
+});
+
+job.start();
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/categoria', Router)
 app.use('/departamento',Router2)
-
+app.use('/comentario',Router3)
+app.use('/wish',Router4)
+app.use('/complaint',Router5)
+app.use('/suscription',Router6)
 
 //Rutas
 app.post('/login', async (req,res) =>{
@@ -153,7 +178,11 @@ app.get('/categoria-departamento', (req,res)=>{
     }
     database.getMultipleFilters(categoria,departamento)
     .then(results=>{
-        res.send(results)
+        if(results==false){
+            res.send("Categoria no disponible")
+        }else{
+           res.send(results) 
+        }
     })
 })
 
@@ -163,6 +192,14 @@ app.post('/verify',tokenController.middleVerifyToken, function(req,res){
 
 app.post("/insertProduct", async (req , res) => {
     productController.insertProduct( req, res, app.get("llave"))
+});
+
+app.post("/insertComplaints", async (req , res) => {
+    complaintController.insertComplaints( req, res, app.get("llave"))
+});
+
+app.post("/insertSuscription", async (req , res) => {
+    suscriptionController.insertSuscription( req, res, app.get("llave"))
 });
 
 app.post('/productKeyword', async (req,res)=>{

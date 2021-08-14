@@ -25,6 +25,6 @@ END//
 
 DELIMITER ;
 
-
+SELECT *FROM PRODUCT;
 
 

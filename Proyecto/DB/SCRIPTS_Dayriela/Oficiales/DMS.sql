@@ -1,12 +1,21 @@
 
 USE Ecommerce;
-INSERT INTO USER( Id, Firts_Name, Last_Name, Email, Address, Password, Check_email ) VALUES 
-	(1, "Manuel", "Perez", "ManuelP@email.com", "Col.Kennedy", "Mmp_567",false),
-    (2, "Pedro", "Martinez", "PedroM@email.com", "Col. San Miguel","Pmm_123",false),
-    (3, "Sara", "Izaguirre", "SaraI@email.com", "Barrio Guamilito","Sim_234",false),
-    (4, "Katerin", "Matute", "KaterinM@email.com", "Col. Cerro Grande","Kfm_569",false),
-    (5, "Dayriela", "Montes", "Dayrielam@email.com", "Col.Carrizal","Dmm_357",false)
-;
+INSERT INTO STATE_USER(Id_State_User , Name )VALUES
+(1, "ACTIVO"),
+(2, "INACTIVO");
+
+INSERT INTO USER( Id, Firts_Name, Last_Name, Email, Address, Password, Check_email ,Id_StateU ) VALUES 
+	(1, "Manuel", "Perez", "ManuelP@email.com", "Col.Kennedy", "Mmp_567",false, 1),
+    (2, "Pedro", "Martinez", "PedroM@email.com", "Col. San Miguel","Pmm_123",false,1),
+    (3, "Sara", "Izaguirre", "SaraI@email.com", "Barrio Guamilito","Sim_234",false,1),
+    (4, "Katerin", "Matute", "KaterinM@email.com", "Col. Cerro Grande","Kfm_569",false,1),
+    (5, "Dayriela", "Montes", "Dayrielam@email.com", "Col.Carrizal","Dmm_357",false, 1),
+    (6,"Obed", "Rivera", "ObR@gmail.com","Col.carrizal", "OeR_95",false,2),
+    (7,"Victor", "Rodas", "VicR@gmail.com","Col. Palmira", "Mjuy_33",false,2),
+	(8,"Yoselin", "Munguia", "Ym@gmail.com","Col.Pradera", "Ymdr_55",false,2)
+    ;
+    
+
 INSERT INTO USER_TYPE(Id_User_type,Name, Description)VALUES
 (1,"Administrador","Administrador de la pagina"),
 (2,"Vendedor","Distribuidor de productos"),
@@ -18,6 +27,10 @@ INSERT INTO USER_USER_TYPE(Id , Id_User_FK , Id_User_Type_FK)VALUES
 (2,1,1)
 ;
 
+INSERT INTO COMMENT(Id_Comment, Comment ,Date_Comment , Id_User_FK ) VALUES
+(1, "Excelente atencion" , "2021-05-02" , 3 ),
+(2, "Malisima atencion" , "2021-07-02" , 1 )
+;
 
 INSERT INTO DEPARTMENT(Id, Name)VALUES
 (1,"Francisco Morazan"),
@@ -104,5 +117,19 @@ INSERT INTO PRODUCT(Id, Name, Brand, Cost, Description, Id_Category_FK, Id_User_
     (41,"Hamaca uno", "Hamaca de Honduras", 450, "Blanca, gris y negro", 2, 4, 10, "https://i.ibb.co/kHpx6ky/Hamaca-1.jpg", "2021-02-06", 5),
     (42, "Hamaca dos", "Hamaca grande", 400, "Verde y azul", 2, 5, 11, "https://i.ibb.co/SwmFt85/Hamaca-2.jpg","2021-04-02", 1)
 ;
+
+INSERT INTO COMPLAINT_TYPE(Id_Complaint_Type,Name_Complaint_Type) VALUES
+(1,"Falsificacion"),
+(2,"Imitacion"),
+(3,"Estafa");
+
+
+
+INSERT INTO COMPLAINTS(Id_Whistleblower,Id_Denounced,Id_ComplaintType,Optional_Comment) VALUES
+(1,2,2,"Copia de una marca"),
+(3,1,3,"Articulo que excede su precio original"),
+(5,4,1,"Perfil falso")
+;
+
 
 

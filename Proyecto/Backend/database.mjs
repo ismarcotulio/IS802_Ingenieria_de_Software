@@ -11,7 +11,7 @@ class Database{
         this.conexion = this.mysql.createConnection({ 
             host: 'localhost',
             user: 'root',
-            password: 'root123',
+            password: 'password',
             database: 'ecommerce'
         })
         return this.conexion
@@ -506,6 +506,64 @@ class Database{
             `SELECT IF((SUSCRIPTION.Id_User_FK= ? AND SUSCRIPTION.Id_Category_FK= ?), TRUE , FALSE) as Verify FROM SUSCRIPTION`,
             [userId,categoryId], (error,results, fields)=>{
               
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+
+      categoriesFromSuscription(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `SELECT DISTINCT Id_Category_FK FROM SUSCRIPTION`,
+            [], (error,results, fields)=>{
+              
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+
+      LastProductsOfCategory(Id_Category){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `SELECT * FROM PRODUCT WHERE Id_Category_FK = ? ORDER BY Id DESC LIMIT 3`,
+            [Id_Category], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results)
+            }
+          })
+        })
+      }
+
+      getSuscriptions(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `SELECT
+                CATEGORY.Id AS Category_Id,
+                CATEGORY.Name AS Category_Name,
+                CATEGORY.Status AS Category_Status,
+                USER.Id AS User_Id,
+                USER.Firts_Name AS User_FirstName,
+                USER.last_Name AS User_LastName,
+                USER.Email AS User_Email,
+                USER.Id_StateU AS User_State
+            FROM
+                SUSCRIPTION
+            JOIN
+                USER ON SUSCRIPTION.Id_User_FK = USER.Id
+            JOIN
+                CATEGORY ON SUSCRIPTION.Id_Category_FK = CATEGORY.Id 
+            `,
+            [], (error,results, fields)=>{
             if(error){
               reject(error)
             }else{

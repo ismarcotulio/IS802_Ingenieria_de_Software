@@ -3,9 +3,11 @@ import mysql from "mysql2";
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import nodemailer from "nodemailer";
+import { CronJob } from 'cron';
 
 import { Database } from './database.mjs';
 import { Mailer } from './mailer.mjs';
+import { SuscriptionAlgorithm } from './suscriptionAlgorithm.mjs';
 
 import { AuthController } from './controllers/authController.mjs';
 import { ComplaintController } from './controllers/complaintController.mjs';
@@ -53,6 +55,15 @@ const suscriptionRouter = new SuscriptionRouter(database)
 const commentRouter = new CommentRouter(database,app.get('llave'))
 const wishRouter = new WishListRouter(database)
 // const complaintRouter = new ComplaintRouter(database)
+
+var sendSuscriptions = new SuscriptionAlgorithm(database, mailer)
+
+
+const job = new CronJob('0 */3 * * * *', function() {
+	sendSuscriptions.start()
+});
+
+job.start();
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());

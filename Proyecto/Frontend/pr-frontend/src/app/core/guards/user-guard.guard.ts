@@ -17,13 +17,20 @@ export class UserGuardGuard implements CanActivate {
       this.tokenVerify.verify().pipe()
        .subscribe(
           (data:any) => {
+              console.log(data)
 
               if(data.result == false){
                 console.log("No se encuentra logueado");
                 this.router.navigate(['/']);
               }
-              console.log( this.router.url );
-              resolve(data.result);
+              if(data.Role == 1){
+                resolve(false)
+                this.router.navigate(['/admin']);
+              }else{
+                resolve(data.result)
+
+              }
+
 
        })
     })

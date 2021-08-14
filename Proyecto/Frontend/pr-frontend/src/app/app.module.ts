@@ -16,13 +16,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TokenInterceptorService } from './core/services/authorization/token-interceptor.service';
 import { LayoutUserComponent } from './layouts/layout-user/layout-user.component';
 import { PostAdComponent } from './post-ad/post-ad.component';
+import { LayoutAdminComponent } from './layouts/layout-admin/layout-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutDefaultComponent,
     LayoutUserComponent,
-    PostAdComponent
+    PostAdComponent,
+    LayoutAdminComponent
   ],
   imports: [
     BrowserModule,

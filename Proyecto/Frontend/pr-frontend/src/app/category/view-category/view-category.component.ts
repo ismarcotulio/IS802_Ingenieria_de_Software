@@ -12,11 +12,13 @@ import { DEPARTMENTS } from './../../core/models/department/department-mock-back
   styleUrls: ['./view-category.component.css']
 })
 export class ViewCategoryComponent implements OnInit {
-
+  userSubscribe:boolean = false;
   products: Product[] = [];
   departments = DEPARTMENTS;
   selectedDepartment = "";
+  selectedCategory = "";
   isUser = false;
+  openDialog = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,11 +37,13 @@ export class ViewCategoryComponent implements OnInit {
 
     }else{
       this.route.params.subscribe(params => {
+        this.selectedCategory = params["category"];
         this.productService.getProducts(params["category"]).subscribe(
           data => {
             this.products = data;
           }
         )
+        this.verificarEstadoSuscripcion();
       });
     }
     try{
@@ -90,5 +94,84 @@ export class ViewCategoryComponent implements OnInit {
     })
   }
 
+  deleteSubscription(){
+    
+    // this.userSubscribe = false;
+    this.closeOpenDialog();
+
+    // console.log(this.categoriaActual());
+    
+    
+    this.productService.removeSubscription({Id_Category_FK:Number(this.categoriaActual())}).subscribe(result =>{
+      // console.log(result,"delete");
+      this.verificarEstadoSuscripcion();
+      this.ngOnInit();
+    });
+
+  }
+  
+  userSubscribeCategory(){
+    // this.userSubscribe = true;
+    let optionCategory =1;
+    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
+    for(let i=0;i<categorys.length;i++){
+      if(this.selectedCategory == categorys[i]){
+        optionCategory = i+1;
+        break;
+      }
+    }
+    
+    this.productService.setNewSubscription({Id_Category_FK:optionCategory}).subscribe(result =>{
+      this.verificarEstadoSuscripcion();
+      // console.log(result);
+    });
+
+    
+  }
+  
+  closeOpenDialog(){
+    if(this.openDialog){
+      this.openDialog = false
+    }else{
+
+      this.openDialog = true;
+    }
+    
+  }
+  
+  verificarEstadoSuscripcion(){
+    let optionCategory =1;
+    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
+    for(let i=0;i<categorys.length;i++){
+      if(this.selectedCategory == categorys[i]){
+        optionCategory = i+1;
+        break;
+      }
+    }
+    
+    this.productService.getStateSubscription({Id_Category_FK:optionCategory}).subscribe(results =>{
+      // console.log(results);
+      this.userSubscribe = Boolean(results);
+      
+    });
+  }
+
+  categoriaActual(){
+    let optionCategory =1;
+    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
+    
+    for(let i=0;i<categorys.length;i++){
+      if(this.selectedCategory == categorys[i]){
+        optionCategory = i+1;
+        break;
+      }
+    }
+
+    return optionCategory;
+  }
+
+  
+  
+  
 }
 

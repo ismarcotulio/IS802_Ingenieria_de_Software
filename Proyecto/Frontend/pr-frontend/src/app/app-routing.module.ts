@@ -1,3 +1,5 @@
+import { AdminGuardGuard } from './core/guards/admin-guard.guard';
+import { LayoutAdminComponent } from './layouts/layout-admin/layout-admin.component';
 import { DefaultGuard } from './core/guards/default.guard';
 
 import { NgModule } from '@angular/core';
@@ -57,6 +59,26 @@ const routes: Routes = [
       {
         path: "product",
         loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+      },
+      {
+        path: "wishlist",
+        loadChildren: () => import('./wishlist/wishlist.module').then(m => m.WishlistModule)
+      },
+      {
+        path: "",
+        redirectTo: "",
+        pathMatch: "full"
+      }
+    ]
+  },
+  {
+    path: "admin",
+    component: LayoutAdminComponent,
+    canActivate: [ AdminGuardGuard ],
+    children: [
+      {
+         path: "",
+         loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
       },
       {
         path: "",

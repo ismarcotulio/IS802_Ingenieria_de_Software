@@ -20,4 +20,10 @@ export class CategoriesService {
     let url ="http://localhost:3000/categoria/changeStatus"
     return this.http.post(url,data);
   }
+
+
+  setNuevaCategoria(data:any){
+    let url ="http://localhost:3000/categoria/addCategoria"
+    return this.http.post(url,data);
+  }
 }

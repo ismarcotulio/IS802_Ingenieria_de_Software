@@ -126,6 +126,7 @@
     text-align: center;
     /* padding: 10px; */
     box-shadow: 0 0 20px rgb(0,0,0,0.2);
+    margin-bottom: 2rem;
 }
 
 .contentTable thead tr{

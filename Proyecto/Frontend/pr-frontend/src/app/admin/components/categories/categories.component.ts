@@ -47,6 +47,9 @@ export class CategoriesComponent implements OnInit {
 
   saveCategory(){
     
+    let idCat = this.categoriesActive.length + this.categoriesDelete.length + 1;
+    // console.log(id);
+    
     if(this.imgNewCategory == ""){
       
       alert('Ingrese una imagen');
@@ -57,15 +60,17 @@ export class CategoriesComponent implements OnInit {
         /* Agregamos imagen al servidor y datos */
         this.httpClient.post('/api',this.formb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
           this.urlImg = resp;
-          const url = this.urlImg['data'].url;
+          const urll = this.urlImg['data'].url;
           
-          console.log(url);
-          console.log(this.nameCategory);
+          this.categoriesService.setNuevaCategoria({id:idCat,nombreCategoria:this.nameCategory,descripcion:this.descriptionCategory,url:urll}).subscribe(result =>{
+            // console.log(result);
+             
+          })
           
 
           this.nameCategory = '';
-          this.viewContNewCategory();
         });
+        this.viewContNewCategory();
       }
     }
     
@@ -92,6 +97,9 @@ export class CategoriesComponent implements OnInit {
   }
 
   actualizarTablas(categories:categoria[]){
+    this.categoriesDelete = [];
+    this.categoriesActive = [];
+    
     categories.forEach(categorie => {
       if(categorie.Status == "0"){
         this.categoriesDelete.push(categorie);
@@ -105,4 +113,11 @@ export class CategoriesComponent implements OnInit {
     console.log(this.categoriesActive);
   }
 
+
+  activarBaja(id:string){
+
+    this.categoriesService.deleteCategorie({category:id,status:1}).subscribe(result =>{
+      this.ngOnInit();
+    });
+  }
 }

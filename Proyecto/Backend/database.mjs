@@ -115,9 +115,9 @@ class Database{
       })
     }
 
-    addCategoria(nombreCategoria,descripcion){
+    addCategoria(nombreCategoria,descripcion,url){
       return new Promise((resolve, reject)=>{
-        this.conexion.query(`CALL insertCategory(?,?,?)`,[id,nombreCategoria,descripcion], (error,results, fields)=>{
+        this.conexion.query(`CALL insertCategory(?,?,?,?)`,[id,nombreCategoria,descripcion,url], (error,results, fields)=>{
           if(error){
             reject(error)
           }else{

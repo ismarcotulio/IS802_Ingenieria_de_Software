@@ -25,10 +25,13 @@ BEGIN
 		state ON product.Id_State_FK = state.Id
     	WHERE 
 		product.Name LIKE CONCAT('%', Buscar , '%') AND
-		user.Id_StateU = 1;
-END //
-
+		user.Id_State = 1  AND 
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90 ;
+       
+       END //
 DELIMITER ;
+
+
 
 DROP PROCEDURE IF EXISTS `filterDepartment`;
 
@@ -56,10 +59,13 @@ BEGIN
 		state ON product.Id_State_FK = state.Id 
 	WHERE 
 		PRODUCT.Id_Department_FK = departamento_ID AND
-		user.Id_StateU = 1;
+		user.Id_State = 1 AND 
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90 ;
 END //
 
 DELIMITER ;
+
+
 
 DROP PROCEDURE IF EXISTS `filterCategory`;
 
@@ -89,10 +95,12 @@ BEGIN
 		CATEGORY ON PRODUCT.ID_Category_FK=CATEGORY.Id
   	WHERE 
 		PRODUCT.Id_Category_FK = categoryID AND
-		user.Id_StateU = 1;
+		user.Id_State = 1 AND 
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90 ;
 END //
 
 DELIMITER ;
+
 
 DROP PROCEDURE IF EXISTS `DataCollectionProduct`;
 
@@ -121,11 +129,11 @@ BEGIN
 		CATEGORY ON PRODUCT.ID_Category_FK=CATEGORY.Id
   	WHERE 
 		CATEGORY.Status=1 AND
-		user.Id_StateU = 1;
+		user.Id_State = 1 AND 
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90 ;
 END //
 
 DELIMITER ;
-
 
 
 

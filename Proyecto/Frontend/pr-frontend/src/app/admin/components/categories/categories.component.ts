@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-import { FormControl } from '@angular/forms';
+import { CategoriesService } from '../../services/categories/categories.service';
+import { categoria } from '../../models/categories-model';
+
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -13,10 +15,23 @@ export class CategoriesComponent implements OnInit {
   formb = new FormData();
   urlImg:any;
   nameCategory= "";
+  descriptionCategory = "";
   viewContAddCategory = false;
-  constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient) { }
+  constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient,private categoriesService:CategoriesService) { }
+  categoriesActive:categoria [] =[];
+  categoriesDelete:categoria [] =[];
+
 
   ngOnInit(): void {
+
+
+  
+    this.categoriesService.getCategories().subscribe(result =>{
+      // console.log(result);
+      this.actualizarTablas(result);
+      
+    })
+    
   }
 
   captImgCategory(event:any){
@@ -63,6 +78,31 @@ export class CategoriesComponent implements OnInit {
     }else{
       this.viewContAddCategory = true;
     }
+  }
+
+  darBaja(id:string){
+    
+
+    this.categoriesService.deleteCategorie({category:id,status:0}).subscribe(result =>{
+      // console.log(result);
+
+      this.ngOnInit();
+      
+    })
+  }
+
+  actualizarTablas(categories:categoria[]){
+    categories.forEach(categorie => {
+      if(categorie.Status == "0"){
+        this.categoriesDelete.push(categorie);
+        
+      }else{
+        this.categoriesActive.push(categorie);
+
+      } 
+    });
+    console.log(this.categoriesDelete);
+    console.log(this.categoriesActive);
   }
 
 }

@@ -10,6 +10,7 @@ class CategoriaRouter{
 
         Router.get('/all',this.getAll)
         Router.get('/allCategories',this.getAllCategories)
+        Router.get('/addCategoria',this.addCategoria)
         Router.get('/tecnologia',this.getTecnologia)
         Router.get('/arte-artesania',this.getArteArtesania)
         Router.get('/hogar',this.getHogar)
@@ -142,6 +143,13 @@ class CategoriaRouter{
 
     changeStatus = (req,res)=>{
         this.database.changeCategoryStatus(req.body.category,req.body.status)
+        .then(results=>{
+            res.send(results)
+        })
+    }
+
+    addCategoria = (req,res)=>{
+        this.database.addCategoria(req.body.nombreCategoria,req.body.descripcion)
         .then(results=>{
             res.send(results)
         })

@@ -115,6 +115,22 @@ class Database{
       })
     }
 
+    addCategoria(nombreCategoria,descripcion){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(`CALL someprocedure()`, (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            if(results[0]!=undefined){
+              resolve(results[0])
+            }else{
+              resolve("False")
+            }
+          }
+        })
+      })
+    }
+
      getAllProducts(){
         return new Promise((resolve, reject)=>{
           this.conexion.query(`CALL DataCollectionProduct(?)`,[true], (error,results, fields)=>{

@@ -101,7 +101,7 @@ class Database{
 
     getAllCategories(){
       return new Promise((resolve, reject)=>{
-        this.conexion.query(`CALL someprocedure()`, (error,results, fields)=>{
+        this.conexion.query(`CALL Return_Category(?)`,[0], (error,results, fields)=>{
           if(error){
             reject(error)
           }else{

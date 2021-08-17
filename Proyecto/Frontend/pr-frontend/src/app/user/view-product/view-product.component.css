@@ -1,0 +1,58 @@
+#section-title{
+  display:flex;
+  position: relative;
+  height: 15vh;
+  width: 80vw;
+  left: 10vw;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vw;
+  color: #1473E6;
+}
+
+#section-grid{
+  position: relative;
+  width: 80vw;
+  left: 10vw;
+  min-height: 20vh;
+  background: turquoise;
+}
+
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+#section-paginator{
+  position: relative;
+  width: 80vw;
+  left: 10vw;
+  min-height: 5vh;
+  background: crimson;
+}
+
+#paginator{
+  display:flex;
+  position: relative;
+  height: 10vh;
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+}

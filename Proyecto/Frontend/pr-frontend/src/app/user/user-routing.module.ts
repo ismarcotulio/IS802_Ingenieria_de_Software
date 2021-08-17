@@ -1,3 +1,4 @@
+import { ViewProductComponent } from './../user/view-product/view-product.component';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { PostAdComponent } from '../post-ad/post-ad.component';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,11 @@ const routes: Routes = [
   {
     path:"postAd",
     component: PostAdComponent
-  }
+  },
+  {
+    path:"products",
+    component: ViewProductComponent
+  },
 ];
 
 @NgModule({

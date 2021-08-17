@@ -4,7 +4,7 @@ DELIMITER //
 
 CREATE PROCEDURE Change_Product_Status(IN IdProduct_parameter INT, IN statusNum INT)
 BEGIN
-    UPDATE ecommerce.PRODUCT SET Status = statusNum WHERE (`Id` = IdProduct_parameter );
+    UPDATE ecommerce.PRODUCT SET Id_State = statusNum WHERE (`Id` = IdProduct_parameter );
 END //
 
 

@@ -12,8 +12,7 @@
 
 #section-grid{
   position: relative;
-  width: 80vw;
-  left: 10vw;
+  width: 100%;
   min-height: 20vh;
 }
 
@@ -90,16 +89,22 @@
   position:relative;
   width: 45%;
   height: 100%;
-  border:solid 1px lightgray;
   align-items: center;
   text-align: left;
 }
 
+.listItem{
+  position: relative;
+  font-size: 1vw;
+  height: 16.666666666666666666666666666667%;
+  padding:0.3vw;
+}
+
 #section-paginator{
   position: relative;
-  width: 80vw;
-  left: 10vw;
+  width: 100%;
   min-height: 5vh;
+  padding-bottom:2vh;
 
 }
 
@@ -107,7 +112,8 @@
   display:flex;
   position: relative;
   height: 10vh;
-  width: 80vw;
+  width: 80%;
+  left: 10%;
   justify-content: center;
   align-items: center;
 }

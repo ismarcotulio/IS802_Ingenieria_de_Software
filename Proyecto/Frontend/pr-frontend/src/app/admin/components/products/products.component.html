@@ -1,10 +1,6 @@
-<div id="section-title">
-  <b><span id="title">Mi lista de Productos</span></b>
-</div>
-
 <div id="section-grid">
   <div class="grid-container">
-    <mat-grid-list cols="2" rowHeight="32vh">
+    <mat-grid-list cols="3" rowHeight="20vh">
       <mat-grid-tile #grid *ngFor="let product of pageSlices" [colspan]="1" [rowspan]="2">
         <mat-card class="dashboard-card">
           <mat-card-header>
@@ -22,29 +18,27 @@
           <mat-card-content class="dashboard-card-content">
             <div id="section-card-product" #main>
               <div id="section-card-product-title">
-                <div id="product-title"><b>{{ product.productName }}</b></div>
+                <div id="product-title"><b>{{ product.Name }}</b></div>
               </div>
               <div id="section-card-product-image">
-                <img src="{{ product.productImage }}" alt="" id="image" routerLink="/user/product/{{product.productId}}">
+                <img src="{{ product.Image }}" alt="" id="image" routerLink="/user/product/{{product.productId}}">
               </div>
             </div>
             <div id="section-card-detail" #detail *ngIf="this.grid.colspan == 2">
               <mat-list>
-                <mat-list-item>Estado: {{ product.activityStateName }}</mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item>Categoria: {{ product.categoryName }}</mat-list-item>
+                <mat-list-item class="listItem">Vendedor: {{ product.Firts_Name }} {{ product.Last_Name }}</mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item>Marca: {{ product.productBrand }}</mat-list-item>
+                <mat-list-item class="listItem">Correo: {{ product.Email }}</mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item>Departamento: {{ product.departmentName }}</mat-list-item>
+                <mat-list-item class="listItem">Fecha de publicacion: {{ product.Date_Product |date}}</mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item>Fecha de publicacion: {{ product.productDate |date}}</mat-list-item>
+                <mat-list-item class="listItem">Costo: {{ product.Cost |currency }}</mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item>Costo: {{ product.productCost |currency }}</mat-list-item>
+                <mat-list-item class="listItem">Estado de empaque: {{ product.Estado }}</mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item>Estado de empaque: {{ product.stateName }}</mat-list-item>
+                <mat-list-item class="listItem">Descripcion: {{ product.Description }}</mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item>Descripcion: {{ product.productDescription }}</mat-list-item>
               </mat-list>
             </div>
           </mat-card-content>
@@ -56,8 +50,8 @@
 
 <div id="section-paginator">
   <mat-paginator id="paginator" [length]="this.products?.length"
-               [pageSize]="4"
-               [pageSizeOptions]="[4, 8 , 10]"
+               [pageSize]="9"
+               [pageSizeOptions]="[9, 18 , 32]"
                (page)="onChangePage($event)"
                aria-label="Select page">
 </mat-paginator>

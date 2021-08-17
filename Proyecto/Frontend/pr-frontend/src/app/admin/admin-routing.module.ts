@@ -1,3 +1,4 @@
+import { ProductsComponent } from './components/products/products.component';
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { CategoriesComponent } from './components/categories/categories.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path:'categories',
     component: CategoriesComponent
+  },
+  {
+    path:'products',
+    component: ProductsComponent
   }
 ];
 

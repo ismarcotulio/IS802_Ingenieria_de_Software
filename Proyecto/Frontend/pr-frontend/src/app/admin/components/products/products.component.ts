@@ -1,20 +1,19 @@
-import { AllProduct } from './../../core/models/product/user-product-model';
+import { Product } from 'src/app/core/models/product/product-model';
 import { ProductService } from 'src/app/core/services/product/product.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-view-product',
-  templateUrl: './view-product.component.html',
-  styleUrls: ['./view-product.component.css']
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
-export class ViewProductComponent implements OnInit {
+export class ProductsComponent implements OnInit {
 
-  products!: AllProduct[]
+  products!: Product[]
   pageSlices!:any;
 
   constructor(
-
-    private productService:ProductService
+    private productService: ProductService
   ) { }
 
   ngOnInit(): void {
@@ -22,11 +21,11 @@ export class ViewProductComponent implements OnInit {
   }
 
   getUserProducts(){
-    this.productService.getUserProducts().subscribe(
+    this.productService.getProducts("all").subscribe(
       data=>{
         console.log(data)
         this.products = data
-        this.pageSlices = this.products.slice(0,4)
+        this.pageSlices = this.products.slice(0,9)
       }
     )
   }
@@ -41,5 +40,3 @@ export class ViewProductComponent implements OnInit {
   }
 
 }
-
-

@@ -195,7 +195,7 @@ app.post("/insertProduct", async (req , res) => {
 });
 
 app.post('/downProduct', async (req,res)=>{
-    
+    productController.downProduct(req,res)
 })
 
 app.post("/insertComplaints", async (req , res) => {

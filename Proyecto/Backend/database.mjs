@@ -407,11 +407,11 @@ class Database{
       })
     }
 
-    changeStatusProduct(productId){
+    changeStatusProduct(productId, statusNum){
       return new Promise((resolve, reject)=>{
         this.conexion.query(
-          `CALL someprocedure(?)`,
-          [userId], (error,results, fields)=>{
+          `CALL Change_Product_Status(?,?)`,
+          [productId,statusNum], (error,results, fields)=>{
           if(error){
             reject(error)
           }else{

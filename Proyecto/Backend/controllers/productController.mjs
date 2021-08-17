@@ -70,6 +70,16 @@ class ProductController{
         
     }
 
+    downProduct(req, res, key){
+        //Envoltura asincrona IIR
+        (async () => {
+            this.database.changeStatusProduct(req.body.productId)
+            .then(results=>{
+                res.send(results)
+            })
+        })();
+    }
+
 }
 
 export { ProductController }

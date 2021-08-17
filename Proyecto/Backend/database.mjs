@@ -407,6 +407,20 @@ class Database{
       })
     }
 
+    changeStatusProduct(productId){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL someprocedure(?)`,
+          [userId], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(true)
+          }
+        })
+      })
+    }
+
     countWish(userId){
       return new Promise((resolve, reject)=>{
         this.conexion.query(

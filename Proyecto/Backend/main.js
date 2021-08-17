@@ -224,6 +224,13 @@ app.get("/getProduct/:id", async (req , res) => {
     })
 });
 
+app.post("/getUserProduct", (req,res)=>{
+    database.getUserProduct(req.body.userId)
+    .then(results=>{
+        res.send(results)
+    })
+})
+
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 
 })

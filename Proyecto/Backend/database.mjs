@@ -389,6 +389,24 @@ class Database{
       })
     }
 
+    getUserProduct(userId){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL getUserProduct(?)`,
+          [userId], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            if(results[0].length!=0){
+              resolve(results[0])
+            }else{
+              resolve(false)
+            }
+          }
+        })
+      })
+    }
+
     countWish(userId){
       return new Promise((resolve, reject)=>{
         this.conexion.query(

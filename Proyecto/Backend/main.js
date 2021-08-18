@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import nodemailer from "nodemailer";
 import { CronJob } from 'cron';
+import base64url from 'base64url'
 
 import { Database } from './database.mjs';
 import { Mailer } from './mailer.mjs';

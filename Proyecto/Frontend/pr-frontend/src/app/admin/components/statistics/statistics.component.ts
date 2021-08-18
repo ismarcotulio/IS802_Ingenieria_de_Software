@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { StatisticsService } from '../../services/statistics/statistics.service';
 
 @Component({
   selector: 'app-statistics',
@@ -29,5 +30,17 @@ export class StatisticsComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private statisticService:StatisticsService) {}
+
+
+  optionTimeSelect(event:any){
+    if(event.target.value != 0){
+      
+      this.statisticService.setNewTimePost({time:event.target.value}).subscribe(result =>{
+        // console.log(result);
+        
+      })
+    }
+
+  }
 }

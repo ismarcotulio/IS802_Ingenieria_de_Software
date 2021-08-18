@@ -22,7 +22,8 @@ Begin
 		STATE ON PRODUCT.Id_State_FK = STATE.Id
 	JOIN
 		ACTIVITY_STATE ON PRODUCT.Id_State = ACTIVITY_STATE.Id_State
-	WHERE Id_User_FK=userId;
+	WHERE Id_User_FK=userId AND
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90;
 END //
 
 DELIMITER ;

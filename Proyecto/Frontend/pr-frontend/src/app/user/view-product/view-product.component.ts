@@ -11,6 +11,8 @@ export class ViewProductComponent implements OnInit {
 
   products!: AllProduct[]
   pageSlices!:any;
+  startIndex = 0;
+  endIndex = 4;
 
   constructor(
 
@@ -26,18 +28,30 @@ export class ViewProductComponent implements OnInit {
       data=>{
         console.log(data)
         this.products = data
-        this.pageSlices = this.products.slice(0,4)
+        this.pageSlices = this.products.slice(this.startIndex, this.endIndex)
       }
     )
   }
 
   onChangePage(event:any){
-    const startIndex = event.pageIndex * event.pageSize;
-    let endIndex = startIndex + event.pageSize;
-    if(endIndex > this.products.length){
-      endIndex = this.products.length;
+    this.startIndex = event.pageIndex * event.pageSize;
+    this.endIndex = this.startIndex + event.pageSize;
+    if(this.endIndex > this.products.length){
+      this.endIndex = this.products.length;
     }
-    this.pageSlices = this.products.slice(startIndex, endIndex)
+    this.pageSlices = this.products.slice(this.startIndex, this.endIndex)
+  }
+
+  changeState(idProduct:number, currentState: string){
+    var state = 1
+    if(currentState == "ACTIVO"){
+      state = 2
+    }
+    this.productService.downProduct(idProduct, state).subscribe(
+      data => {
+        this.getUserProducts()
+      }
+    )
   }
 
 }

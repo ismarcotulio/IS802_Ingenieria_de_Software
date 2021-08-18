@@ -67,7 +67,7 @@ export class ProductService {
   }
 
   downProduct(productId:number, statusNum:number){
-    return this.http.post(this.url11,{productId, statusNum})
+    return this.http.post(this.url11,{productId: productId, statusNum: statusNum})
   }
 
 

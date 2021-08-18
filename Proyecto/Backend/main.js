@@ -229,10 +229,18 @@ app.get("/getProduct/:id", async (req , res) => {
 });
 
 app.post("/getUserProduct", (req,res)=>{
-    database.getUserProduct(req.body.userId)
-    .then(results=>{
-        res.send(results)
-    })
+    var bearerHeader =  req.headers['authorization'];
+    if(typeof bearerHeader !== 'undefined'){
+        var bearerToken = bearerHeader.split(" ")[1];
+        var payload = bearerToken.split(".")[1];
+        var userId = JSON.parse(base64url.decode(payload)).Id_usuario
+        database.getUserProduct(userId)
+            .then(results=>{
+                res.send(results)
+            })
+    }else{
+        res.send('Token invalido')
+    }
 })
 
 app.listen(3000,()=>{

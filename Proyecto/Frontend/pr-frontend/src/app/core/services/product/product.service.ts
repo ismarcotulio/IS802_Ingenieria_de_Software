@@ -22,6 +22,7 @@ export class ProductService {
   url8 = "http://localhost:3000/suscription/verifySuscription"
   url9 = "http://localhost:3000/suscription/removeSuscription"
   url10 = "http://localhost:3000/getUserProduct"
+  url11 = "http://localhost:3000/downProduct"
 
   getProducts(type:string){
     return this.http.get<Product[]>(`${this.url}${type}`)
@@ -63,6 +64,10 @@ export class ProductService {
 
   getUserProducts(){
     return this.http.post<AllProduct[]>(this.url10, {})
+  }
+
+  downProduct(productId:number, statusNum:number){
+    return this.http.post(this.url11,{productId, statusNum})
   }
 
 

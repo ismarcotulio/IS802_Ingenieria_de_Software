@@ -11,7 +11,7 @@
               <mat-menu #menu="matMenu" xPosition="before">
                 <button mat-menu-item (click)="this.grid.colspan = 2; this.main.style.width = '50%'">Mostrar detalles</button>
                 <button mat-menu-item (click)="this.grid.colspan = 1; this.main.style.width = '100%'">Ocultar detalles</button>
-                <button mat-menu-item >Cambiar estado</button>
+                <button mat-menu-item (click)="this.changeState(product.Id)">Dar de baja</button>
               </mat-menu>
             </mat-card-title>
           </mat-card-header>

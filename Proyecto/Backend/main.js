@@ -224,6 +224,13 @@ app.get("/getProduct/:id", async (req , res) => {
     })
 });
 
+app.put("/tiempoAnuncios",(req,res)=>{
+    database.updateTimePost(req.body.time).then(result =>{
+        res.send({result:true});
+        res.end();
+    })
+});
+
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 
 })

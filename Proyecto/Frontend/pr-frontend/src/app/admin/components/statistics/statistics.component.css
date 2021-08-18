@@ -19,3 +19,17 @@
 .dashboard-card-content {
   text-align: center;
 }
+
+
+.container-timePost{
+  width: auto;
+  margin: 0;
+  /* background-color: red; */
+  position: relative;
+}
+.container-timePost select{
+  margin: 0;
+  font-size: 15px;
+  width: 26%;
+  margin-left: 72.5%;
+}

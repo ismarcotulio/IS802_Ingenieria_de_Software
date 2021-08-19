@@ -1,0 +1,8 @@
+.section-chart{
+  display: flex;
+  position: relative;
+  height: 75vh;
+  width:80vw;
+  justify-content: center;
+  align-items: center;
+}

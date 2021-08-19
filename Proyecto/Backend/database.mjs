@@ -101,7 +101,7 @@ class Database{
 
     getAllCategories(){
       return new Promise((resolve, reject)=>{
-        this.conexion.query(`CALL someprocedure()`, (error,results, fields)=>{
+        this.conexion.query(`CALL Return_Category(?)`,[0], (error,results, fields)=>{
           if(error){
             reject(error)
           }else{
@@ -110,6 +110,18 @@ class Database{
             }else{
               resolve("False")
             }
+          }
+        })
+      })
+    }
+
+    addCategoria(nombreCategoria,descripcion,url){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(`CALL insertCategory(?,?,?,?)`,[id,nombreCategoria,descripcion,url], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(true)
           }
         })
       })
@@ -377,6 +389,38 @@ class Database{
       })
     }
 
+    getUserProduct(userId){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL getUserProduct(?)`,
+          [userId], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            if(results[0].length!=0){
+              resolve(results[0])
+            }else{
+              resolve(false)
+            }
+          }
+        })
+      })
+    }
+
+    changeStatusProduct(productId, statusNum){
+      return new Promise((resolve, reject)=>{
+        this.conexion.query(
+          `CALL Change_Product_Status(?,?)`,
+          [productId,statusNum], (error,results, fields)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(true)
+          }
+        })
+      })
+    }
+
     countWish(userId){
       return new Promise((resolve, reject)=>{
         this.conexion.query(
@@ -586,6 +630,90 @@ class Database{
               resolve(results)
             }
           })
+        })
+      }
+
+      countProductCategory(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countProductPerCategory()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      countProductDepartment(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countProductPerDepartment()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      countProductMonth(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countProductPerMonth()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      countSuscriptionCategory(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countSuscriptionPerCategory()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      countUserProduct(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countUserProduct()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+
+      updateTimePost(time){
+        return new Promise((resolve,reject)=>{
+          this.conexion.query(`SET @timePost = ${time}`,(error,results,fields)=>{
+            if(error){
+              reject(error);
+            }else{
+              resolve(results)
+            }
+          })
+
         })
       }
 

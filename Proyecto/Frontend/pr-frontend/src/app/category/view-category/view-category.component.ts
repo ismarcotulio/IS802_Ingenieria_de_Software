@@ -1,10 +1,11 @@
+import { Categories } from './../../core/models/product/product-model';
 import { ProductSearchService } from './../../core/services/product/product-search.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/core/models/product/product-model';
+import { Product} from 'src/app/core/models/product/product-model';
 import { ProductService } from './../../core/services/product/product.service';
 import { DEPARTMENTS } from './../../core/models/department/department-mock-backend';
-
+import { CategoriesService } from 'src/app/core/services/categories/categories.service';
 
 @Component({
   selector: 'app-view-category',
@@ -19,11 +20,12 @@ export class ViewCategoryComponent implements OnInit {
   selectedCategory = "";
   isUser = false;
   openDialog = false;
-
+  listCategories:Categories[] = [];
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private productSearchService: ProductSearchService
+    private productSearchService: ProductSearchService,
+    private categoriesService: CategoriesService
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class ViewCategoryComponent implements OnInit {
             this.products = data;
           }
         )
+        this.loadCategories();
         this.verificarEstadoSuscripcion();
       });
     }
@@ -52,6 +55,8 @@ export class ViewCategoryComponent implements OnInit {
       }
     }catch(e){}
 
+    // this.verificarEstadoSuscripcion();
+    
   }
 
   optionSelect(event:any){
@@ -113,11 +118,10 @@ export class ViewCategoryComponent implements OnInit {
   userSubscribeCategory(){
     // this.userSubscribe = true;
     let optionCategory =1;
-    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
-    for(let i=0;i<categorys.length;i++){
-      if(this.selectedCategory == categorys[i]){
-        optionCategory = i+1;
-        break;
+    // let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
+    for(let i=0;i<this.listCategories.length;i++){
+      if(this.selectedCategory == this.listCategories[i].Name){
+        optionCategory = this.listCategories[i].Id;
       }
     }
     
@@ -141,16 +145,20 @@ export class ViewCategoryComponent implements OnInit {
   
   verificarEstadoSuscripcion(){
     let optionCategory =1;
-    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
-    for(let i=0;i<categorys.length;i++){
-      if(this.selectedCategory == categorys[i]){
-        optionCategory = i+1;
-        break;
+    // let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
+    
+    for(let i=0;i<this.listCategories.length;i++){
+      if(this.selectedCategory == this.listCategories[i].Name){      
+        
+        optionCategory = this.listCategories[i].Id;
       }
     }
     
+    
     this.productService.getStateSubscription({Id_Category_FK:optionCategory}).subscribe(results =>{
-      // console.log(results);
+      console.log("entro....");
+      
+      console.log(results);
       this.userSubscribe = Boolean(results);
       
     });
@@ -158,19 +166,28 @@ export class ViewCategoryComponent implements OnInit {
 
   categoriaActual(){
     let optionCategory =1;
-    let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
+    // let categorys = ["tecnologia","arte-artesania","hogar","automotriz","salud-belleza","deportes","jugueteria","mascotas","ropa"];
     
-    for(let i=0;i<categorys.length;i++){
-      if(this.selectedCategory == categorys[i]){
-        optionCategory = i+1;
-        break;
+    for(let i=0;i<this.listCategories.length;i++){
+      if(this.selectedCategory == this.listCategories[i].Name){      
+        
+        optionCategory = this.listCategories[i].Id;
       }
     }
 
     return optionCategory;
   }
 
-  
+  loadCategories(){
+    this.categoriesService.getCategories().subscribe(result =>{
+      for (let i = 0; i < result.length; i++) {
+        if(result[i].Status == 1){
+          this.listCategories.push(result[i]);
+        }
+      }
+      
+    })
+  }
   
   
 }

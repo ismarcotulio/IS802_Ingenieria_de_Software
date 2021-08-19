@@ -10,3 +10,9 @@ export interface Product{
   ID_Department_FK: number;
   Image: string;
 }
+
+export interface Categories{
+  Id:number,
+  Name:String,
+  Status:Number
+}

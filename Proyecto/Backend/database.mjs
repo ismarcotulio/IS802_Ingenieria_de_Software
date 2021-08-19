@@ -11,7 +11,7 @@ class Database{
         this.conexion = this.mysql.createConnection({ 
             host: 'localhost',
             user: 'root',
-            password: 'jafethfer10',
+            password: 'password',
             database: 'ecommerce'
         })
         return this.conexion
@@ -628,6 +628,76 @@ class Database{
               reject(error)
             }else{
               resolve(results)
+            }
+          })
+        })
+      }
+
+      countProductCategory(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countProductPerCategory()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      countProductDepartment(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countProductPerDepartment()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      countProductMonth(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countProductPerMonth()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      countSuscriptionCategory(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countSuscriptionPerCategory()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
+            }
+          })
+        })
+      }
+
+      countUserProduct(){
+        return new Promise((resolve, reject)=>{
+          this.conexion.query(
+            `CALL countUserProduct()`,
+            [], (error,results, fields)=>{
+            if(error){
+              reject(error)
+            }else{
+              resolve(results[0])
             }
           })
         })

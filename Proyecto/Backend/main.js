@@ -16,6 +16,7 @@ import { EmailController } from './controllers/emailController.mjs';
 import { ProductController } from './controllers/productController.mjs';
 import { SuscriptionController } from './controllers/suscriptionController.mjs';
 import { TokenController } from './controllers/tokenController.mjs';
+import { StatisticsController } from './controllers/statisticsController.mjs';
 
 import {Router,CategoriaRouter} from './routers/categoria-router.js';
 import {Router2,DepartamentoRouter} from './routers/departamento-router.js'
@@ -23,6 +24,7 @@ import { Router3, CommentRouter } from './routers/comment-router.js';
 import { Router4, WishListRouter } from './routers/wish-router.js';
 import { Router5, ComplaintRouter } from './routers/complaint-router.js';
 import { Router6, SuscriptionRouter } from './routers/suscription-router.js';
+import { Router7, StatisticsRouter } from './routers/statistics-router.js';
 
 //Configuracion express
 const config = {
@@ -47,6 +49,7 @@ const tokenController = new TokenController(database);
 const emailController = new EmailController(mailer, database);
 const complaintController = new ComplaintController(database);
 const suscriptionController = new SuscriptionController(database);
+const statisticsController = new StatisticsController(database);
 
 //Instancia de routers
 const categoriaRouter = new CategoriaRouter(database, app.get('llave'))
@@ -55,13 +58,13 @@ const complaintRouter = new ComplaintRouter(database, app.get('llave'))
 const suscriptionRouter = new SuscriptionRouter(database)
 const commentRouter = new CommentRouter(database,app.get('llave'))
 const wishRouter = new WishListRouter(database)
-// const complaintRouter = new ComplaintRouter(database)
+const statisticsRouter = new StatisticsRouter(database)
 
 var sendSuscriptions = new SuscriptionAlgorithm(database, mailer)
 
 
 const job = new CronJob('0 */3 * * * *', function() {
-	sendSuscriptions.start()
+	//sendSuscriptions.start()
 });
 
 job.start();
@@ -75,6 +78,7 @@ app.use('/comentario',Router3)
 app.use('/wish',Router4)
 app.use('/complaint',Router5)
 app.use('/suscription',Router6)
+app.use('/statistics',Router7)
 
 //Rutas
 app.post('/login', async (req,res) =>{

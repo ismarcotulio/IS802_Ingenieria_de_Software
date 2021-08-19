@@ -38,15 +38,15 @@
 
                 <select class = "inputPost select" formControlName="Id_Category" required>
                     <option selected value="0">Seleccione la categoria del anuncio</option>
-                    <option value="1">Tecnologia</option>
-                    <option value="2">Arte y Artesania</option>
+                    <option *ngFor="let categoria of categorias" value="{{categoria.Id}}">{{categoria.Name}}</option>
+                    <!-- <option value="2">Arte y Artesania</option>
                     <option value="3">Hogar</option>
                     <option value="4">Automotriz</option>
                     <option value="5">Salud y belleza</option>
                     <option value="6">Deporte</option>
                     <option value="7">Juguetes</option>
                     <option value="8">Mascotas</option>
-                    <option value="9">Ropa y Accesorios</option>
+                    <option value="9">Ropa y Accesorios</option> -->
                     <!-- <option value="10">Alimentos</option> -->
                     <!-- <option value="11">Industria</option> -->
                 </select>

@@ -5,6 +5,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { PostAdService } from './service/post-ad.service';
+import { CategoriesService } from '../core/services/categories/categories.service';
 
 @Component({
   selector: 'app-post-ad',
@@ -36,9 +37,24 @@ export class PostAdComponent implements OnInit {
     Cost: new FormControl('', Validators.maxLength(8))
   });
 
-  constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient, private servicePost:PostAdService) { }
+  categorias = [{Id:"",Name:""}];
+
+  constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient, private servicePost:PostAdService,private categoriasService:CategoriesService) { }
 
   ngOnInit(): void {
+
+    this.categoriasService.getCategories().subscribe(result =>{
+
+      
+      for (let i = 0; i < result.length; i++) {
+        if(result[i].Status == 1){
+          this.categorias.push(result[i]);
+        }
+        
+      }
+      this.categorias.shift();
+      
+    })
   }
 
   send(){

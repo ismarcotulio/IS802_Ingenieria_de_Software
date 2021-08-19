@@ -233,6 +233,7 @@ app.get("/getProduct/:id", async (req , res) => {
     })
 });
 
+
 app.post("/getUserProduct", (req,res)=>{
     var bearerHeader =  req.headers['authorization'];
     if(typeof bearerHeader !== 'undefined'){
@@ -247,6 +248,14 @@ app.post("/getUserProduct", (req,res)=>{
         res.send('Token invalido')
     }
 })
+
+app.put("/tiempoAnuncios",(req,res)=>{
+    database.updateTimePost(req.body.time).then(result =>{
+        res.send({result:true});
+        res.end();
+    })
+});
+
 
 app.listen(3000,()=>{
     console.log('Servidor iniciado en el puerto 3000') 

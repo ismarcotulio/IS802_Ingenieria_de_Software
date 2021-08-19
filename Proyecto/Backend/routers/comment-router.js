@@ -31,7 +31,7 @@ class CommentRouter{
     putComment = (req,res)=>{
         if(req.body.typeComment=='product'){
             var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 var bearerToken = bearerHeader.split(" ")[1];
                 var payload = bearerToken.split(".")[1];
                 var userId = JSON.parse(base64url.decode(payload)).Id_usuario
@@ -47,7 +47,7 @@ class CommentRouter{
             }
         }else if(req.body.typeComment=='seller'){
             var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 var bearerToken = bearerHeader.split(" ")[1];
                 var payload = bearerToken.split(".")[1];
                 var userId = JSON.parse(base64url.decode(payload)).Id_usuario

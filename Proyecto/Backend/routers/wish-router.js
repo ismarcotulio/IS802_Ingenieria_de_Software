@@ -17,7 +17,7 @@ class WishListRouter{
 
     addWish = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-        if(typeof bearerHeader !== 'undefined'){
+        if(bearerHeader != 'Bearer null'){
             var bearerToken = bearerHeader.split(" ")[1];
             var payload = bearerToken.split(".")[1];
             var userId = JSON.parse(base64url.decode(payload)).Id_usuario
@@ -29,7 +29,7 @@ class WishListRouter{
 
     removeWish = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-        if(typeof bearerHeader !== 'undefined'){
+        if(bearerHeader != 'Bearer null'){
             var bearerToken = bearerHeader.split(" ")[1];
             var payload = bearerToken.split(".")[1];
             var userId = JSON.parse(base64url.decode(payload)).Id_usuario

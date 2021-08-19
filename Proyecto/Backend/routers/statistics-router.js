@@ -18,35 +18,35 @@ class StatisticsRouter{
 
     countProductCategory = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 this.statisticsController.countProductCategory(req,res)
             }
     }
 
     countProductDepartment = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 this.statisticsController.countProductDepartment(req,res)
             }
     }
 
     countProductMonth = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 this.statisticsController.countProductMonth(req,res)
             }
     }
 
     countSuscriptionCategory = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 this.statisticsController.countSuscriptionCategory(req,res)
             }
     }
 
     countUserProduct = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 this.statisticsController.countUserProduct(req,res)
             }
     }

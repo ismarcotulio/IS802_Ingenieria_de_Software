@@ -16,7 +16,7 @@ class SuscriptionRouter{
 
     removeSuscription = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-        if(typeof bearerHeader !== 'undefined'){
+        if(bearerHeader != 'Bearer null'){
             var bearerToken = bearerHeader.split(" ")[1];
             var payload = bearerToken.split(".")[1];
             var userId = JSON.parse(base64url.decode(payload)).Id_usuario
@@ -27,15 +27,15 @@ class SuscriptionRouter{
     }
 
     verifySuscription = (req,res)=>{
-
-        var Id_Usuario = 1
-        var token = req.headers.authorization.split(" ")[1]
-       
-        jwt.verify(token, "EcommerceSecretPassword2021*", function(err, decoded) {
-            Id_Usuario = decoded.Id_usuario 
-        }); 
-        // console.log(Id_Usuario);
-        this.suscriptionController.verifySuscription(req,res,Id_Usuario)
+        var bearerHeader =  req.headers['authorization'];
+        if(bearerHeader != 'Bearer null'){
+            var bearerToken = bearerHeader.split(" ")[1];
+            var payload = bearerToken.split(".")[1];
+            var userId = JSON.parse(base64url.decode(payload)).Id_usuario
+            this.suscriptionController.verifySuscription(req,res,userId)
+        }else{
+            res.send('Token invalido')
+        }
     }
 
 }

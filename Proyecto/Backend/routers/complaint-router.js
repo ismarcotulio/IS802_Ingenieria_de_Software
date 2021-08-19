@@ -15,21 +15,21 @@ class ComplaintRouter{
 
     getComplaints = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 this.complaintController.getComplaints(req,res)
             }
     }
 
     removeComplaint = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 this.complaintController.removeComplaint(req,res)
             }
     }
 
     acceptComplaint = (req,res)=>{
         var bearerHeader =  req.headers['authorization'];
-            if(typeof bearerHeader !== 'undefined'){
+            if(bearerHeader != 'Bearer null'){
                 this.complaintController.acceptComplaint(req,res)
             }
     }

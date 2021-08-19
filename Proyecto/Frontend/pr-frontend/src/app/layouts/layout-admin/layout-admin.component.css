@@ -30,3 +30,9 @@
   z-index: 1;
 }
 
+#container{
+  position:relative;
+  width:100%;
+  min-height: 10vh;
+}
+

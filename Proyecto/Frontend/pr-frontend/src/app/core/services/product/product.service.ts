@@ -13,6 +13,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
   url = "http://localhost:3000/categoria/"
+  url1 = "http://localhost:3000/categoria/only/"
   url2 = "http://localhost:3000/getProduct/"
   url3 = "http://localhost:3000/categoria-departamento"
   url4 = "http://localhost:3000/comentario/newComment"
@@ -25,7 +26,11 @@ export class ProductService {
   url11 = "http://localhost:3000/downProduct"
 
   getProducts(type:string){
-    return this.http.get<Product[]>(`${this.url}${type}`)
+    if(type == "all"){
+      return this.http.get<Product[]>(`${this.url}${type}`)
+    }else{
+      return this.http.get<Product[]>(`${this.url1}${type}`)
+    }
   }
 
   getProduct(id:string){

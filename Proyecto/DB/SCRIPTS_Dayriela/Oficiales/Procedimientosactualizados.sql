@@ -72,32 +72,33 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS `filterCategory`;
 
 DELIMITER //
-CREATE PROCEDURE `filterCategory`(IN categoryID INT)
+CREATE PROCEDURE `filterCategory`(IN categoryName VARCHAR(60))
 BEGIN
+
 	SELECT 
-		product.Id,
-		product.Name,
- 		product.Description,
-  		product.Cost,
-	 	product.Date_Product, 
-		product.Image, 
-		state.Name as Estado,
-		user.Id as Id_Usuario,
-  		user.Firts_Name,
-		user.Last_Name, 
-		user.Email, 
+		PRODUCT.Id,
+		PRODUCT.Name,
+ 		PRODUCT.Description,
+  		PRODUCT.Cost,
+	 	PRODUCT.Date_Product, 
+		PRODUCT.Image, 
+		STATE.Name as Estado,
+		USER.Id as Id_Usuario,
+  		USER.Firts_Name,
+		USER.Last_Name, 
+		USER.Email, 
 		CATEGORY.Status 
 	FROM
  		PRODUCT 
 	INNER JOIN 
-  		user ON  product.Id_User_FK = user.Id 
+  		USER ON  PRODUCT.Id_User_FK = USER.Id 
 	INNER JOIN 
-		state ON product.Id_State_FK = state.Id 
+		STATE ON PRODUCT.Id_State_FK = STATE.Id 
 	INNER JOIN 
-		CATEGORY ON PRODUCT.ID_Category_FK=CATEGORY.Id
+		CATEGORY ON PRODUCT.Id_Category_FK = CATEGORY.Id
   	WHERE 
-		PRODUCT.Id_Category_FK = categoryID AND
-		user.Id_State = 1 AND
+		CATEGORY.Name = categoryName AND
+		USER.Id_State = 1 AND
 		PRODUCT.Id_State = 1 AND 
         TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90 ;
 END //

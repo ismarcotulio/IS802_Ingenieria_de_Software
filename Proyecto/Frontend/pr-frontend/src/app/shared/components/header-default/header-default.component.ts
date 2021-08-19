@@ -51,4 +51,10 @@ export class HeaderDefaultComponent implements OnInit {
   }
 
 
+  goCategorie(event:any){
+    if(event.target.value != 0){
+
+      this.router.navigate([`/user/category/${event.target.value}`])
+    }    
+  }
 }

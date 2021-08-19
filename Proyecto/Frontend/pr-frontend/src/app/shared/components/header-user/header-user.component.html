@@ -39,9 +39,9 @@
       <!-- <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/ropa" routerLinkActive="isActive">Ropa</button></div> -->
       
       <div *ngIf="viewSelectCategories">
-        <select class="selectMenu">
-          <option  value="0" selected>Ver todas las categorias</option>
-          <option *ngFor="let item of selectCategories" value="{{item.Id}}">{{item.Name}}</option>
+        <select class="selectMenu" (change) = "goCategorie($event)">
+          <option  value="0"  selected>Ver todas las categorias</option>
+          <option *ngFor="let item of selectCategories"  value="{{item.Name}}">{{item.Name}}</option>
         </select>
     </div>
       <!-- <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/ropa" routerLinkActive="isActive">aa</button></div> -->

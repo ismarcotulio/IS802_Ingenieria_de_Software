@@ -2,6 +2,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WishlistService } from 'src/app/core/services/wishlist/wishlist.service';
+import { CategoriesService } from 'src/app/core/services/categories/categories.service';
 
 @Component({
   selector: 'app-header-user',
@@ -9,8 +10,11 @@ import { WishlistService } from 'src/app/core/services/wishlist/wishlist.service
   styleUrls: ['./header-user.component.css']
 })
 export class HeaderUserComponent implements OnInit {
-
-  constructor( private router: Router, private wishlistService: WishlistService ) { }
+  categories=[{Name: ""}]; 
+  selectCategories = [{Name: ""}];
+  constructor( private router: Router, private wishlistService: WishlistService,
+              private serviceCategories:CategoriesService
+    ) { }
 
   wishBadge!: number;
 
@@ -18,6 +22,31 @@ export class HeaderUserComponent implements OnInit {
     /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
     //Write your code here
      this.CountWishes()
+
+     this.serviceCategories.getCategories().subscribe(result =>{
+
+       for (let i = 0; i < result.length; i++) {
+            if(i == 0){
+              this.categories[i] = result[i]
+            }else{
+              if(i<7){
+                if(result[i].Status == 1){
+                    this.categories.push(result[i]);
+                 }
+              }else{
+                if(i == 7){
+                  this.selectCategories[0] = result[i];
+
+                }else{
+                  
+                  this.selectCategories.push(result[i]);
+                }
+              }
+            }
+       }
+              
+      
+     })
     }
 
   logout(){

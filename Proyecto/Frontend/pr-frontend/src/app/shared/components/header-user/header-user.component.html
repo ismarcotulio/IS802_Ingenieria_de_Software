@@ -15,7 +15,7 @@
   <div id="inputsSection">
     <div id="inputSection1">
       <button id="products-btn" routerLink="/user/products">ver productos</button>
-      <button id="post-btn" (click)="this.postAd()">publicar producto</button>
+      <button id="post-btn" (click)="this.postAd()">Publicar producto</button>
     </div>
     <div id="inputSection2">
       <div id="searchBarContainer">
@@ -36,7 +36,13 @@
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/deportes" routerLinkActive="isActive">Deportes</button></div>
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/jugueteria" routerLinkActive="isActive">Juguetes</button></div>
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/mascotas" routerLinkActive="isActive">Mascotas</button></div>
-      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/ropa" routerLinkActive="isActive">Ropa</button></div>
+      <!-- <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/ropa" routerLinkActive="isActive">Ropa</button></div> -->
+      
+      <select class="selectMenu">
+        <option  value="o" selected>Ver todas las categorias</option>
+        <option value="o">b</option>
+      </select>
+      <!-- <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/ropa" routerLinkActive="isActive">aa</button></div> -->
     </div>
   </div>
 

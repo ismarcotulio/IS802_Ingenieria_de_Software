@@ -90,6 +90,7 @@
   color: white;
   text-align:center;
   border: none;
+  font-size: 1vw;
 }
 
 #post-btn{
@@ -102,6 +103,7 @@
   color: white;
   text-align:center;
   border: none;
+  font-size: 1vw;
 }
 
 #inputSection2{
@@ -288,3 +290,22 @@
   margin-left: 65%;
 }
 
+
+
+.selectMenu{
+  background-color: #1473E6;
+  border: none;
+  color: white;
+  margin: 0;
+  margin-left: 2rem;
+  margin-top: 5.5px;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.selectMenu:hover{
+  border: none;
+  outline: none;
+  border-bottom: white 5.5px solid;
+
+}

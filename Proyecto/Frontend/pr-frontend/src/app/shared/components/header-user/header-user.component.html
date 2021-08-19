@@ -38,10 +38,12 @@
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/mascotas" routerLinkActive="isActive">Mascotas</button></div> -->
       <!-- <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/ropa" routerLinkActive="isActive">Ropa</button></div> -->
       
-      <select class="selectMenu">
-        <option  value="0" selected>Ver todas las categorias</option>
-        <option *ngFor="let item of selectCategories" value="{{item.Id}}">{{item.Name}}</option>
-      </select>
+      <div *ngIf="viewSelectCategories">
+        <select class="selectMenu">
+          <option  value="0" selected>Ver todas las categorias</option>
+          <option *ngFor="let item of selectCategories" value="{{item.Id}}">{{item.Name}}</option>
+        </select>
+    </div>
       <!-- <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/user/category/ropa" routerLinkActive="isActive">aa</button></div> -->
     </div>
   </div>

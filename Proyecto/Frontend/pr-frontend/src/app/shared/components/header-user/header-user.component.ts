@@ -17,7 +17,7 @@ export class HeaderUserComponent implements OnInit {
     ) { }
 
   wishBadge!: number;
-
+  viewSelectCategories = false;
   ngOnInit() {
     /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
     //Write your code here
@@ -26,30 +26,27 @@ export class HeaderUserComponent implements OnInit {
      this.serviceCategories.getCategories().subscribe(result =>{
 
        for (let i = 0; i < result.length; i++) {
-            if(i == 0){
-              this.categories[i] = result[i]
-            }else{
-              if(i<7){
-                if(result[i].Status == 1){
-                    this.categories.push(result[i]);
-                 }
-              }else{
-                if(i == 7){
-                  this.selectCategories[0] = result[i];
-
-                }else{
-                  
-                  this.selectCategories.push(result[i]);
+            if(this.categories.length<7){
+              if(result[i].Status == 1){
+                  this.categories.push(result[i]);
                 }
+            }else{
+
+              if(result[i].Status == 1){
+                
+                this.viewSelectCategories = true;
+                this.selectCategories.push(result[i]);
+                
               }
             }
+            
        }
-        
+       
+       this.categories.shift();
+       this.selectCategories.shift();
       //  console.log(this.categories);
       //  console.log(this.selectCategories);
        
-       
-      
      })
     }
 

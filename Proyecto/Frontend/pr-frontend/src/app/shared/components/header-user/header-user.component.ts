@@ -11,7 +11,7 @@ import { CategoriesService } from 'src/app/core/services/categories/categories.s
 })
 export class HeaderUserComponent implements OnInit {
   categories=[{Name: ""}]; 
-  selectCategories = [{Name: ""}];
+  selectCategories = [{Name: "",Id:""}];
   constructor( private router: Router, private wishlistService: WishlistService,
               private serviceCategories:CategoriesService
     ) { }
@@ -44,7 +44,11 @@ export class HeaderUserComponent implements OnInit {
               }
             }
        }
-              
+        
+      //  console.log(this.categories);
+      //  console.log(this.selectCategories);
+       
+       
       
      })
     }

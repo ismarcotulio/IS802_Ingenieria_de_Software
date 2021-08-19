@@ -21,15 +21,20 @@
     </div>
     <div id="inputSection3">
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="home" routerLinkActive="isActive">Inicio</button></div>
-      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/category/tecnologia" routerLinkActive="isActive" >Tecnologia</button></div>
-      <div class="categoryBtnContainer"><button class="btnCategory"  routerLink="/category/arte-artesania" routerLinkActive="isActive">Arte</button></div>
+      <div class="categoryBtnContainer" *ngFor="let categorie of categories"><button class="btnCategory" routerLink="/category/{{categorie.Name}}" routerLinkActive="isActive" >Tecnologia</button></div>
+      <!-- <div class="categoryBtnContainer"><button class="btnCategory"  routerLink="/category/arte-artesania" routerLinkActive="isActive">Arte</button></div>
       <div class="categoryBtnContainer"><button class="btnCategory"  routerLink="/category/hogar" routerLinkActive="isActive">Hogar</button></div>
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/category/automotriz" routerLinkActive="isActive">Automotriz</button></div>
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/category/salud-belleza" routerLinkActive="isActive">Salud</button></div>
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/category/deportes" routerLinkActive="isActive">Deportes</button></div>
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/category/jugueteria" routerLinkActive="isActive">Juguetes</button></div>
       <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/category/mascotas" routerLinkActive="isActive">Mascotas</button></div>
-      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/category/ropa" routerLinkActive="isActive">Ropa</button></div>
+      <div class="categoryBtnContainer"><button class="btnCategory" routerLink="/category/ropa" routerLinkActive="isActive">Ropa</button></div> -->
+    
+      <select class="selectMenu">
+        <option  value="0" selected>Ver todas las categorias</option>
+        <option *ngFor="let item of selectCategories" value="{{item.Id}}">{{item.Name}}</option>
+      </select>
     </div>
   </div>
 

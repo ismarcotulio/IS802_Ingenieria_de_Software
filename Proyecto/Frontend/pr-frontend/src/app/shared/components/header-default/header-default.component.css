@@ -223,3 +223,21 @@
   font-size: 0.8vw;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.selectMenu{
+  background-color: #1473E6;
+  border: none;
+  color: white;
+  margin: 0;
+  margin-left: 2rem;
+  margin-top: 5.5px;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.selectMenu:hover{
+  border: none;
+  outline: none;
+  border-bottom: white 5.5px solid;
+
+}

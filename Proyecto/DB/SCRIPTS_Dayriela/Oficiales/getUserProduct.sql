@@ -24,7 +24,8 @@ Begin
 		ACTIVITY_STATE ON PRODUCT.Id_State = ACTIVITY_STATE.Id_State
 	WHERE 
 		Id_User_FK=userId AND
-        	TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90
+		CATEGORY.Status = 1 AND
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d')) < (SELECT timePost FROM TimePost LIMIT 1)
 	ORDER BY
 		PRODUCT.Date_Product DESC
 		

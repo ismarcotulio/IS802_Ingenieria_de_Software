@@ -23,7 +23,7 @@ CREATE PROCEDURE countUserProduct()
 				DAY,
  				PRODUCT.Date_Product,
 				date_format(NOW(),'%Y-%m-%d')
-			) < 90	 
+			) < (SELECT timePost FROM TimePost LIMIT 1)	 
 		GROUP BY
 			USER.Id
 		ORDER BY

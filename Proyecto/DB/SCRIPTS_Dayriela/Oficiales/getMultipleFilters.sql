@@ -31,7 +31,7 @@ BEGIN
 		product.Id_Category_FK = categoriaId AND
 		user.Id_State = 1 AND 
 		PRODUCT.Id_State = 1 AND
-        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90;
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d')) < (SELECT timePost FROM TimePost LIMIT 1);
 END //
 
 DELIMITER ;

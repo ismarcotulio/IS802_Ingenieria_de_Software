@@ -117,7 +117,7 @@ class Database{
 
     addCategoria(nombreCategoria,descripcion,url){
       return new Promise((resolve, reject)=>{
-        this.conexion.query(`CALL insertCategory(?,?,?,?)`,[id,nombreCategoria,descripcion,url], (error,results, fields)=>{
+        this.conexion.query(`CALL insertCategory(?,?,?)`,[nombreCategoria,descripcion,url], (error,results, fields)=>{
           if(error){
             reject(error)
           }else{
@@ -706,7 +706,7 @@ class Database{
 
       updateTimePost(time){
         return new Promise((resolve,reject)=>{
-          this.conexion.query(`SET @timePost = ${time}`,(error,results,fields)=>{
+          this.conexion.query(`UPDATE TimePost SET timepost = ${time} WHERE Id = 1`,(error,results,fields)=>{
             if(error){
               reject(error);
             }else{

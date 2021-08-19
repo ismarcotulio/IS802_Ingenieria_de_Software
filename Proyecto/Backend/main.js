@@ -69,6 +69,8 @@ const job = new CronJob('0 */3 * * * *', function() {
 
 job.start();
 
+
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use(cors());

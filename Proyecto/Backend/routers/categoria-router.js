@@ -49,7 +49,7 @@ class CategoriaRouter{
     }
 
     addCategoria = (req,res)=>{
-        this.database.addCategoria(req.body.id,req.body.nombreCategoria,req.body.descripcion,req.body.url)
+        this.database.addCategoria(req.body.nombreCategoria,req.body.descripcion,req.body.url)
         .then(results=>{
             res.send(results)
         })

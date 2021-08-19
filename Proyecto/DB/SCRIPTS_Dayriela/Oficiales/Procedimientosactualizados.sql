@@ -27,7 +27,7 @@ BEGIN
 		product.Name LIKE CONCAT('%', Buscar , '%') AND
 		user.Id_State = 1  AND
 		PRODUCT.Id_State = 1 AND 
-        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90 ;
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d')) < (SELECT timePost FROM TimePost LIMIT 1);
        
        END //
 DELIMITER ;
@@ -62,7 +62,7 @@ BEGIN
 		PRODUCT.Id_Department_FK = departamento_ID AND
 		user.Id_State = 1 AND
 		PRODUCT.Id_State = 1 AND 
-        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90 ;
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d')) < (SELECT timePost FROM TimePost LIMIT 1);
 END //
 
 DELIMITER ;
@@ -100,7 +100,7 @@ BEGIN
 		CATEGORY.Name = categoryName AND
 		USER.Id_State = 1 AND
 		PRODUCT.Id_State = 1 AND 
-        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90 ;
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d')) < (SELECT timePost FROM TimePost LIMIT 1);
 END //
 
 DELIMITER ;
@@ -111,6 +111,7 @@ DROP PROCEDURE IF EXISTS `DataCollectionProduct`;
 DELIMITER //
 CREATE PROCEDURE `DataCollectionProduct`(IN done BOOLEAN)
 BEGIN
+
 	SELECT 
 		product.Id, 
 		product.Name, 
@@ -135,7 +136,7 @@ BEGIN
 		CATEGORY.Status=1 AND
 		user.Id_State = 1 AND
 		PRODUCT.Id_State = 1 AND 
-        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90 ;
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d')) < (SELECT timePost FROM TimePost LIMIT 1);
 END //
 
 DELIMITER ;

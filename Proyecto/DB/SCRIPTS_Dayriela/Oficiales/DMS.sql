@@ -179,5 +179,7 @@ INSERT INTO COMPLAINTS(Id_Whistleblower,Id_Denounced,Id_ComplaintType,Optional_C
 (10,4,1,"Perfil falso")
 ;
 
+INSERT INTO TimePost(timePost) VALUES(90);
+
 
 

@@ -29,7 +29,9 @@ BEGIN
   	WHERE 
 		product.Id_Department_FK = departamentoId AND
 		product.Id_Category_FK = categoriaId AND
-		user.Id_StateU = 1;
+		user.Id_State = 1 AND 
+		PRODUCT.Id_State = 1 AND
+        TIMESTAMPDIFF(DAY, PRODUCT.Date_Product, date_format(NOW(),'%Y-%m-%d'))<90;
 END //
 
 DELIMITER ;

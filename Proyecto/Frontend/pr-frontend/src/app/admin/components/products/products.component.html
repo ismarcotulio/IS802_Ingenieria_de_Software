@@ -1,0 +1,58 @@
+<div id="section-grid">
+  <div class="grid-container">
+    <mat-grid-list cols="3" rowHeight="20vh">
+      <mat-grid-tile #grid *ngFor="let product of pageSlices" [colspan]="1" [rowspan]="2">
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="this.grid.colspan = 2; this.main.style.width = '50%'">Mostrar detalles</button>
+                <button mat-menu-item (click)="this.grid.colspan = 1; this.main.style.width = '100%'">Ocultar detalles</button>
+                <button mat-menu-item (click)="this.changeState(product.Id)">Dar de baja</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div id="section-card-product" #main>
+              <div id="section-card-product-title">
+                <div id="product-title"><b>{{ product.Name }}</b></div>
+              </div>
+              <div id="section-card-product-image">
+                <img src="{{ product.Image }}" alt="" id="image" routerLink="/user/product/{{product.productId}}">
+              </div>
+            </div>
+            <div id="section-card-detail" #detail *ngIf="this.grid.colspan == 2">
+              <mat-list>
+                <mat-divider></mat-divider>
+                <mat-list-item class="listItem">Vendedor: {{ product.Firts_Name }} {{ product.Last_Name }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="listItem">Correo: {{ product.Email }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="listItem">Fecha de publicacion: {{ product.Date_Product |date}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="listItem">Costo: {{ product.Cost |currency }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="listItem">Estado de empaque: {{ product.Estado }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="listItem">Descripcion: {{ product.Description }}</mat-list-item>
+                <mat-divider></mat-divider>
+              </mat-list>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+
+<div id="section-paginator">
+  <mat-paginator id="paginator" [length]="this.products?.length"
+               [pageSize]="9"
+               [pageSizeOptions]="[9, 18 , 32]"
+               (page)="onChangePage($event)"
+               aria-label="Select page">
+</mat-paginator>
+</div>

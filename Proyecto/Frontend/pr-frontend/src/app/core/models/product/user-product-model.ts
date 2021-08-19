@@ -31,3 +31,19 @@ export interface WishProduct{
   Image: string;
   Date_Product: string;
 }
+
+export interface AllProduct{
+  activityStateName: string;
+  categoryDescription: string;
+  categoryId: number;
+  categoryName: string;
+  departmentName: string;
+  productBrand:string;
+  productCost: string;
+  productDate: string;
+  productDescription: string;
+  productId: number;
+  productImage: string;
+  productName: string;
+  stateName: string;
+}

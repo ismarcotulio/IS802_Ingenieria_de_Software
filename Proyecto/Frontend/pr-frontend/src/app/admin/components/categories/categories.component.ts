@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-import { FormControl } from '@angular/forms';
+import { CategoriesService } from '../../services/categories/categories.service';
+import { categoria } from '../../models/categories-model';
+
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -13,10 +15,23 @@ export class CategoriesComponent implements OnInit {
   formb = new FormData();
   urlImg:any;
   nameCategory= "";
+  descriptionCategory = "";
   viewContAddCategory = false;
-  constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient) { }
+  constructor(private sanitizer: DomSanitizer, private httpClient:HttpClient,private categoriesService:CategoriesService) { }
+  categoriesActive:categoria [] =[];
+  categoriesDelete:categoria [] =[];
+
 
   ngOnInit(): void {
+
+
+  
+    this.categoriesService.getCategories().subscribe(result =>{
+      // console.log(result);
+      this.actualizarTablas(result);
+      
+    })
+    
   }
 
   captImgCategory(event:any){
@@ -32,6 +47,9 @@ export class CategoriesComponent implements OnInit {
 
   saveCategory(){
     
+    let idCat = this.categoriesActive.length + this.categoriesDelete.length + 1;
+    // console.log(id);
+    
     if(this.imgNewCategory == ""){
       
       alert('Ingrese una imagen');
@@ -42,15 +60,17 @@ export class CategoriesComponent implements OnInit {
         /* Agregamos imagen al servidor y datos */
         this.httpClient.post('/api',this.formb,{params:{key: this.apiKey} }, ).subscribe(resp =>{
           this.urlImg = resp;
-          const url = this.urlImg['data'].url;
+          const urll = this.urlImg['data'].url;
           
-          console.log(url);
-          console.log(this.nameCategory);
+          this.categoriesService.setNuevaCategoria({id:idCat,nombreCategoria:this.nameCategory,descripcion:this.descriptionCategory,url:urll}).subscribe(result =>{
+            // console.log(result);
+             
+          })
           
 
           this.nameCategory = '';
-          this.viewContNewCategory();
         });
+        this.viewContNewCategory();
       }
     }
     
@@ -65,4 +85,39 @@ export class CategoriesComponent implements OnInit {
     }
   }
 
+  darBaja(id:string){
+    
+
+    this.categoriesService.deleteCategorie({category:id,status:0}).subscribe(result =>{
+      // console.log(result);
+
+      this.ngOnInit();
+      
+    })
+  }
+
+  actualizarTablas(categories:categoria[]){
+    this.categoriesDelete = [];
+    this.categoriesActive = [];
+    
+    categories.forEach(categorie => {
+      if(categorie.Status == "0"){
+        this.categoriesDelete.push(categorie);
+        
+      }else{
+        this.categoriesActive.push(categorie);
+
+      } 
+    });
+    console.log(this.categoriesDelete);
+    console.log(this.categoriesActive);
+  }
+
+
+  activarBaja(id:string){
+
+    this.categoriesService.deleteCategorie({category:id,status:1}).subscribe(result =>{
+      this.ngOnInit();
+    });
+  }
 }

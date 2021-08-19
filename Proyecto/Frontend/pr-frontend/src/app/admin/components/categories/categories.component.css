@@ -102,3 +102,60 @@
     background-color: orangered;
     color: white;
 }
+
+.contViewCategories{
+    padding: 2rem;
+}
+
+.txtCategors{
+    font-size: 1.3rem;
+}
+
+.two{
+    margin-left: 0;
+    width: 100%;
+}
+
+.boxTable{
+    padding: 0 2.5rem;
+}
+
+.contentTable{
+    border-collapse: collapse;
+    font-size: 1.2rem;
+    text-align: center;
+    /* padding: 10px; */
+    box-shadow: 0 0 20px rgb(0,0,0,0.2);
+    margin-bottom: 2rem;
+}
+
+.contentTable thead tr{
+    background-color: #1473E6;
+    color: white;
+}
+.contentTable td,.contentTable th{
+    
+    /* margin-right: 2rem; */
+    padding: 0.3rem 2rem;
+}
+
+.contentTable tbody tr{
+    border-bottom: #dddddd 1px solid;
+    font-size: 1rem;
+    fill: red;
+}
+.contentTable tbody tr:nth-of-type(even){
+    /* border-bottom: #dddddd 1px solid; */
+    background-color: #f3f3f3;
+    
+}
+.contentTable tbody tr svg{
+    width: 20px;
+    height: 30px;
+    fill: red;
+    cursor: pointer;
+}
+.contentTable tbody tr svg:hover{
+    
+    fill: orange;
+}

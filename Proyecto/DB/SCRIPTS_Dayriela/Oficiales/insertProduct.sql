@@ -14,7 +14,8 @@ CREATE PROCEDURE insertProduct(
     IN Image_parameter VARCHAR(100),
     IN Date_Product_parameter DATE,
     IN Id_State_FK_parameter INT,
-    IN Id_Department_FK_parameter INT
+    IN Id_Department_FK_parameter INT 
+    
 )
 BEGIN
 	INSERT INTO PRODUCT( Id, Name, Brand, Cost, Description, Id_Category_FK, Id_User_FK, Image, Date_Product,Id_State_FK,Id_Department_FK 
@@ -25,6 +26,6 @@ END//
 
 DELIMITER ;
 
-SELECT *FROM PRODUCT;
+
 
 

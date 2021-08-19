@@ -15,4 +15,3 @@ BEGIN
 END //
 
 DELIMITER ;
-call Return_Category(1);

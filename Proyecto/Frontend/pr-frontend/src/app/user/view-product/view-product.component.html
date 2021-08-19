@@ -1,0 +1,64 @@
+<div id="section-title">
+  <b><span id="title">Mi lista de Productos</span></b>
+</div>
+
+<div id="section-grid">
+  <div class="grid-container">
+    <mat-grid-list cols="2" rowHeight="32vh">
+      <mat-grid-tile #grid *ngFor="let product of pageSlices" [colspan]="1" [rowspan]="2">
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="this.grid.colspan = 2; this.main.style.width = '50%'">Mostrar detalles</button>
+                <button mat-menu-item (click)="this.grid.colspan = 1; this.main.style.width = '100%'">Ocultar detalles</button>
+                <button mat-menu-item (click)="this.changeState(product.productId, product.activityStateName)">Cambiar estado</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div id="section-card-product" #main>
+              <div id="section-card-product-title">
+                <div id="product-title"><b>{{ product.productName }}</b></div>
+              </div>
+              <div id="section-card-product-image">
+                <img src="{{ product.productImage }}" alt="" id="image" routerLink="/user/product/{{product.productId}}">
+              </div>
+            </div>
+            <div id="section-card-detail" #detail *ngIf="this.grid.colspan == 2">
+              <mat-list>
+                <mat-list-item>Estado: {{ product.activityStateName }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Categoria: {{ product.categoryName }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Marca: {{ product.productBrand }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Departamento: {{ product.departmentName }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Fecha de publicacion: {{ product.productDate |date}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Costo: {{ product.productCost |currency }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Estado de empaque: {{ product.stateName }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Descripcion: {{ product.productDescription }}</mat-list-item>
+              </mat-list>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+
+<div id="section-paginator">
+  <mat-paginator id="paginator" [length]="this.products?.length"
+               [pageSize]="4"
+               [pageSizeOptions]="[4, 8 , 10]"
+               (page)="onChangePage($event)"
+               aria-label="Select page">
+</mat-paginator>
+</div>

@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from './../../models/product/product-model';
-import { UserProduct } from './../../models/product/user-product-model';
+import { UserProduct, AllProduct } from './../../models/product/user-product-model';
 
 //import { PRODUCTS } from '../../models/product/product-mock-backend';
 
@@ -21,6 +21,8 @@ export class ProductService {
   url7 = "http://localhost:3000/insertSuscription"
   url8 = "http://localhost:3000/suscription/verifySuscription"
   url9 = "http://localhost:3000/suscription/removeSuscription"
+  url10 = "http://localhost:3000/getUserProduct"
+  url11 = "http://localhost:3000/downProduct"
 
   getProducts(type:string){
     return this.http.get<Product[]>(`${this.url}${type}`)
@@ -59,4 +61,14 @@ export class ProductService {
   removeSubscription(data:any){
     return this.http.post(this.url9,data);
   }
+
+  getUserProducts(){
+    return this.http.post<AllProduct[]>(this.url10, {})
+  }
+
+  downProduct(productId:number, statusNum:number){
+    return this.http.post(this.url11,{productId: productId, statusNum: statusNum})
+  }
+
+
 }
